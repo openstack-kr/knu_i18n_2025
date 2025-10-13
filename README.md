@@ -1,3 +1,3 @@
-- Environment: NHN Cloud c2.c4m4
+- Environment: Ubuntu 22.04 LTS - c2.c4m4
 - LLM Framework: Ollama
 - LLM Model: [Llama3.2-1B](https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct)
