@@ -1,0 +1,13 @@
+
+# Virtualenv & Cache
+venv/
+.cache/
+__pycache__/
+novrelease.zip
+novrelease.zip
+*.gguf
+models/
+venv/
+work/
+__pycache__/
+.DS_Store
