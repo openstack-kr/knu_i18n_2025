@@ -31,13 +31,13 @@ glossary_file_path = os.path.join(GLOSSARY_DIR, GLOSSARY_FILE)
 print(f"Downloading pot file from {POT_URL}...")
 try:
     response = requests.get(POT_URL, timeout=30)
-    response.raise_for_status() # HTTP 오류가 있으면 예외 발생
+    response.raise_for_status()  # HTTP 오류가 있으면 예외 발생
     with open(pot_file_path, 'wb') as f:
         f.write(response.content)
     print(f"Successfully downloaded and saved to {pot_file_path}")
 except requests.exceptions.RequestException as e:
     print(f"Error downloading file: {e}")
-    exit() # 파일 다운로드 실패 시 스크립트 종료
+    exit()  # 파일 다운로드 실패 시 스크립트 종료
 
 print(f"Downloading glossary file from {GLOSSARY_URL}...")
 try:
@@ -49,23 +49,27 @@ try:
 except requests.exceptions.RequestException as e:
     print(f"Warning: Could not download glossary file: {e}\n")
 # --- 다운로드 끝 ---
-    
+
 GLOSSARY = {}
 if os.path.exists(glossary_file_path):
     print("Loading glossary...")
     glossary_po = polib.pofile(glossary_file_path)
-    GLOSSARY = {entry.msgid.lower(): entry.msgstr for entry in glossary_po if entry.translated()}
+    GLOSSARY = {entry.msgid.lower(
+    ): entry.msgstr for entry in glossary_po if entry.translated()}
     print(f"Glossary loaded with {len(GLOSSARY)} terms.\n")
 
 
-def translate_entry(payload): #하나의 문장(entry)을 번역
-    
+def translate_entry(payload):  # 하나의 문장(entry)을 번역
+
     entry, i, total_count = payload
-    
-    relevant_glossary_terms = {en: ko for en, ko in GLOSSARY.items() if en in entry.msgid.lower()}
-    
+
+    relevant_glossary_terms = {
+        en: ko for en,
+        ko in GLOSSARY.items() if en in entry.msgid.lower()}
+
     if relevant_glossary_terms:
-        glossary_rules = " Apply these translation rules: " + ", ".join([f"'{en}' must be translated as '{ko}'" for en, ko in relevant_glossary_terms.items()]) + "."
+        glossary_rules = " Apply these translation rules: " + \
+            ", ".join([f"'{en}' must be translated as '{ko}'" for en, ko in relevant_glossary_terms.items()]) + "."
     else:
         glossary_rules = ""
 
@@ -103,7 +107,7 @@ def translate_entry(payload): #하나의 문장(entry)을 번역
             "content": f"{glossary_rules}\n\n{entry.msgid}"
         }
     ]
-    
+
     try:
         response = ollama.chat(
             model=MODEL_NAME,
@@ -116,7 +120,7 @@ def translate_entry(payload): #하나의 문장(entry)을 번역
                 "stop": ["\n"]
             }
         )
-        
+
         translation = response['message']['content']
 
         # 번역한 문장을 삽입한 entry
@@ -128,25 +132,27 @@ def translate_entry(payload): #하나의 문장(entry)을 번역
         return new_entry
 
     except Exception as e:
-        print(f"!!! [{i+1}/{total_count}] Error translating entry '{entry.msgid[:30]}...': {e} !!!")
+        print(
+            f"!!! [{i+1}/{total_count}] Error translating entry '{entry.msgid[:30]}...': {e} !!!")
         return None
 
 
-def translate_pot_file(pot_path, po_path): # pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
+def translate_pot_file(pot_path, po_path):  # pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
     pot = polib.pofile(pot_path)
     po = polib.POFile()
     po.metadata = pot.metadata
     po.header = "This is a translation translated by AI.\n" + po.header
 
     entries_to_translate = [entry for entry in pot if entry.msgid]
-    #entries_to_translate = entries_to_translate[START_TRANSLATE:END_TRANSLATE]
-    total_entries = len(entries_to_translate) 
+    # entries_to_translate = entries_to_translate[START_TRANSLATE:END_TRANSLATE]
+    total_entries = len(entries_to_translate)
 
     print(f"--- {os.path.basename(pot_path)} 번역 ---")
     print(f"총 {total_entries} 라인의 번역입니다. {MAX_WORKERS} 개의 병렬 코어를 사용합니다.")
 
     # (entry, 순서, 전체 개수) 의 payload 만들기
-    payloads = [(entry, i, total_entries) for i, entry in enumerate(entries_to_translate)]
+    payloads = [(entry, i, total_entries)
+                for i, entry in enumerate(entries_to_translate)]
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         # payload 전달, tqdm으로 진행률 표시
@@ -174,10 +180,10 @@ if __name__ == "__main__":
     pot_file = os.path.join(POT_DIR, TARGET_POT_FILE)
 
     translate_start_time = time.time()
-            
+
     base_name = os.path.basename(pot_file).replace('.pot', '.po')
     po_file = os.path.join(PO_DIR, base_name)
-            
+
     translate_pot_file(pot_file, po_file)
 
     translate_end_time = time.time()

@@ -12,6 +12,21 @@
 pip install -r requirements.txt
 ```
 
+## Code Quality Check with Tox
+
+We use [tox](https://tox.wiki) to ensure code consistency and quality.
+
+1. PEP8 Style Check 
+```bash
+tox -e pep8
+```
+
+2. Ansible Playbook Check
+```bash
+tox -e ansible
+```
+
+
 ## Team
 
 ## Getting in Touch
