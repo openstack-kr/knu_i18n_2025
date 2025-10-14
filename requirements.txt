@@ -1,3 +1,5 @@
-tox>=3.1.0
-flake8>=6.0.0
-ansible>=2.14
+tox
+flake8
+doc8
+sphinx
+autopep8
