@@ -8,4 +8,10 @@
 
 ## Getting Started
 
+```bash
+pip install -r requirements.txt
+```
+
 ## Team
+
+## Getting in Touch
