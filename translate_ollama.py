@@ -1,10 +1,10 @@
-import polib
 import ollama
 import os
 import time
 import concurrent.futures
 import requests
 from tqdm import tqdm
+from babel.messages import pofile, Catalog
 
 MODEL_NAME = "llama3.2:3b"
 POT_DIR = "./pot"
@@ -28,35 +28,46 @@ os.makedirs(GLOSSARY_DIR, exist_ok=True)
 pot_file_path = os.path.join(POT_DIR, TARGET_POT_FILE)
 glossary_file_path = os.path.join(GLOSSARY_DIR, GLOSSARY_FILE)
 
-print(f"Downloading pot file from {POT_URL}...")
-try:
-    response = requests.get(POT_URL, timeout=30)
-    response.raise_for_status()  # HTTP 오류가 있으면 예외 발생
-    with open(pot_file_path, 'wb') as f:
-        f.write(response.content)
-    print(f"Successfully downloaded and saved to {pot_file_path}")
-except requests.exceptions.RequestException as e:
-    print(f"Error downloading file: {e}")
-    exit()  # 파일 다운로드 실패 시 스크립트 종료
+if not os.path.exists(pot_file_path):
+    print(f"Downloading pot file from {POT_URL}...")
+    try:
+        response = requests.get(POT_URL, timeout=30)
+        response.raise_for_status()  # HTTP 오류가 있으면 예외 발생
+        with open(pot_file_path, 'wb') as f:
+            f.write(response.content)
+        print(f"Successfully downloaded and saved to {pot_file_path}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading file: {e}")
+        exit()  # 파일 다운로드 실패 시 스크립트 종료
+else:
+    print(f"'{TARGET_POT_FILE}' already exists. skipping download.")
 
-print(f"Downloading glossary file from {GLOSSARY_URL}...")
-try:
-    response = requests.get(GLOSSARY_URL, timeout=30)
-    response.raise_for_status()
-    with open(glossary_file_path, 'wb') as f:
-        f.write(response.content)
-    print(f"Successfully downloaded and saved to {glossary_file_path}\n")
-except requests.exceptions.RequestException as e:
-    print(f"Warning: Could not download glossary file: {e}\n")
+if not os.path.exists(pot_file_path):
+    print(f"Downloading glossary file from {GLOSSARY_URL}...")
+    try:
+        response = requests.get(GLOSSARY_URL, timeout=30)
+        response.raise_for_status()
+        with open(glossary_file_path, 'wb') as f:
+            f.write(response.content)
+        print(f"Successfully downloaded and saved to {glossary_file_path}\n")
+    except requests.exceptions.RequestException as e:
+        print(f"Warning: Could not download glossary file: {e}\n")
+else:
+    print(f"'{GLOSSARY_FILE}' already exists. skipping download.\n")
+
 # --- 다운로드 끝 ---
 
 GLOSSARY = {}
 if os.path.exists(glossary_file_path):
     print("Loading glossary...")
-    glossary_po = polib.pofile(glossary_file_path)
-    GLOSSARY = {entry.msgid.lower(
-    ): entry.msgstr for entry in glossary_po if entry.translated()}
-    print(f"Glossary loaded with {len(GLOSSARY)} terms.\n")
+    try:
+        with open(glossary_file_path, 'rb') as f:
+            glossary_po = pofile.read_po(f)
+        GLOSSARY = {entry.id.lower(
+        ): entry.string for entry in glossary_po if entry.id and entry.string}
+        print(f"Glossary loaded with {len(GLOSSARY)} terms.\n")
+    except Exception as e:
+        print(f"Error reading Glossary file: {e}\n")
 
 
 def translate_entry(payload):  # 하나의 문장(entry)을 번역
@@ -65,11 +76,12 @@ def translate_entry(payload):  # 하나의 문장(entry)을 번역
 
     relevant_glossary_terms = {
         en: ko for en,
-        ko in GLOSSARY.items() if en in entry.msgid.lower()}
+        ko in GLOSSARY.items() if en in entry.id.lower()}
 
     if relevant_glossary_terms:
         glossary_rules = " Apply these translation rules: " + \
-            ", ".join([f"'{en}' must be translated as '{ko}'" for en, ko in relevant_glossary_terms.items()]) + "."
+            ", ".join([f"'{en}' must be translated as '{ko}'" for en,
+                      ko in relevant_glossary_terms.items()]) + "."
     else:
         glossary_rules = ""
 
@@ -78,7 +90,12 @@ def translate_entry(payload):  # 하나의 문장(entry)을 번역
         # 1. System 역할
         {
             "role": "system",
-            "content": "You are a translation engine. Your one and only job is to translate the user's English text into formal Korean. Do not add any other words. Preserve all reStructuredText (RST) syntax."
+            "content": (
+                "You are a translation engine. "
+                "Your only job is to translate the user's English into Korean."
+                " Do not add any other words."
+                " Preserve all reStructuredText (RST) syntax."
+                )
         },
 
         # 2. 첫 번째 예시. => 추후 예시 po 파일로 변경?
@@ -104,7 +121,7 @@ def translate_entry(payload):  # 하나의 문장(entry)을 번역
         # 4. 실제 번역 내용 + glossary 규칙
         {
             "role": "user",
-            "content": f"{glossary_rules}\n\n{entry.msgid}"
+            "content": f"{glossary_rules}\n\n{entry.id}"
         }
     ]
 
@@ -124,27 +141,32 @@ def translate_entry(payload):  # 하나의 문장(entry)을 번역
         translation = response['message']['content']
 
         # 번역한 문장을 삽입한 entry
-        new_entry = polib.POEntry(
-            msgid=entry.msgid,
-            msgstr=translation,
-            occurrences=entry.occurrences
-        )
-        return new_entry
+        return (entry.id, translation, entry.locations)
 
     except Exception as e:
         print(
-            f"!!! [{i+1}/{total_count}] Error translating entry '{entry.msgid[:30]}...': {e} !!!")
+            f"!!! [{i+1}/{total_count}] Error translating entry '{entry.id[:30]}...': {e} !!!")
         return None
 
 
 def translate_pot_file(pot_path, po_path):  # pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
-    pot = polib.pofile(pot_path)
-    po = polib.POFile()
-    po.metadata = pot.metadata
-    po.header = "This is a translation translated by AI.\n" + po.header
 
-    entries_to_translate = [entry for entry in pot if entry.msgid]
-    # entries_to_translate = entries_to_translate[START_TRANSLATE:END_TRANSLATE]
+    with open(pot_path, 'rb') as f:
+        pot = pofile.read_po(f)
+
+    po = Catalog(
+        project=pot.project,
+        version=pot.version,
+        copyright_holder=pot.copyright_holder,
+        msgid_bugs_address=pot.msgid_bugs_address,
+        creation_date=pot.creation_date,
+        language_team=pot.language_team,
+        charset='UTF-8'
+    )
+    po.header_comment = "Initial translation by AI.\n" + pot.header_comment
+
+    entries_to_translate = [entry for entry in pot if entry.id]
+    entries_to_translate = entries_to_translate[START_TRANSLATE:END_TRANSLATE]
     total_entries = len(entries_to_translate)
 
     print(f"--- {os.path.basename(pot_path)} 번역 ---")
@@ -154,7 +176,9 @@ def translate_pot_file(pot_path, po_path):  # pot 파일을 읽어 번역해 최
     payloads = [(entry, i, total_entries)
                 for i, entry in enumerate(entries_to_translate)]
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=MAX_WORKERS
+    ) as executor:
         # payload 전달, tqdm으로 진행률 표시
         results = list(
             tqdm(
@@ -165,11 +189,17 @@ def translate_pot_file(pot_path, po_path):  # pot 파일을 읽어 번역해 최
             )
         )
 
-    for new_entry in results:
-        po.append(new_entry)
+    for result in results:
+        if result:
+            msgid, translation, locations = result
+            po.add(id=msgid, string=translation, locations=locations)
 
-    po.save(po_path)
-    print(f"{po_path}가 저장되었습니다.")
+    try:
+        with open(po_path, 'wb') as f:
+            pofile.write_po(f, po)
+        print(f"{po_path}가 저장되었습니다.")
+    except Exception as e:
+        print(f"PO 파일 저장 실패: {e}")
 
 
 if __name__ == "__main__":
