@@ -64,21 +64,25 @@ if not os.path.exists(pot_file_path):
         print(f"Warning: Could not download glossary file: {e}\n")
 else:
     print(f"'{GLOSSARY_PO_FILE}' already exists. skipping download.\n")
-
 # --- 다운로드 끝 ---
 
+
+# glossary.po -> glossary.json 변환
 GLOSSARY = {}
 if os.path.exists(glossary_po_path):
     print("Converting glossary.po -> glossary.json...")
     try:
         with open(glossary_po_path, "rb") as f:
             glossary_po = pofile.read_po(f)
+        
+        # glossary.po의 내용을 dictionary 형태로 저장
         glossary_dict = {
             entry.id.strip().lower(): entry.string.strip()
             for entry in glossary_po
             if entry.id and entry.string
         }
 
+        # glossary.po -> glossary.json
         with open(glossary_json_path, "w", encoding="utf-8") as f:
             json.dump(glossary_dict, f, ensure_ascii=False, indent=2)
         print(f"Converted JSON to {glossary_json_path}")
@@ -86,11 +90,13 @@ if os.path.exists(glossary_po_path):
         with open(glossary_json_path, "r", encoding="utf-8") as f:
             GLOSSARY = json.load(f)
         print(f"Glossary loaded from JSON ({len(GLOSSARY)} terms)\n")
+        
     except Exception as e:
         print(f"Error reading Glossary file: {e}\n")
 
 
-def translate_entry(payload):  # 하나의 문장(entry)을 번역
+# 하나의 문장(entry)을 번역
+def translate_entry(payload):
 
     entry, i, total_count = payload
 
@@ -161,10 +167,8 @@ def translate_entry(payload):  # 하나의 문장(entry)을 번역
         )
         return None
 
-
-def translate_pot_file(
-    pot_path, po_path
-):  # pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
+# pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
+def translate_pot_file(pot_path, po_path):
 
     with open(pot_path, "rb") as f:
         pot = pofile.read_po(f)
