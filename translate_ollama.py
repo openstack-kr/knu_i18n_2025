@@ -74,7 +74,6 @@ if os.path.exists(glossary_po_path):
     try:
         with open(glossary_po_path, "rb") as f:
             glossary_po = pofile.read_po(f)
-        
         # glossary.po의 내용을 dictionary 형태로 저장
         GLOSSARY = {
             entry.id.strip().lower(): entry.string.strip()
@@ -82,12 +81,10 @@ if os.path.exists(glossary_po_path):
             if entry.id and entry.string
         }
         print(f"Glossary loaded with {len(GLOSSARY)} terms.")
-        
         # glossary.json 백업
         with open(glossary_json_path, "w", encoding="utf-8") as f:
             json.dump(GLOSSARY, f, ensure_ascii=False, indent=2)
         print(f"Backup JSON written to {glossary_json_path}\n")
-        
     except Exception as e:
         print(f"Error reading Glossary file: {e}\n")
 
@@ -164,6 +161,7 @@ def translate_entry(payload):
         )
         return None
 
+
 # pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
 def translate_pot_file(pot_path, po_path):
 
@@ -182,7 +180,9 @@ def translate_pot_file(pot_path, po_path):
     po.header_comment = "Initial translation by AI.\n" + pot.header_comment
 
     entries_to_translate = [entry for entry in pot if entry.id]
+    '''
     entries_to_translate = entries_to_translate[START_TRANSLATE:END_TRANSLATE]
+    '''
     total_entries = len(entries_to_translate)
 
     print(f"--- {os.path.basename(pot_path)} 번역 ---")
@@ -228,15 +228,13 @@ if __name__ == "__main__":
     print("=================================================\n")
 
     pot_file = os.path.join(POT_DIR, TARGET_POT_FILE)
-
-    translate_start_time = time.time()
-
     base_name = os.path.basename(pot_file).replace(".pot", ".po")
     po_file = os.path.join(PO_DIR, base_name)
 
+    translate_start_time = time.time()
     translate_pot_file(pot_file, po_file)
-
     translate_end_time = time.time()
+
     print(
         f"{translate_end_time - translate_start_time:.2f} 초 번역했습니다.\n"
     )
