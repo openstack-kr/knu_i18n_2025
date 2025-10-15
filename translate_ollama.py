@@ -76,20 +76,17 @@ if os.path.exists(glossary_po_path):
             glossary_po = pofile.read_po(f)
         
         # glossary.po의 내용을 dictionary 형태로 저장
-        glossary_dict = {
+        GLOSSARY = {
             entry.id.strip().lower(): entry.string.strip()
             for entry in glossary_po
             if entry.id and entry.string
         }
-
-        # glossary.po -> glossary.json
+        print(f"Glossary loaded with {len(GLOSSARY)} terms.")
+        
+        # glossary.json 백업
         with open(glossary_json_path, "w", encoding="utf-8") as f:
-            json.dump(glossary_dict, f, ensure_ascii=False, indent=2)
-        print(f"Converted JSON to {glossary_json_path}")
-
-        with open(glossary_json_path, "r", encoding="utf-8") as f:
-            GLOSSARY = json.load(f)
-        print(f"Glossary loaded from JSON ({len(GLOSSARY)} terms)\n")
+            json.dump(GLOSSARY, f, ensure_ascii=False, indent=2)
+        print(f"Backup JSON written to {glossary_json_path}\n")
         
     except Exception as e:
         print(f"Error reading Glossary file: {e}\n")
