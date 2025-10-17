@@ -7,7 +7,7 @@ import json
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
 
-MODEL_NAME = "llama3.2:3b"
+MODEL_NAME = "qwen2.5:1.5b"
 POT_DIR = "./pot"
 PO_DIR = "./po"
 GLOSSARY_DIR = "./glossary"
@@ -229,12 +229,21 @@ if __name__ == "__main__":
 
     pot_file = os.path.join(POT_DIR, TARGET_POT_FILE)
     base_name = os.path.basename(pot_file).replace(".pot", ".po")
-    po_file = os.path.join(PO_DIR, base_name)
 
-    translate_start_time = time.time()
+    model_folder = os.path.join(PO_DIR, MODEL_NAME)
+    os.makedirs(model_folder, exist_ok=True)
+
+    po_file = os.path.join(model_folder, base_name)
+    
+    start = time.time()
     translate_pot_file(pot_file, po_file)
-    translate_end_time = time.time()
+    end = time.time()
+    duration = round(end - start, 2)
 
-    print(
-        f"{translate_end_time - translate_start_time:.2f} 초 번역했습니다.\n"
+    # Git 정보 + 로그 자동 기록
+    save_experiment_log(
+        model_name=MODEL_NAME,
+        pot_file=pot_file,
+        po_file=po_file,
+        duration_sec=duration,
     )

@@ -3,3 +3,5 @@ flake8
 doc8
 sphinx
 autopep8
+langdetect
+bable
