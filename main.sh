@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-python translate_ollama.py \
+python translate.py \
   --model llama3.2:3b \
   --workers 4 \
   --start 0 --end 200 \
