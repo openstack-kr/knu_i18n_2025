@@ -7,6 +7,13 @@ import requests
 from babel.messages import pofile
 
 def parse_args():
+    """
+    명령줄 인자를 파싱하는 함수.
+    Parses command-line arguments for the translation pipeline.
+
+    Returns:
+        argparse.Namespace: 파싱된 인자 객체 / Parsed arguments object
+    """
     parser = argparse.ArgumentParser(description="AI-based translation pipeline")
     parser.add_argument("--model", required=True, help="Model name to use (e.g., qwen2.5:1.5b)")
     parser.add_argument("--pot_dir", default="./pot", help="Path to the POT file directory")
@@ -34,7 +41,23 @@ def init_environment(
     glossary_po_file,
     glossary_json_file,
 ):
-    """Prepare directories and download necessary files. Returns (pot_path, glossary_po_path, glossary_json_path)."""
+    """
+    번역 환경을 초기화하고 필요한 파일(POT, Glossary)을 다운로드한다.
+    Initializes directories and downloads required files (POT and Glossary).
+
+    Args:
+        pot_dir (str): POT 파일 저장 디렉터리
+        po_dir (str): PO 파일 저장 디렉터리
+        glossary_dir (str): 용어집 디렉터리
+        pot_url (str): POT 파일 다운로드 URL
+        target_pot_file (str): POT 파일명
+        glossary_url (str): Glossary 파일 다운로드 URL
+        glossary_po_file (str): Glossary PO 파일명
+        glossary_json_file (str): Glossary JSON 파일명
+
+    Returns:
+        tuple: (pot_file_path, glossary_po_path, glossary_json_path)
+    """
     os.makedirs(pot_dir, exist_ok=True)
     os.makedirs(po_dir, exist_ok=True)
     os.makedirs(glossary_dir, exist_ok=True)
@@ -75,7 +98,17 @@ def init_environment(
 
 
 def load_glossary(glossary_po_path, glossary_json_path):
-    """Load glossary from a .po file and write a JSON backup. Returns dict."""
+    """
+    glossary.po 파일을 로드하고 JSON 백업을 생성한다.
+    Loads glossary from a .po file and writes a JSON backup.
+
+    Args:
+        glossary_po_path (str): Glossary PO 파일 경로
+        glossary_json_path (str): Glossary JSON 백업 파일 경로
+
+    Returns:
+        dict: Glossary key-value 매핑 (id → string)
+    """
     G = {}
     if os.path.exists(glossary_po_path):
         print("Converting glossary.po -> glossary.json...")
@@ -104,16 +137,19 @@ def save_experiment_log(
     results_json_path: str = "./experiments.json",
 ):
     """
-    실험 결과를 JSON 파일로 누적 저장하는 함수
-    Git 버전 정보와 timestamp를 자동으로 포함한다.
+    실험 결과를 JSON 파일로 누적 저장하는 함수.
+    Saves experiment results to a JSON log with Git metadata and timestamp.
 
     Args:
         model_name (str): 사용한 LLM 모델 이름
-        pot_file (str): 번역 대상 pot 파일 경로
-        po_file (str): 생성된 po 파일 경로
+        pot_file (str): 번역 대상 POT 파일 경로
+        po_file (str): 생성된 PO 파일 경로
         duration_sec (float): 번역 소요 시간(초)
-        accuracy (float | None): 평가 정확도 (선택)
-        results_json_path (str): 결과 저장 경로 (기본 './experiments.json')
+        accuracy (float | None): 번역 품질 정확도 (선택)
+        results_json_path (str): 결과 저장 파일 경로 (기본 './experiments.json')
+
+    Returns:
+        None
     """
 
     # Git 정보 수집
