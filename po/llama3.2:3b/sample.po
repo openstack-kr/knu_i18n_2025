@@ -1,0 +1,262 @@
+Initial translation by AI.
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-10-17 17:14+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../<reno.sphinxext unmaintained/zed>:164
+msgid ""
+"Fixed cross-policy object copies. Previously, copied data would always be"
+" written using the source container's policy. Now, the destination "
+"container's policy will be used, avoiding availability issues and "
+"unnecessary container-reconciler work."
+msgstr "컨테이너에 대한 정책을 적용합니다."
+
+#: ../../<reno.sphinxext stable/pike>:58
+msgid "Fixed deadlock when logging from a tpool thread."
+msgstr "풀에 대한Deadlock을 해결했습니다."
+
+#: ../../<reno.sphinxext stable/ocata>:14
+msgid ""
+"Fixed deadlock when logging from a tpool thread. The object server runs "
+"certain IO-intensive methods outside the main pthread for performance. "
+"Previously, if one of those methods tried to log, this can cause a crash "
+"that eventually leads to an object server with hundreds or thousands of "
+"greenthreads, all deadlocked. The fix is to use a mutex that works across"
+" different greenlets and different pthreads."
+msgstr ""
+"오브젝트 풀에서 로그를 사용할 때 deadlock이 발생했습니다. 오브젝트 서버는 성능을 위해 메인 스레드 outside IO-"
+"intensive 메소드를 실행합니다. 이전에, 그 중 하나가 로그를 시도하면, 이것은 eventually object服务器에 "
+"hundreds 또는 thousands of greenthread가 deadlocked로 이어집니다. fix는 mutex가 "
+"different greenlets와 different pthreads에서 작동하는 것을 위해 사용됩니다."
+
+#: ../../<reno.sphinxext stable/pike>:305
+msgid ""
+"Fixed encoding issue in ssync where a mix of ascii and non-ascii metadata"
+" values would cause an error."
+msgstr "SSYNC에서 ASCII와 비ASCII 메타데이터 값의 混합을 원상회복했습니다."
+
+#: ../../<reno.sphinxext stable/newton>:48 stable/ocata>:50 stable/pike>:297
+msgid ""
+"Fixed error where a container drive error resulted in double space usage "
+"on rest drives. When drive with container or account database is "
+"unmounted, the bug would create handoff replicas on all remaining drives,"
+" increasing the drive space used and filling the cluster."
+msgstr "새로운 기본값이 추가되었습니다."
+
+#: ../../<reno.sphinxext stable/stein>:168
+msgid ""
+"Fixed issue where bulk requests using xml and expect 100-continue would "
+"return a malformed HTTP response."
+msgstr "bulk 요청을 xml로 사용하여 100-continue를 예상했을 때, 잘못된 HTTP 응답을 반환하는 문제가 해결되었습니다."
+
+#: ../../<reno.sphinxext stable/train>:237
+msgid "Fixed listings for sharded containers."
+msgstr "공유 컨테이너의 고정 목록."
+
+#: ../../<reno.sphinxext unmaintained/2023.1>:43
+msgid ""
+"Fixed logging of IP and port in the proxy-server; in particular, internal"
+" clients now correctly log about the replication IP/port."
+msgstr "클라이언트의 로그가 고정되었습니다. 특히, 내부 클라이언트는 복제 IP/포트에 대한 정확한 로그를 제공합니다."
+
+#: ../../<reno.sphinxext unmaintained/yoga>:68
+msgid ""
+"Fixed multiple issues in s3api involving Multipart Uploads with non-ASCII"
+" names."
+msgstr "s3api에 대한 여러 문제를 fixed했습니다. multipart upload와 non-ASCII 이름을 포함한 경우에 대해."
+
+#: ../../<reno.sphinxext stable/train>:239
+msgid "Fixed non-ASCII account metadata handling."
+msgstr "기본 문자가 아닌 계정 메타데이터 처리를 수정했습니다."
+
+#: ../../<reno.sphinxext stable/newton>:87 stable/ocata>:227
+msgid ""
+"Fixed non-deterministic suffix updates in hashes.pkl where a partition "
+"may be updated much less often than expected."
+msgstr ""
+"hashes.pkl에서 파티션을 업데이트하는 비결정적尾문을 고정했습니다. 파티션을 अप데이트하는 경우가 더 적은 것으로 "
+"예상되었습니다."
+
+#: ../../<reno.sphinxext stable/pike>:22 stable/queens>:110 stable/stein>:191
+msgid "Fixed rare socket leak on range requests to erasure-coded objects."
+msgstr "오브젝트에 대한 범위 요청에서 소모가 적은 오브젝트의 파괴된 코드를 고정했습니다."
+
+#: ../../<reno.sphinxext stable/newton>:83
+msgid ""
+"Fixed regression in consolidate_hashes that occured when a new file was "
+"stored to new suffix to a non-empty partition. This bug was introduced in"
+" 2.7.0 and could cause an increase in rsync replication stats during and "
+"after upgrade, due to inconsistent hashing of partition suffixes."
+msgstr "새로운 기본값이 추가되었습니다."
+
+#: ../../<reno.sphinxext stable/ocata>:231
+msgid ""
+"Fixed regression in consolidate_hashes that occurred when a new file was "
+"stored to new suffix to a non-empty partition. This bug was introduced in"
+" 2.7.0 and could cause an increase in rsync replication stats during and "
+"after upgrade, due to inconsistent hashing of partition suffixes."
+msgstr "새로운 기본값이 추가되었습니다."
+
+#: ../../<reno.sphinxext stable/queens>:189
+msgid ""
+"Let clients request heartbeats during SLO PUTs by including the query "
+"parameter ``heartbeat=on``."
+msgstr ""
+"클라이언트가 SLO PUT에 대한 심박수를 요청하도록 하려면, 매개 변수 \"heartbeat=on\"을 포함하여 запрос을 "
+"추가합니다."
+
+#: ../../<reno.sphinxext stable/ocata>:97
+msgid ""
+"Listing containers in accounts with json or xml now includes a "
+"`last_modified` time. This does not change any on-disk data, but simply "
+"exposes the value to offer consistency with the object listings on "
+"containers."
+msgstr "* container : 컨테이너"
+
+#: ../../<reno.sphinxext stable/rocky>:245
+msgid ""
+"Lock timeouts in the container updater are now logged at INFO level, not "
+"ERROR."
+msgstr " Lock 타임아웃이 컨테이너 업데이터에서 NOW 로그가 되었습니다."
+
+#: ../../<reno.sphinxext stable/pike>:325
+msgid "Log correct status code for conditional requests."
+msgstr "조건적 요청에 대한正確한 상태 코드를 로그합니다."
+
+#: ../../<reno.sphinxext stable/queens>:219
+msgid ""
+"Log deprecation warning for ``allow_versions`` in the container server "
+"config. Configure the ``versioned_writes`` middleware in the proxy server"
+" instead. This option will be ignored in a future release."
+msgstr ""
+"`컨테이너`에서 `allow_versions` 옵션에 대한 경고 메시지가 발생했습니다. `proxy` `서버`의 "
+"`versioned_writes` 미들웨어를 구성하세요. 이 옵션은 향후 릴리스에서 무시됩니다."
+
+#: ../../<reno.sphinxext stable/rocky>:181
+msgid ""
+"Log deprecation warnings for ``run_pause``. This setting was deprecated "
+"in Swift 2.4.0 and is replaced by ``interval``. It may be removed in a "
+"future release."
+msgstr ""
+"* `run_pause`에 대한 로그 비상주의 경고. 이 설정은 Swift 2.4.0에서 비상주되었습니다.  `interval`로 "
+"대체됩니다. 향후 릴리스에서 제거될 수 있습니다."
+
+#: ../../<reno.sphinxext stable/train>:308
+msgid ""
+"Log formats are now more configurable and include support for "
+"anonymization. See the ``log_msg_template`` option in ``proxy-"
+"server.conf`` and `the Swift documentation "
+"<https://docs.openstack.org/swift/latest/logs.html#proxy-logs>`__ for "
+"more information."
+msgstr "서버는 기본값이 추가되었습니다."
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:159
+msgid "Log progress per partition when relinking/cleaning up."
+msgstr "partition당 로그를 재链接/정리할 때마다 진행 상황을 표시합니다."
+
+#: ../../<reno.sphinxext stable/pike>:309
+msgid "Log the correct request type of a subrequest downstream of copy."
+msgstr "복사 후 하위 요청의正确 요청 유형을 로그하세요."
+
+#: ../../<reno.sphinxext unmaintained/zed>:58 unmaintained/zed>:189
+msgid "Logging improvements"
+msgstr "로깅 개선"
+
+#: ../../<reno.sphinxext stable/rocky>:193
+msgid ""
+"Lower bounds of dependencies have been updated to reflect what is "
+"actually tested."
+msgstr " phụ thuộc하는 하한 giới hạn의.lower bounds가 실제로 테스트되는 것을 반영하기 위해 업데이트되었습니다."
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:70
+msgid ""
+"Make allowable clock skew configurable, with a default value of 15 "
+"minutes to match AWS. Note that this was previously hardcoded at 5 "
+"minutes; operators may want to preserve the prior behavior by setting "
+"``allowable_clock_skew = 300`` in the ``[filter:s3api]`` section of their"
+" proxy-server.conf."
+msgstr ""
+"Allowable clock skew를 구성할 수 있어야 합니다. 기본적으로는 15분으로 AWS와 일치합니다. 이전에 5분으로 "
+"고정되어있었습니다; 운영자는 ``allowable_clock_skew = 300``을 ``[filter:s3api]`` 섹션의"
+".proxy-server.conf에서 설정하여 이전 행동을 유지하고 싶을 수 있습니다."
+
+#: ../../<reno.sphinxext stable/pike>:215
+msgid ""
+"Make mount_check option usable in containerized environments by adding a "
+"check for an \".ismount\" file at the root directory of a device."
+msgstr ""
+"mount_check 옵션을 환경에서 사용하기 위해 컨테이너화된 환경에서 장치의 루트 디렉터리에 \".ismount\" 파일이 "
+"있는지 확인하는 체크를 추가합니다."
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:55
+msgid ""
+"Memcache client error-limiting is now configurable. See the "
+"``error_suppression_*`` options in etc/memcache.conf-sample"
+msgstr ""
+"메모리 캐시 클라이언트 오류 제한은 jetzt 설정이 가능합니다. :ref:`error_suppression_*` 옵션을 "
+"etc/memcache.conf-sample 에서 확인하십시오."
+
+#: ../../<reno.sphinxext stable/2023.2>:42
+msgid ""
+"Metrics are now emitted for a variety of S3 error responses, in the form "
+"``s3api.<status_int>.<error_class>[.<reason>]``"
+msgstr ""
+"이러한 상태는 현재 S3 오류 응답의 다양한 형태에 대해 메트릭이 발행됩니다. 형식은 "
+"`s3api.<상태_인터프리티>.<오류_클래스>[.<사유>]`입니다."
+
+#: ../../<reno.sphinxext unmaintained/zed>:49
+msgid ""
+"Metrics are now emitted for whether databases used for cleaving were "
+"created or already existed, allowing a better understanding of the reason"
+" for handoffs in the cluster."
+msgstr ""
+"이 메트릭은 클러스터에서 분할하는 데이터베이스가 이미 존재하거나 생성되었는지 여부에 대한 정보를 제공합니다. 이것은 클러스터의 "
+"핸드오버의 이유를 더 잘 이해할 수 있습니다."
+
+#: ../../<reno.sphinxext stable/2023.2>:40
+msgid "Metrics improvements:"
+msgstr "메트릭 cải thiện"
+
+#: ../../<reno.sphinxext stable/2024.2>:36
+msgid "Middleware features:"
+msgstr "미들웨어 기능:"
+
+#: ../../<reno.sphinxext stable/ocata>:292
+msgid "Mirror X-Trans-Id to X-Openstack-Request-Id."
+msgstr "*stack*"
+
+#: ../../<reno.sphinxext unmaintained/victoria>:109
+msgid ""
+"Upgrade liberasurecode on all proxy servers. Newly-written data will now "
+"use new fragments. Note that not-yet-upgraded proxies will not be able to"
+" read these newly-written fragments but will instead respond ``500 "
+"Internal Server Error``."
+msgstr ""
+"업그레이드 liberasurecode를 모든 프록시 서버에 적용하세요. 새로운 데이터는 이제 새로운片段을 사용합니다.注意: 아직 "
+"업그레이드되지 않은 프록시服务器은 이러한 새로운 데이터를 읽을 수 없습니다. 대신 ``500 Internal Server "
+"Error``를 trảします."
+
+#: ../../<reno.sphinxext stable/2025.1>:119
+msgid ""
+"Uploads to containers with object versioning enabled now require a "
+"``Content-Length`` or ``Transfer-Encoding: chunked`` header, similar to "
+"other containers."
+msgstr ""
+"업로드를 위한 컨테이너에 오브젝트 버전을 활성화된 경우에는 ``Content-Length`` 또는 ``Transfer-"
+"Encoding: chunked`` 헤더가 필요합니다. 다른 컨테이너와 유사하게."
+

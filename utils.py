@@ -2,7 +2,98 @@ import os
 import json
 import subprocess
 from datetime import datetime
+import argparse
+import requests
+from babel.messages import pofile
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="AI-based translation pipeline")
+    parser.add_argument("--model", required=True, help="Model name to use (e.g., qwen2.5:1.5b)")
+    parser.add_argument("--pot_dir", default="./pot", help="Path to the POT file directory")
+    parser.add_argument("--po_dir", default="./po", help="Path to save the translated PO files")
+    parser.add_argument("--glossary_dir", default="./glossary", help="Path to the glossary directory")
+    parser.add_argument("--start", type=int, default=0, help="Start index for translation")
+    parser.add_argument("--end", type=int, default=None, help="End index for translation")
+    parser.add_argument("--workers", type=int, default=8, help="Number of parallel worker threads")
+    parser.add_argument("--pot_url", required=True, help="URL for downloading the POT file")
+    parser.add_argument("--target_pot_file", required=True, help="Target POT filename")
+    parser.add_argument("--glossary_url", required=True, help="URL for downloading the glossary file")
+    parser.add_argument("--glossary_po_file", default="glossary_ko.po", help="Glossary PO filename")
+    parser.add_argument("--glossary_json_file", default="glossary_ko.json", help="Glossary JSON filename")
+    return parser.parse_args()
+
+
+def init_environment(
+    pot_dir,
+    po_dir,
+    glossary_dir,
+    *,
+    pot_url,
+    target_pot_file,
+    glossary_url,
+    glossary_po_file,
+    glossary_json_file,
+):
+    """Prepare directories and download necessary files. Returns (pot_path, glossary_po_path, glossary_json_path)."""
+    os.makedirs(pot_dir, exist_ok=True)
+    os.makedirs(po_dir, exist_ok=True)
+    os.makedirs(glossary_dir, exist_ok=True)
+
+    pot_file_path = os.path.join(pot_dir, target_pot_file)
+    glossary_po_path = os.path.join(glossary_dir, glossary_po_file)
+    glossary_json_path = os.path.join(glossary_dir, glossary_json_file)
+
+    # Download POT if needed
+    if not os.path.exists(pot_file_path):
+        print(f"Downloading pot file from {pot_url}...")
+        try:
+            response = requests.get(pot_url, timeout=30)
+            response.raise_for_status()
+            with open(pot_file_path, "wb") as f:
+                f.write(response.content)
+            print(f"Successfully downloaded and saved to {pot_file_path}")
+        except requests.exceptions.RequestException as e:
+            raise RuntimeError(f"Error downloading POT file: {e}")
+    else:
+        print(f"'{target_pot_file}' already exists. skipping download.")
+
+    # Download Glossary PO if needed
+    if not os.path.exists(glossary_po_path):
+        print(f"Downloading glossary file from {glossary_url}...")
+        try:
+            response = requests.get(glossary_url, timeout=30)
+            response.raise_for_status()
+            with open(glossary_po_path, "wb") as f:
+                f.write(response.content)
+            print(f"Successfully downloaded and saved to {glossary_po_path}\n")
+        except requests.exceptions.RequestException as e:
+            print(f"Warning: Could not download glossary file: {e}\n")
+    else:
+        print(f"'{glossary_po_file}' already exists. skipping download.\n")
+
+    return pot_file_path, glossary_po_path, glossary_json_path
+
+
+def load_glossary(glossary_po_path, glossary_json_path):
+    """Load glossary from a .po file and write a JSON backup. Returns dict."""
+    G = {}
+    if os.path.exists(glossary_po_path):
+        print("Converting glossary.po -> glossary.json...")
+        try:
+            with open(glossary_po_path, "rb") as f:
+                glossary_po = pofile.read_po(f)
+            G = {
+                entry.id.strip().lower(): entry.string.strip()
+                for entry in glossary_po
+                if entry.id and entry.string
+            }
+            print(f"Glossary loaded with {len(G)} terms.")
+            with open(glossary_json_path, "w", encoding="utf-8") as f:
+                json.dump(G, f, ensure_ascii=False, indent=2)
+            print(f"Backup JSON written to {glossary_json_path}\n")
+        except Exception as e:
+            print(f"Error reading Glossary file: {e}\n")
+    return G
 
 def save_experiment_log(
     model_name: str,

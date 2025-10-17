@@ -6,89 +6,7 @@ import requests
 import json
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
-from utils import save_experiment_log
-
-MODEL_NAME = "qwen2.5:1.5b"
-POT_DIR = "./pot"
-PO_DIR = "./po"
-GLOSSARY_DIR = "./glossary"
-
-POT_URL = (
-    "https://tarballs.opendev.org/openstack/translation-source/swift/"
-    "master/releasenotes/source/locale/releasenotes.pot"
-)
-TARGET_POT_FILE = "releasenotes_swift.pot"
-GLOSSARY_URL = (
-    "https://opendev.org/openstack/i18n/raw/commit/"
-    "129b9de7be12740615d532591792b31566d0972f/glossary/locale/ko_KR/"
-    "LC_MESSAGES/glossary.po"
-)
-GLOSSARY_PO_FILE = "glossary_ko.po"
-GLOSSARY_JSON_FILE = "glossary_ko.json"
-
-MAX_WORKERS = 8
-START_TRANSLATE = 300
-END_TRANSLATE = 320
-
-# --- 다운로드 기능 ---
-# pot, po, glossary 폴더가 없으면 생성
-os.makedirs(POT_DIR, exist_ok=True)
-os.makedirs(PO_DIR, exist_ok=True)
-os.makedirs(GLOSSARY_DIR, exist_ok=True)
-pot_file_path = os.path.join(POT_DIR, TARGET_POT_FILE)
-glossary_po_path = os.path.join(GLOSSARY_DIR, GLOSSARY_PO_FILE)
-glossary_json_path = os.path.join(GLOSSARY_DIR, GLOSSARY_JSON_FILE)
-
-if not os.path.exists(pot_file_path):
-    print(f"Downloading pot file from {POT_URL}...")
-    try:
-        response = requests.get(POT_URL, timeout=30)
-        response.raise_for_status()  # HTTP 오류가 있으면 예외 발생
-        with open(pot_file_path, "wb") as f:
-            f.write(response.content)
-        print(f"Successfully downloaded and saved to {pot_file_path}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error downloading file: {e}")
-        exit()  # 파일 다운로드 실패 시 스크립트 종료
-else:
-    print(f"'{TARGET_POT_FILE}' already exists. skipping download.")
-
-if not os.path.exists(pot_file_path):
-    print(f"Downloading glossary file from {GLOSSARY_URL}...")
-    try:
-        response = requests.get(GLOSSARY_URL, timeout=30)
-        response.raise_for_status()
-        with open(glossary_po_path, "wb") as f:
-            f.write(response.content)
-        print(f"Successfully downloaded and saved to {glossary_po_path}\n")
-    except requests.exceptions.RequestException as e:
-        print(f"Warning: Could not download glossary file: {e}\n")
-else:
-    print(f"'{GLOSSARY_PO_FILE}' already exists. skipping download.\n")
-# --- 다운로드 끝 ---
-
-
-# glossary.po -> glossary.json 변환
-GLOSSARY = {}
-if os.path.exists(glossary_po_path):
-    print("Converting glossary.po -> glossary.json...")
-    try:
-        with open(glossary_po_path, "rb") as f:
-            glossary_po = pofile.read_po(f)
-        # glossary.po의 내용을 dictionary 형태로 저장
-        GLOSSARY = {
-            entry.id.strip().lower(): entry.string.strip()
-            for entry in glossary_po
-            if entry.id and entry.string
-        }
-        print(f"Glossary loaded with {len(GLOSSARY)} terms.")
-        # glossary.json 백업
-        with open(glossary_json_path, "w", encoding="utf-8") as f:
-            json.dump(GLOSSARY, f, ensure_ascii=False, indent=2)
-        print(f"Backup JSON written to {glossary_json_path}\n")
-    except Exception as e:
-        print(f"Error reading Glossary file: {e}\n")
-
+from utils import parse_args, init_environment, load_glossary, save_experiment_log
 
 # 하나의 문장(entry)을 번역
 def translate_entry(payload):
@@ -224,27 +142,54 @@ def translate_pot_file(pot_path, po_path):
 
 
 if __name__ == "__main__":
+    args = parse_args()
+    MODEL_NAME = args.model
+    POT_DIR = args.pot_dir
+    PO_DIR = args.po_dir
+    GLOSSARY_DIR = args.glossary_dir
+    START_TRANSLATE = args.start
+    END_TRANSLATE = args.end
+    MAX_WORKERS = args.workers
+    POT_URL = args.pot_url
+    TARGET_POT_FILE = args.target_pot_file
+    GLOSSARY_URL = args.glossary_url
+    GLOSSARY_PO_FILE = args.glossary_po_file
+    GLOSSARY_JSON_FILE = args.glossary_json_file
+    
     print("=================================================")
     print(f"번역 시작, AI 모델: {MODEL_NAME}")
-    print("=================================================\n")
+    print("=================================================\n")    
+    
+    # 폴더 생성 + POT/Glossary 다운로드 + 경로 계산
+    pot_file_path, glossary_po_path, glossary_json_path = init_environment(
+            pot_dir=POT_DIR,
+            po_dir=PO_DIR,
+            glossary_dir=GLOSSARY_DIR,
+            pot_url=POT_URL,
+            target_pot_file=TARGET_POT_FILE,
+            glossary_url=GLOSSARY_URL,
+            glossary_po_file=GLOSSARY_PO_FILE,
+            glossary_json_file=GLOSSARY_JSON_FILE,
+        )
 
-    pot_file = os.path.join(POT_DIR, TARGET_POT_FILE)
-    base_name = os.path.basename(pot_file).replace(".pot", ".po")
+    # 용어집 로드
+    GLOSSARY = load_glossary(glossary_po_path, glossary_json_path)
 
+    # 모델별 폴더 구성 + 파일 경로
+    base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
     model_folder = os.path.join(PO_DIR, MODEL_NAME)
     os.makedirs(model_folder, exist_ok=True)
-
-    po_file = os.path.join(model_folder, base_name)
+    po_file_path = os.path.join(model_folder, base_name)
     
     start = time.time()
-    translate_pot_file(pot_file, po_file)
+    translate_pot_file(pot_file_path, po_file_path)
     end = time.time()
     duration = round(end - start, 2)
 
     # Git 정보 + 로그 자동 기록
     save_experiment_log(
         model_name=MODEL_NAME,
-        pot_file=pot_file,
-        po_file=po_file,
+        pot_file=pot_file_path,
+        po_file=po_file_path,
         duration_sec=duration,
     )

@@ -130,10 +130,12 @@ def main():
 
     # 잘못된 번역 저장
     if FP_ENTRIES:
-        with open(BAD_OUTPUT, "w", encoding="utf-8") as f:
+        model_dir = os.path.dirname(po_path)
+        output_path = os.path.join(model_dir, BAD_OUTPUT)
+        with open(output_path, "w", encoding="utf-8") as f:
             for mid, msg in FP_ENTRIES:
                 f.write(f"[EN] {mid}\n[KO] {msg}\n\n")
-        print(f"\n잘못된 번역 {len(FP_ENTRIES)}개를 '{BAD_OUTPUT}' 파일로 저장했습니다.")
+        print(f"\n잘못된 번역 {len(FP_ENTRIES)}개를 '{output_path}' 파일로 저장했습니다.")
     else:
         print("\n잘못된 번역이 없습니다.")
 

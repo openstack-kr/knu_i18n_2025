@@ -12,6 +12,10 @@
 pip install -r requirements.txt
 ```
 
+```bash
+bash main.sh
+```
+
 ## Code Quality Check with Tox
 
 We use [tox](https://tox.wiki) to ensure code consistency and quality.
