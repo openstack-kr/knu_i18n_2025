@@ -6,6 +6,7 @@ import requests
 import json
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
+from utils import save_experiment_log
 
 MODEL_NAME = "qwen2.5:1.5b"
 POT_DIR = "./pot"
@@ -140,8 +141,8 @@ def translate_entry(payload):
             messages=messages,
             stream=False,
             options={
-                "temperature": 0.3,
-                "top_p": 0.95,
+                "temperature": 0,
+                "top_p": 1,
                 "repetition_penalty": 1.2,
                 "stop": ["\n"],
             },
