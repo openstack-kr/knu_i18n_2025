@@ -1,0 +1,212 @@
+#: ../../<reno.sphinxext unmaintained/zed>:164
+msgid ""
+"Fixed cross-policy object copies. Previously, copied data would always be "
+"written using the source container's policy. Now, the destination "
+"container's policy will be used, avoiding availability issues and "
+"unnecessary container-reconciler work."
+msgstr "修复了跨策略对象复制的问题。以前，复制的数据始终使用源容器的策略进行写入。现在将使用目标容器（destination container）的策略，以避免可用性问题和不必要的容器（container）协调器工作。"
+
+#: ../../<reno.sphinxext stable/pike>:58
+msgid "Fixed deadlock when logging from a tpool thread."
+msgstr "修复了在 tpool 线程记录日志时可能发生的死锁问题。"
+
+#: ../../<reno.sphinxext stable/ocata>:14
+msgid ""
+"Fixed deadlock when logging from a tpool thread. The object server runs "
+"certain IO-intensive methods outside the main pthread for performance. "
+"Previously, if one of those methods tried to log, this can cause a crash "
+"that eventually leads to an object server with hundreds or thousands of "
+"greenthreads, all deadlocked. The fix is to use a mutex that works across "
+"different greenlets and different pthreads."
+msgstr "修复了 tpool 线程记录日志时可能导致的死锁问题。对象存储（Object Storage service）为了性能，会在主线程之外运行部分 I/O 密集的方法。以前，当这些方法尝试写入日志时，可能导致崩溃，最终使对象服务器产生数百甚至数千个死锁的 greenthread。此修复通过使用可跨不同 greenlet 与 pthread 工作的互斥锁（mutex）解决。"
+
+#: ../../<reno.sphinxext stable/pike>:305
+msgid ""
+"Fixed encoding issue in ssync where a mix of ascii and non-ascii metadata "
+"values would cause an error."
+msgstr "修复了 ssync 中编码问题：当元数据值中混合出现 ASCII 与非 ASCII 字符时会导致错误。"
+
+#: ../../<reno.sphinxext stable/newton>:48 stable/ocata>:50 stable/pike>:297
+msgid ""
+"Fixed error where a container drive error resulted in double space usage on "
+"rest drives. When drive with container or account database is unmounted, the "
+"bug would create handoff replicas on all remaining drives, increasing the "
+"drive space used and filling the cluster."
+msgstr "修复了当容器驱动发生错误时导致其余磁盘空间被重复占用的问题。当包含容器（container）或账户数据库的驱动被卸载时，该缺陷会在所有剩余驱动上创建交接副本，从而增加磁盘空间使用并导致集群（cluster）被填满。"
+
+#: ../../<reno.sphinxext stable/stein>:168
+msgid ""
+"Fixed issue where bulk requests using xml and expect 100-continue would "
+"return a malformed HTTP response."
+msgstr "修复了使用 XML 并带有 100-continue 期望的批量请求（bulk requests）返回错误 HTTP 响应的问题。"
+
+#: ../../<reno.sphinxext stable/train>:237
+msgid "Fixed listings for sharded containers."
+msgstr "修复了分片容器（sharded container）列表显示的问题。"
+
+#: ../../<reno.sphinxext unmaintained/2023.1>:43
+msgid ""
+"Fixed logging of IP and port in the proxy-server; in particular, internal "
+"clients now correctly log about the replication IP/port."
+msgstr "修复了 proxy-server 中 IP 与端口的日志记录问题。尤其是内部客户端现在能正确记录复制（replication）IP/端口。"
+
+#: ../../<reno.sphinxext unmaintained/yoga>:68
+msgid ""
+"Fixed multiple issues in s3api involving Multipart Uploads with non-ASCII "
+"names."
+msgstr "修复了 s3api 中与包含非 ASCII 名称的多部分上传（Multipart Upload）相关的多个问题。"
+
+#: ../../<reno.sphinxext stable/train>:239
+msgid "Fixed non-ASCII account metadata handling."
+msgstr "修复了处理包含非 ASCII 字符的账户元数据时出现的错误。"
+
+#: ../../<reno.sphinxext stable/newton>:87 stable/ocata>:227
+msgid ""
+"Fixed non-deterministic suffix updates in hashes.pkl where a partition may "
+"be updated much less often than expected."
+msgstr "修复了 hashes.pkl 中非确定性后缀更新的问题，该问题会导致分区（partition）的更新频率远低于预期。"
+
+#: ../../<reno.sphinxext stable/pike>:22 stable/queens>:110 stable/stein>:191
+msgid "Fixed rare socket leak on range requests to erasure-coded objects."
+msgstr "修复了针对纠删码（erasure-coded）对象的范围请求（range request）中罕见的套接字泄漏问题。"
+
+#: ../../<reno.sphinxext stable/newton>:83
+msgid ""
+"Fixed regression in consolidate_hashes that occured when a new file was "
+"stored to new suffix to a non-empty partition. This bug was introduced in "
+"2.7.0 and could cause an increase in rsync replication stats during and "
+"after upgrade, due to inconsistent hashing of partition suffixes."
+msgstr "修复了 consolidate_hashes 中的回归问题：当在非空分区（partition）中以新后缀存储新文件时会触发该问题。该缺陷在 2.7.0 版本中引入，会由于分区后缀哈希不一致而导致在升级期间及之后 rsync 复制（replication）统计增加。"
+
+#: ../../<reno.sphinxext stable/ocata>:231
+msgid ""
+"Fixed regression in consolidate_hashes that occurred when a new file was "
+"stored to new suffix to a non-empty partition. This bug was introduced in "
+"2.7.0 and could cause an increase in rsync replication stats during and "
+"after upgrade, due to inconsistent hashing of partition suffixes."
+msgstr "修复了 consolidate_hashes 的回归问题：在非空分区（partition）中新建文件时会触发该错误。此问题源于 2.7.0 版本，由于分区后缀哈希不一致，会导致在升级前后 rsync 复制统计增加。"
+
+#: ../../<reno.sphinxext stable/queens>:189
+msgid ""
+"Let clients request heartbeats during SLO PUTs by including the query "
+"parameter heartbeat=on."
+msgstr "允许客户端在执行 SLO PUT 操作时通过添加查询参数 heartbeat=on 请求心跳信号。"
+
+#: ../../<reno.sphinxext stable/ocata>:97
+msgid ""
+"Listing containers in accounts with json or xml now includes a "
+"last_modified time. This does not change any on-disk data, but simply "
+"exposes the value to offer consistency with the object listings on "
+"containers."
+msgstr "现在使用 JSON 或 XML 列出账户下的容器（container）时会包含 last_modified 时间。该更改不会修改磁盘上的数据，只是为了与容器中的对象列表保持一致。"
+
+#: ../../<reno.sphinxext stable/rocky>:245
+msgid ""
+"Lock timeouts in the container updater are now logged at INFO level, not "
+"ERROR."
+msgstr "容器（container）更新器中的锁定超时（lock timeout）现在记录为 INFO 级别，而不是 ERROR。"
+
+#: ../../<reno.sphinxext stable/pike>:325
+msgid "Log correct status code for conditional requests."
+msgstr "修复了条件请求（conditional request）日志记录中的状态码错误问题，现在能够正确记录状态码。"
+
+#: ../../<reno.sphinxext stable/queens>:219
+msgid ""
+"Log deprecation warning for allow_versions in the container server "
+"config. Configure the versioned_writes middleware in the proxy server "
+"instead. This option will be ignored in a future release."
+msgstr "在容器（container）服务器配置中为 allow_versions 记录弃用警告。请改为在代理服务器（proxy server）中配置 versioned_writes 中间件（middleware）。此选项将在未来的版本中被忽略。"
+
+#: ../../<reno.sphinxext stable/rocky>:181
+msgid ""
+"Log deprecation warnings for run_pause. This setting was deprecated in "
+"Swift 2.4.0 and is replaced by interval. It may be removed in a future "
+"release."
+msgstr "记录 run_pause 的弃用警告。此设置在 Swift 2.4.0 中已被弃用，并由 interval 参数取代。该选项可能会在将来的版本中被删除。"
+
+#: ../../<reno.sphinxext stable/train>:308
+msgid ""
+"Log formats are now more configurable and include support for anonymization. "
+"See the log_msg_template option in proxy-server.conf and the Swift "
+"documentation <https://docs.openstack.org/swift/latest/logs.html#proxy-"
+"logs>__ for more information."
+msgstr "日志格式现在更加可配置，并增加了匿名化支持。详情请参阅 proxy-server.conf 文件中的 log_msg_template 选项以及 Swift 文档 <https://docs.openstack.org/swift/latest/logs.html#proxy-logs>。"
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:159
+msgid "Log progress per partition when relinking/cleaning up."
+msgstr "在重新链接（relink）或清理（cleanup）过程中，记录每个分区（partition）的进度日志。"
+
+#: ../../<reno.sphinxext stable/pike>:309
+msgid "Log the correct request type of a subrequest downstream of copy."
+msgstr "在 copy 操作下游的子请求（subrequest）中记录正确的请求类型（request type）。"
+
+#: ../../<reno.sphinxext unmaintained/zed>:58 unmaintained/zed>:189
+msgid "Logging improvements"
+msgstr "日志系统的改进。"
+
+#: ../../<reno.sphinxext stable/rocky>:193
+msgid ""
+"Lower bounds of dependencies have been updated to reflect what is actually "
+"tested."
+msgstr "更新了依赖项（dependency）的下限版本，以反映实际测试过的环境。"
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:70
+msgid ""
+"Make allowable clock skew configurable, with a default value of 15 minutes "
+"to match AWS. Note that this was previously hardcoded at 5 minutes; "
+"operators may want to preserve the prior behavior by setting "
+"allowable_clock_skew = 300 in the [filter:s3api] section of their "
+"proxy-server.conf."
+msgstr "允许配置时钟偏差（clock skew），默认值为 15 分钟，与 AWS 保持一致。此前该值固定为 5 分钟；如希望保留旧行为，可在 proxy-server.conf 的 [filter:s3api] 部分设置 allowable_clock_skew = 300。"
+
+#: ../../<reno.sphinxext stable/pike>:215
+msgid ""
+"Make mount_check option usable in containerized environments by adding a "
+"check for an \".ismount\" file at the root directory of a device."
+msgstr "通过在设备根目录添加 “.ismount” 文件检查，使 mount_check 选项可在容器化（containerized）环境中使用。"
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:55
+msgid ""
+"Memcache client error-limiting is now configurable. See the "
+"error_suppression_* options in etc/memcache.conf-sample"
+msgstr "现在可配置 Memcache 客户端的错误限制。请参阅 etc/memcache.conf-sample 文件中的 error_suppression_* 选项。"
+
+#: ../../<reno.sphinxext stable/2023.2>:42
+msgid ""
+"Metrics are now emitted for a variety of S3 error responses, in the form "
+"s3api.<status_int>.<error_class>[.<reason>]"
+msgstr "现在针对多种 S3 错误响应生成指标（metrics），其格式为 s3api.<status_int>.<error_class>[.<reason>]。"
+
+#: ../../<reno.sphinxext unmaintained/zed>:49
+msgid ""
+"Metrics are now emitted for whether databases used for cleaving were created "
+"or already existed, allowing a better understanding of the reason for "
+"handoffs in the cluster."
+msgstr "现在会输出用于分割（cleaving）的数据库是新建还是已存在的指标（metrics），以帮助更好地理解集群（cluster）中交接（handoff）的原因。"
+
+#: ../../<reno.sphinxext stable/2023.2>:40
+msgid "Metrics improvements:"
+msgstr "指标（metrics）改进："
+
+#: ../../<reno.sphinxext stable/2024.2>:36
+msgid "Middleware features:"
+msgstr "中间件（middleware）功能："
+
+#: ../../<reno.sphinxext stable/ocata>:292
+msgid "Mirror X-Trans-Id to X-Openstack-Request-Id."
+msgstr "将 X-Trans-Id 镜像到 X-Openstack-Request-Id。"
+
+#: ../../<reno.sphinxext unmaintained/victoria>:109
+msgid ""
+"Upgrade liberasurecode on all proxy servers. Newly-written data will now use "
+"new fragments. Note that not-yet-upgraded proxies will not be able to read "
+"these newly-written fragments but will instead respond 500 Internal Server "
+"Error."
+msgstr "在所有代理服务器（proxy server）上升级 liberasurecode。新写入的数据将使用新的片段格式。未升级的代理无法读取这些新片段，而是会返回 “500 Internal Server Error”。"
+
+#: ../../<reno.sphinxext stable/2025.1>:119
+msgid ""
+"Uploads to containers with object versioning enabled now require a Content-"
+"Length or Transfer-Encoding: chunked header, similar to other "
+"containers."
+msgstr "对于启用了对象版本控制（object versioning）的容器（container），现在上传操作必须包含 Content-Length 或 Transfer-Encoding: chunked 标头，与其他容器保持一致。"
