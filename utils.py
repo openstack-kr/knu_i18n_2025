@@ -6,6 +6,7 @@ import argparse
 import requests
 from babel.messages import pofile
 
+
 def parse_args():
     """
     명령줄 인자를 파싱하는 함수.
@@ -78,7 +79,7 @@ def init_environment(
         except requests.exceptions.RequestException as e:
             raise RuntimeError(f"Error downloading POT file: {e}")
     else:
-        print(f"'{target_pot_file}' already exists. skipping download.")
+        print(f"'{target_pot_file}' already exists. Skipping download.")
 
     # Download Glossary PO if needed
     if not os.path.exists(glossary_po_path):
@@ -92,7 +93,7 @@ def init_environment(
         except requests.exceptions.RequestException as e:
             print(f"Warning: Could not download glossary file: {e}\n")
     else:
-        print(f"'{glossary_po_file}' already exists. skipping download.\n")
+        print(f"'{glossary_po_file}' already exists. Skipping download.\n")
 
     return pot_file_path, glossary_po_path, glossary_json_path
 
@@ -110,23 +111,34 @@ def load_glossary(glossary_po_path, glossary_json_path):
         dict: Glossary key-value 매핑 (id → string)
     """
     G = {}
-    if os.path.exists(glossary_po_path):
-        print("Converting glossary.po -> glossary.json...")
+    if os.path.exists(glossary_json_path):
+        print(f"Loading glossary from cached JSON: {glossary_json_path}")
         try:
-            with open(glossary_po_path, "rb") as f:
-                glossary_po = pofile.read_po(f)
-            G = {
-                entry.id.strip().lower(): entry.string.strip()
-                for entry in glossary_po
-                if entry.id and entry.string
-            }
-            print(f"Glossary loaded with {len(G)} terms.")
-            with open(glossary_json_path, "w", encoding="utf-8") as f:
-                json.dump(G, f, ensure_ascii=False, indent=2)
-            print(f"Backup JSON written to {glossary_json_path}\n")
+            with open(glossary_json_path, "r", encoding="utf-8") as f:
+                G = json.load(f)
+            print(f"Glossary loaded from JSON with {len(G)} term.\n")
         except Exception as e:
-            print(f"Error reading Glossary file: {e}\n")
+            print(f"Error reading glossary file: {e}\n")
+
+    else:
+        if os.path.exists(glossary_po_path):
+            print("Converting glossary.po -> glossary.json...")
+            try:
+                with open(glossary_po_path, "rb") as f:
+                    glossary_po = pofile.read_po(f)
+                G = {
+                    entry.id.strip().lower(): entry.string.strip()
+                    for entry in glossary_po
+                    if entry.id and entry.string
+                }
+                print(f"Glossary loaded with {len(G)} terms.")
+                with open(glossary_json_path, "w", encoding="utf-8") as f:
+                    json.dump(G, f, ensure_ascii=False, indent=2)
+                print(f"Backup JSON written to {glossary_json_path}\n")
+            except Exception as e:
+                print(f"Error reading Glossary file: {e}\n")
     return G
+
 
 def save_experiment_log(
     model_name: str,
