@@ -1,6 +1,6 @@
 # knu_i18n_2025
 
-## Overview:
+## Overview
 
 ## Key Features
 
@@ -8,7 +8,14 @@
 
 ## Getting Started
 
+### Using tox environment
+For convenience, we provide a tox environment that automatically sets up dependencies and runs the workflow in an isolated environment.
+```bash
+tox -e i18n
+```
+
 ### Run Locally
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -17,14 +24,8 @@ pip install -r requirements.txt
 bash main.sh
 ```
 
-### or Using tox environment by:
-```bash
-tox -e i18n
-```
-## Code Quality Check with Tox
-
+## Code Quality Check
 We use [tox](https://tox.wiki) to ensure code consistency and quality.
-
 1. PEP8 Style Check 
 ```bash
 tox -e pep8
