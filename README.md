@@ -7,10 +7,17 @@
 ## How It Works
 
 ## Getting Started
-### 1. Clone The Repository
+### 1. Clone The Repository & Install Tox
 ```bash
+# Option A) SSH (recommended)
+git clone git@github.com:openstack-kr/knu_i18n_2025.git
+# Option B) HTTPS 
 git clone https://github.com/openstack-kr/knu_i18n_2025.git
+```
+```bash
 cd knu_i18n_2025
+python -m pip install --upgrade pip
+pip install tox
 ```
 ### 2-1. Use tox environment
 For convenience, we provide a tox environment that automatically sets up dependencies and runs the workflow in an isolated environment.
