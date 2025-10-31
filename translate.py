@@ -19,14 +19,18 @@ import ollama
 import os
 import time
 import concurrent.futures
-import requests
-import json
-import random
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
-from utils import parse_args, init_environment, load_glossary, save_experiment_log, load_examples
+from utils import (
+    parse_args,
+    init_environment,
+    load_glossary,
+    save_experiment_log
+)
 
 # 하나의 문장(entry)을 번역
+
+
 def translate_entry(payload):
     """
     번역 단위(entry)를 LLM을 사용해 번역하는 함수.

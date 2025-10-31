@@ -5,6 +5,7 @@ from datetime import datetime
 import argparse
 import requests
 from babel.messages import pofile
+import csv
 
 
 def parse_args():
@@ -186,11 +187,11 @@ def save_experiment_log(
     po_file: str,
     duration_sec: float,
     accuracy: float | None = None,
-    results_json_path: str = "./experiments.json",
+    results_csv_path: str = "./experiments.csv",
 ):
     """
-    실험 결과를 JSON 파일로 누적 저장하는 함수.
-    Saves experiment results to a JSON log with Git metadata and timestamp.
+    실험 결과를 CSV 파일로 누적 저장하는 함수.
+    Saves experiment results to a CSV log with Git metadata and timestamp.
 
     Args:
         model_name (str): 사용한 LLM 모델 이름
@@ -198,7 +199,7 @@ def save_experiment_log(
         po_file (str): 생성된 PO 파일 경로
         duration_sec (float): 번역 소요 시간(초)
         accuracy (float | None): 번역 품질 정확도 (선택)
-        results_json_path (str): 결과 저장 파일 경로 (기본 './experiments.json')
+        results_csv_path (str): 결과 저장 CSV 파일 경로 (기본 './experiments.csv')
 
     Returns:
         None
@@ -214,7 +215,8 @@ def save_experiment_log(
 
     try:
         git_branch = subprocess.check_output(
-            ["git", "rev-parse", "--abbrev-ref", "HEAD"], stderr=subprocess.DEVNULL
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            stderr=subprocess.DEVNULL
         ).decode("utf-8").strip()
     except Exception:
         git_branch = None
@@ -231,21 +233,29 @@ def save_experiment_log(
         "git_branch": git_branch,
     }
 
-    # JSON 파일에 누적 저장
+    # CSV 파일에 누적 저장
     try:
-        if os.path.exists(results_json_path):
-            with open(results_json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                if not isinstance(data, list):
-                    data = [data]
-        else:
-            data = []
+        file_exists = os.path.exists(results_csv_path)
+        with open(results_csv_path,
+                  "a",
+                  newline="",
+                  encoding="utf-8") as csvfile:
+            fieldnames = [
+                "timestamp",
+                "model",
+                "pot_file",
+                "po_file",
+                "duration_sec",
+                "accuracy",
+                "git_commit",
+                "git_branch",
+            ]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-        data.append(result_entry)
+            if not file_exists:
+                writer.writeheader()
+            writer.writerow(result_entry)
 
-        with open(results_json_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-
-        print(f"실험 로그 추가 완료: {results_json_path}")
+        print(f"실험 로그 추가 완료: {results_csv_path}")
     except Exception as e:
         print(f"Warning: 실험 로그 저장 실패: {e}")
