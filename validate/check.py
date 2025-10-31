@@ -1,4 +1,7 @@
-import os, re, sys, json
+import os
+import re
+import sys
+import json
 from babel.messages.pofile import read_po
 from langdetect import detect, DetectorFactory, LangDetectException
 from io import open
@@ -19,10 +22,12 @@ TN_PATTERNS = [
     r'(?i)\bhttps?://[^\s]+',
 ]
 
+
 def load_po(path):
     with open(path, 'r', encoding='utf-8') as f:
         catalog = read_po(f)
     return catalog
+
 
 def load_glossary(path):
     if not os.path.exists(path):
@@ -31,10 +36,12 @@ def load_glossary(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
+
 def hangul_ratio(text):
     total = sum(1 for ch in text if ch.isalpha() or '\uAC00' <= ch <= '\uD7A3')
     ko = sum(1 for ch in text if '\uAC00' <= ch <= '\uD7A3')
     return ko / total if total else 0.0
+
 
 def is_korean(text):
     text = (text or "").strip()
@@ -45,11 +52,13 @@ def is_korean(text):
     except LangDetectException:
         return hangul_ratio(text) >= MIN_HANGUL_RATIO
 
+
 def is_tn(msgid):
     for pat in TN_PATTERNS:
         if re.search(pat, msgid):
             return True
     return False
+
 
 def check_glossary(entry, glossary):
     missed = []
@@ -58,9 +67,11 @@ def check_glossary(entry, glossary):
             missed.append((en, ko))
     return missed
 
+
 def check_end_mismatch(text):
     end = text.strip()[-3:]
     return not bool(re.search(r'(니다|합니다|됩니다|습니다|십시오)[\.\!]?$', end))
+
 
 def classify(entry, glossary):
     msgid = entry.id.strip() if entry.id else ""
@@ -86,10 +97,12 @@ def classify(entry, glossary):
 
     return "TP"
 
+
 def metrics(tp, fp, fn, tn):
     total = tp + fp + fn + tn
     acc = (tp + tn) / total * 100 if total else 0
     return acc
+
 
 def main():
     if len(sys.argv) < 2:
@@ -110,12 +123,15 @@ def main():
 
     for e in po:
         c = classify(e, glossary)
-        if c == "TP": TP += 1
+        if c == "TP":
+            TP += 1
         elif c == "FP":
             FP += 1
             FP_ENTRIES.append((e.id, e.string))
-        elif c == "FN": FN += 1
-        elif c == "TN": TN += 1
+        elif c == "FN":
+            FN += 1
+        elif c == "TN":
+            TN += 1
 
     acc = metrics(TP, FP, FN, TN)
 
@@ -138,6 +154,7 @@ def main():
         print(f"\n잘못된 번역 {len(FP_ENTRIES)}개를 '{output_path}' 파일로 저장했습니다.")
     else:
         print("\n잘못된 번역이 없습니다.")
+
 
 if __name__ == "__main__":
     main()

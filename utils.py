@@ -16,19 +16,56 @@ def parse_args():
     Returns:
         argparse.Namespace: 파싱된 인자 객체 / Parsed arguments object
     """
-    parser = argparse.ArgumentParser(description="AI-based translation pipeline")
-    parser.add_argument("--model", required=True, help="Model name to use (e.g., qwen2.5:1.5b)")
-    parser.add_argument("--pot_dir", default="./pot", help="Path to the POT file directory")
-    parser.add_argument("--po_dir", default="./po", help="Path to save the translated PO files")
-    parser.add_argument("--glossary_dir", default="./glossary", help="Path to the glossary directory")
-    parser.add_argument("--start", type=int, default=0, help="Start index for translation")
-    parser.add_argument("--end", type=int, default=None, help="End index for translation")
-    parser.add_argument("--workers", type=int, default=8, help="Number of parallel worker threads")
-    parser.add_argument("--pot_url", required=True, help="URL for downloading the POT file")
-    parser.add_argument("--target_pot_file", required=True, help="Target POT filename")
-    parser.add_argument("--glossary_url", required=True, help="URL for downloading the glossary file")
-    parser.add_argument("--glossary_po_file", default="glossary_ko.po", help="Glossary PO filename")
-    parser.add_argument("--glossary_json_file", default="glossary_ko.json", help="Glossary JSON filename")
+    parser = argparse.ArgumentParser(
+        description="AI-based translation pipeline")
+    parser.add_argument(
+        "--model",
+        required=True,
+        help="Model name to use (e.g., qwen2.5:1.5b)")
+    parser.add_argument(
+        "--pot_dir",
+        default="./pot",
+        help="Path to the POT file directory")
+    parser.add_argument(
+        "--po_dir",
+        default="./po",
+        help="Path to save the translated PO files")
+    parser.add_argument(
+        "--glossary_dir",
+        default="./glossary",
+        help="Path to the glossary directory")
+    parser.add_argument(
+        "--start",
+        type=int,
+        default=0,
+        help="Start index for translation")
+    parser.add_argument("--end", type=int, default=None,
+                        help="End index for translation")
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=8,
+        help="Number of parallel worker threads")
+    parser.add_argument(
+        "--pot_url",
+        required=True,
+        help="URL for downloading the POT file")
+    parser.add_argument(
+        "--target_pot_file",
+        required=True,
+        help="Target POT filename")
+    parser.add_argument(
+        "--glossary_url",
+        required=True,
+        help="URL for downloading the glossary file")
+    parser.add_argument(
+        "--glossary_po_file",
+        default="glossary_ko.po",
+        help="Glossary PO filename")
+    parser.add_argument(
+        "--glossary_json_file",
+        default="glossary_ko.json",
+        help="Glossary JSON filename")
     return parser.parse_args()
 
 

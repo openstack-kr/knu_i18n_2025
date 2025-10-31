@@ -26,6 +26,8 @@ from babel.messages import pofile, Catalog
 from utils import parse_args, init_environment, load_glossary, save_experiment_log
 
 # 하나의 문장(entry)을 번역
+
+
 def translate_entry(payload):
     """
     번역 단위(entry)를 LLM을 사용해 번역하는 함수.
@@ -207,22 +209,22 @@ if __name__ == "__main__":
     GLOSSARY_URL = args.glossary_url
     GLOSSARY_PO_FILE = args.glossary_po_file
     GLOSSARY_JSON_FILE = args.glossary_json_file
-    
+
     print("=================================================")
     print(f"번역 시작, AI 모델: {MODEL_NAME}")
-    print("=================================================\n")    
-    
+    print("=================================================\n")
+
     # 폴더 생성 + POT/Glossary 다운로드 + 경로 계산
     pot_file_path, glossary_po_path, glossary_json_path = init_environment(
-            pot_dir=POT_DIR,
-            po_dir=PO_DIR,
-            glossary_dir=GLOSSARY_DIR,
-            pot_url=POT_URL,
-            target_pot_file=TARGET_POT_FILE,
-            glossary_url=GLOSSARY_URL,
-            glossary_po_file=GLOSSARY_PO_FILE,
-            glossary_json_file=GLOSSARY_JSON_FILE,
-        )
+        pot_dir=POT_DIR,
+        po_dir=PO_DIR,
+        glossary_dir=GLOSSARY_DIR,
+        pot_url=POT_URL,
+        target_pot_file=TARGET_POT_FILE,
+        glossary_url=GLOSSARY_URL,
+        glossary_po_file=GLOSSARY_PO_FILE,
+        glossary_json_file=GLOSSARY_JSON_FILE,
+    )
 
     # 용어집 로드
     GLOSSARY = load_glossary(glossary_po_path, glossary_json_path)
@@ -232,7 +234,7 @@ if __name__ == "__main__":
     model_folder = os.path.join(PO_DIR, MODEL_NAME)
     os.makedirs(model_folder, exist_ok=True)
     po_file_path = os.path.join(model_folder, base_name)
-    
+
     start = time.time()
     translate_pot_file(pot_file_path, po_file_path)
     end = time.time()

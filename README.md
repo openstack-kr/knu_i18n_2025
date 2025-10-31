@@ -8,6 +8,7 @@
 
 ## Getting Started
 
+### Run Locally
 ```bash
 pip install -r requirements.txt
 ```
@@ -16,6 +17,10 @@ pip install -r requirements.txt
 bash main.sh
 ```
 
+### or Using tox environment by:
+```bash
+tox -e i18n
+```
 ## Code Quality Check with Tox
 
 We use [tox](https://tox.wiki) to ensure code consistency and quality.
