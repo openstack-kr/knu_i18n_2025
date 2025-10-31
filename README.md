@@ -35,6 +35,13 @@ tox -e pep8
 tox -e ansible
 ```
 
+3. Fix Style Errors with autopep8
+You can correct fix all style issues in the repository by running the command below:
+```bash
+autopep8 --in-place --aggressive --aggressive -r .
+```
+This will recursively format all Python files in the current directory according to the PEP8 style guide.
+However, few errors can not be fixed with this command and you have to fix them manually.
 
 ## Team
 

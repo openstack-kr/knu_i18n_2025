@@ -212,7 +212,8 @@ def save_experiment_log(
 
     try:
         git_branch = subprocess.check_output(
-            ["git", "rev-parse", "--abbrev-ref", "HEAD"], stderr=subprocess.DEVNULL
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            stderr=subprocess.DEVNULL
         ).decode("utf-8").strip()
     except Exception:
         git_branch = None
@@ -232,7 +233,10 @@ def save_experiment_log(
     # CSV 파일에 누적 저장
     try:
         file_exists = os.path.exists(results_csv_path)
-        with open(results_csv_path, "a", newline="", encoding="utf-8") as csvfile:
+        with open(results_csv_path,
+                  "a",
+                  newline="",
+                  encoding="utf-8") as csvfile:
             fieldnames = [
                 "timestamp",
                 "model",

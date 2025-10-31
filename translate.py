@@ -19,11 +19,14 @@ import ollama
 import os
 import time
 import concurrent.futures
-import requests
-import json
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
-from utils import parse_args, init_environment, load_glossary, save_experiment_log
+from utils import (
+    parse_args,
+    init_environment,
+    load_glossary,
+    save_experiment_log
+)
 
 # 하나의 문장(entry)을 번역
 

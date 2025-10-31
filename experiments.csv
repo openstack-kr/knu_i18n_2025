@@ -1,3 +1,0 @@
-timestamp,model,pot_file,po_file,duration_sec,accuracy,git_commit,git_branch
-2025-10-31T14:58:43,llama3.2:3b,/home/ubuntu/knu_i18n_2025/pot/sample.pot,/home/ubuntu/knu_i18n_2025/po/llama3.2:3b/sample.po,111.39,,95c3a5dca8b0859634c4cbe012bfdf0ba1394ad2,extra
-2025-10-31T15:00:39,llama3.2:3b,/home/ubuntu/knu_i18n_2025/pot/sample.pot,/home/ubuntu/knu_i18n_2025/po/llama3.2:3b/sample.po,100.34,,95c3a5dca8b0859634c4cbe012bfdf0ba1394ad2,extra
