@@ -16,56 +16,22 @@ def parse_args():
     Returns:
         argparse.Namespace: 파싱된 인자 객체 / Parsed arguments object
     """
-    parser = argparse.ArgumentParser(
-        description="AI-based translation pipeline")
-    parser.add_argument(
-        "--model",
-        required=True,
-        help="Model name to use (e.g., qwen2.5:1.5b)")
-    parser.add_argument(
-        "--pot_dir",
-        default="./pot",
-        help="Path to the POT file directory")
-    parser.add_argument(
-        "--po_dir",
-        default="./po",
-        help="Path to save the translated PO files")
-    parser.add_argument(
-        "--glossary_dir",
-        default="./glossary",
-        help="Path to the glossary directory")
-    parser.add_argument(
-        "--start",
-        type=int,
-        default=0,
-        help="Start index for translation")
-    parser.add_argument("--end", type=int, default=None,
-                        help="End index for translation")
-    parser.add_argument(
-        "--workers",
-        type=int,
-        default=8,
-        help="Number of parallel worker threads")
-    parser.add_argument(
-        "--pot_url",
-        required=True,
-        help="URL for downloading the POT file")
-    parser.add_argument(
-        "--target_pot_file",
-        required=True,
-        help="Target POT filename")
-    parser.add_argument(
-        "--glossary_url",
-        required=True,
-        help="URL for downloading the glossary file")
-    parser.add_argument(
-        "--glossary_po_file",
-        default="glossary_ko.po",
-        help="Glossary PO filename")
-    parser.add_argument(
-        "--glossary_json_file",
-        default="glossary_ko.json",
-        help="Glossary JSON filename")
+    parser = argparse.ArgumentParser(description="AI-based translation pipeline")
+    parser.add_argument("--model", required=True, help="Model name to use (e.g., qwen2.5:1.5b)")
+    parser.add_argument("--pot_dir", default="./pot", help="Path to the POT file directory")
+    parser.add_argument("--po_dir", default="./po", help="Path to save the translated PO files")
+    parser.add_argument("--glossary_dir", default="./glossary", help="Path to the glossary directory")
+    parser.add_argument("--example_dir", default="./example", help="Path to the example directory")
+    parser.add_argument("--start", type=int, default=0, help="Start index for translation")
+    parser.add_argument("--end", type=int, default=None, help="End index for translation")
+    parser.add_argument("--workers", type=int, default=8, help="Number of parallel worker threads")
+    parser.add_argument("--pot_url", required=True, help="URL for downloading the POT file")
+    parser.add_argument("--target_pot_file", required=True, help="Target POT filename")
+    parser.add_argument("--glossary_url", required=True, help="URL for downloading the glossary file")
+    parser.add_argument("--glossary_po_file", default="glossary_ko.po", help="Glossary PO filename")
+    parser.add_argument("--glossary_json_file", default="glossary_ko.json", help="Glossary JSON filename")
+    parser.add_argument("--example_url", required=True, help="URL for the example file")
+    parser.add_argument("--example_file", default="example_ko.po", help="Example filename")
     return parser.parse_args()
 
 
@@ -73,12 +39,15 @@ def init_environment(
     pot_dir,
     po_dir,
     glossary_dir,
+    example_dir,
     *,
     pot_url,
     target_pot_file,
     glossary_url,
     glossary_po_file,
     glossary_json_file,
+    example_url,
+    example_file,
 ):
     """
     번역 환경을 초기화하고 필요한 파일(POT, Glossary)을 다운로드한다.
@@ -100,10 +69,12 @@ def init_environment(
     os.makedirs(pot_dir, exist_ok=True)
     os.makedirs(po_dir, exist_ok=True)
     os.makedirs(glossary_dir, exist_ok=True)
+    os.makedirs(example_dir, exist_ok=True)
 
     pot_file_path = os.path.join(pot_dir, target_pot_file)
     glossary_po_path = os.path.join(glossary_dir, glossary_po_file)
     glossary_json_path = os.path.join(glossary_dir, glossary_json_file)
+    example_path = os.path.join(example_dir, example_file)
 
     # Download POT if needed
     if not os.path.exists(pot_file_path):
@@ -133,7 +104,21 @@ def init_environment(
     else:
         print(f"'{glossary_po_file}' already exists. Skipping download.\n")
 
-    return pot_file_path, glossary_po_path, glossary_json_path
+    # Download Example PO if needed
+    if not os.path.exists(example_path):
+        print(f"Downloading example po file from {example_url}...")
+        try:
+            response = requests.get(example_url, timeout=30)
+            response.raise_for_status()
+            with open(example_path, "wb") as f:
+                f.write(response.content)
+            print(f"Successfully downloaded and saved to {example_path}\n")
+        except requests.exceptions.RequestException as e:
+            print(f"Warning: Could not download example po file: {e}\n")
+    elif os.path.exists(example_path):
+         print(f"'{example_file}' already exists. skipping download.\n")
+
+    return pot_file_path, glossary_po_path, glossary_json_path, example_path
 
 
 def load_glossary(glossary_po_path, glossary_json_path):
@@ -177,6 +162,24 @@ def load_glossary(glossary_po_path, glossary_json_path):
                 print(f"Error reading Glossary file: {e}\n")
     return G
 
+def load_examples(example_path):
+    """
+    번역 예시 .po 파일을 로드하여 (msgid, msgstr) 튜플 리스트로 반환한다.
+    """
+    examples = []
+    if os.path.exists(example_path):
+        print(f"Loading few-shot examples from {os.path.basename(example_path)}...")
+        try:
+            with open(example_path, "rb") as f:
+                example_po = pofile.read_po(f)
+
+            for entry in example_po:
+                if entry.id and entry.string:
+                    examples.append((entry.id, entry.string))
+            print(f"Loaded {len(examples)} examples.\n")
+        except Exception as e:
+            print(f"Warning: Error reading example PO file: {e}\n")
+    return examples
 
 def save_experiment_log(
     model_name: str,

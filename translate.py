@@ -78,15 +78,18 @@ def translate_entry(payload):
                 " Preserve all reStructuredText (RST) syntax."
             ),
         },
-        # 2. 첫 번째 예시. => 추후 예시 po 파일로 변경?
-        {"role": "user", "content": "A new default has been added."},
-        {"role": "assistant", "content": "새로운 기본값이 추가되었습니다."},
-        # 3. 두 번째 예시. => 추후 예시 po 파일로 변경?
-        {"role": "user", "content": "This is **very** important."},
-        {"role": "assistant", "content": "이것은 **매우** 중요합니다."},
-        # 4. 실제 번역 내용 + glossary 규칙
-        {"role": "user", "content": f"{glossary_rules}\n\n{entry.id}"},
     ]
+
+    # 예시 리스트에서 2개를 무작위로 선택하여 추가
+    if FEW_SHOT_EXAMPLES:
+        num_to_sample = min(len(FEW_SHOT_EXAMPLES), 2)
+        selected_examples = random.sample(FEW_SHOT_EXAMPLES, num_to_sample)
+        for msgid, msgstr in selected_examples:
+            messages.append({"role": "user", "content": msgid})
+            messages.append({"role": "assistant", "content": msgstr})
+
+    # 실제 번역 내용 추가
+    messages.append({"role": "user", "content": f"{glossary_rules}\n\n{entry.id}"})
 
     try:
         response = ollama.chat(
@@ -195,7 +198,7 @@ if __name__ == "__main__":
 
     Steps:
         1. 인자 파싱 및 경로 초기화
-        2. Glossary 파일 다운로드 및 로드
+        2. Glossary 파일 및 예시 파일 다운로드 및 로드
         3. 모델별 폴더 생성 및 번역 수행
         4. 번역 결과 저장 및 Git 로그 기록
     """
@@ -204,6 +207,7 @@ if __name__ == "__main__":
     POT_DIR = args.pot_dir
     PO_DIR = args.po_dir
     GLOSSARY_DIR = args.glossary_dir
+    EXAMPLE_DIR = args.example_dir
     START_TRANSLATE = args.start
     END_TRANSLATE = args.end
     MAX_WORKERS = args.workers
@@ -212,25 +216,31 @@ if __name__ == "__main__":
     GLOSSARY_URL = args.glossary_url
     GLOSSARY_PO_FILE = args.glossary_po_file
     GLOSSARY_JSON_FILE = args.glossary_json_file
+    EXAMPLE_URL = args.example_url
+    EXAMPLE_FILE = args.example_file
 
     print("=================================================")
     print(f"번역 시작, AI 모델: {MODEL_NAME}")
     print("=================================================\n")
 
     # 폴더 생성 + POT/Glossary 다운로드 + 경로 계산
-    pot_file_path, glossary_po_path, glossary_json_path = init_environment(
-        pot_dir=POT_DIR,
-        po_dir=PO_DIR,
-        glossary_dir=GLOSSARY_DIR,
-        pot_url=POT_URL,
-        target_pot_file=TARGET_POT_FILE,
-        glossary_url=GLOSSARY_URL,
-        glossary_po_file=GLOSSARY_PO_FILE,
-        glossary_json_file=GLOSSARY_JSON_FILE,
-    )
+    pot_file_path, glossary_po_path, glossary_json_path, example_path = init_environment(
+            pot_dir=POT_DIR,
+            po_dir=PO_DIR,
+            glossary_dir=GLOSSARY_DIR,
+            example_dir=EXAMPLE_DIR,
+            pot_url=POT_URL,
+            target_pot_file=TARGET_POT_FILE,
+            glossary_url=GLOSSARY_URL,
+            glossary_po_file=GLOSSARY_PO_FILE,
+            glossary_json_file=GLOSSARY_JSON_FILE,
+            example_url=EXAMPLE_URL,
+            example_file=EXAMPLE_FILE,
+        )
 
-    # 용어집 로드
+    # 용어집 및 예시 로드
     GLOSSARY = load_glossary(glossary_po_path, glossary_json_path)
+    FEW_SHOT_EXAMPLES = load_examples(example_path)
 
     # 모델별 폴더 구성 + 파일 경로
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
