@@ -7,15 +7,18 @@
 ## How It Works
 
 ## Getting Started
-
-### Using tox environment
+### 1. Clone The Repository
+```bash
+git clone https://github.com/openstack-kr/knu_i18n_2025.git
+cd knu_i18n_2025
+```
+### 2-1. Use tox environment
 For convenience, we provide a tox environment that automatically sets up dependencies and runs the workflow in an isolated environment.
 ```bash
 tox -e i18n
 ```
 
-### Run Locally
-
+### 2-2.or Run Locally
 ```bash
 pip install -r requirements.txt
 ```
