@@ -18,7 +18,7 @@ For convenience, we provide a tox environment that automatically sets up depende
 tox -e i18n
 ```
 
-### 2-2.or Run Locally
+### 2-2. or Run Locally
 ```bash
 pip install -r requirements.txt
 ```
