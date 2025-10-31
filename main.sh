@@ -1,8 +1,19 @@
 #!/bin/bash
 set -e
 
+MODEL=${1:-"llama3.2:3b"}
+
+# 1) make sure the model is available in local ollama
+if command -v ollama >/dev/null 2>&1; then
+  echo "[main.sh] pulling model: $MODEL ..."
+  # if the model already exists, this is a quick no-op
+  ollama pull $MODEL || echo "[main.sh] warning: could not pull model (ollama daemon running?)"
+else
+  echo "[main.sh] warning: ollama is not installed or not in PATH. skipping model pull."
+fi
+
 python translate.py \
-  --model llama3.2:3b \
+  --model $MODEL \
   --workers 4 \
   --start 0 --end 200 \
   --pot_dir ./pot \

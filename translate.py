@@ -20,11 +20,13 @@ import os
 import time
 import concurrent.futures
 from tqdm import tqdm
+import random
 from babel.messages import pofile, Catalog
 from utils import (
     parse_args,
     init_environment,
     load_glossary,
+    load_examples,
     save_experiment_log
 )
 
@@ -89,7 +91,8 @@ def translate_entry(payload):
             messages.append({"role": "assistant", "content": msgstr})
 
     # 실제 번역 내용 추가
-    messages.append({"role": "user", "content": f"{glossary_rules}\n\n{entry.id}"})
+    messages.append({"role": "user",
+                     "content": f"{glossary_rules}\n\n{entry.id}"})
 
     try:
         response = ollama.chat(
@@ -112,7 +115,7 @@ def translate_entry(payload):
     except Exception as e:
         print(
             (
-                f"!!! [{i+1}/{total_count}] Error translating entry "
+                f"!!! [{i + 1}/{total_count}] Error translating entry "
                 f"'{entry.id[:30]}...': {e} !!!"
             )
         )
@@ -224,19 +227,24 @@ if __name__ == "__main__":
     print("=================================================\n")
 
     # 폴더 생성 + POT/Glossary 다운로드 + 경로 계산
-    pot_file_path, glossary_po_path, glossary_json_path, example_path = init_environment(
-            pot_dir=POT_DIR,
-            po_dir=PO_DIR,
-            glossary_dir=GLOSSARY_DIR,
-            example_dir=EXAMPLE_DIR,
-            pot_url=POT_URL,
-            target_pot_file=TARGET_POT_FILE,
-            glossary_url=GLOSSARY_URL,
-            glossary_po_file=GLOSSARY_PO_FILE,
-            glossary_json_file=GLOSSARY_JSON_FILE,
-            example_url=EXAMPLE_URL,
-            example_file=EXAMPLE_FILE,
-        )
+    (
+        pot_file_path,
+        glossary_po_path,
+        glossary_json_path,
+        example_path,
+    ) = init_environment(
+        pot_dir=POT_DIR,
+        po_dir=PO_DIR,
+        glossary_dir=GLOSSARY_DIR,
+        example_dir=EXAMPLE_DIR,
+        pot_url=POT_URL,
+        target_pot_file=TARGET_POT_FILE,
+        glossary_url=GLOSSARY_URL,
+        glossary_po_file=GLOSSARY_PO_FILE,
+        glossary_json_file=GLOSSARY_JSON_FILE,
+        example_url=EXAMPLE_URL,
+        example_file=EXAMPLE_FILE,
+    )
 
     # 용어집 및 예시 로드
     GLOSSARY = load_glossary(glossary_po_path, glossary_json_path)
