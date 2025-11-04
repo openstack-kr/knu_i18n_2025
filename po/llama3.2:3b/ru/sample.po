@@ -1,0 +1,300 @@
+Initial translation by AI.
+# Russian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-11-04 15:52+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../<reno.sphinxext unmaintained/zed>:164
+msgid ""
+"Fixed cross-policy object copies. Previously, copied data would always be"
+" written using the source container's policy. Now, the destination "
+"container's policy will be used, avoiding availability issues and "
+"unnecessary container-reconciler work."
+msgstr ""
+"Применены исправления для кросс-политикового копирования объектов. Ранее "
+"kopированные данные всегда писались с использованием политики источного "
+"контейнера. Теперь используем политику конечного контейнера, избегая "
+"проблем доступности и ненужной работы реconcilersа контейнеров."
+
+#: ../../<reno.sphinxext stable/pike>:58
+msgid "Fixed deadlock when logging from a tpool thread."
+msgstr "Применены эти переводные правила: 'pool' должен быть переведен как 'пул'."
+
+#: ../../<reno.sphinxext stable/ocata>:14
+msgid ""
+"Fixed deadlock when logging from a tpool thread. The object server runs "
+"certain IO-intensive methods outside the main pthread for performance. "
+"Previously, if one of those methods tried to log, this can cause a crash "
+"that eventually leads to an object server with hundreds or thousands of "
+"greenthreads, all deadlocked. The fix is to use a mutex that works across"
+" different greenlets and different pthreads."
+msgstr ""
+"Применены корректировки: 'объект' переводится как 'объект', 'пул' — как "
+"'пул', 'сервер' — как 'сервер'."
+
+#: ../../<reno.sphinxext stable/pike>:305
+msgid ""
+"Fixed encoding issue in ssync where a mix of ascii and non-ascii metadata"
+" values would cause an error."
+msgstr ""
+"Решено вопрос об ошибке в кодировании ssync, где mixed ascii и non-ascii "
+"значения метаданных привели к ошибке."
+
+#: ../../<reno.sphinxext stable/newton>:48 stable/ocata>:50 stable/pike>:297
+msgid ""
+"Fixed error where a container drive error resulted in double space usage "
+"on rest drives. When drive with container or account database is "
+"unmounted, the bug would create handoff replicas on all remaining drives,"
+" increasing the drive space used and filling the cluster."
+msgstr ""
+"Применяя эти правила перевода: 'кластер' становится 'кластер', "
+"'контейнер' становится 'контейнер', 'использование' становится "
+"'использование'."
+
+#: ../../<reno.sphinxext stable/stein>:168
+msgid ""
+"Fixed issue where bulk requests using xml and expect 100-continue would "
+"return a malformed HTTP response."
+msgstr ""
+"Решено проблему, гдеbulk запросы с использованием xml и ожидание "
+"100-continue возвращали неправильный ответ по HTTP."
+
+#: ../../<reno.sphinxext stable/train>:237
+msgid "Fixed listings for sharded containers."
+msgstr "Установленные списки для шардов контейнеров."
+
+#: ../../<reno.sphinxext unmaintained/2023.1>:43
+msgid ""
+"Fixed logging of IP and port in the proxy-server; in particular, internal"
+" clients now correctly log about the replication IP/port."
+msgstr ""
+"Применение этих переводных правил: 'клиент' становится 'клиент', "
+"'репликация' становится 'репликация', 'сервер' становится 'сервер'."
+
+#: ../../<reno.sphinxext unmaintained/yoga>:68
+msgid ""
+"Fixed multiple issues in s3api involving Multipart Uploads with non-ASCII"
+" names."
+msgstr ""
+"Решено несколько проблем в с3api, связанных с multipart-запросами для "
+"загрузок multipart-объектов с не-ASCII именами."
+
+#: ../../<reno.sphinxext stable/train>:239
+msgid "Fixed non-ASCII account metadata handling."
+msgstr "Решено проблему обработки неарабeskого учета аккаунтных метаданных."
+
+#: ../../<reno.sphinxext stable/newton>:87 stable/ocata>:227
+msgid ""
+"Fixed non-deterministic suffix updates in hashes.pkl where a partition "
+"may be updated much less often than expected."
+msgstr ""
+"Решено неопределенные обновления суффиксов в hashes.pkl, где раздел может"
+" быть обновлен намного реже, чем ожидалось."
+
+#: ../../<reno.sphinxext stable/pike>:22 stable/queens>:110 stable/stein>:191
+msgid "Fixed rare socket leak on range requests to erasure-coded objects."
+msgstr ""
+"Применить эти правила перевода: 'object' должно быть переводено как "
+"'объект'."
+
+#: ../../<reno.sphinxext stable/newton>:83
+msgid ""
+"Fixed regression in consolidate_hashes that occured when a new file was "
+"stored to new suffix to a non-empty partition. This bug was introduced in"
+" 2.7.0 and could cause an increase in rsync replication stats during and "
+"after upgrade, due to inconsistent hashing of partition suffixes."
+msgstr ""
+"Применены исправления для репликации в consolidate_hashes, которое "
+"произошло когда новый файл был записан на новый суффикс к неэмптической "
+"частиции. Эта ошибка была введена в 2.7.0 и могла привести к увеличению "
+"статистик репликации rsync во время и после обновления, из-за "
+"несовместного шифрования суффиксов частиций."
+
+#: ../../<reno.sphinxext stable/ocata>:231
+msgid ""
+"Fixed regression in consolidate_hashes that occurred when a new file was "
+"stored to new suffix to a non-empty partition. This bug was introduced in"
+" 2.7.0 and could cause an increase in rsync replication stats during and "
+"after upgrade, due to inconsistent hashing of partition suffixes."
+msgstr ""
+"Применить эти правила перевода: 'replication' должно быть переведено как "
+"'репликация'."
+
+#: ../../<reno.sphinxext stable/queens>:189
+msgid ""
+"Let clients request heartbeats during SLO PUTs by including the query "
+"parameter ``heartbeat=on``."
+msgstr ""
+"Клиенты должны отправлять пульсации в ходе СЛО ПУТов, включая параметр "
+"``heartbeat=on``."
+
+#: ../../<reno.sphinxext stable/ocata>:97
+msgid ""
+"Listing containers in accounts with json or xml now includes a "
+"`last_modified` time. This does not change any on-disk data, but simply "
+"exposes the value to offer consistency with the object listings on "
+"containers."
+msgstr ""
+"Списывание контейнеров в учетных записях с json или xml теперь включает в"
+" себя значение `last_modified` время. Это не изменяет никакой данных на "
+"диске, но просто раскрывает его значение, чтобы обеспечить совместимость "
+"с списанием объектов на контейнерах."
+
+#: ../../<reno.sphinxext stable/rocky>:245
+msgid ""
+"Lock timeouts in the container updater are now logged at INFO level, not "
+"ERROR."
+msgstr ""
+"В контейнере обновителя блокировки теперь логируются в уровне INFO, а не "
+"в(ERROR)."
+
+#: ../../<reno.sphinxext stable/pike>:325
+msgid "Log correct status code for conditional requests."
+msgstr "Применить правильный статус-код для условных запросов."
+
+#: ../../<reno.sphinxext stable/queens>:219
+msgid ""
+"Log deprecation warning for ``allow_versions`` in the container server "
+"config. Configure the ``versioned_writes`` middleware in the proxy server"
+" instead. This option will be ignored in a future release."
+msgstr ""
+"Применить следующие переводы: 'контейнер' должно быть переведено как "
+"'контейнер', 'сервер' должно быть переведено как 'сервер'."
+
+#: ../../<reno.sphinxext stable/rocky>:181
+msgid ""
+"Log deprecation warnings for ``run_pause``. This setting was deprecated "
+"in Swift 2.4.0 and is replaced by ``interval``. It may be removed in a "
+"future release."
+msgstr ""
+"Вывод предупреждений о depreciровании для функции ``run_pause''. Этот "
+"параметр был deprecated в Swift 2.4.0 и заменен на ``interval''. Он может"
+" быть удален в будущем выпуске."
+
+#: ../../<reno.sphinxext stable/train>:308
+msgid ""
+"Log formats are now more configurable and include support for "
+"anonymization. See the ``log_msg_template`` option in ``proxy-"
+"server.conf`` and `the Swift documentation "
+"<https://docs.openstack.org/swift/latest/logs.html#proxy-logs>`__ for "
+"more information."
+msgstr ""
+"Применяются новые правила перевода: 'сервер' становится 'сервер', 'стек' "
+"- 'стек', 'шаблон' - 'шаблон'."
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:159
+msgid "Log progress per partition when relinking/cleaning up."
+msgstr "Регистрируйте прогресс по разделу при обновлении/очистке."
+
+#: ../../<reno.sphinxext stable/pike>:309
+msgid "Log the correct request type of a subrequest downstream of copy."
+msgstr "Регистрируйте правильный тип запроса подзапроса в下stream от копирования."
+
+#: ../../<reno.sphinxext unmaintained/zed>:58 unmaintained/zed>:189
+msgid "Logging improvements"
+msgstr "Императивы улучшения логирования"
+
+#: ../../<reno.sphinxext stable/rocky>:193
+msgid ""
+"Lower bounds of dependencies have been updated to reflect what is "
+"actually tested."
+msgstr ""
+"Низкие пределы зависимостей были обновлены, чтобы отражать то, что "
+"действительно проверяется."
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:70
+msgid ""
+"Make allowable clock skew configurable, with a default value of 15 "
+"minutes to match AWS. Note that this was previously hardcoded at 5 "
+"minutes; operators may want to preserve the prior behavior by setting "
+"``allowable_clock_skew = 300`` in the ``[filter:s3api]`` section of their"
+" proxy-server.conf."
+msgstr ""
+"Применить следующие переводные правила: 'раздел' должен быть переведен "
+"как 'раздел', 'сервер' должен быть переведен как 'сервер'."
+
+#: ../../<reno.sphinxext stable/pike>:215
+msgid ""
+"Make mount_check option usable in containerized environments by adding a "
+"check for an \".ismount\" file at the root directory of a device."
+msgstr ""
+"Применить эти переводные правила: 'контейнер' должен быть переведен как "
+"'контейнер', 'устройство' должно быть переведено как 'устройство', "
+"'окружение' должно быть переведено как 'окружение'."
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:55
+msgid ""
+"Memcache client error-limiting is now configurable. See the "
+"``error_suppression_*`` options in etc/memcache.conf-sample"
+msgstr ""
+"Кэш клиент ошибка ограничения кэширования теперь настроек конфигурации. "
+"Просмотрите ``error_suppression_*`` опции в etc/memcache.conf-sample."
+
+#: ../../<reno.sphinxext stable/2023.2>:42
+msgid ""
+"Metrics are now emitted for a variety of S3 error responses, in the form "
+"``s3api.<status_int>.<error_class>[.<reason>]``"
+msgstr ""
+"Применяются метрики для различных ответов ошибок S3 в форме "
+"`s3api.<статус_инт>.<класс_ошибки>[.<причина]>`."
+
+#: ../../<reno.sphinxext unmaintained/zed>:49
+msgid ""
+"Metrics are now emitted for whether databases used for cleaving were "
+"created or already existed, allowing a better understanding of the reason"
+" for handoffs in the cluster."
+msgstr ""
+"Применяются эти правила перевода: 'кластер' должно быть переведено как "
+"'кластер'."
+
+#: ../../<reno.sphinxext stable/2023.2>:40
+msgid "Metrics improvements:"
+msgstr "Импровизации метрик:"
+
+#: ../../<reno.sphinxext stable/2024.2>:36
+msgid "Middleware features:"
+msgstr "Функции среднего слоя:"
+
+#: ../../<reno.sphinxext stable/ocata>:292
+msgid "Mirror X-Trans-Id to X-Openstack-Request-Id."
+msgstr "Создать стэк."
+
+#: ../../<reno.sphinxext unmaintained/victoria>:109
+msgid ""
+"Upgrade liberasurecode on all proxy servers. Newly-written data will now "
+"use new fragments. Note that not-yet-upgraded proxies will not be able to"
+" read these newly-written fragments but will instead respond ``500 "
+"Internal Server Error``."
+msgstr ""
+"Используйте обновленную версию liberasurecode на всех прокси-серверах. "
+"Новая запись теперь будет использовать новые фрагменты. Примечание: не "
+"обновленные proxies не смогут прочитать эти новые фрагменты, но вместо "
+"этого ответят ``500 Internal Server Error``."
+
+#: ../../<reno.sphinxext stable/2025.1>:119
+msgid ""
+"Uploads to containers with object versioning enabled now require a "
+"``Content-Length`` or ``Transfer-Encoding: chunked`` header, similar to "
+"other containers."
+msgstr ""
+"Загрузки в контейнеры с включенной версией объектов теперь требуют "
+"заголовка ``Content-Length`` или ``Transfer-Encoding: chunked``, "
+"аналогичных другим контейнерам."
+

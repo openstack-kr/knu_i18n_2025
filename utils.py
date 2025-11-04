@@ -64,11 +64,11 @@ def parse_args():
         help="URL for downloading the glossary file")
     parser.add_argument(
         "--glossary_po_file",
-        default="glossary_ko.po",
+        default="glossary.po",
         help="Glossary PO filename")
     parser.add_argument(
         "--glossary_json_file",
-        default="glossary_ko.json",
+        default="glossary.json",
         help="Glossary JSON filename")
     parser.add_argument(
         "--example_url",
@@ -76,8 +76,12 @@ def parse_args():
         help="URL for the example file")
     parser.add_argument(
         "--example_file",
-        default="example_ko.po",
+        default="example.po",
         help="Example filename")
+    parser.add_argument(
+        "--languages",
+        required=True,
+        help="list of language codes")
     return parser.parse_args()
 
 
@@ -89,11 +93,6 @@ def init_environment(
     *,
     pot_url,
     target_pot_file,
-    glossary_url,
-    glossary_po_file,
-    glossary_json_file,
-    example_url,
-    example_file,
 ):
     """
     번역 환경을 초기화하고 필요한 파일(POT, Glossary)을 다운로드한다.
@@ -103,14 +102,12 @@ def init_environment(
         pot_dir (str): POT 파일 저장 디렉터리
         po_dir (str): PO 파일 저장 디렉터리
         glossary_dir (str): 용어집 디렉터리
+        example_dir (str): 예시 파일 디렉터리
         pot_url (str): POT 파일 다운로드 URL
         target_pot_file (str): POT 파일명
-        glossary_url (str): Glossary 파일 다운로드 URL
-        glossary_po_file (str): Glossary PO 파일명
-        glossary_json_file (str): Glossary JSON 파일명
 
     Returns:
-        tuple: (pot_file_path, glossary_po_path, glossary_json_path)
+        str: 다운로드된 공용 POT 파일의 전체 경로
     """
     os.makedirs(pot_dir, exist_ok=True)
     os.makedirs(po_dir, exist_ok=True)
@@ -118,9 +115,6 @@ def init_environment(
     os.makedirs(example_dir, exist_ok=True)
 
     pot_file_path = os.path.join(pot_dir, target_pot_file)
-    glossary_po_path = os.path.join(glossary_dir, glossary_po_file)
-    glossary_json_path = os.path.join(glossary_dir, glossary_json_file)
-    example_path = os.path.join(example_dir, example_file)
 
     # Download POT if needed
     if not os.path.exists(pot_file_path):
@@ -136,9 +130,41 @@ def init_environment(
     else:
         print(f"'{target_pot_file}' already exists. Skipping download.")
 
+    return pot_file_path
+
+
+def load_glossary(lang, url_template, glossary_file, json_file, glossary_dir):
+    """
+    특정 언어의 glossary.po 파일을 다운로드/로드하고 JSON 백업을 생성/로드한다.
+    Loads/downloads a language-specific glossary .po file
+    and loads/writes a JSON backup.
+
+    Args:
+        lang (str): 처리할 언어 코드
+        url_template (str): 다운로드 URL 템플릿
+        glossary_file (str): glossary .po 파일명
+        json_file (str): glossary .json 파일명
+        glossary_dir (str): 용어집 최상위 디렉터리
+
+    Returns:
+        dict: Glossary key-value 매핑 (id → string)
+    """
+
+    if not url_template:
+        return
+
+    lang_dir = os.path.join(glossary_dir, lang)
+    os.makedirs(lang_dir, exist_ok=True)
+
+    glossary_po_path = os.path.join(lang_dir, glossary_file)
+    glossary_json_path = os.path.join(lang_dir, json_file)
+    glossary_url = url_template.format(lang=lang)
+
+    G = {}
+
     # Download Glossary PO if needed
     if not os.path.exists(glossary_po_path):
-        print(f"Downloading glossary file from {glossary_url}...")
+        print(f"Downloading glossary for [{lang}] from {glossary_url}...")
         try:
             response = requests.get(glossary_url, timeout=30)
             response.raise_for_status()
@@ -146,52 +172,21 @@ def init_environment(
                 f.write(response.content)
             print(f"Successfully downloaded and saved to {glossary_po_path}\n")
         except requests.exceptions.RequestException as e:
-            print(f"Warning: Could not download glossary file: {e}\n")
-    else:
-        print(f"'{glossary_po_file}' already exists. Skipping download.\n")
+            print(f"Warning: Could not download glossary for [{lang}]: {e}\n")
+            return G
 
-    # Download Example PO if needed
-    if not os.path.exists(example_path):
-        print(f"Downloading example po file from {example_url}...")
-        try:
-            response = requests.get(example_url, timeout=30)
-            response.raise_for_status()
-            with open(example_path, "wb") as f:
-                f.write(response.content)
-            print(f"Successfully downloaded and saved to {example_path}\n")
-        except requests.exceptions.RequestException as e:
-            print(f"Warning: Could not download example po file: {e}\n")
-    elif os.path.exists(example_path):
-        print(f"'{example_file}' already exists. skipping download.\n")
-
-    return pot_file_path, glossary_po_path, glossary_json_path, example_path
-
-
-def load_glossary(glossary_po_path, glossary_json_path):
-    """
-    glossary.po 파일을 로드하고 JSON 백업을 생성한다.
-    Loads glossary from a .po file and writes a JSON backup.
-
-    Args:
-        glossary_po_path (str): Glossary PO 파일 경로
-        glossary_json_path (str): Glossary JSON 백업 파일 경로
-
-    Returns:
-        dict: Glossary key-value 매핑 (id → string)
-    """
-    G = {}
     if os.path.exists(glossary_json_path):
-        print(f"Loading glossary from cached JSON: {glossary_json_path}")
+        print(f"Loading cached glossary for [{lang}]...")
         try:
             with open(glossary_json_path, "r", encoding="utf-8") as f:
                 G = json.load(f)
-            print(f"Glossary loaded from JSON with {len(G)} term.\n")
+            print(f"Glossary for [{lang}] loaded with {len(G)} terms.\n")
         except Exception as e:
-            print(f"Error reading glossary file: {e}\n")
+            print(f"Warning: Failed to load JSON cache for [{lang}]: {e}")
 
     else:
         if os.path.exists(glossary_po_path):
-            print("Converting glossary.po -> glossary.json...")
+            print(f"Building glossary for [{lang}]...")
             try:
                 with open(glossary_po_path, "rb") as f:
                     glossary_po = pofile.read_po(f)
@@ -200,24 +195,59 @@ def load_glossary(glossary_po_path, glossary_json_path):
                     for entry in glossary_po
                     if entry.id and entry.string
                 }
-                print(f"Glossary loaded with {len(G)} terms.")
+                print(f"Glossary for [{lang}] loaded with {len(G)} terms.\n")
                 with open(glossary_json_path, "w", encoding="utf-8") as f:
                     json.dump(G, f, ensure_ascii=False, indent=2)
                 print(f"Backup JSON written to {glossary_json_path}\n")
             except Exception as e:
-                print(f"Error reading Glossary file: {e}\n")
+                print(f"Error reading Glossary PO file for [{lang}]: {e}\n")
+
     return G
 
 
-def load_examples(example_path):
+def load_examples(lang, url_template, example_file, example_dir):
     """
-    번역 예시 .po 파일을 로드하여 (msgid, msgstr) 튜플 리스트로 반환한다.
+    특정 언어의 번역 예시 .po 파일을 다운로드/로드하여 리스트로 반환한다.
+    Loads/downloads a language-specific example .po file
+    and returns a list of (id, str) tuples.
+
+    Args:
+        lang (str): 처리할 언어 코드
+        url_template (str): 다운로드 URL 템플릿
+        example_file (str): example .po 파일명
+        example_dir (str): 예시 파일 최상위 디렉터리
+
+    Returns:
+        list: (msgid, msgstr) 튜플의 리스트
     """
     examples = []
+
+    if not url_template:
+        return
+
+    lang_dir = os.path.join(example_dir, lang)
+    os.makedirs(lang_dir, exist_ok=True)
+
+    example_path = os.path.join(lang_dir, example_file)
+    example_url = url_template.format(lang=lang)
+
+    # Download Example PO if needed
+    if not os.path.exists(example_path):
+        print(f"Downloading examples for [{lang}] from {example_url}...")
+        try:
+            response = requests.get(example_url, timeout=30)
+            response.raise_for_status()
+            with open(example_path, "wb") as f:
+                f.write(response.content)
+            print(f"Successfully downloaded and saved to {example_path}\n")
+        except requests.exceptions.RequestException as e:
+            print(f"Warning: Could not download examples for [{lang}]: {e}\n")
+            return examples
+
     if os.path.exists(example_path):
         print(
             f"Loading few-shot examples from "
-            f"{os.path.basename(example_path)}..."
+            f"{os.path.basename(example_path)} for [{lang}]..."
         )
         try:
             with open(example_path, "rb") as f:
@@ -226,9 +256,12 @@ def load_examples(example_path):
             for entry in example_po:
                 if entry.id and entry.string:
                     examples.append((entry.id, entry.string))
-            print(f"Loaded {len(examples)} examples.\n")
+            print(f"Loaded {len(examples)} examples for [{lang}].\n")
         except Exception as e:
-            print(f"Warning: Error reading example PO file: {e}\n")
+            print(
+                f"Warning: Error reading example PO file for [{lang}]: {e}\n")
+            examples = []
+
     return examples
 
 
@@ -237,6 +270,7 @@ def save_experiment_log(
     pot_file: str,
     po_file: str,
     duration_sec: float,
+    language: str,
     accuracy: float | None = None,
     results_csv_path: str = "./experiments.csv",
 ):
@@ -249,6 +283,7 @@ def save_experiment_log(
         pot_file (str): 번역 대상 POT 파일 경로
         po_file (str): 생성된 PO 파일 경로
         duration_sec (float): 번역 소요 시간(초)
+        language (str): 번역 언어
         accuracy (float | None): 번역 품질 정확도 (선택)
         results_csv_path (str): 결과 저장 CSV 파일 경로 (기본 './experiments.csv')
 
@@ -279,6 +314,7 @@ def save_experiment_log(
         "pot_file": os.path.abspath(pot_file),
         "po_file": os.path.abspath(po_file),
         "duration_sec": duration_sec,
+        "language": language,
         "accuracy": accuracy,
         "git_commit": git_commit,
         "git_branch": git_branch,
@@ -297,6 +333,7 @@ def save_experiment_log(
                 "pot_file",
                 "po_file",
                 "duration_sec",
+                "language",
                 "accuracy",
                 "git_commit",
                 "git_branch",
