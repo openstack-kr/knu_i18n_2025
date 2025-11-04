@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-MODEL=${1:-"llama3.2:3b"}
+MODEL=${1:-"llama3.2:1b"}
 
 # 1) make sure the model is available in local ollama
 if command -v ollama >/dev/null 2>&1; then
