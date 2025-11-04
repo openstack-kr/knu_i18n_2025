@@ -20,13 +20,19 @@ Options:
   --topk 20                 (how many best/worst pairs to store in JSON)
 """
 
-import argparse, json, re, sys, io, statistics
+import argparse
+import json
+import re
+import sys
+import io
+import statistics
 from pathlib import Path
 
 import polib
 import torch
 from sentence_transformers import SentenceTransformer, util
 from babel.messages.pofile import read_po as babel_read_po
+
 
 def normalize_text(s: str, do_norm=False, do_lower=False) -> str:
     if s is None:
@@ -37,11 +43,13 @@ def normalize_text(s: str, do_norm=False, do_lower=False) -> str:
         s = s.lower()
     return s
 
+
 def load_po_entries(path: Path, only_translated=False, skip_fuzzy=False,
                     do_norm=False, do_lower=False):
     """
     Return dict: key -> string
-      key = (context, msgid, plural_index) where plural_index is int or 0 for singular
+      key = (context, msgid, plural_index)
+      where plural_index is int or 0 for singular
     Try polib first; on failure, fallback to babel.
     """
     def _from_polib(po):
@@ -57,7 +65,9 @@ def load_po_entries(path: Path, only_translated=False, skip_fuzzy=False,
 
             if e.msgid_plural:
                 if e.msgstr_plural:
-                    for idx, s in sorted(e.msgstr_plural.items(), key=lambda kv:int(kv[0])):
+                    for idx, s in sorted(
+                        e.msgstr_plural.items(), key=lambda kv: int(
+                            kv[0])):
                         s = normalize_text(s, do_norm, do_lower)
                         if only_translated and s == "":
                             continue
@@ -88,7 +98,8 @@ def load_po_entries(path: Path, only_translated=False, skip_fuzzy=False,
                 continue
             ctx = msg.context or ""
             if isinstance(msg.id, tuple):  # plural
-                strings = msg.string if isinstance(msg.string, tuple) else (msg.string,)
+                strings = msg.string if isinstance(
+                    msg.string, tuple) else (msg.string,)
                 for idx, s in enumerate(strings):
                     s = normalize_text(s, do_norm, do_lower)
                     if only_translated and s == "":
@@ -101,9 +112,11 @@ def load_po_entries(path: Path, only_translated=False, skip_fuzzy=False,
                 m[(ctx, msg.id, 0)] = s
         return m
 
+
 def batched(iterable, n):
     for i in range(0, len(iterable), n):
-        yield iterable[i:i+n]
+        yield iterable[i:i + n]
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -145,8 +158,12 @@ def main():
 
     # 4) Encode & cosine similarity
     sims = []
+
     def encode_texts(texts):
-        return model.encode(texts, convert_to_tensor=True, normalize_embeddings=True)
+        return model.encode(
+            texts,
+            convert_to_tensor=True,
+            normalize_embeddings=True)
 
     # batched to save memory
     for batch in batched(pairs, args.batch_size):
@@ -161,7 +178,8 @@ def main():
     if sims:
         avg = float(sum(sims) / len(sims))
         med = float(statistics.median(sims))
-        p90 = float(statistics.quantiles(sims, n=10)[-1]) if len(sims) >= 10 else None
+        p90 = float(statistics.quantiles(sims, n=10)
+                    [-1]) if len(sims) >= 10 else None
         above = sum(1 for s in sims if s >= args.threshold)
         ratio = above / len(sims) * 100.0
     else:
@@ -180,7 +198,11 @@ def main():
             "a_msgstr": sA,
             "b_msgstr": sB
         })
-    topk = sorted(detailed, key=lambda x: x["similarity"], reverse=True)[:args.topk]
+    topk = sorted(
+        detailed,
+        key=lambda x: x["similarity"],
+        reverse=True)[
+        :args.topk]
     worstk = sorted(detailed, key=lambda x: x["similarity"])[:args.topk]
 
     # 7) Save JSON
@@ -208,11 +230,24 @@ def main():
         "top_k_least_similar": worstk
     }
     pout.parent.mkdir(parents=True, exist_ok=True)
-    pout.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    pout.write_text(
+        json.dumps(
+            report,
+            ensure_ascii=False,
+            indent=2),
+        encoding="utf-8")
     print(f"✅ Saved: {pout}")
     if sims:
-        print(f"Pairs={len(sims)} | Avg={avg:.4f} | Med={med:.4f} | ≥{args.threshold} = {ratio:.2f}%")
+        print(
+            f"Pairs={
+                len(sims)} | Avg={
+                avg:.4f} | Med={
+                med:.4f} | ≥{
+                    args.threshold} = {
+                        ratio:.2f}%")
     else:
         print("No comparable pairs found.")
+
+
 if __name__ == "__main__":
     main()

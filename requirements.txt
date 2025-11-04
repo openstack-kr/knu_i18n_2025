@@ -1,7 +1,11 @@
+Babel==2.8.0
+langdetect==1.0.9
+ollama==0.6.0
+Requests==2.32.5
+tqdm==4.67.1
 tox
 flake8
+autopep8
 doc8
 sphinx
-autopep8
-langdetect
-Babel
+polib
