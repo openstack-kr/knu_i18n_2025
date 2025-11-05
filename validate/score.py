@@ -249,12 +249,11 @@ def main():
     print(f"Saved: {pout}")
     if sims:
         print(
-            f"Pairs={
-                len(sims)} | Avg={
-                avg:.4f} | Med={
-                med:.4f} | ≥{
-                    args.threshold} = {
-                        ratio:.2f}%")
+            f"Pairs={len(sims)} | "
+            f"Avg={avg:.4f} | "
+            f"Med={med:.4f} | "
+            f"≥{args.threshold} = {ratio:.2f}%"
+        )
     else:
         print("No comparable pairs found.")
 
