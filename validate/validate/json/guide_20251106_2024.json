@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "file_a": "/home/jiwoo/trans_1/knu_i18n_2025/validate/../po-example/ko_KR/i18n-docs-source-locale.po",
+    "file_b": "/home/jiwoo/trans_1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/guide.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "device": "cpu",
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "pairs": 274
+  },
+  "summary": {
+    "num_common_pairs": 274,
+    "avg_similarity": 0.7545,
+    "median_similarity": 0.8344,
+    "p90_similarity": 0.9777,
+    "pct_over_threshold": 56.2
+  }
+}

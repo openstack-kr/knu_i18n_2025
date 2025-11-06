@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "file_a": "/home/jiwoo/trans_1/knu_i18n_2025/validate/../po-example/ko_KR/i18n-docs-source-locale.po",
+    "file_b": "/home/jiwoo/trans_1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/guide.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 274,
+    "avg_similarity": 0.6148,
+    "median_similarity": 0.5909,
+    "p90_similarity": 0.9277,
+    "pct_over_threshold": 28.1
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.0000007152557373,
+      "context": "",
+      "msgid": "Server projects",
+      "plural_index": 0,
+      "a_msgstr": "서버 프로젝트",
+      "b_msgstr": "서버 프로젝트"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "plural_index": 0,
+      "a_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "b_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Project configuration",
+      "plural_index": 0,
+      "a_msgstr": "프로젝트 구성",
+      "b_msgstr": "프로젝트 구성"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "IRC web client",
+      "plural_index": 0,
+      "a_msgstr": "IRC 웹 클라이언트",
+      "b_msgstr": "IRC 웹 클라이언트"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "User configuration",
+      "plural_index": 0,
+      "a_msgstr": "사용자 구성",
+      "b_msgstr": "사용자 구성"
+    },
+    {
+      "similarity": 0.9999995231628418,
+      "context": "",
+      "msgid": "OpenStack I18n Guide",
+      "plural_index": 0,
+      "a_msgstr": "OpenStack I18n 가이드",
+      "b_msgstr": "OpenStack I18n 가이드"
+    },
+    {
+      "similarity": 0.9805464148521423,
+      "context": "",
+      "msgid": "Period: 2016-08-01 to 2017-01-05",
+      "plural_index": 0,
+      "a_msgstr": "기간: 2016-08-01 ~ 2017-01-05",
+      "b_msgstr": "시기: 2016-08-01 ~ 2017-01-05"
+    },
+    {
+      "similarity": 0.9751966595649719,
+      "context": "",
+      "msgid": "ATC members of I18n project",
+      "plural_index": 0,
+      "a_msgstr": "I18n 프로젝트 ATC 멤버",
+      "b_msgstr": "ATC 멤버는 I18n 프로젝트"
+    },
+    {
+      "similarity": 0.9747092723846436,
+      "context": "",
+      "msgid": "`OpenStack manuals <https://bugs.launchpad.net/openstack-manuals>`_",
+      "plural_index": 0,
+      "a_msgstr": "`OpenStack manuals <https://bugs.launchpad.net/openstack-manuals>`_",
+      "b_msgstr": "`OpenStack 매뉴얼 <https://bugs.launchpad.net/openstack-manuals>`_"
+    },
+    {
+      "similarity": 0.9713391661643982,
+      "context": "",
+      "msgid": "Period: from 2014-11-01 to 2015-07-16",
+      "plural_index": 0,
+      "a_msgstr": "기간: 2014년 11월 1일 - 2015년 7월 16일",
+      "b_msgstr": "시기: 2014년 11월 1일부터 2015년 7월 16일까지"
+    },
+    {
+      "similarity": 0.9710375666618347,
+      "context": "",
+      "msgid": "Period: 2018-07-10 to 2019-01-25",
+      "plural_index": 0,
+      "a_msgstr": "기간: 2018년 7월 10일 - 2019년 1월 25일",
+      "b_msgstr": "시기: 2018년 7월 10일부터 2019년 1월 25일까지"
+    },
+    {
+      "similarity": 0.9671115279197693,
+      "context": "",
+      "msgid": "Slicing",
+      "plural_index": 0,
+      "a_msgstr": "Slicing",
+      "b_msgstr": "slicing"
+    },
+    {
+      "similarity": 0.9659008979797363,
+      "context": "",
+      "msgid": "CLI (command line interface)",
+      "plural_index": 0,
+      "a_msgstr": "CLI (명령어 라인 인터페이스)",
+      "b_msgstr": "명령 줄 인터페이스 (CLI)"
+    },
+    {
+      "similarity": 0.964871883392334,
+      "context": "",
+      "msgid": "`Horizon I18n bugs <https://bugs.launchpad.net/horizon/+bugs?field.tag=i18n>`_",
+      "plural_index": 0,
+      "a_msgstr": "`Horizon I18n 버그 <https://bugs.launchpad.net/horizon/+bugs?field.tag=i18n>`_",
+      "b_msgstr": "`Horizon I18n bugs <https://bugs.launchpad.net/horizon/+bugs?field=태그=i18n>`_"
+    },
+    {
+      "similarity": 0.9648553133010864,
+      "context": "",
+      "msgid": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "b_msgstr": "`快速 ReStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__"
+    },
+    {
+      "similarity": 0.9633411765098572,
+      "context": "",
+      "msgid": "This page collects small tips and tricks around translations.",
+      "plural_index": 0,
+      "a_msgstr": "이 페이지는 번역과 관련한 약간의 팁 과 트릭을 정리합니다.",
+      "b_msgstr": "이 페이지는 번역에 대한 작은 팁과 트릭을 모아놓은 곳입니다."
+    },
+    {
+      "similarity": 0.9628803133964539,
+      "context": "",
+      "msgid": "The guide is written in reStructuredText (RST) markup syntax with Sphinx extensions. Most conventions follow `those of the openstack-manuals project <http://docs.openstack.org/contributor-guide/rst-conv.html>`__.",
+      "plural_index": 0,
+      "a_msgstr": "본 가이드는 Sphinx 확장인 reStructuredText (RST) 마크업 문법으로 작성되었습니다. 대부분 규칙은 `openstack-manuals 프로젝트 내 설명 <http://docs.openstack.org/contributor-guide/rst-conv.html>`__ 을 따릅니다.",
+      "b_msgstr": "가이드는 reStructuredText (RST) 마크업 스타일과 Sphinx 확장 기능을 사용하여 작성되어 있습니다. 대부분의 규칙은 `openstack-manuals 프로젝트 <http://docs.openstack.org/contributor-guide/rst-conv.html>` 의 those에 따라서 따르며,"
+    },
+    {
+      "similarity": 0.9610041975975037,
+      "context": "",
+      "msgid": "If your Zanata ID is different from your launchpad ID, Stackalytics will not find your translation statistics. You need to let Stackalytics know your ID mappings. To do this, you need to add your user data into ``detault_data.json`` in `the Stackalytics repository <https://github.com/stackalytics/default_data/>`__.",
+      "plural_index": 0,
+      "a_msgstr": "Zanata ID가 Launchpad ID와 다른 경우, Stackalytics는 번역 통계를 찾지 않습니다. Stackalytics에 ID 매핑을 알릴 필요가 있습니다. 이렇게 하려면, 사용자 데이터를 `Stackalytics 저장소 <https://github.com/stackalytics/default_data/>`__ 의 ``detault_data.json`` 에 추가해야 합니다.",
+      "b_msgstr": "launchpad ID와 Zanata ID가 다르면 Stackalytics는 आपक의 번역 통계를 찾지 못합니다. 이 문제를 해결하려면 Stackalytics에게 ID 매핑을 알려야 합니다. 이를 위해 `default_data.json` 파일에 사용자 데이터를 추가해야 합니다. <https://github.com/stackalytics/default_data/>"
+    },
+    {
+      "similarity": 0.9605032801628113,
+      "context": "",
+      "msgid": "You can see detail member-level statistics data on `HTML version of the page <https://docs.openstack.org/i18n/latest/atc-stats.html>`_.",
+      "plural_index": 0,
+      "a_msgstr": "자세한 구성원에 대한 통계 데이터를 `HTML version of the page <https://docs.openstack.org/i18n/latest/atc-stats.html>`_ 에서 확인하실 수 있습니다.",
+      "b_msgstr": "멤버 수준의 통계 데이터를 보는 데 사용되는 HTML 버전의 페이지에 대한รายละเอียด은 `<https://docs.openstack.org/i18n/latest/atc-stats.html>`_에서 확인할 수 있습니다."
+    },
+    {
+      "similarity": 0.9586862325668335,
+      "context": "",
+      "msgid": "Original string or message is not correct.",
+      "plural_index": 0,
+      "a_msgstr": "원본 문자열 또는 메시지가 올바르지 않습니다.",
+      "b_msgstr": "원래 문자열 또는 메시지는 올바르지 않습니다."
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": -0.0017582739237695932,
+      "context": "",
+      "msgid": "Is your Zanata ID different from your launchpad ID?",
+      "plural_index": 0,
+      "a_msgstr": "Zanata ID가 launchpad ID와 다릅니까?",
+      "b_msgstr": "작동"
+    },
+    {
+      "similarity": 0.02987273782491684,
+      "context": "",
+      "msgid": "Zanata",
+      "plural_index": 0,
+      "a_msgstr": "Zanata",
+      "b_msgstr": "It looks like you're referencing the error message from OpenStack, specifically Nova or Neutron."
+    },
+    {
+      "similarity": 0.09610293805599213,
+      "context": "",
+      "msgid": "Project maintenance",
+      "plural_index": 0,
+      "a_msgstr": "프로젝트 유지보수",
+      "b_msgstr": "プロジェクトの維持"
+    },
+    {
+      "similarity": 0.11186423897743225,
+      "context": "",
+      "msgid": "Building",
+      "plural_index": 0,
+      "a_msgstr": "Building",
+      "b_msgstr": "It looks like the error message is incomplete."
+    },
+    {
+      "similarity": 0.12423142045736313,
+      "context": "",
+      "msgid": "Tools",
+      "plural_index": 0,
+      "a_msgstr": "도구",
+      "b_msgstr": "To troubleshoot the issue of unable to find an iSCSI target, here are some tools you can use:"
+    },
+    {
+      "similarity": 0.18061749637126923,
+      "context": "",
+      "msgid": "TBD",
+      "plural_index": 0,
+      "a_msgstr": "TBD",
+      "b_msgstr": "Still investigating..."
+    },
+    {
+      "similarity": 0.19832149147987366,
+      "context": "",
+      "msgid": "Translation bugs in all languages can be reported here.",
+      "plural_index": 0,
+      "a_msgstr": "모든 언어에 대한 번역 버그는 여기에 신고 가능합니다.",
+      "b_msgstr": "ترجمه BUG های همه زبان ها را اینجا رپورت کنید."
+    },
+    {
+      "similarity": 0.21532011032104492,
+      "context": "",
+      "msgid": "Managing a Language Team",
+      "plural_index": 0,
+      "a_msgstr": "언어팀 내 관리",
+      "b_msgstr": "It looks like we took a detour from the technical issue."
+    },
+    {
+      "similarity": 0.21789394319057465,
+      "context": "",
+      "msgid": "Coordinator",
+      "plural_index": 0,
+      "a_msgstr": "코디네이터",
+      "b_msgstr": "Координатор"
+    },
+    {
+      "similarity": 0.22283361852169037,
+      "context": "",
+      "msgid": "Getting in touch",
+      "plural_index": 0,
+      "a_msgstr": "어울리기",
+      "b_msgstr": "It looks like you're getting an error message related to QEMU, a popular open-source emulator."
+    },
+    {
+      "similarity": 0.23039568960666656,
+      "context": "",
+      "msgid": "Amandeep Singh Saini (jimidar) - Punjabi (India)",
+      "plural_index": 0,
+      "a_msgstr": "Amandeep Singh Saini (jimidar) - Punjabi (India)",
+      "b_msgstr": "It looks like we have a QEMU guest agent issue!"
+    },
+    {
+      "similarity": 0.23717670142650604,
+      "context": "",
+      "msgid": "Translation tips",
+      "plural_index": 0,
+      "a_msgstr": "번역 팁",
+      "b_msgstr": "It looks like we had a brief moment of translation failure!"
+    },
+    {
+      "similarity": 0.23732155561447144,
+      "context": "",
+      "msgid": "``dashboards/project/containers/templates/containers/_update.html:21``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/project/containers/templates/containers/_update.html:21``",
+      "b_msgstr": "`%s` 파티션을 찾을 수 없음"
+    },
+    {
+      "similarity": 0.2631910443305969,
+      "context": "",
+      "msgid": "Previous meetings",
+      "plural_index": 0,
+      "a_msgstr": "이전 미팅",
+      "b_msgstr": "It looks like you're experiencing an error related to sorting or filtering data. The message \"Cannot '%(action)s' instance %(server_id)s while it is in %(attr)s %(state)s\" suggests that there's a conflict between the action being performed and the state of the object (in this case, `server_id`) when trying to sort or filter data."
+    },
+    {
+      "similarity": 0.26578524708747864,
+      "context": "",
+      "msgid": "IRC meeting commands",
+      "plural_index": 0,
+      "a_msgstr": "IRC 미팅 명령어",
+      "b_msgstr": "Here are the translations:"
+    },
+    {
+      "similarity": 0.2691948115825653,
+      "context": "",
+      "msgid": "``<Zanata-project-name>`` is Zanata project name,",
+      "plural_index": 0,
+      "a_msgstr": "``<Zanata-project-name>`` 는 Zanata 프로젝트 이름입니다.",
+      "b_msgstr": "I'll apply the translation rules."
+    },
+    {
+      "similarity": 0.26922178268432617,
+      "context": "",
+      "msgid": "Translation",
+      "plural_index": 0,
+      "a_msgstr": "번역",
+      "b_msgstr": "It seems like you're referring to the error message \"Forbidden\" that appears when a port is still in use."
+    },
+    {
+      "similarity": 0.2709432542324066,
+      "context": "",
+      "msgid": "Documentation",
+      "plural_index": 0,
+      "a_msgstr": "문서화",
+      "b_msgstr": "It looks like you're experiencing an error related to a missing or unknown port ID."
+    },
+    {
+      "similarity": 0.27136918902397156,
+      "context": "",
+      "msgid": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "b_msgstr": "프로젝트"
+    },
+    {
+      "similarity": 0.2720964550971985,
+      "context": "",
+      "msgid": "FAQ: I cannot find my name in Stackalytics",
+      "plural_index": 0,
+      "a_msgstr": "FAQ: Stackalytics에서 내 이름을 찾을 수 없습니다",
+      "b_msgstr": "Here is the translated text:"
+    }
+  ]
+}
