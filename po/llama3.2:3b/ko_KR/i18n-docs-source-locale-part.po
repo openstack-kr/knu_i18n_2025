@@ -1,0 +1,413 @@
+Initial translation by AI.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: I18n Contributor Guide\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-04-17 23:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ko_KR\n"
+"Language-Team: Japanese\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+msgid "(optional) Put your language name as bug tag."
+msgstr "%(id)s 서버의 라이브 마이그레이션 %(id)s이(가) 진행 중이 아닙니다."
+
+msgid ""
+"**Make sure to include your English language name in a bug summary**. It "
+"is also suggested to write a bug summary in English. For example:"
+msgstr ""
+"**보안 위협을 피하기 위해 이름을 포함한 버그 요약을 작성하십시오.  또한 영어로 버그 요약을 작성하는 것이 제안됩니다. 예를 "
+"들어,"
+
+msgid "..."
+msgstr "...%(req_ver)s 버전을 지원하지 않습니다. 최소 %(min_ver)s 이상, 최대 %(max_ver)s 이하여야 합니다."
+
+msgid ""
+":doc:`Your language team <lang_team>` may have useful information to help"
+" our translation efforts including translation guidelines, priorities, "
+"communication tools and so on. It is worth visited. You can find your "
+"language team page at https://wiki.openstack.org/wiki/I18nTeam/team. If "
+"you have questions, you can contact your coordinators."
+msgstr ""
+":ko:`가이드 <lang_team>` 팀은 우리의 번역 노력에 유용한 정보를 제공할 수 있습니다. 번역 지침, 우선 순위, 통신 "
+"도구와 같은 정보가 포함될 수 있습니다. 그것을 방문하는 것이 좋습니다. आपक이 언어 팀 페이지는 "
+"https://wiki.openstack.org/wiki/I18nTeam/team에서 찾을 수 있습니다. 질문이 있으면 your "
+"coordinators와 liên hệ할 수 있습니다."
+
+msgid ":ref:`search`"
+msgstr ":ref:`조회`"
+
+msgid ""
+"A glossary file of your language is found at "
+"``glossary/locale/<lang>/LC_MESSAGES/glossary.po`` in the i18n "
+"repository. The file is a usual PO file."
+msgstr ""
+"어言어 사전 파일이 `glossary/locale/<lang>/LC_MESSAGES/glossary.po`에 위치하고 있습니다. 이"
+" 파일은 일반적인 PO 파일입니다."
+
+msgid ""
+"A person who can proofread translations and mark them as reviewed "
+"(approved) or rejected."
+msgstr "인물은 번역을 검토하고 review 또는 거절하는 것을 확인할 수 있는 사람입니다."
+
+msgid "A person who can submit translations."
+msgstr "제출할 수 있는 번역자"
+
+msgid ""
+"A template is a skeleton of static HTML files. In this case, the string "
+"is perhaps used in \"Update\" form in \"Container\" menu."
+msgstr ""
+"템플릿은 정적 HTML 파일의骨架입니다. 이 경우, \"컨테이너\" 메뉴의 \"업데이트\" 형식에서 사용되는 문자열이 될 수 "
+"있습니다."
+
+msgid "ATC Statistics in past releases"
+msgstr "past releas에서 ATC 통계"
+
+msgid "ATC members of I18n project"
+msgstr "ATC 멤버는 I18n 프로젝트"
+
+msgid "About this guide"
+msgstr "이 가이드에 대해"
+
+msgid ""
+"After the official release, translating master version is welcome for "
+"upstream translation contribution, but the original strings may be "
+"changed frequently due to upstream development on the projects."
+msgstr "공식 릴리스 후 마스터 버전을 업스트림 번역에 참여할 수 있지만, 원본 문자는 자주 업스트림 개발으로 인해 변경될 수 있습니다."
+
+msgid ""
+"After you edit the master glossary, ensure to reflect the change to all "
+"language glossary files. To do this, run the following command."
+msgstr ""
+"'comma'를 'comma'로, 'master'를 '마스터'로 바꾸어ください. 다음을 편집한 후 마스터 glossary를 수정하고"
+" 모든 언어 glossary 파일에 반영하려면 다음 명령을 실행하세요."
+
+msgid "Amandeep Singh Saini (jimidar) - Punjabi (India)"
+msgstr "ਅੰਮ੍ਰਿਤਸਿੰਘ ਸਿੰਘ ਸਾਈਣੀ (ਜ਼ੀਮੀਦਾਰ) - ਪੰਜਾਬੀ (ਭਾਰਤ)"
+
+msgid ""
+"Another convenient way is to check dashboard translations is to run "
+"DevStack in your local environment. To run DevStack, you need to prepare "
+"``local.conf`` file, but no worries. Several ``local.conf`` files are "
+"shared on the Internet and a minimum example is shown below. From our "
+"experience, you need a machine with two or four CPU cores, 8 GB memory "
+"and 20 GB disk to run DevStack comfortably. If you enable just major "
+"OpenStack projects, the machine requirement would be much smaller like "
+"2~4GB memory."
+msgstr ""
+"디스크는 'disk'으로 번역됩니다. 환경은 'environment'으로 번역됩니다. 메모리은 'memory'으로 번역됩니다. "
+"프로젝트는 'project'으로 번역됩니다. 사용량은 'share'으로 번역됩니다. 스택은 'stack'으로 번역됩니다."
+
+msgid ""
+"As a translator, if reported bugs turns out beyond a translation bug, it "
+"is better to ask I18n team members via the mailing list or the IRC "
+"channel. They can handle such bugs."
+msgstr "이 번역 규칙을 적용합니다."
+
+msgid "Bugs in a source project"
+msgstr "원본 프로젝트 내 bugs가 존재함"
+
+msgid "Bugs in tool chains"
+msgstr "도구 链에 버그가 존재함"
+
+msgid ""
+"Bugs in translated documents or dashboard are mainly classified into the "
+"following areas:"
+msgstr "번역된 दस장이나 디스플레이에서 발견되는 오류는 다음 영역으로 주로 분류됩니다."
+
+msgid ""
+"Bugs to report English strings are hard to translate in your language. "
+"For example, translators cannot control the order of words, or a plural "
+"form is not supported. Usually, this kind of bugs are in the original "
+"strings and cannot be fixed just by changing the strings and more work is"
+" needed."
+msgstr ""
+"bugs를 보고 영어 문자열을 번역하는 것이 어렵습니다. 예를 들어, 번역자들은 단어의 순서를 제어할 수 없고, 복수형이 지원되지 "
+"않습니다. 일반적으로 이 तरह의 bugs는 원본 문자열에 있는 것이고, 단지 문자열만 변경하면 해결되지 않는다. 더 많은 작업이 "
+"필요합니다."
+
+msgid "Building"
+msgstr "건설"
+
+msgid ""
+"Builds release notes in both the original (English) version and "
+"translated versions (if any)."
+msgstr "릴리스 노트를 원본 (영어) 버전과 번역된 버전(만약 존재할 경우)을 모두 xây dựng합니다."
+
+msgid "CLI (command line interface)"
+msgstr "CLI (명령 줄 인터페이스)"
+
+msgid "Click \"...\" on the right, and select \"Request to join team\"."
+msgstr "\"...\" 오른쪽에 있는 버튼을 클릭하고 \"팀에 참여하기\"를 선택하세요."
+
+msgid "Click \"Languages\" on the top, all languages will be listed."
+msgstr "Click \"Languages\" 위쪽에 위치한顶部, 모든 언어가 liệt어질 것입니다."
+
+msgid "Click \"Log in\" button."
+msgstr "\"로그인\" 버튼을 클릭하세요."
+
+msgid "Click the language you want to translate, the language page will be shown."
+msgstr "어떤 언어를 클릭하십시오. 언어 페이지가 나타납니다."
+
+msgid ""
+"Common code used by **propose_translation_update.sh** and "
+"**upstream_translation_update.sh**"
+msgstr ""
+"**proposaling translation update.sh** 및 **upstream translation "
+"update.sh**에 사용되는 공통 코드"
+
+msgid "Contents"
+msgstr "내용"
+
+msgid "Contributing"
+msgstr "여러분은 이 프로젝트에 기여하시고 싶으신가요?"
+
+msgid "Convention"
+msgstr "convention"
+
+msgid "Coordinator"
+msgstr "주도자"
+
+msgid "Creating a Language Team"
+msgstr "어言어 팀을 만들기"
+
+msgid ""
+"Discuss and review glossary changes in your language team before you "
+"propose changes to the Gerrit review system. Reviewers in the Gerrit "
+"review system cannot understand your language in most cases, so they can "
+"only check syntax or conventions."
+msgstr ""
+"고사전 변경에 대한 논의와 리뷰를 고사전 팀에서 trước에 제안하는 Gerrit 리뷰 시스템의 변경을 제안하기 "
+"전에-review어는 대부분이 고사전 변경을 이해할 수 없기 때문에, only 문법 또는 규칙을 확인할 수 있습니다."
+
+msgid "Documentation"
+msgstr "도キュ먼트"
+
+msgid "Downloading"
+msgstr "다운로드 중입니다."
+
+msgid ""
+"During translating a dashboard related project, you may want to know "
+"\"where is this string used in the dashboard?\"."
+msgstr "프로젝트에 대한 디스플레이श트를 사용하는 문자열의 위치를 확인하고 싶습니다."
+
+msgid ""
+"Each language team has useful information to help our translation "
+"efforts. It is worth visited. You can find your language team at "
+"https://wiki.openstack.org/wiki/I18nTeam/team."
+msgstr ""
+"각 언어 팀은 우리의 번역 노력에 유용한 정보를 제공합니다. 그것을 방문하는 것은 가치가 있습니다. 언어 팀을 찾으려면 "
+"https://wiki.openstack.org/wiki/I18nTeam/team을 참조하십시오."
+
+msgid "Everyone in the OpenStack community is glad to help you."
+msgstr "모든 사람들(people)은 오픈 스텝(OpenStack) 커뮤니티에서 आपक을 도와드릴게요."
+
+msgid "FAQ: I cannot find my name in Stackalytics"
+msgstr "FAQ: 나의 이름을 Stackalytics에서 찾을 수 없습니다."
+
+msgid ""
+"Finally, propose a patch including all of the above changes to the Gerrit"
+" review system."
+msgstr "마지막으로, 모든 변경 사항을 포함하여 patches를 Gerrit 리뷰 시스템에 제안합니다."
+
+msgid ""
+"Finding and reporting translation bugs is an important step towards "
+"better quality of translations in OpenStack."
+msgstr ""
+"사용자 스택을 설정하여 사용하는 것은 중요하지만, 사용자가 사용할 수 있는 가장 적합한 스택을 선택할 수 있도록 하는 것이 더 "
+"중요하다."
+
+msgid "Fixing I18n bugs"
+msgstr "I18n 오류를修正합니다."
+
+msgid ""
+"For a document in a stable branch, such as the installation guide for "
+"Liberty, you need to update the file ``doc-tools-check-languages.conf`` "
+"in the target stable branch directly."
+msgstr ""
+"안정적인 분기에서 문서가 있는 경우, chẳng hạn Liberty의 설치 가이드를 포함한 안정적인 분기의 문서는 직접 안정적인 "
+"분기에서 ``doc-tools-check-languages.conf`` 파일을 업데이트해야 합니다."
+
+msgid "For documentations, URL and a detail place would be great."
+msgstr "문서화에 URL과รายละเอียด 위치가 좋을 것입니다."
+
+msgid "For the dashboard, panel or form name."
+msgstr "대시보드, 패널 또는 형식 이름을위한"
+
+msgid "Getting in touch"
+msgstr "연락을 취하려고합니다."
+
+msgid "Glossary Management"
+msgstr "사전 관리"
+
+msgid "Glossary of your language"
+msgstr "*   **UUID** : 고유 식별자 (Unique Identifier)"
+
+msgid "Go to `Zanata server <https://translate.openstack.org/>`_"
+msgstr "서버를 방문하십시오. <https://translate.openstack.org/>_ Zanata에서 영어를 한국어로 번역합니다."
+
+msgid ""
+"Go to the :doc:`translation tools <tools>` page to understand the tools "
+"and scripts which support our translation platform."
+msgstr ":doc:`번역 도구 <tools>` 페이지를 방문하여 우리의 번역 플랫폼을 지원하는 도구와 스크립트를 이해하십시오."
+
+msgid "Handling documentation projects"
+msgstr "프로젝트의 문서를 처리합니다."
+
+msgid "Handling horizon projects"
+msgstr "하리존 프로젝트를 처리합니다."
+
+msgid "Handling python projects"
+msgstr "프로젝트를 처리함"
+
+msgid "Handling translation bugs"
+msgstr "전訳 오류를 처리하는 방법"
+
+msgid "Heleno Jimenez de la Cruz (id: heleno_jimenez) - Spanish (Mexico)"
+msgstr "헨레로 지메네스 데 라 크루즈 (id: heleno_jimenez) - 스페인어 (멕시코 )"
+
+msgid "Here is the check list for such case:"
+msgstr "다음은 이러한 경우의 체크리스트입니다."
+
+msgid "How can I report a bug?"
+msgstr "bugs를 보고 싶은 경우, 개발자에게 연락하거나 issue 트래커에 이메일을 보내세요."
+
+msgid "How to check translations"
+msgstr "번역 확인 방법은 다음과 같습니다."
+
+msgid "I18n team meeting"
+msgstr "국际화 팀 회의"
+
+msgid "IRC channel: ``#openstack-i18n`` on OFTC"
+msgstr "IRC 채널: ``#openstack-i18n`` (OFTC)"
+
+msgid "IRC meeting commands"
+msgstr "IRC 회의 명령"
+
+msgid "IRC web client"
+msgstr "IRC 웹 클라이언트"
+
+msgid ""
+"If a bug reports translation errors of a certain language, it could be "
+"called **translation bug**. The translation bug should be fixed in the "
+"translation tool."
+msgstr ""
+"bug를-report하는 경우 특정 언어의 번역 오류가 보고될 수 있으며, 이 경우 번역 오류를 고치기 위해 번역 도구에修正이 "
+"필요합니다."
+
+msgid "If a reported bug turns out to be bugs in a source project, You could help"
+msgstr "bugs가 소스 프로젝트에 있는 문제임을 발견했을 때, 도와줄 수 있습니다."
+
+msgid ""
+"If there is a translation bug on a stable version in Zanata, it is highly"
+" recommended to fix the same translation bug on the corresponding string "
+"in the master version."
+msgstr "'master'을 '마스터'으로 바꾸어야 합니다."
+
+msgid "If you are a speaker of this language, you could help"
+msgstr "만약 이 언어를 nói는 사람이라면 도움이 될 것입니다."
+
+msgid "If you are a translator of this language, you could help"
+msgstr "만약 आप 이 언어의 번역가라면 도움이 될 수 있습니다."
+
+msgid ""
+"If you are a translator or a person involved in I18n effort, you may be "
+"interested in triaging and fixing translation bugs :)"
+msgstr "만약 번역자 또는 I18n 작업에 참여하는 사람이라면, 번역 오류를_triaging 및修正하는 것을สนใจ할 수 있습니다."
+
+msgid ""
+"If you are lucky to use a same name for launchpad and Zanata IDs, you do "
+"not need to do the above. Stackalytics will find your statistics "
+"automatically."
+msgstr "작동을 사용할 때는 'launch'를 '작동'으로, 'stack'를 'stack'로 번역합니다."
+
+msgid ""
+"If you are unfamiliar with translations in OpenStack, read the `Project "
+"Team Guide on Internationalization and Translation "
+"<http://docs.openstack.org/project-team-guide/i18n.html>`_ first."
+msgstr "호스트 %(host)s 바이너리 %(binary)s이存在합니다."
+
+msgid ""
+"If you encounter more complicated things including translation tool "
+"chains or something others, the most recommended way is to ask it in the "
+"I18n mailing list ``openstack-i18n@lists.openstack.org``. Of course, you "
+"can file a bug against a related project directly."
+msgstr "Event %(event)s not found for action id %(action_id)s"
+
+msgid "If you have a machine running DevStack, there are two ways."
+msgstr "DevStack을-running하는 기계가 있다면, 두 가지 방법이 있습니다."
+
+msgid "If you have any, don't hesitate to share it :)"
+msgstr "사용량을 공유하십시오."
+
+msgid ""
+"If you visit `openstack-i18n launchpad <https://bugs.launchpad.net"
+"/openstack-i18n>`_, we can find **Report a bug** at the right-upper "
+"corner. Click to report a bug."
+msgstr ""
+"오픈스택-이사전 launchpad <https://bugs.launchpad.net/openstack-i18n>_, 우리는 "
+"**bug를 신고 하기위한 버그 리포트**를 오른쪽 상단에 위치합니다. 이 버그를 신고하기위한 버튼을 클릭하세요."
+
+msgid ""
+"If you want to help fix I18n bugs of OpenStack, we can find them in the "
+"following places:"
+msgstr "OpenStack의 I18n 오류를 고쳐주고 싶다면 다음 장소에서 찾을 수 있습니다."
+
+msgid ""
+"If you want to help to report bugs, add more wishlists, and improve them,"
+" you can report and fix bugs at `openstack-i18n in Launchpad "
+"<https://bugs.launchpad.net/openstack-i18n>`_. Mark bugs with a tag "
+"\"tools\"."
+msgstr "이 플러그인을 사용하는 경우 'launch'은 '작동', 'stack'은 'stack', 'tag'은 '태그'으로 번역됩니다."
+
+msgid ""
+"If your Zanata ID is different from your launchpad ID, Stackalytics will "
+"not find your translation statistics. You need to let Stackalytics know "
+"your ID mappings. To do this, you need to add your user data into "
+"``detault_data.json`` in `the Stackalytics repository "
+"<https://github.com/stackalytics/default_data/>`__."
+msgstr ""
+"launchpad ID와 Zanata ID가 다르면 Stackalytics는 आपक의 번역 통계를 찾지 못합니다. 이 문제를 "
+"해결하려면 Stackalytics에게 ID 매핑을 알려야 합니다. 이를 위해 `default_data.json`에 사용자 데이터를 "
+"추가해야 합니다. <https://github.com/stackalytics/default_data/>"
+
+msgid ""
+"If your Zanata ID is not included in the translator list, you need to "
+"update the list to include your Zanata ID. Contact your language "
+"coordinator, email the i18n mailing list. You can also submit a patch to "
+"update the list by yourself (For detail, see :ref:`sync-translator-"
+"list`)."
+msgstr ""
+"제출을 위해 사용하는 Zanata ID가 translator 목록에 포함되지 않으면, Zanata ID를 포함하는 목록에 "
+"업데이트해야 합니다. 언어 조정자와 연락하세요. 이메일로 i18n 메일링 리스트에 연락하거나, :ref:`sync-"
+"translator-list`에 설명된 대로 خود이 목록을 업데이트할 수 있습니다."
+
+msgid "Import latest translations"
+msgstr "최근 번역을.import합니다."
+
+msgid "In most cases, a source project would be one of:"
+msgstr "다중 프로젝트 중에서 대부분은 다음과 같습니다."
+
+msgid ""
+"Input a short introduction of yourself, including your name, as "
+"\"Additional information\", then click \"Send message\"."
+msgstr "추가 정보"
+
+msgid ""
+"Internationalization (I18n) is essential to make OpenStack ubiquitous. "
+"The mission of OpenStack I18n team is to make OpenStack ubiquitously "
+"accessible to people of all language backgrounds, by enhancing OpenStack "
+"software internationalization, providing translation, maintaining a "
+"translation platform and managing translation process for better quality "
+"of outcomes."
+msgstr "스택은 'stack'으로 유지됩니다."
+
+msgid "Is your Zanata ID different from your launchpad ID?"
+msgstr "Zanata ID와 Launchpad ID는 다르며, 'launch'은 '작동'으로 번역됩니다."
+
