@@ -18,11 +18,14 @@ git clone https://github.com/openstack-kr/knu_i18n_2025.git
 cd knu_i18n_2025
 python -m pip install --upgrade pip
 pip install tox
+curl -fsSL https://ollama.com/install.sh | sh
 ```
 ### 2-1. Use tox environment
 For convenience, we provide a tox environment that automatically sets up dependencies and runs the workflow in an isolated environment.
 ```bash
 tox -e i18n
+# if you want to see log in detalied 
+# tox -e i18n -vvP
 ```
 
 ### 2-2. or Run Locally
