@@ -33,11 +33,60 @@ from utils import (
 )
 
 LANG_MAP = {
-    "ko_KR": "Korean",
+    "vi-VN": "Vietnamese (Vietnam)",
+    "ur": "Urdu",
+    "tr-TR": "Turkish (Turkey)",
+    "Th": "Thai",
+    "te-IN": "Telugu (India)",
+    "ta": "Tamil",
+    "es-MX": "Spanish (Mexico)",
+    "es": "Spanish",
+    "sl-SI": "Slovenian (Slovenia)",
+    "sr": "Serbian",
     "ru": "Russian",
+    "Ro": "Romanian",
+    "pa-IN": "Punjabi (India)",
+    "pt-BR": "Portuguese (Brazil)",
+    "pt": "Portuguese",
+    "pl-PL": "Polish (Poland)",
+    "fa": "Persian",
+    "ne": "Nepali",
+    "mr": "Marathi",
+    "mni": "Manipuri",
+    "mai": "Maithili",
+    "lo": "Lao",
+    "ko-KR": "Korean (South Korea)",
+    "kok": "Konkani",
+    "ks": "Kashmiri",
+    "kn": "Kannada",
     "ja": "Japanese",
-    "zh_CN": "Chinese",
-    # 필요시 추가
+    "it": "Italian",
+    "id": "Indonesian",
+    "hu": "Hungarian",
+    "hi": "Hindi",
+    "he": "Hebrew",
+    "gu": "Gujarati",
+    "el": "Greek",
+    "de": "German",
+    "ka-GE": "Georgian (Georgia)",
+    "fr": "French",
+    "fi-FI": "Finnish (Finland)",
+    "fil": "Filipino",
+    "eo": "Esperanto",
+    "en-US": "English (United States)",
+    "en-GB": "English (United Kingdom)",
+    "en-AU": "English (Australia)",
+    "nl-NL": "Dutch (Netherlands)",
+    "cs": "Czech",
+    "zh-TW": "Chinese (Taiwan)",
+    "zh-CN": "Chinese (China)",
+    "ca": "Catalan",
+    "bg-BG": "Bulgarian (Bulgaria)",
+    "brx": "Bodo",
+    "bn-IN": "Bengali (India)",
+    "as": "Assamese",
+    "ar": "Arabic",
+    "sq": "Albanian",
 }
 
 # 하나의 문장(entry)을 번역
@@ -85,11 +134,15 @@ def translate_entry(payload, language_name):
         {
             "role": "system",
             "content": (
-                "You are a translation engine. "
-                "Your only job is to translate the user's English into "
-                f"{language_name}."
-                " Do not add any other words."
-                " Preserve all reStructuredText (RST) syntax."
+                "You are a strict translation engine. "
+                "You always translate the user's English text into "
+                f"{language_name} only. "
+                "Your answer MUST be written 100% in that target language. "
+                "Do not mix in any other languages (including English). "
+                "Do not explain, comment, or add anything else. "
+                "Output only the translated text itself, with no quotes. "
+                "Preserve all reStructuredText (RST) syntax, placeholders, "
+                "and formatting exactly as in the input."
             ),
         },
     ]

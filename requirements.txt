@@ -9,3 +9,5 @@ autopep8
 doc8
 sphinx
 polib
+torch
+sentence_transformers
