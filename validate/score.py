@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Compare two PO files semantically using SimCSE.
@@ -20,12 +19,15 @@ Options:
   --topk 20                 (how many best/worst pairs to store in JSON)
 """
 
+from datetime import datetime, timedelta
 import argparse
 import json
 import re
 import sys
 import io
 import statistics
+import csv
+from datetime import datetime
 from pathlib import Path
 
 import polib
@@ -33,6 +35,7 @@ import torch
 from sentence_transformers import SentenceTransformer, util
 from babel.messages.pofile import read_po as babel_read_po
 
+timestamp = (datetime.now() + timedelta(hours=9)).strftime("%Y%m%d_%H%M")
 
 def normalize_text(s: str, do_norm=False, do_lower=False) -> str:
     if s is None:
@@ -131,6 +134,8 @@ def main():
     ap.add_argument("--normalize-text", action="store_true")
     ap.add_argument("--lowercase", action="store_true")
     ap.add_argument("--topk", type=int, default=20)
+    ap.add_argument("--experiments_csv", default=str(Path(__file__).
+    resolve().parent.parent / "experiments.csv"))
     args = ap.parse_args()
 
     pa, pb, pout = Path(args.a), Path(args.b), Path(args.out)
@@ -229,14 +234,19 @@ def main():
         "top_k_most_similar": topk,
         "top_k_least_similar": worstk
     }
-    pout.parent.mkdir(parents=True, exist_ok=True)
+    out_dir = Path("validate/json")
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # extract PO filename (ex: guide.po → guide)
+    po_basename = pb.stem
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+    pout = out_dir / f"{po_basename}_{timestamp}.json"
+
+    # --- write json file ---
     pout.write_text(
-        json.dumps(
-            report,
-            ensure_ascii=False,
-            indent=2),
+        json.dumps(report, ensure_ascii=False, indent=2),
         encoding="utf-8")
-    print(f"✅ Saved: {pout}")
+    print(f"Saved: {pout}")
     if sims:
         print(
             f"Pairs={
@@ -247,6 +257,64 @@ def main():
                         ratio:.2f}%")
     else:
         print("No comparable pairs found.")
+
+    # 8) experiments.csv 업데이트
+    csv_path = Path(args.experiments_csv)
+    if csv_path.exists():
+        target_po_abs = str(pb.resolve())
+        target_po_name = pb.name
+
+        with csv_path.open("r", newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+            fields = reader.fieldnames or []
+
+        # 칼럼
+        need_cols = ["Avg_sim", "Med_sim", "sim_over_0.8(≥0.8)"]
+        for c in need_cols:
+            if c not in fields:
+                fields.append(c)
+
+        updated = False
+        for r in rows:
+            po_field = (r.get("po_file") or "").strip()
+            if not po_field:
+                continue
+            try:
+                same = (str(Path(po_field).resolve()) == target_po_abs) or (Path(po_field).name == target_po_name)
+            except Exception:
+                same = (Path(po_field).name == target_po_name)
+            if same:
+                r["Avg_sim"] = f"{avg:.4f}" if sims else "0.0000"
+                r["Med_sim"] = f"{med:.4f}" if sims else "0.0000"
+                r["sim_over_0.8(≥0.8)"] = f"{ratio:.2f}"
+                updated = True
+
+        if not updated:
+            rows.append({
+                "timestamp": datetime.now().strftime("%Y-%m-%dT%H:%M"),
+                "model": args.model,
+                "pot_file": "",
+                "po_file": target_po_abs,
+                "duration_sec": "",
+                "git_commit": "",
+                "git_branch": "",
+                "Avg_sim": f"{avg:.4f}" if sims else "0.0000",
+                "Med_sim": f"{med:.4f}" if sims else "0.0000",
+                "sim_over_0.8(≥0.8)": f"{ratio:.2f}",
+            })
+            # 누락보정
+            for k in ["timestamp", "model", "pot_file", "duration_sec", "git_commit", "git_branch"]:
+                if k not in fields:
+                    fields.append(k)
+
+        with csv_path.open("w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=fields)
+            w.writeheader()
+            w.writerows(rows)
+        print(f"[quality] experiments.csv updated: {csv_path}")
+    else:
+        print(f"[quality] experiments.csv not found, skip update: {csv_path}")
 
 
 if __name__ == "__main__":
