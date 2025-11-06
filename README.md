@@ -16,6 +16,7 @@ git clone https://github.com/openstack-kr/knu_i18n_2025.git
 ```
 ```bash
 cd knu_i18n_2025
+# if you troule in upgrading pip, we recommend to use venv
 python -m pip install --upgrade pip
 pip install tox
 curl -fsSL https://ollama.com/install.sh | sh
