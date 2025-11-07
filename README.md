@@ -24,9 +24,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 ### 2-1. Use tox environment
 For convenience, we provide a tox environment that automatically sets up dependencies and runs the workflow in an isolated environment.
 ```bash
-tox -e i18n
-# if you want to see log in detalied 
-# tox -e i18n -vvP
+tox -e i18n -vv
 ```
 
 ### 2-2. or Run Locally
