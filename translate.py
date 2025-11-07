@@ -23,6 +23,7 @@ import time
 import concurrent.futures
 from tqdm import tqdm
 import random
+import json
 from babel.messages import pofile, Catalog
 from utils import (
     parse_args,
@@ -89,38 +90,41 @@ LANG_MAP = {
     "sq": "Albanian",
 }
 
-# 하나의 문장(entry)을 번역
 
-
-def translate_entry(payload, language_name):
+# entry를 5개씩 묶은 batch 단위로 번역 수행
+def translate_batch(payload, language_name):
     """
-    번역 단위(entry)를 LLM을 사용해 번역하는 함수.
-    Translates a single PO/POT entry using the selected LLM model.
+    번역 단위(entry)를 batch로 묶어 LLM을 사용해 번역하는 함수.
+    Translates a batch of PO/POT entries using the selected LLM model.
 
     Args:
-        payload (tuple): (entry, index, total_count)
-            entry (babel.messages.catalog.Message): 번역 대상 메시지 객체
-            index (int): 현재 번역 순서
-            total_count (int): 전체 번역 항목 수
+        payload (tuple): (entries, batch_index, total_batches)
+            entries (list): 번역 대상 메시지 객체 리스트
+            batch_index (int): 현재 batch 순서
+            total_batches (int): 전체 batch 수
         language_name (str): 번역하는 언어 이름
 
     Returns:
-        tuple | None: (msgid, translation, locations) 또는 오류 시 None
+        list | None: [(msgid, translation, locations), ...] 또는 오류 시 None
     """
 
-    entry, i, total_count = payload
+    entries, batch_idx, total_batches = payload
 
-    relevant_glossary_terms = {
-        en: ko for en, ko in GLOSSARY.items() if en in entry.id.lower()
-    }
-
-    if relevant_glossary_terms:
+    # batch 내의 모든 entry에서 관련된 glossary 수집
+    all_relevant_glossary_terms = {}
+    for entry in entries:
+        relevant_terms = {
+            en: ko for en, ko in GLOSSARY.items() if en in entry.id.lower()
+        }
+        all_relevant_glossary_terms.update(relevant_terms)
+        
+    if all_relevant_glossary_terms:
         glossary_rules = (
             " Apply these translation rules: "
             + ", ".join(
                 [
                     f"'{en}' must be translated as '{ko}'"
-                    for en, ko in relevant_glossary_terms.items()
+                    for en, ko in all_relevant_glossary_terms.items()
                 ]
             )
             + "."
@@ -128,36 +132,56 @@ def translate_entry(payload, language_name):
     else:
         glossary_rules = ""
 
-    # ai에게 전달하는 프롬프트
+    # ai에게 전달하는 batch 번역용 프롬프트
     messages = [
         # 1. System 역할
         {
             "role": "system",
             "content": (
                 "You are a strict translation engine. "
-                "You always translate the user's English text into "
-                f"{language_name} only. "
-                "Your answer MUST be written 100% in that target language. "
+                "You will receive a JSON array of English texts to translate into "
+                f"{language_name}. "
+                "Translate each text considering the context of surrounding texts. "
+                "CRITICAL: Your output MUST contain EXACTLY the same number of translations "
+                "as the input array. Do not split or merge any items. "
+                "Your answer MUST be a valid JSON array where each element is "
+                "the translation of the corresponding input text. "
+                "Each translation MUST be written 100% in the target language. "
                 "Do not mix in any other languages (including English). "
                 "Do not explain, comment, or add anything else. "
-                "Output only the translated text itself, with no quotes. "
-                "Preserve all reStructuredText (RST) syntax, placeholders, "
-                "and formatting exactly as in the input."
+                "Preserve 100% of the original formatting, including: "
+                "reStructuredText (RST) syntax such as `**bold**`, "
+                "``inline code``, and `_links`. "
+                "Placeholders like {variable}, %(name)s, and %s. "
+                "Line breaks (\\n) within text must be preserved as-is. "
+                "Output format: [\"translation1\", \"translation2\", ...] "
+                "with EXACTLY the same array length as input."
             ),
         },
     ]
 
     # 예시 리스트에서 2개를 무작위로 선택하여 추가
     if FEW_SHOT_EXAMPLES:
-        num_to_sample = min(len(FEW_SHOT_EXAMPLES), 2)
+        num_to_sample = min(len(FEW_SHOT_EXAMPLES), 0)
         selected_examples = random.sample(FEW_SHOT_EXAMPLES, num_to_sample)
-        for msgid, msgstr in selected_examples:
-            messages.append({"role": "user", "content": msgid})
-            messages.append({"role": "assistant", "content": msgstr})
+        
+        example_input = [msgid for msgid, _ in selected_examples]
+        example_output = [msgstr for _, msgstr in selected_examples]
+        
+        messages.append({
+            "role": "user",
+            "content": json.dumps(example_input, ensure_ascii=False)
+        })
+        messages.append({
+            "role": "assistant",
+            "content": json.dumps(example_output, ensure_ascii=False)
+        })
 
-    # 실제 번역 내용 추가
-    messages.append({"role": "user",
-                     "content": f"{glossary_rules}\n\n{entry.id}"})
+    # 실제 번역할 텍스트들을 JSON 배열로 구성
+    texts_to_translate = [entry.id for entry in entries]
+    user_content = f"{glossary_rules}\n\n{json.dumps(texts_to_translate, ensure_ascii=False)}"
+    
+    messages.append({"role": "user", "content": user_content})
 
     try:
         response = ollama.chat(
@@ -172,32 +196,73 @@ def translate_entry(payload, language_name):
             },
         )
 
-        translation = response["message"]["content"].strip()
+        translation_text = response["message"]["content"].strip()
 
-        # 번역한 문장을 삽입한 entry
-        return (entry.id, translation, entry.locations)
+        # JSON 파싱 시도
+        try:
+            translations = json.loads(translation_text)
+        except json.JSONDecodeError:
+            # JSON 파싱 실패 시 대체 처리
+            print(f"!!! Batch [{batch_idx +1 }/{total_batches}] JSON parsing failed, trying to extract array !!!")
+            # array 추출 시도
+            start = translation_text.find('[')
+            end = translation_text.rfind(']') + 1
+            if start != -1 and end != 0:
+                translations = json.loads(translation_text[start:end])
+            else:
+                raise ValueError("Cannot extract JSON array from response")
+
+        if len(translations) != len(entries):
+            print(
+                f"!!! Batch [{batch_idx + 1}/{total_batches}] "
+                f"Translation count mismatch: expected {len(entries)}, got {len(translations)} !!!"
+            )
+            return None
+
+        results = []
+        for entry, translation in zip(entries, translations):
+            results.append((entry.id, translation.strip(), entry.locations))
+            
+        return results
 
     except Exception as e:
         print(
             (
-                f"!!! [{i + 1}/{total_count}] Error translating entry "
-                f"'{entry.id[:30]}...': {e} !!!"
+                f"!!! Batch [{batch_idx + 1}/{total_batches}] Error translating batch: {e} !!!"
             )
         )
         return None
 
 
-# pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
-def translate_pot_file(pot_path, po_path, language_code, language_name):
+def create_batches(entries, batch_size):
     """
-    POT 파일을 읽어 병렬 번역 후 PO 파일로 저장하는 함수.
-    Reads a .pot file, translates entries in parallel, and saves as .po file.
+    Entry 리스트를 지정된 크기의 batch로 분할하는 함수
+    
+    Args:
+        entries (list): 전체 entry 리스트
+        batch_size (int): 각 batch의 크기
+        
+    Returns:
+        list: batch로 분할된 entry 리스트의 리스트
+    """
+    batches = []
+    for i in range(0, len(entries), batch_size):
+        batches.append(entries[i:i+batch_size])
+    return batches
+
+
+# pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
+def translate_pot_file(pot_path, po_path, language_code, language_name, batch_size=5):
+    """
+    POT 파일을 읽어 batch 단위로 병렬 번역 후 PO 파일로 저장하는 함수.
+    Reads a .pot file, translates entries in batches in parallel, and saves as .po file.
 
     Args:
         pot_path (str): 원본 POT 파일 경로
         po_path (str): 번역된 결과를 저장할 PO 파일 경로
         language_code (str): 번역하는 언어 코드
         language_name (str): 번역하는 언어 이름
+        batch_size (int): 한 번에 번역할 entry 개수 (기본값: 5)
 
     Returns:
         None
@@ -220,16 +285,21 @@ def translate_pot_file(pot_path, po_path, language_code, language_name):
 
     entries_to_translate = [entry for entry in pot if entry.id]
     total_entries = len(entries_to_translate)
+    
+    # entry를 batch로 분할
+    batches = create_batches(entries_to_translate, batch_size)
+    total_batches = len(batches)
 
     print(f"--- {os.path.basename(pot_path)}를 {language_code}로 번역 ---")
     print(
-        f"총 {total_entries} 라인의 번역입니다. {MAX_WORKERS} 개의 병렬 코어를 사용합니다."
+        f"총 {total_entries}개 entry를 {total_batches}개 batch로 나누어 번역합니다. "
+        f"(Batch size: {batch_size}, Workers: {MAX_WORKERS})"
     )
 
-    # (entry, 순서, 전체 개수) 의 payload 만들기
+    # (batch, 순서, 전체 batch 수)의 payload 만들기
     payloads = [
-        (entry, i, total_entries)
-        for i, entry in enumerate(entries_to_translate)
+        (batch, i, total_batches)
+        for i, batch in enumerate(batches)
     ]
 
     with concurrent.futures.ThreadPoolExecutor(
@@ -239,19 +309,19 @@ def translate_pot_file(pot_path, po_path, language_code, language_name):
         results = list(
             tqdm(
                 executor.map(
-                    lambda payload: translate_entry(
+                    lambda payload: translate_batch(
                         payload,
                         language_name),
                     payloads),
-                total=total_entries,
-                desc=f"Translating entries [{language_code}]",
-                unit="entry",
+                total=total_batches,
+                desc=f"Translating batches [{language_code}]",
+                unit="batch",
             ))
 
-    for result in results:
-        if result:
-            msgid, translation, locations = result
-            po.add(id=msgid, string=translation, locations=locations)
+    for batch_result in results:
+        if batch_result:
+            for msgid, translation, locations in batch_result:
+                po.add(id=msgid, string=translation, locations=locations)
 
     try:
         with open(po_path, "wb") as f:
@@ -290,9 +360,10 @@ if __name__ == "__main__":
     EXAMPLE_URL = args.example_url
     EXAMPLE_FILE = args.example_file
     LANGUAGES_TO_TRANSLATE = args.languages.split(',')
+    BATCH_SIZE = getattr(args, 'batch_size', 5)
 
     print("=================================================")
-    print(f"번역 시작, AI 모델: {MODEL_NAME}")
+    print(f"번역 시작, AI 모델: {MODEL_NAME}, Batch Size: {BATCH_SIZE}")
     print("=================================================\n")
 
     # 폴더 생성 + POT 다운로드
@@ -323,7 +394,8 @@ if __name__ == "__main__":
             GLOSSARY_URL,
             GLOSSARY_PO_FILE,
             GLOSSARY_JSON_FILE,
-            GLOSSARY_DIR)
+            GLOSSARY_DIR
+        )
         FEW_SHOT_EXAMPLES = load_examples(
             lang_code, EXAMPLE_URL, EXAMPLE_FILE, EXAMPLE_DIR)
 
@@ -337,7 +409,8 @@ if __name__ == "__main__":
             pot_file_path,
             po_file_path,
             lang_code,
-            language_name
+            language_name,
+            batch_size=BATCH_SIZE
         )
 
         lang_end_time = time.time()

@@ -82,6 +82,12 @@ def parse_args():
         "--languages",
         required=True,
         help="list of language codes")
+    parser.add_argument(
+        '--batch-size',
+        type=int,
+        default=5,
+        help='Number of entries to translate in one batch (default: 5)'
+    )
     return parser.parse_args()
 
 
