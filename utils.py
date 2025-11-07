@@ -82,6 +82,12 @@ def parse_args():
         "--languages",
         required=True,
         help="list of language codes")
+    parser.add_argument(
+        '--fixed_example_json',
+        type=str,
+        default='fixed_examples.json',
+        help="fixed JSON file to use for translation examples"
+    )
     return parser.parse_args()
 
 
@@ -263,6 +269,56 @@ def load_examples(lang, url_template, example_file, example_dir):
             examples = []
 
     return examples
+
+
+def load_fixed_examples(
+        lang_code,
+        example_dir,
+        fixed_example_json,
+        example_url,
+        example_file):
+    """
+    fixed_examples.json 파일에서 '특정 언어'의
+    고정된 모범 예시 리스트를 로드합니다.
+    """
+    example_path = os.path.join(example_dir, lang_code, fixed_example_json)
+
+    try:
+        with open(example_path, 'r', encoding='utf-8') as f:
+            language_examples = json.load(f)
+
+        if language_examples:
+            print(
+                f"Loaded {len(language_examples)} fixed examples "
+                f"from '{example_path}'."
+            )
+            return [(ex['msgid'], ex['msgstr']) for ex in language_examples]
+
+    except FileNotFoundError:
+        print(f"'{example_path}' not found. Attempting fallback.")
+    except Exception as e:
+        print(f"WARNING: Error loading '{example_path}': {e}.")
+
+    print(f"Loading default examples (top 2) from '{example_file}' instead.")
+
+    try:
+        all_examples_from_po = load_examples(
+            lang_code, example_url, example_file, example_dir
+        )
+
+        if not all_examples_from_po:
+            print(f"WARNING: Could not load .po examples for [{lang_code}].")
+            return []
+
+        num_to_sample = min(len(all_examples_from_po), 2)
+        example_data = all_examples_from_po[0:num_to_sample]
+
+        print(f"Loaded top {len(example_data)} examples from .po file.")
+        return example_data
+
+    except Exception as e:
+        print(f"ERROR: Failed to load .po file: {e}")
+        return []
 
 
 def save_experiment_log(

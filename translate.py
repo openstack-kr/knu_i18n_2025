@@ -22,13 +22,12 @@ import os
 import time
 import concurrent.futures
 from tqdm import tqdm
-import random
 from babel.messages import pofile, Catalog
 from utils import (
     parse_args,
     init_environment,
     load_glossary,
-    load_examples,
+    load_fixed_examples,
     save_experiment_log
 )
 
@@ -110,54 +109,46 @@ def translate_entry(payload, language_name):
 
     entry, i, total_count = payload
 
-    relevant_glossary_terms = {
-        en: ko for en, ko in GLOSSARY.items() if en in entry.id.lower()
-    }
+    GLOSSARY_TEXT_LINES = [f"* '{en}': '{ko}'" for en, ko in GLOSSARY.items()]
+    FORMATTED_GLOSSARY = "\n".join(GLOSSARY_TEXT_LINES)
 
-    if relevant_glossary_terms:
-        glossary_rules = (
-            " Apply these translation rules: "
-            + ", ".join(
-                [
-                    f"'{en}' must be translated as '{ko}'"
-                    for en, ko in relevant_glossary_terms.items()
-                ]
-            )
-            + "."
-        )
-    else:
-        glossary_rules = ""
+    SYSTEM_PROMPT_BASE = """
+    You are a strict translation engine.
+    You are translating from English to {language_name}.
 
-    # ai에게 전달하는 프롬프트
+    **[Output Format Rules (MUST Follow)]**
+    * Respond ONLY with the raw, translated text for {language_name}.
+    * Your answer MUST be 100% in {language_name}.
+    * Do NOT mix in any other languages (including English).
+    * Do NOT add explanations, comments, apologies, or quotes.
+
+    **[Critical Preservation Rules (MUST Follow)]**
+    * Preserve all reStructuredText (RST) syntax exactly.
+    * Preserve all placeholders exactly.
+    * Preserve all HTML tags exactly.
+    * You MUST use the exact translations provided in the `[Glossary]` section.
+
+    **[Anti-Hallucination Rules (MUST Follow)]**
+    * You MUST NOT add placeholders that are NOT in the original `msgid`.
+    * You MUST NOT repeat phrases. Repetition is strictly forbidden.
+
+    **[Glossary]**
+    """
+    SYSTEM_PROMPT = SYSTEM_PROMPT_BASE + FORMATTED_GLOSSARY
+
     messages = [
-        # 1. System 역할
+        # System 역할: 전체 규칙과 '전체' 용어집을 한 번에 전달
         {
             "role": "system",
-            "content": (
-                "You are a strict translation engine. "
-                "You always translate the user's English text into "
-                f"{language_name} only. "
-                "Your answer MUST be written 100% in that target language. "
-                "Do not mix in any other languages (including English). "
-                "Do not explain, comment, or add anything else. "
-                "Output only the translated text itself, with no quotes. "
-                "Preserve all reStructuredText (RST) syntax, placeholders, "
-                "and formatting exactly as in the input."
-            ),
+            "content": SYSTEM_PROMPT.format(language_name=language_name),
         },
     ]
 
-    # 예시 리스트에서 2개를 무작위로 선택하여 추가
-    if FEW_SHOT_EXAMPLES:
-        num_to_sample = min(len(FEW_SHOT_EXAMPLES), 2)
-        selected_examples = random.sample(FEW_SHOT_EXAMPLES, num_to_sample)
-        for msgid, msgstr in selected_examples:
-            messages.append({"role": "user", "content": msgid})
-            messages.append({"role": "assistant", "content": msgstr})
+    for msgid, msgstr in FEW_SHOT_EXAMPLES:
+        messages.append({"role": "user", "content": msgid})
+        messages.append({"role": "assistant", "content": msgstr})
 
-    # 실제 번역 내용 추가
-    messages.append({"role": "user",
-                     "content": f"{glossary_rules}\n\n{entry.id}"})
+    messages.append({"role": "user", "content": entry.id})
 
     try:
         response = ollama.chat(
@@ -290,6 +281,7 @@ if __name__ == "__main__":
     EXAMPLE_URL = args.example_url
     EXAMPLE_FILE = args.example_file
     LANGUAGES_TO_TRANSLATE = args.languages.split(',')
+    FIXED_EXAMPLE_JSON = args.fixed_example_json
 
     print("=================================================")
     print(f"번역 시작, AI 모델: {MODEL_NAME}")
@@ -324,8 +316,14 @@ if __name__ == "__main__":
             GLOSSARY_PO_FILE,
             GLOSSARY_JSON_FILE,
             GLOSSARY_DIR)
-        FEW_SHOT_EXAMPLES = load_examples(
-            lang_code, EXAMPLE_URL, EXAMPLE_FILE, EXAMPLE_DIR)
+
+        FEW_SHOT_EXAMPLES = load_fixed_examples(
+            lang_code,
+            EXAMPLE_DIR,
+            FIXED_EXAMPLE_JSON,
+            EXAMPLE_URL,
+            EXAMPLE_FILE
+        )
 
         # 3. 결과 저장 경로 설정 (모델명/언어코드/파일명)
         model_lang_folder = os.path.join(PO_DIR, MODEL_NAME, lang_code)
