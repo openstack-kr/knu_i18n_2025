@@ -17,13 +17,13 @@ Execution Flow:
     5. save_experiment_log()로 결과 기록 및 Git 메타데이터 저장
 """
 
-import ollama
 import os
 import time
 import concurrent.futures
 from tqdm import tqdm
 import random
 from babel.messages import pofile, Catalog
+import google.generativeai as genai
 from utils import (
     parse_args,
     init_environment,
@@ -89,10 +89,7 @@ LANG_MAP = {
     "sq": "Albanian",
 }
 
-# 하나의 문장(entry)을 번역
-
-
-def translate_entry(payload, language_name):
+def translate_entry(payload, language_name, llm_model, glossary, few_shot_examples):
     """
     번역 단위(entry)를 LLM을 사용해 번역하는 함수.
     Translates a single PO/POT entry using the selected LLM model.
@@ -103,6 +100,9 @@ def translate_entry(payload, language_name):
             index (int): 현재 번역 순서
             total_count (int): 전체 번역 항목 수
         language_name (str): 번역하는 언어 이름
+        llm_model (genai.GenerativeModel): 초기화된 LLM 모델 객체
+        glossary (dict): 용어집 딕셔너리
+        few_shot_examples (list): Few-shot 학습을 위한 예시 리스트
 
     Returns:
         tuple | None: (msgid, translation, locations) 또는 오류 시 None
@@ -111,12 +111,13 @@ def translate_entry(payload, language_name):
     entry, i, total_count = payload
 
     relevant_glossary_terms = {
-        en: ko for en, ko in GLOSSARY.items() if en in entry.id.lower()
+        en: ko for en, ko in glossary.items() if en in entry.id.lower()
     }
 
+    glossary_rules = ""
     if relevant_glossary_terms:
         glossary_rules = (
-            " Apply these translation rules: "
+            "Apply these translation rules: "
             + ", ".join(
                 [
                     f"'{en}' must be translated as '{ko}'"
@@ -125,59 +126,80 @@ def translate_entry(payload, language_name):
             )
             + "."
         )
-    else:
-        glossary_rules = ""
 
-    # ai에게 전달하는 프롬프트
-    messages = [
-        # 1. System 역할
-        {
-            "role": "system",
-            "content": (
-                "You are a strict translation engine. "
-                "You always translate the user's English text into "
-                f"{language_name} only. "
-                "Your answer MUST be written 100% in that target language. "
-                "Do not mix in any other languages (including English). "
-                "Do not explain, comment, or add anything else. "
-                "Output only the translated text itself, with no quotes. "
-                "Preserve all reStructuredText (RST) syntax, placeholders, "
-                "and formatting exactly as in the input."
-            ),
-        },
-    ]
+    # For Gemini, system instructions are best provided via the `system_instruction`
+    # parameter during model initialization. As a fallback, we include them in the
+    # first user message of the conversation.
+    system_instruction = (
+        "You are a strict translation engine. "
+        f"You must translate the user's English text into {language_name} only. "
+        "Your response MUST be written 100% in the target language. "
+        "Do not mix in any other languages, including English. "
+        "Do not add explanations, comments, or any other extraneous text. "
+        "Output only the translated text itself, without any surrounding quotes. "
+        "Preserve all reStructuredText (RST) syntax, placeholders, "
+        "and formatting exactly as in the original input."
+    )
 
-    # 예시 리스트에서 2개를 무작위로 선택하여 추가
-    if FEW_SHOT_EXAMPLES:
-        num_to_sample = min(len(FEW_SHOT_EXAMPLES), 2)
-        selected_examples = random.sample(FEW_SHOT_EXAMPLES, num_to_sample)
+    genai_messages = []
+
+    # Add few-shot examples to guide the model
+    if few_shot_examples:
+        num_to_sample = min(len(few_shot_examples), 2)
+        selected_examples = random.sample(few_shot_examples, num_to_sample)
         for msgid, msgstr in selected_examples:
-            messages.append({"role": "user", "content": msgid})
-            messages.append({"role": "assistant", "content": msgstr})
+            genai_messages.append({"role": "user", "parts": [msgid]})
+            genai_messages.append({"role": "model", "parts": [msgstr]})
 
-    # 실제 번역 내용 추가
-    messages.append({"role": "user",
-                     "content": f"{glossary_rules}\n\n{entry.id}"})
+    # Combine instructions, rules, and the text into the final user prompt.
+    final_prompt_parts = [system_instruction]
+    if glossary_rules:
+        final_prompt_parts.append(glossary_rules)
+    final_prompt_parts.append(f"Translate the following text:\n\n{entry.id}")
+
+    final_user_prompt = "\n\n".join(final_prompt_parts)
+    genai_messages.append({"role": "user", "parts": [final_user_prompt]})
 
     try:
-        response = ollama.chat(
-            model=MODEL_NAME,
-            messages=messages,
-            stream=False,
-            options={
-                "temperature": 0,
-                "top_p": 1,
-                "repetition_penalty": 1.2,
-                "stop": ["\n"],
-            },
+        generation_config = {
+            "temperature": 0,
+            "top_p": 1,
+            "stop_sequences": ["\n"],  # Stop at newline to mimic original behavior
+        }
+        safety_settings = [
+            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+        ]
+
+        response = llm_model.generate_content(
+            genai_messages,
+            generation_config=generation_config,
+            safety_settings=safety_settings
         )
 
-        translation = response["message"]["content"].strip()
+        # Robustly access the generated text. The `.text` accessor raises a
+        # ValueError if the response is blocked or empty.
+        translation = response.text.strip()
 
-        # 번역한 문장을 삽입한 entry
         return (entry.id, translation, entry.locations)
 
+    except ValueError:
+        # Handle cases where the response is blocked or empty.
+        finish_reason = "UNKNOWN"
+        if response.candidates:
+            finish_reason = response.candidates[0].finish_reason.name
+
+        print(
+            (
+                f"!!! [{i + 1}/{total_count}] Warning: Model returned no valid text for "
+                f"'{entry.id[:30]}...'. Reason: {finish_reason} !!!"
+            )
+        )
+        return None
     except Exception as e:
+        # Catch other potential API errors (e.g., network issues).
         print(
             (
                 f"!!! [{i + 1}/{total_count}] Error translating entry "
@@ -187,8 +209,7 @@ def translate_entry(payload, language_name):
         return None
 
 
-# pot 파일을 읽어 번역해 최종 po 파일로 저장하는 함수
-def translate_pot_file(pot_path, po_path, language_code, language_name):
+def translate_pot_file(pot_path, po_path, language_code, language_name, llm_model, glossary, few_shot_examples):
     """
     POT 파일을 읽어 병렬 번역 후 PO 파일로 저장하는 함수.
     Reads a .pot file, translates entries in parallel, and saves as .po file.
@@ -198,6 +219,9 @@ def translate_pot_file(pot_path, po_path, language_code, language_name):
         po_path (str): 번역된 결과를 저장할 PO 파일 경로
         language_code (str): 번역하는 언어 코드
         language_name (str): 번역하는 언어 이름
+        llm_model (genai.GenerativeModel): 초기화된 LLM 모델 객체
+        glossary (dict): 용어집 딕셔너리
+        few_shot_examples (list): Few-shot 학습을 위한 예시 리스트
 
     Returns:
         None
@@ -241,117 +265,12 @@ def translate_pot_file(pot_path, po_path, language_code, language_name):
                 executor.map(
                     lambda payload: translate_entry(
                         payload,
-                        language_name),
+                        language_name,
+                        llm_model,
+                        glossary,
+                        few_shot_examples
+                    ),
                     payloads),
                 total=total_entries,
-                desc=f"Translating entries [{language_code}]",
-                unit="entry",
-            ))
-
-    for result in results:
-        if result:
-            msgid, translation, locations = result
-            po.add(id=msgid, string=translation, locations=locations)
-
-    try:
-        with open(po_path, "wb") as f:
-            pofile.write_po(f, po)
-        print(f"{po_path}가 저장되었습니다.")
-    except Exception as e:
-        print(f"PO 파일 저장 실패: {e}")
-
-
-if __name__ == "__main__":
-    """
-    메인 실행 블록.
-    Handles argument parsing, environment setup, translation execution,
-    and experiment logging.
-
-    Steps:
-        1. 인자 파싱 및 경로 초기화
-        2. 언어별 Glossary 파일 및 예시 파일 다운로드 및 로드
-        3. 모델별/언어별 폴더 생성 및 번역 수행
-        4. 언어별 번역 결과 저장 및 Git 로그 기록
-    """
-    args = parse_args()
-    MODEL_NAME = args.model
-    POT_DIR = args.pot_dir
-    PO_DIR = args.po_dir
-    GLOSSARY_DIR = args.glossary_dir
-    EXAMPLE_DIR = args.example_dir
-    START_TRANSLATE = args.start
-    END_TRANSLATE = args.end
-    MAX_WORKERS = args.workers
-    POT_URL = args.pot_url
-    TARGET_POT_FILE = args.target_pot_file
-    GLOSSARY_URL = args.glossary_url
-    GLOSSARY_PO_FILE = args.glossary_po_file
-    GLOSSARY_JSON_FILE = args.glossary_json_file
-    EXAMPLE_URL = args.example_url
-    EXAMPLE_FILE = args.example_file
-    LANGUAGES_TO_TRANSLATE = args.languages.split(',')
-
-    print("=================================================")
-    print(f"번역 시작, AI 모델: {MODEL_NAME}")
-    print("=================================================\n")
-
-    # 폴더 생성 + POT 다운로드
-    pot_file_path = init_environment(
-        pot_dir=POT_DIR,
-        po_dir=PO_DIR,
-        glossary_dir=GLOSSARY_DIR,
-        example_dir=EXAMPLE_DIR,
-        pot_url=POT_URL,
-        target_pot_file=TARGET_POT_FILE,
-    )
-
-    # 모델별 폴더 구성 + 파일 경로
-    base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
-
-    start = time.time()
-    # --- 언어 루프 ---
-    for lang_code in LANGUAGES_TO_TRANSLATE:
-        lang_start_time = time.time()
-        print(f"--- [{lang_code}] Language Translation Start ---")
-
-        # 1. 언어 이름 찾기 (LANG_MAP 사용)
-        language_name = LANG_MAP.get(lang_code, lang_code)
-
-        # 2. 전역 변수 GLOSSARY, FEW_SHOT_EXAMPLES 업데이트 (다운로드 포함)
-        GLOSSARY = load_glossary(
-            lang_code,
-            GLOSSARY_URL,
-            GLOSSARY_PO_FILE,
-            GLOSSARY_JSON_FILE,
-            GLOSSARY_DIR)
-        FEW_SHOT_EXAMPLES = load_examples(
-            lang_code, EXAMPLE_URL, EXAMPLE_FILE, EXAMPLE_DIR)
-
-        # 3. 결과 저장 경로 설정 (모델명/언어코드/파일명)
-        model_lang_folder = os.path.join(PO_DIR, MODEL_NAME, lang_code)
-        os.makedirs(model_lang_folder, exist_ok=True)
-        po_file_path = os.path.join(model_lang_folder, base_name)
-
-        # 4. 번역 실행 (language_code, language_name 전달)
-        translate_pot_file(
-            pot_file_path,
-            po_file_path,
-            lang_code,
-            language_name
+            )
         )
-
-        lang_end_time = time.time()
-        duration = round(lang_end_time - lang_start_time, 2)
-        print(f"---[{lang_code}] Language Translation End ({duration}s)---\n")
-
-        # 5. 로그 기록 (language 인자 추가)
-        save_experiment_log(
-            model_name=MODEL_NAME,
-            pot_file=pot_file_path,
-            po_file=po_file_path,
-            duration_sec=duration,
-            language=lang_code
-        )
-    end = time.time()
-    duration = round(end - start, 2)
-    print(f"Total translation time: {duration}s")
