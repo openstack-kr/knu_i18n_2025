@@ -87,6 +87,10 @@ def parse_args():
         type=str,
         default='fixed_examples.json',
         help="fixed JSON file to use for translation examples"
+        '--batch-size',
+        type=int,
+        default=5,
+        help='Number of entries to translate in one batch (default: 5)'
     )
     return parser.parse_args()
 
