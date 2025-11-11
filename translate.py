@@ -169,17 +169,18 @@ def translate_batch(payload, language_name):
             "content": SYSTEM_PROMPT.format(language_name=language_name),
         },
     ]   
-        example_input = [msgid for msgid, _ in selected_examples]
-        example_output = [msgstr for _, msgstr in selected_examples]
         
-        messages.append({
-            "role": "user",
-            "content": json.dumps(example_input, ensure_ascii=False)
-        })
-        messages.append({
-            "role": "assistant",
-            "content": json.dumps(example_output, ensure_ascii=False)
-        })
+    example_input = [msgid for msgid, _ in FEW_SHOT_EXAMPLES]
+    example_output = [msgstr for _, msgstr in FEW_SHOT_EXAMPLES]
+        
+    messages.append({
+        "role": "user",
+        "content": json.dumps(example_input, ensure_ascii=False)
+    })
+    messages.append({
+        "role": "assistant",
+        "content": json.dumps(example_output, ensure_ascii=False)
+    })
 
     # 실제 번역할 텍스트들을 JSON 배열로 구성
     texts_to_translate = [entry.id for entry in entries]
