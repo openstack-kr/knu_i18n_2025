@@ -29,7 +29,7 @@ from utils import (
     parse_args,
     init_environment,
     load_glossary,
-    load_examples,
+    load_fixed_examples,
     save_experiment_log
 )
 
@@ -108,6 +108,35 @@ def translate_batch(payload, language_name):
         list | None: [(msgid, translation, locations), ...] 또는 오류 시 None
     """
 
+    entry, i, total_count = payload
+
+    GLOSSARY_TEXT_LINES = [f"* '{en}': '{ko}'" for en, ko in GLOSSARY.items()]
+    FORMATTED_GLOSSARY = "\n".join(GLOSSARY_TEXT_LINES)
+
+    SYSTEM_PROMPT_BASE = """
+    You are a strict translation engine.
+    You are translating from English to {language_name}.
+
+    **[Output Format Rules (MUST Follow)]**
+    * Respond ONLY with the raw, translated text for {language_name}.
+    * Your answer MUST be 100% in {language_name}.
+    * Do NOT mix in any other languages (including English).
+    * Do NOT add explanations, comments, apologies, or quotes.
+
+    **[Critical Preservation Rules (MUST Follow)]**
+    * Preserve all reStructuredText (RST) syntax exactly.
+    * Preserve all placeholders exactly.
+    * Preserve all HTML tags exactly.
+    * You MUST use the exact translations provided in the `[Glossary]` section.
+
+    **[Anti-Hallucination Rules (MUST Follow)]**
+    * You MUST NOT add placeholders that are NOT in the original `msgid`.
+    * You MUST NOT repeat phrases. Repetition is strictly forbidden.
+
+    **[Glossary]**
+    """
+    SYSTEM_PROMPT = SYSTEM_PROMPT_BASE + FORMATTED_GLOSSARY
+
     entries, batch_idx, total_batches = payload
 
     # batch 내의 모든 entry에서 관련된 glossary 수집
@@ -134,37 +163,12 @@ def translate_batch(payload, language_name):
 
     # ai에게 전달하는 batch 번역용 프롬프트
     messages = [
-        # 1. System 역할
+        # System 역할: 전체 규칙과 '전체' 용어집을 한 번에 전달
         {
             "role": "system",
-            "content": (
-                "You are a strict translation engine. "
-                "You will receive a JSON array of English texts to translate into "
-                f"{language_name}. "
-                "Translate each text considering the context of surrounding texts. "
-                "CRITICAL: Your output MUST contain EXACTLY the same number of translations "
-                "as the input array. Do not split or merge any items. "
-                "Your answer MUST be a valid JSON array where each element is "
-                "the translation of the corresponding input text. "
-                "Each translation MUST be written 100% in the target language. "
-                "Do not mix in any other languages (including English). "
-                "Do not explain, comment, or add anything else. "
-                "Preserve 100% of the original formatting, including: "
-                "reStructuredText (RST) syntax such as `**bold**`, "
-                "``inline code``, and `_links`. "
-                "Placeholders like {variable}, %(name)s, and %s. "
-                "Line breaks (\\n) within text must be preserved as-is. "
-                "Output format: [\"translation1\", \"translation2\", ...] "
-                "with EXACTLY the same array length as input."
-            ),
+            "content": SYSTEM_PROMPT.format(language_name=language_name),
         },
-    ]
-
-    # 예시 리스트에서 2개를 무작위로 선택하여 추가
-    if FEW_SHOT_EXAMPLES:
-        num_to_sample = min(len(FEW_SHOT_EXAMPLES), 0)
-        selected_examples = random.sample(FEW_SHOT_EXAMPLES, num_to_sample)
-        
+    ]   
         example_input = [msgid for msgid, _ in selected_examples]
         example_output = [msgstr for _, msgstr in selected_examples]
         
@@ -179,7 +183,7 @@ def translate_batch(payload, language_name):
 
     # 실제 번역할 텍스트들을 JSON 배열로 구성
     texts_to_translate = [entry.id for entry in entries]
-    user_content = f"{glossary_rules}\n\n{json.dumps(texts_to_translate, ensure_ascii=False)}"
+    user_content = f"{json.dumps(texts_to_translate, ensure_ascii=False)}"
     
     messages.append({"role": "user", "content": user_content})
 
@@ -360,6 +364,7 @@ if __name__ == "__main__":
     EXAMPLE_URL = args.example_url
     EXAMPLE_FILE = args.example_file
     LANGUAGES_TO_TRANSLATE = args.languages.split(',')
+    FIXED_EXAMPLE_JSON = args.fixed_example_json
     BATCH_SIZE = getattr(args, 'batch_size', 5)
 
     print("=================================================")
@@ -394,10 +399,15 @@ if __name__ == "__main__":
             GLOSSARY_URL,
             GLOSSARY_PO_FILE,
             GLOSSARY_JSON_FILE,
-            GLOSSARY_DIR
+            GLOSSARY_DIR)
+
+        FEW_SHOT_EXAMPLES = load_fixed_examples(
+            lang_code,
+            EXAMPLE_DIR,
+            FIXED_EXAMPLE_JSON,
+            EXAMPLE_URL,
+            EXAMPLE_FILE
         )
-        FEW_SHOT_EXAMPLES = load_examples(
-            lang_code, EXAMPLE_URL, EXAMPLE_FILE, EXAMPLE_DIR)
 
         # 3. 결과 저장 경로 설정 (모델명/언어코드/파일명)
         model_lang_folder = os.path.join(PO_DIR, MODEL_NAME, lang_code)

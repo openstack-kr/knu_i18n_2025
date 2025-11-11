@@ -27,4 +27,5 @@ python translate.py \
   --glossary_json_file "glossary.json" \
   --example_url "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po" \
   --example_file "nova-nova-locale.po" \
+  --fixed_example_json "fixed_examples.json" \
   --languages "ko_KR,ru,ja,zh_CN"
