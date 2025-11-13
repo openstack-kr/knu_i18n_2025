@@ -28,4 +28,5 @@ python translate.py \
   --example_url "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po" \
   --example_file "nova-nova-locale.po" \
   --fixed_example_json "fixed_examples.json" \
+  --batch-size "5" \
   --languages "ko_KR,ru,ja,zh_CN"
