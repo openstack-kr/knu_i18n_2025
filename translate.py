@@ -90,9 +90,10 @@ LANG_MAP = {
 }
 
 
+# entry를 5개씩 묶은 batch 단위로 번역 수행
 def translate_batch(payload, language_name):
     """
-    여러 PO/POT entry를 batch로 묶어 LLM을 사용해 번역하는 함수.
+    여러 entry를 batch로 묶어 LLM을 사용해 번역하는 함수.
     Translates a batch of PO/POT entries using the selected LLM model.
 
     Args:
@@ -190,7 +191,7 @@ def translate_batch(payload, language_name):
         except json.JSONDecodeError:
             # JSON 파싱 실패 시 대체 처리
             print(f"!!! Batch [{batch_idx + 1}/{total_batches}] JSON parsing failed, trying to extract array !!!")
-            print(f"Falling back: leaving msgstr empty for this batch.")
+            print(f"Falling back: extract simple array for this batch.")
             # 간단한 array 추출 시도
             start = translation_text.find('[')
             end = translation_text.rfind(']') + 1
@@ -276,7 +277,7 @@ def translate_pot_file(pot_path, po_path, language_code, language_name, batch_si
     entries_to_translate = [entry for entry in pot if entry.id]
     total_entries = len(entries_to_translate)
     
-    # Entry를 batch로 분할
+    # entry를 batch로 분할
     batches = create_batches(entries_to_translate, batch_size)
     total_batches = len(batches)
 
@@ -296,16 +297,15 @@ def translate_pot_file(pot_path, po_path, language_code, language_name, batch_si
         results = list(
             tqdm(
                 executor.map(
-                    lambda payload: translate_batch(payload, language_name),
-                    payloads
-                ),
+                    lambda payload: translate_batch(
+                        payload,
+                        language_name),
+                    payloads),
                 total=total_batches,
                 desc=f"Translating batches [{language_code}]",
                 unit="batch",
-            )
-        )
+            ))
 
-    # 결과를 PO catalog에 추가
     for batch_result in results:
         if batch_result:
             for msgid, translation, locations in batch_result:
@@ -348,8 +348,8 @@ if __name__ == "__main__":
     EXAMPLE_URL = args.example_url
     EXAMPLE_FILE = args.example_file
     LANGUAGES_TO_TRANSLATE = args.languages.split(',')
-    BATCH_SIZE = getattr(args, 'batch_size', 5)  # 기본값 5
     FIXED_EXAMPLE_JSON = args.fixed_example_json
+    BATCH_SIZE = getattr(args, 'batch_size', 5)
 
     print("=================================================")
     print(f"번역 시작, AI 모델: {MODEL_NAME}, Batch Size: {BATCH_SIZE}")

@@ -29,4 +29,4 @@ python translate.py \
   --example_file "nova-nova-locale.po" \
   --fixed_example_json "fixed_examples.json" \
   --batch-size "5" \
-  --languages "ko_KR"
+  --languages "ko_KR,ru,ja,zh_CN"

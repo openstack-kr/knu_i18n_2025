@@ -1,0 +1,10 @@
+[
+  {
+    "msgid": "Binding failed for port %(port_id)s, please check neutron logs for more information.",
+    "msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오. "
+  },
+  {
+    "msgid": "Blank components",
+    "msgstr": "비어 있는 구성요소"
+  }
+]
