@@ -4,7 +4,7 @@ DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PY=${PYTHON:-python}
 
 A_DEFAULT="$DIR/../po-example/ko_KR/i18n-docs-source-locale.po"
-B_DEFAULT="$DIR/../po/llama3.2:3b/ko_KR/guide.po"
+B_DEFAULT="$DIR/../po/llama3.2:3b/ko_KR/i18n-docs-source-locale.po"
 
 JSON_DIR="$DIR/json"
 OUT_BASENAME="${OUT_BASENAME:-result_ko}"   # 파일명 기본값: result_ko

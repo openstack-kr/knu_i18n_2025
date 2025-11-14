@@ -1,0 +1,10 @@
+[
+  {
+    "msgid": "Binding failed for port %(port_id)s, please check neutron logs for more information.",
+    "msgstr": "绑定端口%(port_id)s失败，更多细节请查看日志。"
+  },
+  {
+    "msgid": "Blank components",
+    "msgstr": "空组件"
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "msgid": "Binding failed for port %(port_id)s, please check neutron logs for more information.",
+    "msgstr": "Ошибка создания привязки для порта %(port_id)s. Дополнительные сведения можно найти в протоколах neutron."
+  },
+  {
+    "msgid": "Blank components",
+    "msgstr": "Пустые компоненты"
+  }
+]
+
