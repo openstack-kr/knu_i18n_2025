@@ -35,10 +35,6 @@ def parse_args():
         default="./glossary",
         help="Path to the glossary directory")
     parser.add_argument(
-        "--example_dir",
-        default="./example",
-        help="Path to the example directory")
-    parser.add_argument(
         "--start",
         type=int,
         default=0,
@@ -71,28 +67,9 @@ def parse_args():
         default="glossary.json",
         help="Glossary JSON filename")
     parser.add_argument(
-        "--example_url",
-        required=True,
-        help="URL for the example file")
-    parser.add_argument(
-        "--example_file",
-        default="example.po",
-        help="Example filename")
-    parser.add_argument(
         "--languages",
         required=True,
         help="list of language codes")
-    parser.add_argument(
-        '--fixed_example_json',
-        type=str,
-        default='fixed_examples.json',
-        help="fixed JSON file to use for translation examples")
-    parser.add_argument(
-        '--batch-size',
-        type=int,
-        default=5,
-        help='Number of entries to translate in one batch (default: 5)'
-    )
     return parser.parse_args()
 
 
@@ -100,30 +77,14 @@ def init_environment(
     pot_dir,
     po_dir,
     glossary_dir,
-    example_dir,
     *,
     pot_url,
     target_pot_file,
 ):
-    """
-    번역 환경을 초기화하고 필요한 파일(POT, Glossary)을 다운로드한다.
-    Initializes directories and downloads required files (POT and Glossary).
 
-    Args:
-        pot_dir (str): POT 파일 저장 디렉터리
-        po_dir (str): PO 파일 저장 디렉터리
-        glossary_dir (str): 용어집 디렉터리
-        example_dir (str): 예시 파일 디렉터리
-        pot_url (str): POT 파일 다운로드 URL
-        target_pot_file (str): POT 파일명
-
-    Returns:
-        str: 다운로드된 공용 POT 파일의 전체 경로
-    """
     os.makedirs(pot_dir, exist_ok=True)
     os.makedirs(po_dir, exist_ok=True)
     os.makedirs(glossary_dir, exist_ok=True)
-    os.makedirs(example_dir, exist_ok=True)
 
     pot_file_path = os.path.join(pot_dir, target_pot_file)
 
@@ -145,21 +106,6 @@ def init_environment(
 
 
 def load_glossary(lang, url_template, glossary_file, json_file, glossary_dir):
-    """
-    특정 언어의 glossary.po 파일을 다운로드/로드하고 JSON 백업을 생성/로드한다.
-    Loads/downloads a language-specific glossary .po file
-    and loads/writes a JSON backup.
-
-    Args:
-        lang (str): 처리할 언어 코드
-        url_template (str): 다운로드 URL 템플릿
-        glossary_file (str): glossary .po 파일명
-        json_file (str): glossary .json 파일명
-        glossary_dir (str): 용어집 최상위 디렉터리
-
-    Returns:
-        dict: Glossary key-value 매핑 (id → string)
-    """
 
     if not url_template:
         return
@@ -214,117 +160,6 @@ def load_glossary(lang, url_template, glossary_file, json_file, glossary_dir):
                 print(f"Error reading Glossary PO file for [{lang}]: {e}\n")
 
     return G
-
-
-def load_examples(lang, url_template, example_file, example_dir):
-    """
-    특정 언어의 번역 예시 .po 파일을 다운로드/로드하여 리스트로 반환한다.
-    Loads/downloads a language-specific example .po file
-    and returns a list of (id, str) tuples.
-
-    Args:
-        lang (str): 처리할 언어 코드
-        url_template (str): 다운로드 URL 템플릿
-        example_file (str): example .po 파일명
-        example_dir (str): 예시 파일 최상위 디렉터리
-
-    Returns:
-        list: (msgid, msgstr) 튜플의 리스트
-    """
-    examples = []
-
-    if not url_template:
-        return
-
-    lang_dir = os.path.join(example_dir, lang)
-    os.makedirs(lang_dir, exist_ok=True)
-
-    example_path = os.path.join(lang_dir, example_file)
-    example_url = url_template.format(lang=lang)
-
-    # Download Example PO if needed
-    if not os.path.exists(example_path):
-        print(f"Downloading examples for [{lang}] from {example_url}...")
-        try:
-            response = requests.get(example_url, timeout=30)
-            response.raise_for_status()
-            with open(example_path, "wb") as f:
-                f.write(response.content)
-            print(f"Successfully downloaded and saved to {example_path}\n")
-        except requests.exceptions.RequestException as e:
-            print(f"Warning: Could not download examples for [{lang}]: {e}\n")
-            return examples
-
-    if os.path.exists(example_path):
-        print(
-            f"Loading few-shot examples from "
-            f"{os.path.basename(example_path)} for [{lang}]..."
-        )
-        try:
-            with open(example_path, "rb") as f:
-                example_po = pofile.read_po(f)
-
-            for entry in example_po:
-                if entry.id and entry.string:
-                    examples.append((entry.id, entry.string))
-            print(f"Loaded {len(examples)} examples for [{lang}].\n")
-        except Exception as e:
-            print(
-                f"Warning: Error reading example PO file for [{lang}]: {e}\n")
-            examples = []
-
-    return examples
-
-
-def load_fixed_examples(
-        lang_code,
-        example_dir,
-        fixed_example_json,
-        example_url,
-        example_file):
-    """
-    fixed_examples.json 파일에서 '특정 언어'의
-    고정된 모범 예시 리스트를 로드합니다.
-    """
-    example_path = os.path.join(example_dir, lang_code, fixed_example_json)
-
-    try:
-        with open(example_path, 'r', encoding='utf-8') as f:
-            language_examples = json.load(f)
-
-        if language_examples:
-            print(
-                f"Loaded {len(language_examples)} fixed examples "
-                f"from '{example_path}'."
-            )
-            return [(ex['msgid'], ex['msgstr']) for ex in language_examples]
-
-    except FileNotFoundError:
-        print(f"'{example_path}' not found. Attempting fallback.")
-    except Exception as e:
-        print(f"WARNING: Error loading '{example_path}': {e}.")
-
-    print(f"Loading default examples (top 2) from '{example_file}' instead.")
-
-    try:
-        all_examples_from_po = load_examples(
-            lang_code, example_url, example_file, example_dir
-        )
-
-        if not all_examples_from_po:
-            print(f"WARNING: Could not load .po examples for [{lang_code}].")
-            return []
-
-        num_to_sample = min(len(all_examples_from_po), 2)
-        example_data = all_examples_from_po[0:num_to_sample]
-
-        print(f"Loaded top {len(example_data)} examples from .po file.")
-        return example_data
-
-    except Exception as e:
-        print(f"ERROR: Failed to load .po file: {e}")
-        return []
-
 
 def save_experiment_log(
     model_name: str,

@@ -1222,12 +1222,6 @@ msgid ""
 "/~openstack-i18n-bugs>`_ first."
 msgstr ""
 
-msgid ""
-"The change is done by a bot. If anything looks wrong with it, you need to"
-" actively reach out to the :ref:`OpenStack I18n team "
-"<openstack_i18n_team>` and point the problem out."
-msgstr ""
-
 msgid "The convention for heading levels is as follows::"
 msgstr ""
 
