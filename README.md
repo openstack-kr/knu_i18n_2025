@@ -135,7 +135,7 @@ MODEL=${1:-"llama3.2:3b"}
 
 ## 5. How to Improve Performance?
 
-You can adjust Few Shot Example and Language Specific Promopt.
+You can adjust (b) Few Shot Example and Language (c) Specific Promopt.
 Please refer [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## 6. Code Quality Check
@@ -212,6 +212,8 @@ For Korean, translation quality improved by 16.19%, and across four languages, t
 ```bash
 git checkout TestA
 ```
+testA: pipeline before a, b
+testB: pipeline after a, b
 
 2-1. Use the provided tox environment for isolated setup and execution:
 ```bash
