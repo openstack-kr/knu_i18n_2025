@@ -84,7 +84,7 @@ In the previous version, the same prompt was used for all target languages. Ther
 
 ### How to Contribute?
 
-## 1. Navigate to the `prompts` Folder
+#### 1. Navigate to the `prompts` Folder
 
 All language-specific prompt files are stored in the `prompts/` directory located at the project root
 
@@ -92,7 +92,7 @@ All language-specific prompt files are stored in the `prompts/` directory locate
 cd prompts
 ```
 
-## 2. Locate Your Language Code File
+#### 2. Locate Your Language Code File
 
 Inside the prompts folder, you will find prompt files named using language codes, such as:
 
@@ -110,7 +110,7 @@ fr.txt
 - If the file does not exist
   → Create a new file using the appropriate language code (e.g., `de.txt`, `id.txt`, `it.txt`, etc.).
 
-## 3. Use the Korean Prompt as a Reference
+#### 3. Use the Korean Prompt as a Reference
 
 When creating a new language-specific prompt, you may refer to the `ko_KR.txt` file.
 
@@ -120,7 +120,7 @@ This will help you understand:
 - Section formatting
 - Tone and style
 
-## 4. Customize the Prompt for Your Language
+#### 4. Customize the Prompt for Your Language
 
 Feel free to adapt and rewrite the prompt so that it fits naturally within your language.
 
@@ -132,11 +132,9 @@ You may adjust:
 
 The goal is to create a prompt that produces natural and consistent translations in your language.
 
-## 5. Run Validation Code
+#### 5. Run Validation Code
 
-After adding or updating your prompt, run the provided validation code to measure similarity across languages and ensure consistency.
-
-This step helps maintain a coherent structure and style across all prompt files.
+By modifying `main.sh` as shown below, you can check how similar the translations produced by the updated prompt are to the reference (`answer.po`) files, allowing you to evaluate whether the prompt generates accurate and reliable translations.
 
 ```bash
 # Options:
@@ -151,3 +149,4 @@ This step helps maintain a coherent structure and style across all prompt files.
 
 python po_quality_check.py --a "answer.po" --b "ko.po" --out result_ko.json --model BM-K/KoSimCSE-roberta-multitask --only-translated --normalize-text
 ```
+
