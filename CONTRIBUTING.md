@@ -133,7 +133,7 @@ The goal is to create a prompt that produces natural and consistent translations
 
 #### Step 5. Run Validation Code
 
-By modifying `main.sh` as shown below, you can check how similar the translations produced by the updated prompt are to the reference (`answer.po`) files, allowing you to evaluate whether the prompt generates accurate and reliable translations.
+By running `run.sh` as shown below, you can measure how similar the translations produced by your updated prompt are to the reference (`answer.po`) files. This allows you to evaluate whether the prompt generates accurate and reliable translations.
 
 ```bash
 # Options:
@@ -157,4 +157,5 @@ Commit your new files:
 2. `main.sh` 
 
 Thank you for your contribution! 😄
+
 
