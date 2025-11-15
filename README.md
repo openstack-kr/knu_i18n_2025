@@ -1,6 +1,7 @@
 # AI-based Translation System for OpenStack
 
 This system is an open-source AI translation system developed for OpenStack, which supports multilingual translation using flexible LLMs, few-shot learning, and batch optimization.
+<br> This is part of OpenStack i18n(internationalization). If you want to know it in detail, plase refer [i18n guide](https://docs.openstack.org/i18n/latest/index.html)
 
 ## Overview
 
