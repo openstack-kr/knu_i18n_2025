@@ -68,7 +68,7 @@ Commit your new files:
 
 Open a Pull Request. The pipeline will now automatically detect and use your high-quality examples when translating for your language.
 
-Thank you for your contribution!
+Thank you for your contribution! 😄
 
 ## 📝 Contribute to Language Specific Prompt
 
@@ -149,4 +149,12 @@ By modifying `main.sh` as shown below, you can check how similar the translation
 python po_quality_check.py --a "answer.po" --b "ko.po" --out result_ko.json --model BM-K/KoSimCSE-roberta-multitask --only-translated --normalize-text
 ```
 
+### Final Step: Submit a Pull Request
+
+Commit your new files:
+
+1. `language_code.txt` (Required)
+2. `main.sh` 
+
+Thank you for your contribution! 😄
 
