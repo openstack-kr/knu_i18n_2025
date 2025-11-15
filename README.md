@@ -212,8 +212,8 @@ For Korean, translation quality improved by 16.19%, and across four languages, t
 ```bash
 git checkout TestA
 ```
-testA: pipeline before a, b
-testB: pipeline after a, b
+testA: pipeline with a, b
+testB: pipeline without a, b
 
 2-1. Use the provided tox environment for isolated setup and execution:
 ```bash
