@@ -5,7 +5,7 @@
 ## Key Features
 
 ## How It Works
-<img width="1655" height="808" alt="tox Build virtual environment (1)" src="https://github.com/user-attachments/assets/73f875bd-2f9a-45a0-8fa7-4f319ed966be" />
+<img width="1655" height="808" alt="tox Build virtual environment (2)" src="https://github.com/user-attachments/assets/67961759-cfb4-4566-8320-36d15c0cbad0" />
 
 We will add Automation Pipeline Soon!
 
