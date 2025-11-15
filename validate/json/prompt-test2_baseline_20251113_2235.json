@@ -1,0 +1,1625 @@
+{
+  "metadata": {
+    "file_a": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/prompt-test2.po",
+    "file_b": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/prompt-test2_baseline.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 174,
+    "avg_similarity": 0.9154,
+    "median_similarity": 0.9606,
+    "p90_similarity": 1.0,
+    "pct_over_threshold": 87.36
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.0000005960464478,
+      "context": "",
+      "msgid": "Added support for create-without-overwrite conditional writes.",
+      "plural_index": 0,
+      "a_msgstr": "create-without-overwrite 조건적 쓰기 지원이 추가되었습니다.",
+      "b_msgstr": "create-without-overwrite 조건적 쓰기 지원이 추가되었습니다."
+    },
+    {
+      "similarity": 1.0000005960464478,
+      "context": "",
+      "msgid": "Data encryption updates",
+      "plural_index": 0,
+      "a_msgstr": "데이터 암호화 업데이트",
+      "b_msgstr": "데이터 암호화 업데이트"
+    },
+    {
+      "similarity": 1.0000005960464478,
+      "context": "",
+      "msgid": "Fixed a ``generator already executing`` error on client disconnect.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 1.0000005960464478,
+      "context": "",
+      "msgid": "Fixed a bug where stale state files would cause misplaced data during multiple partition power increases.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 1.0000005960464478,
+      "context": "",
+      "msgid": "Fixed a bug where zero-byte PUTs would not work properly with \"If-None-Match: \\*\" conditional requests.",
+      "plural_index": 0,
+      "a_msgstr": "cleaving 시 cleaving 데vice를 사용할 수 없는 경우 sharder가 fail했습니다.",
+      "b_msgstr": "cleaving 시 cleaving 데vice를 사용할 수 없는 경우 sharder가 fail했습니다."
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "Added support for inline data segments in SLO manifests.",
+      "plural_index": 0,
+      "a_msgstr": "SLO manifests에 inline 데이터 세그먼트를 지원합니다.",
+      "b_msgstr": "SLO manifests에 inline 데이터 세그먼트를 지원합니다."
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "Correctly handle deleted files with if-none-match requests.",
+      "plural_index": 0,
+      "a_msgstr": "삭제된 파일을 if-none-match 요청으로 처리하십시오.",
+      "b_msgstr": "삭제된 파일을 if-none-match 요청으로 처리하십시오."
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "EC Fragment Duplication - Foundational Global EC Cluster Support.",
+      "plural_index": 0,
+      "a_msgstr": "EC 파티션 중복 - 기초적인 toàn cầu EC 클러스터 지원.",
+      "b_msgstr": "EC 파티션 중복 - 기초적인 toàn cầu EC 클러스터 지원."
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "CompleteMultipartUpload requests may now be safely retried.",
+      "plural_index": 0,
+      "a_msgstr": "CompleteMultipartUpload 요청은 now safely retried할 수 있습니다.",
+      "b_msgstr": "CompleteMultipartUpload 요청은 now safely retried할 수 있습니다."
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Fixed a server error when deleting a specific version via the S3 API.",
+      "plural_index": 0,
+      "a_msgstr": "S3 API를 통해 특정 버전을 삭제할 때服务器 오류가 발생했습니다.",
+      "b_msgstr": "S3 API를 통해 특정 버전을 삭제할 때服务器 오류가 발생했습니다."
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Databases marked deleted are now processed by the sharder.",
+      "plural_index": 0,
+      "a_msgstr": "삭제된 데이터베이스는 이제 샤더에 의해 처리됩니다.",
+      "b_msgstr": "삭제된 데이터베이스는 이제 샤더에 의해 처리됩니다."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Added a ``keep_idle`` config option to configure KEEPIDLE time for TCP sockets. The default value is the old constant of 600.",
+      "plural_index": 0,
+      "a_msgstr": "TCP 소켓에 대해 KEEPIDLE 시간을 구성하기 위해 keep_idle config 옵션을 추가했습니다. 기본값은 이전의 상수 600입니다.",
+      "b_msgstr": "TCP 소켓에 대해 KEEPIDLE 시간을 구성하기 위해 keep_idle config 옵션을 추가했습니다. 기본값은 이전의 상수 600입니다."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Added a new object-expirer configuration option, ``round_robin_task_cache_size``, to adjust the number of tasks to cache before processing. This may be used to trade faster expirer start-up for more lumpy container-server load.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Added metrics to the formpost and tempurl middlewares to monitor digest usage in signatures.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Added support for Python 3.9.",
+      "plural_index": 0,
+      "a_msgstr": "Python 3.9에 대한 지원을 추가했습니다.",
+      "b_msgstr": "Python 3.9에 대한 지원을 추가했습니다."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Added timing metrics to the container sharder for various operations.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Empty account and container partition directories are now cleaned up immediately after replication, rather than needing to wait for an additional replication cycle.",
+      "plural_index": 0,
+      "a_msgstr": "비어 있는 계정 및 컨테이너 파티션 디렉토리를 현재 복제 시점에 즉시 청소합니다. 이전에는 추가 복제 사이클을 기다려야했습니다.",
+      "b_msgstr": "비어 있는 계정 및 컨테이너 파티션 디렉토리를 현재 복제 시점에 즉시 청소합니다. 이전에는 추가 복제 사이클을 기다려야했습니다."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Erasure code reconstruction handles moving data from handoff nodes better. Instead of moving the data to another handoff, it waits until it can be moved to a primary node.",
+      "plural_index": 0,
+      "a_msgstr": "Erasure code 재건은 핸드오버 노드에서 데이터를 이동하는 것을 더 잘 처리합니다. 다른 핸드오버 노드에 데이터를 이동하는 대신,-primary 노드로 이동할 때까지 기다립니다.",
+      "b_msgstr": "Erasure code 재건은 핸드오버 노드에서 데이터를 이동하는 것을 더 잘 처리합니다. 다른 핸드오버 노드에 데이터를 이동하는 대신,-primary 노드로 이동할 때까지 기다립니다."
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Added symlink objects support.",
+      "plural_index": 0,
+      "a_msgstr": "시mlink 객체를 지원합니다.",
+      "b_msgstr": "시mlink 객체를 지원합니다."
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Container metadata related to sharding are now removed when no longer needed.",
+      "plural_index": 0,
+      "a_msgstr": "sharding과 관련된 Container metadata는 더 이상 필요하지 않으면 제거됩니다.",
+      "b_msgstr": "sharding과 관련된 Container metadata는 더 이상 필요하지 않으면 제거됩니다."
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Fixed a bug where the sharder could fail to find a device to use for cleaving.",
+      "plural_index": 0,
+      "a_msgstr": "ring builder가 min_part_seconds_left가 0보다 더 큰 경우 장치 제거를 허용하지 않아 bug을 고정했습니다.",
+      "b_msgstr": "ring builder가 min_part_seconds_left가 0보다 더 큰 경우 장치 제거를 허용하지 않아 bug을 고정했습니다."
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Added a new optional proxy-logging field ``{wire_status_int}`` for the status code returned to the client. For more information, see `the documentation <https://docs.openstack.org/swift/latest/logs.html#proxy-logs>`__.",
+      "plural_index": 0,
+      "a_msgstr": "비어 있는 구성요소",
+      "b_msgstr": "비어 있는 구성요소"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Added more metrics to the container-server, allowing GET and PUT timings to be broken out for listings, shard range operations, and container creation.",
+      "plural_index": 0,
+      "a_msgstr": "비어 있는 구성요소",
+      "b_msgstr": "비어 있는 구성요소"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Added support for Python 3.8.",
+      "plural_index": 0,
+      "a_msgstr": "Python 3.8에 대한 지원을 추가했습니다.",
+      "b_msgstr": "Python 3.8에 대한 지원을 추가했습니다."
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Added the ability to connect to memcached over TLS. See the ``tls_*`` options in etc/memcache.conf-sample",
+      "plural_index": 0,
+      "a_msgstr": "비어 있는 구성요소",
+      "b_msgstr": "비어 있는 구성요소"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Fewer backend requests are now required when account or container information is missing from memcache.",
+      "plural_index": 0,
+      "a_msgstr": "뱅드백 요청의 수는 memcache에서 계정 또는 컨테이너 정보가 missing 할 때 더 적어졌습니다.",
+      "b_msgstr": "뱅드백 요청의 수는 memcache에서 계정 또는 컨테이너 정보가 missing 할 때 더 적어졌습니다."
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Fixed a bug where the ring builder would not allow removal of a device when min_part_seconds_left was greater than zero.",
+      "plural_index": 0,
+      "a_msgstr": "비어 있는 구성요소",
+      "b_msgstr": "비어 있는 구성요소"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Container sync can now copy SLOs more efficiently by allowing the manifest to be synced before all of the referenced segments. This fixes a bug where container sync would not copy SLO manifests.",
+      "plural_index": 0,
+      "a_msgstr": "容器 동기화는 SLO를 더 효율적으로 복사할 수 있습니다. manifest가 모든 참조된 부분보다 먼저 동기화될 수 있으므로 이 기능은 동기화가 SLO 매니페스트를 복사하지 못하는 버그를修正합니다.",
+      "b_msgstr": "容器 동기화는 SLO를 더 효율적으로 복사할 수 있습니다. manifest가 모든 참조된 부분보다 먼저 동기화될 수 있으므로 이 기능은 동기화가 SLO 매니페스트를 복사하지 못하는 버그를修正합니다."
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Deprecation Notes",
+      "plural_index": 0,
+      "a_msgstr": "보안 주의 사항",
+      "b_msgstr": "보안 주의 사항"
+    },
+    {
+      "similarity": 0.9999998211860657,
+      "context": "",
+      "msgid": "Added support for S3 versioning using the above new mode.",
+      "plural_index": 0,
+      "a_msgstr": "S3 버전을 사용하여 위의 새로운 모드를 통해 지원이 추가되었습니다.",
+      "b_msgstr": "S3 버전을 사용하여 위의 새로운 모드를 통해 지원이 추가되었습니다."
+    },
+    {
+      "similarity": 0.9999998211860657,
+      "context": "",
+      "msgid": "Allow ``fallocate_reserve`` to be specified as a percentage.",
+      "plural_index": 0,
+      "a_msgstr": "fallocate_reserve를 percentage로指定할 수 있습니다.",
+      "b_msgstr": "fallocate_reserve를 percentage로指定할 수 있습니다."
+    },
+    {
+      "similarity": 0.9999998211860657,
+      "context": "",
+      "msgid": "Correctness improvements",
+      "plural_index": 0,
+      "a_msgstr": "정확성 개선",
+      "b_msgstr": "정확성 개선"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "Constant-time string comparisons are now used when checking S3 API signatures.",
+      "plural_index": 0,
+      "a_msgstr": "S3 API 서명에 대한 상수 시간 문자 비교가 now 사용됩니다.",
+      "b_msgstr": "S3 API 서명에 대한 상수 시간 문자 비교가 now 사용됩니다."
+    },
+    {
+      "similarity": 0.9999997019767761,
+      "context": "",
+      "msgid": "Fixed a bug in the EC reconstructor where an unsuccessful sync would cause extra disk I/O load on the remote server. Now the extra checking work is only requested if the sync request was successful.",
+      "plural_index": 0,
+      "a_msgstr": "스위프트가 high concurrency에서 노출된 이벤트 let 사용 방법의 버그를修复했습니다.",
+      "b_msgstr": "스위프트가 high concurrency에서 노출된 이벤트 let 사용 방법의 버그를修复했습니다."
+    },
+    {
+      "similarity": 0.9999997019767761,
+      "context": "",
+      "msgid": "Fixed a server error during GET of a symlink with some proxy pipelines.",
+      "plural_index": 0,
+      "a_msgstr": "GET symlink의 일부 프록시 파이프라인에서 서버 오류가 발생했습니다.",
+      "b_msgstr": "GET symlink의 일부 프록시 파이프라인에서 서버 오류가 발생했습니다."
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Added an optional ``read_only`` middleware to make an entire cluster or individual accounts read only.",
+      "plural_index": 0,
+      "a_msgstr": "read_only middleware를 추가하여 individual accounts 또는 entire cluster를 read-only로 만들 수 있습니다.",
+      "b_msgstr": "read_only middleware를 추가하여 individual accounts 또는 entire cluster를 read-only로 만들 수 있습니다."
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "CORS-related headers are now passed through appropriately when using the S3 API. Note that allowed origins and other container metadata must still be `configured through the Swift API <https://docs.openstack.org/swift/latest/cors.html>`__.",
+      "plural_index": 0,
+      "a_msgstr": "CORS 관련 헤더가 적절히 S3 API를 사용할 때 패스-through됩니다. 허용된 원본 및 기타 컨테이너 메타데이터는 여전히 Swift API <https://docs.openstack.org/swift/latest/cors.html>을 통해 구성되어야 합니다.",
+      "b_msgstr": "CORS 관련 헤더가 적절히 S3 API를 사용할 때 패스-through됩니다. 허용된 원본 및 기타 컨테이너 메타데이터는 여전히 Swift API <https://docs.openstack.org/swift/latest/cors.html>을 통해 구성되어야 합니다."
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Cross-account symlinks now store correct account information in container listings. This was previously fixed in 2.22.0.",
+      "plural_index": 0,
+      "a_msgstr": "cross-account symlinks는 현재 container listing에 correct account information을 저장합니다. 이was previously fixed in 2.22.0.",
+      "b_msgstr": "cross-account symlinks는 현재 container listing에 correct account information을 저장합니다. 이was previously fixed in 2.22.0."
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Erasure coding fixes:",
+      "plural_index": 0,
+      "a_msgstr": "Erasure coding fixes:",
+      "b_msgstr": "Erasure coding fixes:"
+    },
+    {
+      "similarity": 0.9999994039535522,
+      "context": "",
+      "msgid": "Container sharding deprecations:",
+      "plural_index": 0,
+      "a_msgstr": "容器 분할의 비고:",
+      "b_msgstr": "容器 분할의 비고:"
+    },
+    {
+      "similarity": 0.9999994039535522,
+      "context": "",
+      "msgid": "Fixed a bug in how Swift uses eventlet that was exposed under high concurrency.",
+      "plural_index": 0,
+      "a_msgstr": "도메인 리매퍼의 버그를修复했습니다. obj가 시작/종료에 슬래श가 있는 경우.",
+      "b_msgstr": "도메인 리매퍼의 버그를修复했습니다. obj가 시작/종료에 슬래श이 있는 경우."
+    },
+    {
+      "similarity": 0.9999993443489075,
+      "context": "",
+      "msgid": "Background corruption-detection improvements",
+      "plural_index": 0,
+      "a_msgstr": "뒤경계 오류ตรวจ출 개선",
+      "b_msgstr": "뒤경계 오류ตรวจ출 개선"
+    },
+    {
+      "similarity": 0.9999990463256836,
+      "context": "",
+      "msgid": "Added support for recent versions of eventlet.",
+      "plural_index": 0,
+      "a_msgstr": "eventlet의 최근 버전을 지원합니다.",
+      "b_msgstr": "eventlet의 최근 버전을 지원합니다."
+    },
+    {
+      "similarity": 0.9999455213546753,
+      "context": "",
+      "msgid": "Added a ``stale_worker_timeout`` configuration option to the WSGI servers. Once this time elapses following a reload, the manager process will issue SIGKILLs to any remaining stale workers.",
+      "plural_index": 0,
+      "a_msgstr": "WSGI 서버에 ``stale_worker_timeout`` 구성 옵션을 추가했습니다. reload 후에 남아있는 오래된 워커에게 SIGKILL을 발급하는 manager 프로세스가 이 시간이 지남에 따라합니다.",
+      "b_msgstr": "WSGI 서버에 ``stale_worker_timeout`` 구성 옵션을 추가했습니다. reload 후에 남아 있는 오래된 워커에게 SIGKILL을 발급하는 manager 프로세스가 이 시간이 지남에 따라합니다."
+    },
+    {
+      "similarity": 0.9999101161956787,
+      "context": "",
+      "msgid": "Added support for emitting labeled statsd metrics in a variety of formats. Middleware authors should see `the LabeledStatsdClient documentation <https://docs.openstack.org/swift/latest/misc.html#swift.common.statsd_client.LabeledStatsdClient>`__ for more information.",
+      "plural_index": 0,
+      "a_msgstr": "labeled statsd 메트릭을 다양한 형식으로.emit하는 지원이 추가되었습니다. 미들웨어作者는 <https://docs.openstack.org/swift/latest/misc.html#swift.common.statsd_client.LabeledStatsdClient>을 확인하십시오.",
+      "b_msgstr": "labeled statsd 메트릭을 다양한 형식으로.emit하는 지원이 추가되었습니다. 미들웨어作者는 <https://docs.openstack.org/swift/latest/misc.html#swift.common.statsd_client.LabeledStatsdClient>를 확인하십시오."
+    },
+    {
+      "similarity": 0.9998238682746887,
+      "context": "",
+      "msgid": "Added per-account and per-container reaping delays. These may be used to offer some grace period in which to recover expired objects.",
+      "plural_index": 0,
+      "a_msgstr": "계정 및 컨테이너당 재생 지연을 추가했습니다. 이들은 사용자에게 expired 객체가 만료되기 전에 일부 시간을 제공할 수 있는 일부 영역을 제공하는 데 사용될 수 있습니다.",
+      "b_msgstr": "계정 및 컨테이너당 재생 지연을 추가했습니다. 이들은 사용자에게 expired 객체가 만료되기 전에 일부 시간을 제공할 수있는 일부 영역을 제공하는 데 사용될 수 있습니다."
+    },
+    {
+      "similarity": 0.999714732170105,
+      "context": "",
+      "msgid": "Database replication connections are now closed following an error or timeout. This prevents a traceback in some cases when the replicator tries to reuse the connection.",
+      "plural_index": 0,
+      "a_msgstr": "데이터베이스 복제 연결은 오류 또는 타임아웃으로 인해 닫히게 되었습니다. 이로 인해 일부 경우 replicator가 연결을 재사용하려고 시도할 때 트레이스백이 발생하는 것을 방지합니다.",
+      "b_msgstr": "데이터베이스 복제 연결은 오류 또는 타임아웃으로 인해 닫히게되었습니다. 이로 인해 일부 경우 replicator가 연결을 재사용하려고 시도할 때 트레이스백이 발생하는 것을 방지합니다."
+    },
+    {
+      "similarity": 0.9987752437591553,
+      "context": "",
+      "msgid": "",
+      "plural_index": 0,
+      "a_msgstr": "Project-Id-Version: PROJECT VERSION Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-13 22:21+0900 PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: ko_KR Language-Team: ko_KR <LL@li.org> Plural-Forms: nplurals=1; plural=0 MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0",
+      "b_msgstr": "Project-Id-Version: PROJECT VERSION Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-13 22:12+0900 PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: ko_KR Language-Team: ko_KR <LL@li.org> Plural-Forms: nplurals=1; plural=0 MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0"
+    },
+    {
+      "similarity": 0.9986241459846497,
+      "context": "",
+      "msgid": "Deleted shard containers are no longer considered root containers. This prevents unnecessary sharding audit failures and allows the deleted shard database to actually be unlinked.",
+      "plural_index": 0,
+      "a_msgstr": "삭제된 샤더 컨테이너는 더 이상 루트 컨테이너로 간주되지 않습니다. 이로 인해 불필요한 샤딩 audits의 실패를 방지하고 실제로 삭제된 샤드 데이터베이스가 unlink될 수 있게합니다.",
+      "b_msgstr": "삭제된 샤드 컨테이너는 더 이상 루트 컨테이너로 간주되지 않습니다. 이로 인해 불필요한 샤딩 audits의 실패를 방지하고 실제로 삭제된 샤드 데이터베이스가 unlink될 수 있게합니다."
+    },
+    {
+      "similarity": 0.9984020590782166,
+      "context": "",
+      "msgid": "Fixed 500 from cname_lookup middleware. Previously, if the looked-up domain was used by domain_remap to update the request path, the server would respond Internal Error.",
+      "plural_index": 0,
+      "a_msgstr": "cname_lookup 미들웨어에서 500 오류를 고정했습니다. 이전에, looked-up 도메인이 domain_remap을 통해 요청 경로를 업데이트하는 경우, 서버는 Internal Error로 응답했습니다.",
+      "b_msgstr": "cname_lookup 미들웨어에서 500 오류를 고정했습니다. 이전에, looked-up 도메인이 domain_remap을 통해 요청 경로를 업데이트하면, 서버는 Internal Error로 응답했습니다."
+    },
+    {
+      "similarity": 0.998086154460907,
+      "context": "",
+      "msgid": "Drop support for auth-server from common/manager.py and `swift-init`.",
+      "plural_index": 0,
+      "a_msgstr": "auth-server를 common/manager.py와 swift-init에서 지원을 중단하세요.",
+      "b_msgstr": "auth-server를 common/manager.py와 swift-init에서 지원을 중단하십시오"
+    },
+    {
+      "similarity": 0.9979870319366455,
+      "context": "",
+      "msgid": "Added support for retrieving the encryption root secret from an external key management system. In practice, this is currently limited to Barbican.",
+      "plural_index": 0,
+      "a_msgstr": "외부 키 관리 시스템에서 암호화 루트 secret를 retrieves할 수 있습니다. 실제로 현재 Barbican에 제한됩니다.",
+      "b_msgstr": "외부 키 관리 시스템에서 암호화 루트 secret를 retrieves할 수 있습니다. 실제로 현재는 Barbican에 제한됩니다."
+    },
+    {
+      "similarity": 0.9978620409965515,
+      "context": "",
+      "msgid": "Fix a proxy-server error when retrieving erasure coded data when there are durable fragments but not enough to reconstruct.",
+      "plural_index": 0,
+      "a_msgstr": "proxy-server 오류를修正하여 erasure-coded 데이터를 가져오기 위해 지속 가능한 부분이 있지만 재건할 수 없을 때.",
+      "b_msgstr": "proxy-server 오류를修正하여 erasure coded 데이터를 가져오기 위해 지속 가능한 부분이 있지만 재건할 수 없을 때."
+    },
+    {
+      "similarity": 0.9973258972167969,
+      "context": "",
+      "msgid": "Added support for aws-chunked transfers. Recent AWS clients recently began defaulting to this mode. See also: `Transferring Payload in Multiple Chunks (Chunked Upload) <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html>`__.",
+      "plural_index": 0,
+      "a_msgstr": "AWS-chunked 전송에 대한 지원이 추가되었습니다. 최근 AWS 클라이언트들은 이 모드를 기본으로 시작했습니다. 또한: Transferring Payload in Multiple Chunks (Chunked Upload) <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html>을 확인하십시오.",
+      "b_msgstr": "AWS-chunked 전송에 대한 지원이 추가되었습니다. 최근 AWS 클라이언트들은 이 모드를 기본적으로 사용하기 시작했습니다. 또한: Transferring Payload in Multiple Chunks (Chunked Upload) <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html>을 확인하십시오."
+    },
+    {
+      "similarity": 0.9960393905639648,
+      "context": "",
+      "msgid": "Added a delay before deleting non-durable data. A new configuration option, ``commit_window`` in the ``[DEFAULT]`` section of object-server.conf, adjusts this delay; the default is 60 seconds. This improves the durability of both back-dated PUTs (from the reconciler or container-sync, for example) and fresh writes to handoffs by preventing the reconstructor from deleting data that the object-server was still writing.",
+      "plural_index": 0,
+      "a_msgstr": "비持続 데이터를 삭제하기 전에 지연 시간을 추가합니다. new configuration option, ``commit_window`` in the ``[DEFAULT]`` section of object-server.conf, adjusts this delay; default is 60 seconds. This improves durability of both back-dated PUTs (from reconciler or container-sync, etc.) and fresh writes to handoffs by preventing reconstructor from deleting data that object-server was still writing.",
+      "b_msgstr": "비持続 데이터를 삭제하기 전에 지연 시간을 추가했습니다. new configuration option, ``commit_window`` in the ``[DEFAULT]`` section of object-server.conf, this delay adjusts; default is 60 seconds. This improves durability of both back-dated PUTs (reconciler or container-sync, etc.) and fresh writes to handoffs by preventing reconstructor from deleting data that object-server was still writing."
+    },
+    {
+      "similarity": 0.9957506656646729,
+      "context": "",
+      "msgid": "Cleanup is more robust to files and directories being deleted by another process.",
+      "plural_index": 0,
+      "a_msgstr": "cleanup은 다른 프로세스가 파일과 디렉터리를 삭제할 때 더 강력합니다.",
+      "b_msgstr": "cleanup은 다른 프로세스가 파일과 디렉터리를 삭제하는 경우 더 강력합니다."
+    },
+    {
+      "similarity": 0.9954949021339417,
+      "context": "",
+      "msgid": "Added support for aws-chunked transfers. Recent AWS clients recently began defaulting to this mode. See `Amazon's documentation <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html>`__.",
+      "plural_index": 0,
+      "a_msgstr": "AWS-chunked 전송에 대한 지원이 추가되었습니다. 최근 AWS 클라이언트들은 이 모드를 기본으로 시작했습니다. 자세한 정보는 <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html>을 확인하십시오.",
+      "b_msgstr": "AWS-chunked 전송에 대한 지원이 추가되었습니다. 최근 AWS 클라이언트들은 이 모드를 기본적으로 사용하기 시작했습니다. 자세한 정보는 <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html>을 확인하십시오."
+    },
+    {
+      "similarity": 0.9952711462974548,
+      "context": "",
+      "msgid": "During clean-up, stop warning about tombstones that got reaped from the new location but not the old.",
+      "plural_index": 0,
+      "a_msgstr": "clean-up 시, 새로운 위치에서 tombstones이 재생성되었지만舊 위치에서는 재생성되지 않은 것에 대해 경고를 중단하세요.",
+      "b_msgstr": "clean-up 시, 새로운 위치에서 tombstones가 재생성되었지만舊 위치에서는 재생성되지 않은 것에 대해 경고를 중지하십시오"
+    },
+    {
+      "similarity": 0.994381844997406,
+      "context": "",
+      "msgid": "Added a configurable URL base to staticweb.",
+      "plural_index": 0,
+      "a_msgstr": "staticweb URL 기본값을 configurable로 설정합니다.",
+      "b_msgstr": "staticweb URL 기본값을 configurable로 설정했습니다."
+    },
+    {
+      "similarity": 0.9937872886657715,
+      "context": "",
+      "msgid": "Fixed a security issue in how ``s3api`` handles XML parsing that allowed authenticated S3 clients to read arbitrary files from proxy servers. Refer to `CVE-2022-47950 <https://cve.circl.lu/cve/CVE-2022-47950>`__ for more information.",
+      "plural_index": 0,
+      "a_msgstr": "s3api가 XML 파싱을 어떻게 처리하는.security 문제를修正했습니다. 이 문제는 인증된 S3 클라이언트가 프록시 서버에서 arbitrarly files를 읽을 수있게되었습니다. 더 많은 정보는 `CVE-2022-47950 <https://cve.circl.lu/cve/CVE-2022-47950>`__에 있습니다.",
+      "b_msgstr": "s3api가 XML 파싱을 어떻게 처리하는지에 대한 보안 문제를修正했습니다. 이 문제는 인증된 S3 클라이언트가 프록시 서버에서 arbitrarly files를 읽을 수있게 하였습니다. 더 많은 정보는 `CVE-2022-47950 <https://cve.circl.lu/cve/CVE-2022-47950>`__에 있습니다."
+    },
+    {
+      "similarity": 0.9933533072471619,
+      "context": "",
+      "msgid": "Fixed an import-ordering issue in ``swift-dispersion-populate``.",
+      "plural_index": 0,
+      "a_msgstr": "swift-dispersion-populate의_import 순서 관련 문제를修正했습니다.",
+      "b_msgstr": "swift-dispersion-populate의_import 순서 문제를修正했습니다."
+    },
+    {
+      "similarity": 0.9923556447029114,
+      "context": "",
+      "msgid": "Container-server logs now include the shard path in the referer field when receiving stat updates.",
+      "plural_index": 0,
+      "a_msgstr": "容器 서버 로그에는 stat 업데이트를 수신할 때 referer 필드에 shard path가 포함됩니다.",
+      "b_msgstr": "容器 서버 로그에는 stat 업데이트를 받을 때 referer 필드에 shard path가 포함됩니다."
+    },
+    {
+      "similarity": 0.9886228442192078,
+      "context": "",
+      "msgid": "Fixed a path-rewriting bug introduced in Python 3.7.14, 3.8.14, 3.9.14, and 3.10.6 that could cause some ``domain_remap`` requests to be routed to the wrong object.",
+      "plural_index": 0,
+      "a_msgstr": "Python 3.7.14, 3.8.14, 3.9.14, 및 3.10.6에서 도메인 리마핑 요청이 올바른 객체로 라우팅되지 않는 bug를修复했습니다.",
+      "b_msgstr": "Python 3.7.14, 3.8.14, 3.9.14 및 3.10.6에서 도메인 remap 요청이 올바른 객체로 라우팅되지 않는 bug를修复했습니다."
+    },
+    {
+      "similarity": 0.9866608381271362,
+      "context": "",
+      "msgid": "Added last start time to recon dumps as ``object_updater_last``.",
+      "plural_index": 0,
+      "a_msgstr": "recon dump에 마지막 시작 시간을 추가했습니다. object_updater_last",
+      "b_msgstr": "recon dump에서 마지막 시작 시간을 추가합니다. object_updater_last"
+    },
+    {
+      "similarity": 0.9854167103767395,
+      "context": "",
+      "msgid": "Added a ``ring_ip`` option for various object services. This may be used to find own devices in the ring in a containerized environment where the ``bind_ip`` may not appear in the ring at all.",
+      "plural_index": 0,
+      "a_msgstr": "various object services에 대해 ``ring_ip`` 옵션을 추가했습니다. 이 옵션은 컨테이너 환경에서 ``bind_ip``이 ring에 나타나지 않을 수 있는 경우self의 장치를 찾기 위해 사용할 수 있습니다.",
+      "b_msgstr": "various object services에 ``ring_ip`` 옵션을 추가했습니다. 이 옵션은 컨테이너 환경에서 ``bind_ip``이 ring에 나타나지 않을 경우 자신의 장치를 찾는 데 사용될 수 있습니다."
+    },
+    {
+      "similarity": 0.9853754639625549,
+      "context": "",
+      "msgid": "Fixed a bug in the new object versioning API that would cause more than ``limit`` results to be returned when listing.",
+      "plural_index": 0,
+      "a_msgstr": "EC reconstructor의 unsuccessful sync에서 원격 서버에 추가 디스크 I/O 로드가 발생했을 때 버그를修复했습니다. 이제 성공적 sync 요청이면 추가 확인 작업만 요청합니다.",
+      "b_msgstr": "EC reconstructor의 unsuccessful sync에서 원격 서버에 추가 디스크 I/O 로드가 발생했을 때 버그를修复했습니다. now는 성공적 인.sync 요청에만 추가 확인 작업이 필요합니다."
+    },
+    {
+      "similarity": 0.9842511415481567,
+      "context": "",
+      "msgid": "All 416 responses will now include a Content-Range header with an unsatisfied-range value. This allows the caller to know the valid range request value for an object.",
+      "plural_index": 0,
+      "a_msgstr": "모든 416 응답은 अब Content-Range 헤더와 비만족된 범위值을 포함합니다. 이 allows caller가 object에 대해 유효한 범위 요청 값으로 biết게 하기 위해.",
+      "b_msgstr": "모든 416 응답은 अब Content-Range 헤더와 비만족된 범위 값이 포함됩니다. 이 allows caller가 object에 대해 유효한 범위 요청 값을 biết게합니다."
+    },
+    {
+      "similarity": 0.9840605854988098,
+      "context": "",
+      "msgid": "Erasure code GET performance has been significantly improved in clusters that are not completely healthy.",
+      "plural_index": 0,
+      "a_msgstr": "Erasure code GET 성능은 건강하지 않은 클러스터에서 significanly 개선되었습니다.",
+      "b_msgstr": "Erasure code GET 성능은 건강하지 않은 클러스터에서도 significanly 개선되었습니다."
+    },
+    {
+      "similarity": 0.9839209318161011,
+      "context": "",
+      "msgid": "Added a configurable URL base to staticweb, fixing issues when the accessible endpoint isn't known to the Swift cluster (eg http vs https).",
+      "plural_index": 0,
+      "a_msgstr": "staticweb URL 기본값을 configurable로 설정하여, Swift 클러스터가 접근 가능한 엔드포인트가 알려지지 않아 발생하는 문제를 해결합니다. (예: http vs https).",
+      "b_msgstr": "staticweb URL 기본값을 configurable로 설정하여, Swift 클러스터와 접근 가능한 엔드포인트가 알려지지 않은 경우 문제를 해결했습니다. (예: http vs https)."
+    },
+    {
+      "similarity": 0.982187032699585,
+      "context": "",
+      "msgid": "Added support for system-scoped \"reader\" roles when authenticating using Keystone. Operators may configure this using the ``system_reader_roles`` option in the ``[filter:keystoneauth]`` section of their proxy-server.conf.",
+      "plural_index": 0,
+      "a_msgstr": "Keystone를 사용하여 인증하는 경우 시스템 스코프의 \"reader\" 역할을 지원합니다. 운영자들은 ``system_reader_roles`` 옵션을 ``[filter:keystoneauth]`` 섹션의 proxy-server.conf에서 구성할 수 있습니다.",
+      "b_msgstr": "Keystone를 사용하여 인증하는 경우 system-scoped \"reader\" roles를 지원합니다. 운영자들은 ``system_reader_roles`` 옵션을 proxy-server.conf의 ``[filter:keystoneauth]`` section에서 구성할 수 있습니다."
+    },
+    {
+      "similarity": 0.9821029901504517,
+      "context": "",
+      "msgid": "Extend concurrent reads to erasure coded policies. Previously, the options ``concurrent_gets`` and ``concurrency_timeout`` only applied to replicated policies.",
+      "plural_index": 0,
+      "a_msgstr": "Extend concurrent reads to erasure coded policies. Previously, options ``concurrent_gets`` and ``concurrency_timeout`` only applied to replicated policies.",
+      "b_msgstr": "concurrent reads를 erasure coded policies에 extend합니다. Previously, options ``concurrent_gets`` and ``concurrency_timeout`` only applied to replicated policies."
+    },
+    {
+      "similarity": 0.9810723066329956,
+      "context": "",
+      "msgid": "Fixed ``Content-Type`` and ``Content-Length`` headers in account and container ``HEAD`` responses (with eventlet>=0.38.0).",
+      "plural_index": 0,
+      "a_msgstr": "계정과 컨테이너의 ``HEAD`` 응답에서 eventlet>=0.38.0 이상을 사용할 때 ``Content-Type`` 및 ``Content-Length`` 헤더를 고정했습니다.",
+      "b_msgstr": "계정 및 컨테이너의 ``HEAD`` 응답에서 ``Content-Type`` 및 ``Content-Length`` 헤더를 고정했습니다.(eventlet>=0.38.0)."
+    },
+    {
+      "similarity": 0.9805958867073059,
+      "context": "",
+      "msgid": "All background daemons now use the replication network. This allows better isolation between external, client-facing traffic and internal, background traffic. Note that during a rolling upgrade, replication servers may respond with ``405 Method Not Allowed``. To avoid this, operators should remove the config option ``replication_server = true`` from their replication servers; this will allow them to handle all request methods before upgrading.",
+      "plural_index": 0,
+      "a_msgstr": "모든 배경 데몬이 replication 네트워크를 사용합니다. 이것은 외부, 클라이언트-facing 트래픽과 내부, 배경 트래픽 사이의 better isolation을 제공합니다. note가 upgrade 동안 replication 서버가 ``405 Method Not Allowed``로 응답할 수 있습니다. 이를 피하기 위해, 운영자들은 replication 서버에서 config 옵션 ``replication_server = true``를 제거해야 합니다; 이것은 모든 요청 메소드를 처리하기 전에 업그레이드 할 수 있도록합니다.",
+      "b_msgstr": "모든 배경 데몬이 replication 네트워크를 사용합니다. 이것은 외부, 클라이언트-facing 트래픽과 내부, 배경 트래픽 사이의 better isolation을 제공합니다. 주의할 점은 롤링 업그레이드 중에 replication 서버가 ``405 Method Not Allowed``를 trảす 경우입니다. 이를 피하기 위해, 운영자들은 자신의 replication 서버에서 config 옵션 ``replication_server = true``를 제거해야 합니다; 이것은 모든 요청 메소드를 처리할 수 있도록 업그레이드 전에 처리합니다."
+    },
+    {
+      "similarity": 0.978840708732605,
+      "context": "",
+      "msgid": "Fixed a server error in bucket listings when ``s3_acl`` is enabled and staticweb is configured for the container.",
+      "plural_index": 0,
+      "a_msgstr": "s3_acl이 활성화되어且 container에 staticweb가 구성된 경우 bucket listing 에서 서버 오류가 발생했습니다.",
+      "b_msgstr": "s3_acl이 활성화되어 있고 컨테이너에서 staticweb가 구성된 경우, bucket listing 에서 서버 오류가 발생했습니다."
+    },
+    {
+      "similarity": 0.9765416979789734,
+      "context": "",
+      "msgid": "Changed where liberasurecode-devel for CentOS 7 is referenced and installed as a dependency.",
+      "plural_index": 0,
+      "a_msgstr": "liberasurecode-devel for CentOS 7를 참조하고 설치된 의존성으로 변경했습니다.",
+      "b_msgstr": "liberasurecode-devel for CentOS 7를 참조하고 설치된 의존성에서 변경했습니다."
+    },
+    {
+      "similarity": 0.974035918712616,
+      "context": "",
+      "msgid": "Container read ACLs now work with object versioning. This only allows access to the most-recent version via an unversioned URL.",
+      "plural_index": 0,
+      "a_msgstr": "容器 읽기 ACLs는 오브젝트 버전화와 함께 작동합니다. 이 기능은 가장 최근 버전에 대한 접근을 비버전 URL로만 허용합니다.",
+      "b_msgstr": "容器 읽기 ACLs는 오브젝트 버전화와 함께 작동합니다. 이 기능은 가장 최근 버전에 대한 접근을 unversioned URL로만 허용합니다."
+    },
+    {
+      "similarity": 0.9706213474273682,
+      "context": "",
+      "msgid": "After upgrading, re-enable and restart the object-reconstructor.",
+      "plural_index": 0,
+      "a_msgstr": "업그레이드 후, 다시 활성화하고 재시작해야 합니다. 오브젝트 재조성자.",
+      "b_msgstr": "업그레이드 후, 다시 활성화하고 재시작해야 합니다. 오브젝트-재건자."
+    },
+    {
+      "similarity": 0.9697831273078918,
+      "context": "",
+      "msgid": "Added the option to tune down ETag validation in the object-server during full-object reads. By default, every full read will continue to have its ETag validated as bytes are streamed to the proxy-server. The ``etag_validate_pct`` option may be used to configure approximately what percentage of full-object reads should be validated; reducing this can improve performance when object-servers are CPU-constrained.",
+      "plural_index": 0,
+      "a_msgstr": "ETag validation을 object-server에서 full-object reads에서 fine-tune 할 수 있습니다. default는 bytes가 proxy-server로 스트리밍 될 때까지 ETag validation을 계속 유지합니다; etag_validate_pct option을 사용하여 approximately what percentage of full-object reads를 validate할 수 있습니다; reducing this can improve performance when object-servers are CPU-constrained.",
+      "b_msgstr": "ETag validation을 object-server에서 full-object read에 tuning down할 수 있습니다. 기본적으로 모든 full read는 bytes가 proxy-server로 스트리밍되는 동안 ETag validation이 계속됩니다. etag_validate_pct 옵션을 사용하여 approximately what percentage of full-object reads가 validation을 설정할 수 있습니다; CPU-constrained object-servers의 경우 performance를 개선할 수 있습니다."
+    },
+    {
+      "similarity": 0.9688665270805359,
+      "context": "",
+      "msgid": "Enabled versioned writes on Dynamic Large Objects (DLOs).",
+      "plural_index": 0,
+      "a_msgstr": "동적 큰 오브젝트 (DLOs)의 버전ized 쓰기를 활성화했습니다.",
+      "b_msgstr": "동적 큰 객체 (DLOs)의 버전화된 쓰기를 활성화했습니다."
+    },
+    {
+      "similarity": 0.9683238863945007,
+      "context": "",
+      "msgid": "Container sync now synchronizes static symlinks in a way similar to static large objects.",
+      "plural_index": 0,
+      "a_msgstr": "容器 동기화는 정적 symlink을 정적 큰 오브젝트와 유사한 방식으로 동기화합니다.",
+      "b_msgstr": "容器 동기화는 정적 symlink의 동기화를 static large objects와 유사하게 동기화합니다."
+    },
+    {
+      "similarity": 0.9674139022827148,
+      "context": "",
+      "msgid": "Experimental support for Python 3.6 and 3.7 is now available. Note that this requires ``eventlet>=0.25.0``. All unit tests pass, and running functional tests under Python 2 will pass against services running under Python 3. Expect full support in the next minor release.",
+      "plural_index": 0,
+      "a_msgstr": "Experimental support for Python 3.6 and 3.7 is now available. Note that this requires ``eventlet>=0.25.0``. All unit tests pass, and running functional tests under Python 2 will pass against services running under Python 3. Expect full support in the next minor release.",
+      "b_msgstr": "Python 3.6 및 3.7의 실험적 지원이 now available. Note that this requires ``eventlet>=0.25.0``. All unit tests pass, and running functional tests under Python 2 will pass against services running under Python 3. Expect full support in the next minor release."
+    },
+    {
+      "similarity": 0.9666632413864136,
+      "context": "",
+      "msgid": "Fixed an error when reading encrypted data that was written while running Python 2 for a path that includes non-ASCII characters.",
+      "plural_index": 0,
+      "a_msgstr": "Python 2를 실행할 때 작성된 비대문 문자가 포함된 경로에 대해 암호화 데이터를 읽을 때 오류를修正했습니다.",
+      "b_msgstr": "ASCII 문자가 포함된 경로에 대해 Python 2를 실행한 동안 쓰여진 암호화 데이터를 읽는 오류를修正했습니다."
+    },
+    {
+      "similarity": 0.966178297996521,
+      "context": "",
+      "msgid": "Added an option to write EC fragments with legacy CRC to ensure a smooth upgrade from liberasurecode<=1.5.0 to >=1.6.2. For more information, see `bug 1886088 <https://bugs.launchpad.net/liberasurecode/+bug/1886088>`__.",
+      "plural_index": 0,
+      "a_msgstr": "liberasurecode<=1.5.0에서 >=1.6.2 이상으로 업그레이드를 보장하기 위해 legacy CRC와 함께 EC fragments를 쓰기 옵션을 추가했습니다. 더 많은 정보는 `bug 1886088 <https://bugs.launchpad.net/liberasurecode/+bug/1886088>`__입니다.",
+      "b_msgstr": "legacy CRC와 EC fragments를 쓰는 것을 위해 1.5.0 이상에서 1.6.2 이상으로 업그레이드를 보장하는 것을確保する 옵션을 추가했습니다. 더 많은 정보는 `bug 1886088 <https://bugs.launchpad.net/liberasurecode/+bug/1886088>`__입니다."
+    },
+    {
+      "similarity": 0.9649897217750549,
+      "context": "",
+      "msgid": "Correctly send 412 Precondition Failed if a user sends an invalid copy destination. Previously Swift would send a 500 Internal Server Error.",
+      "plural_index": 0,
+      "a_msgstr": "사용자가 유효한 복사 목적지를 전송할 때, 412 Precondition Failed 오류를 correctly 전송하세요. 이전 Swift는 500 Internal Server Error를 전송했습니다.",
+      "b_msgstr": "사용자가 유효한 복사 목적지를 전송하지 않으면 412 Precondition Failed를 correctly 전송하세요. 이전 Swift는 500 Internal Server Error를 전송했습니다."
+    },
+    {
+      "similarity": 0.9625849723815918,
+      "context": "",
+      "msgid": "CompleteMultipartUpload requests with a ``Content-MD5`` now work.",
+      "plural_index": 0,
+      "a_msgstr": "CompleteMultipartUpload 요청의 Content-MD5가 now work합니다.",
+      "b_msgstr": "CompleteMultipartUpload 요청 Content-MD5와 함께 now work합니다."
+    },
+    {
+      "similarity": 0.9617500305175781,
+      "context": "",
+      "msgid": "Fixed a bug in domain_remap when obj starts/ends with slash.",
+      "plural_index": 0,
+      "a_msgstr": "클라이언트 연결에서 발생한 '이미 실행 중인 생성자' 오류를修复했습니다.",
+      "b_msgstr": "클라이언트 연결에서 발생하는 '기반 생성기가 이미 실행 중입니다.' 오류를修复했습니다."
+    },
+    {
+      "similarity": 0.9607884883880615,
+      "context": "",
+      "msgid": "Cleaned up ``X-Backend-*`` headers in listing responses.",
+      "plural_index": 0,
+      "a_msgstr": "X-Backend-* 헤더를 listing 응답에 cleaner up했습니다.",
+      "b_msgstr": "X-Backend-* 헤더를 listing responses에 clean up했습니다."
+    },
+    {
+      "similarity": 0.9603477120399475,
+      "context": "",
+      "msgid": "Added information (including target account/container) from oldest failed updates to recon dumps, both per-device and aggregated for the node. Use the new ``async_tracker_max_entries`` and ``async_tracker_dump_count`` options to adjust how many records to collect.",
+      "plural_index": 0,
+      "a_msgstr": "oldest failed updates에서 target account/container 정보를 포함한 모든 장치 및 노드의 aggregates로 추가되었습니다. new ``async_tracker_max_entries`` 및 ``async_tracker_dump_count`` 옵션을 사용하여 수집할 레코드의จำนวน을 조정하세요.",
+      "b_msgstr": "oldest failed updates에서 target account/container 정보를 포함하여 모든 장치 및 노드에 대한 aggregates와 각 장치별로 사용할 수 있습니다. new ``async_tracker_max_entries`` 및 ``async_tracker_dump_count`` 옵션을 사용하여 수집한 레코드의 수를 조정하세요."
+    },
+    {
+      "similarity": 0.9602759480476379,
+      "context": "",
+      "msgid": "Closed a bug where ssync may have written bad fragment data in some circumstances. A check was added to ensure the correct number of bytes is written for a fragment before finalizing the write. Also, erasure coded fragment metadata will now be validated on read requests and, if bad data is found, the fragment will be quarantined.",
+      "plural_index": 0,
+      "a_msgstr": "SSync가 일부 circumstances에서 나쁜 fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 fragment에 쓰여질 때까지 finalizing write 전에 correct number of bytes가 쓰여질 것을 확인했습니다. 또한, erasure coded fragment metadata가 read 요청에 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다.",
+      "b_msgstr": "SSync가 일부 circumstances에서 bad fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 쓰여진 fragment 전에 finalizing write를 보장하기 위해 확인이 추가되었습니다. 또한, erasure coded fragment metadata가 read 요청에 유효성 kiểm사를 통해 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다."
+    },
+    {
+      "similarity": 0.9602759480476379,
+      "context": "",
+      "msgid": "Closed a bug where ssync may have written bad fragment data in some circumstances. A check was added to ensure the correct number of bytes is written for a fragment before finalizing the write. Also, erasure coded fragment metadata will now be validated when read and, if bad data is found, the fragment will be quarantined.",
+      "plural_index": 0,
+      "a_msgstr": "SSync가 일부 circumstances에서 나쁜 fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 fragment에 쓰여질 때까지 finalizing write 전에 correct number of bytes가 쓰여질 것을 확인했습니다. 또한, erasure coded fragment metadata가 read 요청에 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다.",
+      "b_msgstr": "SSync가 일부 circumstances에서 bad fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 쓰여진 fragment 전에 finalizing write를 보장하기 위해 확인이 추가되었습니다. 또한, erasure coded fragment metadata가 read 요청에 유효성 kiểm사를 통해 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다."
+    },
+    {
+      "similarity": 0.9570905566215515,
+      "context": "",
+      "msgid": "Added the ability to read options from object-server.conf, similar to background daemons.",
+      "plural_index": 0,
+      "a_msgstr": "object-server.conf에 read options을 읽기 similar to background daemons.",
+      "b_msgstr": "object-server.conf에서 read options을 읽기와 background daemon과 유사합니다."
+    },
+    {
+      "similarity": 0.955210268497467,
+      "context": "",
+      "msgid": "Fix SLO delete for accounts with non-ASCII names.",
+      "plural_index": 0,
+      "a_msgstr": "SLO를 계정에 대한 비ASCII 이름이 있는 경우 삭제하도록 수정하세요.",
+      "b_msgstr": "SLO를 계정에 대한 비ASCII 이름이 있는 경우 삭제하십시오."
+    },
+    {
+      "similarity": 0.9548875093460083,
+      "context": "",
+      "msgid": "Fixed a performance regression in the handling of misplaced objects.",
+      "plural_index": 0,
+      "a_msgstr": "misplaced objetos의 처리에 대한 성능 저하를修正했습니다.",
+      "b_msgstr": "misplaced objetos의 처리에 대한 성능 저하를 수정했습니다."
+    },
+    {
+      "similarity": 0.9548733234405518,
+      "context": "",
+      "msgid": "Deprecate swift-temp-url and call python-swiftclient's implementation instead. This adds python-swiftclient as an optional dependency of Swift.",
+      "plural_index": 0,
+      "a_msgstr": "swift-temp-url을 비활성화하고 python-swiftclient의 구현을 사용하도록 deprecated합니다. 이로 인해 python-swiftclient은 Swift의 옵셔널 의존성이 됩니다.",
+      "b_msgstr": "swift-temp-url을 비활성화하고 python-swiftclient의 구현을 사용하십시오. 이로 인해 python-swiftclient은 Swift의 옵션 의존性에 추가됩니다."
+    },
+    {
+      "similarity": 0.954681396484375,
+      "context": "",
+      "msgid": "Change the behavior of the EC reconstructor to perform a fragment rebuild to a handoff node when a primary peer responds with 507 to the REPLICATE request. This changes EC to match the existing behavior of replication when drives fail. After a rebalance of EC rings (potentially removing unmounted/failed devices), it's most IO efficient to run in handoffs_only mode to avoid unnecessary rebuilds.",
+      "plural_index": 0,
+      "a_msgstr": "EC reconstructor의 행동을 변경하여 fragment rebuild를 handoff 노드로 수행하도록 하십시오. primary peer가 REPLICATE 요청에 507를 trả면, EC는 replication과 같은 기존 행동을匹치합니다. drives가 실패할 때입니다. EC 링의 재배열(potentially unmounted/failed 장치를 제거할 수 있습니다)이 완료되면, handoffs_only 모드에서 실행하는 것이 가장 IO 효율적입니다. 불필요한 재건을 피하기 위해.",
+      "b_msgstr": "EC reconstructor의 행동을 변경하여 EC가 드라이브가 실패할 때 replication과 일치하는 것을 위해 fragment를 handoff 노드로 rebuilding합니다. 이 बदल기는 drives가 실패할 때 EC가 replication의 существ하는 행동과 일치하게 합니다. EC ring의 rebalance (potentially unmounted/failed 장치를 제거) 후, most IO 효율적으로 handoffs_only 모드를 사용하여 불필요한 재건을 피해야 합니다."
+    },
+    {
+      "similarity": 0.9541912078857422,
+      "context": "",
+      "msgid": "Fixed an encoding issue when writing non-ASCII object names to sharded containers and shard range caching is not enabled.",
+      "plural_index": 0,
+      "a_msgstr": "shard range 캐싱이 활성화되지 않은 경우, sharded 컨테이너에 non-ASCII 객체 이름을 쓰는 동안 인코딩 문제를 해결했습니다.",
+      "b_msgstr": "shard range 캐싱이 활성화되지 않은 경우, non-ASCII object name을 sharded container에 쓰는 동안 인코딩 문제를 고정했습니다."
+    },
+    {
+      "similarity": 0.9529003500938416,
+      "context": "",
+      "msgid": "Developers using Swift's memcache client may now opt in to having a ``MemcacheConnectionError`` be raised when no connection succeeded using a new ``raise_on_error`` keyword argument to ``get``/``set``.",
+      "plural_index": 0,
+      "a_msgstr": "Swift의 memcache 클라이언트를 사용하는 개발자는 'raise_on_error' keyword argument를 new로 추가한 get/set 메소드에서 connection이 성공하지 않으면 MemcacheConnectionError가 발생하도록 선택할 수 있습니다.",
+      "b_msgstr": "Swift의 memcache 클라이언트를 사용하는 개발자는 ``raise_on_error`` keyword argument를 ``get``/``set``에 추가하여 connection이 성공하지 않으면 ``MemcacheConnectionError``가 발생할 수 있습니다."
+    },
+    {
+      "similarity": 0.9511503577232361,
+      "context": "",
+      "msgid": "Fix an error in the proxy server when finalizing data.",
+      "plural_index": 0,
+      "a_msgstr": "proxy server의 finalize 데이터 오류를修正하세요.",
+      "b_msgstr": "proxy server에서 데이터를 finalize하는 동안 오류를修正하십시오."
+    },
+    {
+      "similarity": 0.9509438872337341,
+      "context": "",
+      "msgid": "Added support for per-policy proxy config options. This allows per-policy affinity options to be set for use with duplicated EC policies and composite rings. Certain options found in per-policy conf sections will override their equivalents that may be set in the [app:proxy-server] section. Currently the options handled that way are ``sorting_method``, ``read_affinity``, ``write_affinity``, ``write_affinity_node_count``, and ``write_affinity_handoff_delete_count``.",
+      "plural_index": 0,
+      "a_msgstr": "사용자 정책에 따라 프록시 구성 옵션을 지원합니다. 이 기능은 중복 EC 정책과 복합 ring을 사용할 때 policy-based affinity 옵션을 설정할 수 있습니다. 특정 옵션이 per-policy conf 섹션에서 설정된 것과 같은 equivalents가 override되는 경우 현재 handled하는 옵션은 ``sorting_method``, ``read_affinity``, ``write_affinity``, ``write_affinity_node_count``, 및 ``write_affinity_handoff_delete_count``입니다.",
+      "b_msgstr": "per-policy proxy config 옵션을 지원합니다. 이 기능은 중복 EC 정책과 복합 ring을 사용할 때 policy-based affinity 옵션을 설정할 수 있습니다. certain options found in per-policy conf sections will override their equivalents that may be set in the [app:proxy-server] section. Currently the options handled that way are ``sorting_method``, ``read_affinity``, ``write_affinity``, ``write_affinity_node_count``, and ``write_affinity_handoff_delete_count``."
+    },
+    {
+      "similarity": 0.9506993293762207,
+      "context": "",
+      "msgid": "Fixed a server error when a client exceeds ``client_timeout`` during an upload. Now, a ``RequestTimeout`` error is correctly returned.",
+      "plural_index": 0,
+      "a_msgstr": "client_timeout을 초과하는 클라이언트가 업로드 시服务器 오류가 발생했습니다. 현재 RequestTimeout 오류가 correct하게 반환됩니다.",
+      "b_msgstr": "클라이언트가 업로드 시 client_timeout을 초과하면 서버 오류가 발생했으며, now는 RequestTimeout 오류가 correct하게 반환됩니다."
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.2772258222103119,
+      "context": "",
+      "msgid": "Fixed a bug introduced in 2.15.0 where the object reconstructor would exit with a traceback if no EC policy was configured.",
+      "plural_index": 0,
+      "a_msgstr": "비어 있는 구성요소",
+      "b_msgstr": "2.15.0에서 도입된 오류를 고정했습니다. 오브젝트 재건자에서 EC 정책이 설정되지 않으면 트레이스백을 exit합니다."
+    },
+    {
+      "similarity": 0.3510947525501251,
+      "context": "",
+      "msgid": "Added container/object listing with prefix to InternalClient.",
+      "plural_index": 0,
+      "a_msgstr": "비어 있는 구성요소",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 0.38275426626205444,
+      "context": "",
+      "msgid": "Allow the expirer to gracefully move past updating stale work items.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "expire를 수동으로 업데이트된 오래된 작업 항목을 유연하게ผ่าน치도록 허용합니다."
+    },
+    {
+      "similarity": 0.4304058253765106,
+      "context": "",
+      "msgid": "Added an experimental ``swift-ring-composer`` CLI tool to build composite rings.",
+      "plural_index": 0,
+      "a_msgstr": "swift-ring-composer CLI 도구를 experimental로 추가했습니다. composite rings을 구축하는 데 사용됩니다.",
+      "b_msgstr": "{wire_status_int} 상태 코드가 클라이언트에게 반환되는 optional proxy-logging 필드"
+    },
+    {
+      "similarity": 0.43423548340797424,
+      "context": "",
+      "msgid": "Added container sharding, an operator controlled feature that may be used to shard very large container databases into a number of smaller shard containers. This mitigates the issues with one large DB by distributing the data across multiple smaller databases throughout the cluster. Please read the full overview at https://docs.openstack.org/swift/latest/overview_container_sharding.html",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "容器分区_sharding"
+    },
+    {
+      "similarity": 0.44420167803764343,
+      "context": "",
+      "msgid": "Exit codes are now applied more consistently:",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "exit codes는 더 일관되게 적용됩니다.:"
+    },
+    {
+      "similarity": 0.6006737947463989,
+      "context": "",
+      "msgid": "Added an operator tool, ``swift-container-deleter``, to asynchronously delete some or all objects in a container using the object expirers.",
+      "plural_index": 0,
+      "a_msgstr": "swift-container-deleter 오퍼레이터 도구를 추가했습니다. 객체의 일부 또는 모든 것을 비동기적으로 삭제합니다. object expirers.",
+      "b_msgstr": "swift-ring-composer CLI 도구를 experimental로 추가했습니다. 이 도구는 복합 ring을 생성할 수 있습니다."
+    },
+    {
+      "similarity": 0.6336629390716553,
+      "context": "",
+      "msgid": "Bug Fixes",
+      "plural_index": 0,
+      "a_msgstr": "bugs fix",
+      "b_msgstr": "BUG 수정"
+    },
+    {
+      "similarity": 0.6557500958442688,
+      "context": "",
+      "msgid": "Fixed a few areas where the ``swiftdir`` option was not respected.",
+      "plural_index": 0,
+      "a_msgstr": "swiftdir 옵션에 대해 일부 지역에서 ``swiftdir`` 옵션을 존중하지 못했습니다.",
+      "b_msgstr": "swiftdir 옵션에 대해 몇 가지 지역을 수정했습니다."
+    },
+    {
+      "similarity": 0.6862640380859375,
+      "context": "",
+      "msgid": "Deployers with clusters that relied on the old implicit default location of \"US\" should explicitly set ``location = US`` in the ``[filter:s3api]`` section of proxy-server.conf before upgrading.",
+      "plural_index": 0,
+      "a_msgstr": "US로의 암시적 디폴트 위치를 사용한 클러스터에 의존하는 배포자들은 'location = US'를 proxy-server.conf의 [filter:s3api] 섹션에 명시적으로 설정해야 합니다.",
+      "b_msgstr": "US에 대한 명시적인 위치 설정이 필요합니다. US를 ``location = US``으로 설정하여 업그레이드를 진행하세요."
+    },
+    {
+      "similarity": 0.6874917149543762,
+      "context": "",
+      "msgid": "Fixed a bug in the object replicator that would cause an under-reporting of failures.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "IP 할당에 대한 오류를 고정했습니다. 오브젝트 복사기에서 오류가 발생하여 실패를 bajo-reporting으로 만들었습니다."
+    },
+    {
+      "similarity": 0.6906745433807373,
+      "context": "",
+      "msgid": "Dependency update: lxml must be at least 4.2.3.",
+      "plural_index": 0,
+      "a_msgstr": "Dependency update: lxml must be at least 4.2.3.",
+      "b_msgstr": "依存性 업데이트: lxml은 최소 4.2.3 이상이어야합니다."
+    },
+    {
+      "similarity": 0.6946079134941101,
+      "context": "",
+      "msgid": "Deleting an expiring object will now cause less work in the system. The number of async pending files written has been reduced for all objects and greatly reduced for erasure-coded objects. This dramatically reduces the burden on container servers.",
+      "plural_index": 0,
+      "a_msgstr": "삭제하는 만약 만료되는 오브젝트를 now will cause less work in the system. The number of async pending files written has been reduced for all objects and greatly reduced for erasure-coded objects. This dramatically reduces the burden on container servers.",
+      "b_msgstr": "쫓기 있는 객체를 삭제하면 시스템에 더 많은 일을 줄일 수 있습니다. 모든 객체와 특히 에라스러이드 코드 객체에서 async pending 파일을 쓰는 횟수는 크게 감소되었습니다. 이로 인해 컨테이너 서버의 부담이 크게 줄어들었습니다."
+    },
+    {
+      "similarity": 0.6972076296806335,
+      "context": "",
+      "msgid": "Don't inject shard ranges when user quits.",
+      "plural_index": 0,
+      "a_msgstr": "사용자가退出할 때 shard 범위를inject하지 마세요.",
+      "b_msgstr": "사용자가 종료할 때는 shard 범위를.inject하지 마"
+    },
+    {
+      "similarity": 0.7239645719528198,
+      "context": "",
+      "msgid": "Fixed a socket leak in copy middleware when a large object was copied.",
+      "plural_index": 0,
+      "a_msgstr": "포트의 소켓泄漏을 복사 중间체에서 대형 객체를 복사할 때修正했습니다.",
+      "b_msgstr": "IP 할당에 대한 소켓 리크를 고정했습니다. large object가 복사될 때 copy middleware에서."
+    },
+    {
+      "similarity": 0.7497151494026184,
+      "context": "",
+      "msgid": "Fixed a server error when downloading multipart uploads/static large objects that have missing or inaccessible segments. This is a state that cannot arise in AWS, so a new ``BrokenMPU`` error is returned, indicating that retrying the request is unlikely to succeed.",
+      "plural_index": 0,
+      "a_msgstr": "서버 오류를 수정하여 multipart uploads/static large objects의缺失 또는 접근이 불가한 구간이 있는 경우 다운로드를 수행할 때",
+      "b_msgstr": "AWS에서 multipart uploads/static large objects의 missing 또는 inaccessible segment이 있는 경우 서버 오류를 고정했습니다. 이 상태는 AWS에서 발생할 수 없기 때문에, 새로운 ``BrokenMPU`` 오류가 반환됩니다. retrying the request은 성공할 가능성이 낮습니다."
+    },
+    {
+      "similarity": 0.7549080848693848,
+      "context": "",
+      "msgid": "Fixed a potential server error when getting symlink details.",
+      "plural_index": 0,
+      "a_msgstr": "시mlinkรายละเอ기가 올바르게 가져오기 위한 경우 potential server error가 발생할 수 있습니다.",
+      "b_msgstr": "시mlinkรายละเอ기가 올바르지 않은 경우 서버 오류가 발생할 수 있는 potencial 에러를修复했습니다."
+    },
+    {
+      "similarity": 0.7561479210853577,
+      "context": "",
+      "msgid": "Do not follow CNAME when host is in storage_domain.",
+      "plural_index": 0,
+      "a_msgstr": "CNAME를 따르지 마세요. 호스트가 스토리지 도메인에 있으면",
+      "b_msgstr": "storage_domain에 있는 호스트를 CNAME로 따라가지 마"
+    },
+    {
+      "similarity": 0.7635488510131836,
+      "context": "",
+      "msgid": "Fixed a server error when performing a PUT authorized via tempurl with some proxy pipelines.",
+      "plural_index": 0,
+      "a_msgstr": "tempurl로 autorized된 PUT 요청을 처리하는 데서服务器 오류를 수정했다.",
+      "b_msgstr": "PUT authorized via tempurl와 일부 프록시 파이프라인을 사용하는 경우 서버 오류를 고정했습니다."
+    },
+    {
+      "similarity": 0.7727842926979065,
+      "context": "",
+      "msgid": "Daemons using InternalClient can now be properly killed with SIGTERM.",
+      "plural_index": 0,
+      "a_msgstr": "InternalClient를 사용하는 다emons은 SIGTERM으로 제대로 죽을 수 있습니다.",
+      "b_msgstr": "InternalClient를 사용하는 데몬은 SIGTERM으로 제대로 종료될 수 있습니다."
+    },
+    {
+      "similarity": 0.7770586609840393,
+      "context": "",
+      "msgid": "Added a proxy-server configuration option: ``allow_open_expired``. This defaults to false; if true, clients may intereact with expired objects by including an ``X-Open-Expired: true`` header in GET, HEAD, or POST requests.",
+      "plural_index": 0,
+      "a_msgstr": "proxy-server의 allow_open_expired 옵션을 추가했습니다. 이 defaults는 false; true일 경우, 클라이언트가 만료 객체와 상호작용할 수 있습니다. GET, HEAD 또는 POST 요청에 X-Open-Expired: true 헤더를 포함하여.",
+      "b_msgstr": "proxy-server 설정 옵션: allow_open_expired"
+    },
+    {
+      "similarity": 0.7771178483963013,
+      "context": "",
+      "msgid": "Ensure that non-durable data and .meta files are purged from handoffs after syncing.",
+      "plural_index": 0,
+      "a_msgstr": "포드가 안정적이지 않은 경우에 대해 비持久 데이터 및 .meta 파일을 핸드오버에서 제거하십시오.",
+      "b_msgstr": "non-durable 데이터와 .meta 파일을 핸드오버에서 시크닝 후에 제거해야 합니다."
+    },
+    {
+      "similarity": 0.8009129166603088,
+      "context": "",
+      "msgid": "Fixed a potential server error when uploading data via a tempurl.",
+      "plural_index": 0,
+      "a_msgstr": "tempurl을 통해 데이터 업로드하는 경우 potential server error가 발생할 수 있습니다.",
+      "b_msgstr": "tempurl을 통해 데이터 업로드 시 potential 서버 오류가 발생할 수 있음을修正했습니다."
+    },
+    {
+      "similarity": 0.808765172958374,
+      "context": "",
+      "msgid": "As a result, some errors that previously resulted in exit code 2 will now exit with code 1.",
+      "plural_index": 0,
+      "a_msgstr": "이 결과적으로 이전에 exit code 2로 발생하는 오류가 now exit code 1로 나옵니다.",
+      "b_msgstr": "이로 인해 이전에 2로 나온 에러가 이제 1로 나와야 합니다."
+    },
+    {
+      "similarity": 0.8144257068634033,
+      "context": "",
+      "msgid": "Fixed a server error when handling conditional GET requests.",
+      "plural_index": 0,
+      "a_msgstr": "조건부 GET 요청을 처리하는 데서 서버 오류를修正했다.",
+      "b_msgstr": "Conditional GET 요청을 처리하는服务器 오류를 고정했습니다."
+    },
+    {
+      "similarity": 0.8195158839225769,
+      "context": "",
+      "msgid": "Always set Swift processes to use UTC.",
+      "plural_index": 0,
+      "a_msgstr": "시프트 프로세스를 always UTC로 설정하세요.",
+      "b_msgstr": "시계가 UTC로 사용되도록 항상 Swift 프로세스를 설정하세요."
+    },
+    {
+      "similarity": 0.8267963528633118,
+      "context": "",
+      "msgid": "Added the ability to configure cooperative yielding when servicing GET responses, via the ``cooperative_period`` option. See the example config for more information.",
+      "plural_index": 0,
+      "a_msgstr": "포트 %(port_id)s에 대해 바인딩을 추가했습니다. 자세한 정보는 neutron 로그를 확인하십시오.",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 0.8318644165992737,
+      "context": "",
+      "msgid": "Certain S3 API headers are now lower case as they would be coming from AWS.",
+      "plural_index": 0,
+      "a_msgstr": "AWS에서 coming한 S3 API 헤더의 일부가 now lower case입니다.",
+      "b_msgstr": "AWS에서 coming한 S3 API 헤더의 일부는 이제 소문자입니다."
+    },
+    {
+      "similarity": 0.8341563940048218,
+      "context": "",
+      "msgid": "Expiring object queue entries now include the size of the object to be expired in the ``swift_expirer_bytes`` parameter of the queue entry's content-type.",
+      "plural_index": 0,
+      "a_msgstr": "Object expiration queue entries now include object size in ``swift_expirer_bytes`` parameter of content-type.",
+      "b_msgstr": "object queue entries가 만료되면 now object size를 포함하는 ``swift_expirer_bytes`` parameter가 포함됩니다."
+    },
+    {
+      "similarity": 0.8343855738639832,
+      "context": "",
+      "msgid": "Fixed a server error when using non-ASCII access key IDs.",
+      "plural_index": 0,
+      "a_msgstr": "non-ASCII 접근 키 ID를 사용할 때서서버 오류를修正했다.",
+      "b_msgstr": "non-ASCII access key ID를 사용하는 경우服务器 오류를 고정했습니다."
+    },
+    {
+      "similarity": 0.8352503776550293,
+      "context": "",
+      "msgid": "Fixed a cache invalidation issue related to GET and PUT requests to containers that would occasionally cause object PUTs to a container to 404 after the container had been successfully created.",
+      "plural_index": 0,
+      "a_msgstr": "GET 및 PUT 요청으로 인해 컨테이너에 object PUT를 성공적으로 생성된 후도 404 오류가 발생하는 cache 비 invalidated 이슈를 해결했습니다.",
+      "b_msgstr": "GET 및 PUT 요청으로 인해 컨테이너에 object PUT를 404로 trảす 문제가 발생하여 cache 비우기 문제가 해결되었습니다."
+    },
+    {
+      "similarity": 0.8436870574951172,
+      "context": "",
+      "msgid": "Daemons send object updates via the replication network in more cases.",
+      "plural_index": 0,
+      "a_msgstr": "다emons은 replication 네트워크를 통해 더 많은 경우에 객체 업데이트를 보냅니다.",
+      "b_msgstr": "replication network를 통해 더 많은 경우에 object updates가 전송됩니다."
+    },
+    {
+      "similarity": 0.8528358936309814,
+      "context": "",
+      "msgid": "Critical Issues",
+      "plural_index": 0,
+      "a_msgstr": "kritikal 문제",
+      "b_msgstr": "kritikal Issues"
+    },
+    {
+      "similarity": 0.8542397618293762,
+      "context": "",
+      "msgid": "Fixed a bug that could cause EC GET responses to return a server error.",
+      "plural_index": 0,
+      "a_msgstr": "EC GET 응답에서 서버 오류가 발생할 수 있게 된 버그를修复했습니다.",
+      "b_msgstr": "EC GET 응답에서 오류가 발생할 수 있는 오류를 고정했습니다. server error로 반환됩니다."
+    },
+    {
+      "similarity": 0.8650150895118713,
+      "context": "",
+      "msgid": "Fixed a bug where SSYNC would fail to replicate unexpired object.",
+      "plural_index": 0,
+      "a_msgstr": "SSYNC에서 만료 객체를 복제하지 못하는 버그를修复했습니다.",
+      "b_msgstr": "SSYNC에서 unexpired object를 복사하지 못하는 오류를 고정했습니다."
+    },
+    {
+      "similarity": 0.8703277707099915,
+      "context": "",
+      "msgid": "Avoid upgrading liberasurecode until swift and liberasurecode better-support a rolling upgrade. Swift remains compatible with liberasurecode 1.5.0 and earlier.",
+      "plural_index": 0,
+      "a_msgstr": "liberasurecode를 업그레이드할 때는 liberasurecode와 swift가 rolling upgrade를 better 지원할 때까지 주기적 업그레이드를 피하십시오. Swift는 liberasurecode 1.5.0 이하와 compatible remain.",
+      "b_msgstr": "liberasurecode를 업그레이드할 때는 liberasurecode가 Swift와 함께 롤링 업그레이드를 지원하는 경우까지 대기하세요. Swift는 liberasurecode 1.5.0 이상은 호환되지 않습니다."
+    },
+    {
+      "similarity": 0.8771612048149109,
+      "context": "",
+      "msgid": "Fixed an issue in COPY where concurrent requests may have copied the wrong data.",
+      "plural_index": 0,
+      "a_msgstr": "COPY에서 동시 요청이 올바른 데이터를 복사하는 경우를 해결했습니다.",
+      "b_msgstr": "COPY에서 동시 요청이 올바른 데이터를 복사하는 문제를修正했습니다."
+    },
+    {
+      "similarity": 0.8973680138587952,
+      "context": "",
+      "msgid": "Fixed XML responses (eg on bulk extractions and SLO upload failures) to be more correct. The enclosing \"delete\" tag was removed where it doesn't make sense and replaced with \"extract\" or \"upload\" depending on the context.",
+      "plural_index": 0,
+      "a_msgstr": "XML 응답을 더正確하게 고정했습니다. bulk.extract 및 SLO 업로드 실패 시에. enclosing \"delete\" 태그는 의미가 없기 때문에 제거되었으며, context에 따라 \"extract\" 또는 \"upload\"로 대체되었습니다.",
+      "b_msgstr": "XML responses (eg bulk extractions and SLO upload failures)를 더正確하게 fixed했습니다. \"delete\" 태그를 제외할 때 enclosing \"extract\" 또는 \"upload\"로 대체되었습니다."
+    },
+    {
+      "similarity": 0.8993465900421143,
+      "context": "",
+      "msgid": "Fixed UnicodeDecodeError in the object reconstructor that would prevent objects with non-ascii names from being reconstructed and caused the reconstructor process to hang.",
+      "plural_index": 0,
+      "a_msgstr": "UnicodeDecodeError를 object reconstructor에서 방지하기 위해 이름이 아스키 문자로 구성되지 않은 객체를 재생성하지 못하게 하는 오류를 고정했습니다. 이로 인해 reconstructor 프로세스가 멈추게되었습니다.",
+      "b_msgstr": "UnicodeDecodeError를 object reconstructor에서 fixed했습니다. non-ascii 이름이 있는 객체가 재생성되지 않도록 prevent하고 reconstructor 프로세스가 멈추는 것을 방지했습니다."
+    },
+    {
+      "similarity": 0.9008094072341919,
+      "context": "",
+      "msgid": "Fixed ``rsync`` output parsing.",
+      "plural_index": 0,
+      "a_msgstr": "rsync 출력 파싱을 고정했습니다.",
+      "b_msgstr": "rsync 출력을 파싱했습니다."
+    },
+    {
+      "similarity": 0.9040364027023315,
+      "context": "",
+      "msgid": "Container ACLs are now cloned to the ``+segments`` container when it is created.",
+      "plural_index": 0,
+      "a_msgstr": "Container ACLs는 ``+segments`` container를 생성할 때 cloning이 수행됩니다.",
+      "b_msgstr": "Container ACLs는 now '+'segments' 컨테이너를 생성할 때 복사됩니다."
+    },
+    {
+      "similarity": 0.9058288931846619,
+      "context": "",
+      "msgid": "Fixed an error in ``invalidate_hash`` when the partition is deleted while waiting for the partition lock.",
+      "plural_index": 0,
+      "a_msgstr": "partition가.lock partition을 삭제하고자 할 때 ``invalidate_hash`` 에러를修正했습니다.",
+      "b_msgstr": "partition가.lock partition lock를 기다리는 동안 partition이 삭제되면 ``invalidate_hash`` 에러를 고정했습니다."
+    },
+    {
+      "similarity": 0.9061580300331116,
+      "context": "",
+      "msgid": "Added the ability to quarantine EC fragments that have no (or few) other fragments in the cluster. A new configuration option, ``quarantine_threshold``, in the reconstructor controls the point at the fragment will be quarantined; the default (0) will never quarantine. Only fragments older than ``quarantine_age`` (default: ``reclaim_age``) may be quarantined. Before quarantining, the reconstructor will attempt to fetch fragments from handoff nodes in addition to the usual primary nodes; a new ``request_node_count`` option (default ``2 * replicas``) limits the total number of nodes to contact.",
+      "plural_index": 0,
+      "a_msgstr": "EC 파티션을 쪼개기 위해 quarantining을 추가했습니다. quarantined 할 파티션은 cluster 내에서 다른 파티션과 함께 none 또는 적은 파티션을 가지고 있습니다. reconstructor의 new configuration option, quarantine_threshold (default: 0)가 quarantined 할 파티션을 결정합니다; default는 never quarantine입니다. quarantine_age (default: reclaim_age)보다 오래된 파티션만 quarantined 될 수 있습니다. quarantining 전, reconstructor는 일반적으로 primary node와 함께 handoff node에서 파티션을 fetch 하려고 시도합니다. new request_node_count option (default 2 * replicas)가 total number of nodes를 limit합니다.",
+      "b_msgstr": "EC 분할을 quarantined 상태로 유지하기 위해 EC 분할이 다른 분할과 함께 none 이거나 적은 분할만 있으면 quarantined 상태로 유지합니다. reconstructor에서 quarantined 상태에 대한 제한점은 quarantine_threshold 옵션으로 설정됩니다; 기본적으로 never Quarantine입니다. quarantine_age (default: reclaim_age)보다 오래된 fragment만 quarantined 상태로 유지됩니다. quarantined 상태로 유지하기 전에 reconstructor는 일반적으로 primary 노드뿐 아니라 handoff 노드에서 fragment을 가져오려고 시도합니다. request_node_count 옵션 (default 2 * replicas)은 total number of nodes를 contact 할 수 있습니다."
+    },
+    {
+      "similarity": 0.9070281982421875,
+      "context": "",
+      "msgid": "Expose sharding statistics in the backend recon middleware.",
+      "plural_index": 0,
+      "a_msgstr": "Expose sharding statistics in backend recon middleware.",
+      "b_msgstr": "backend recon middleware에서 sharding statistics을 노출합니다."
+    },
+    {
+      "similarity": 0.9089328050613403,
+      "context": "",
+      "msgid": "During rebalances, clients should no longer get 404s for data that exists but whose replicas are overloaded.",
+      "plural_index": 0,
+      "a_msgstr": "rebalance 시, 존재하지만 복사본이 오버로드된 데이터에 대한 404 오류가 클라이언트에게 더 이상 나타나지 않도록 하세요.",
+      "b_msgstr": "rebalance 시, 존재하지만 복사본이 오버로드된 데이터에 대한 404 오류를 더 이상 받지 마"
+    },
+    {
+      "similarity": 0.9159976243972778,
+      "context": "",
+      "msgid": "Currently the default is still only one process, and no workers. Set ``reconstructor_workers`` in the ``[object-reconstructor]`` section to some whole number <= the number of devices on a node to get that many reconstructor workers.",
+      "plural_index": 0,
+      "a_msgstr": "현재 디폴트는 여전히 하나의 프로세스만 가지고 있으며, 노드에 있는 장치의 수와 일치하는 수의 재건자 프로세스를 설정하여 원하는 수의 재건자 프로세스를 얻을 수 있습니다.",
+      "b_msgstr": "현재 기본적으로는 하나의 프로세스만이 설정되어 있으며, 노드에 있는 장치의 수와 일치하는 수의 재건자 프로세스가 설정되어야 합니다."
+    },
+    {
+      "similarity": 0.9166266322135925,
+      "context": "",
+      "msgid": "Composite rings can be used for explicit replica placement and \"replicated EC\" for global erasure codes policies.",
+      "plural_index": 0,
+      "a_msgstr": "집합형 링은 명시적인 복제 위치를 위해 사용할 수 있으며 'replicated EC'는 toàn cầu 에라ซ션 코드 정책을 위해 사용할 수 있습니다.",
+      "b_msgstr": "집합형 링은 명시적인 복제 위치를 위해 사용할 수 있으며 'replicated EC'는 전역 에러 코드 정책을 위해 사용할 수 있습니다."
+    },
+    {
+      "similarity": 0.9200344681739807,
+      "context": "",
+      "msgid": "Composite rings support 'cooperative' rebalance which means that during rebalance all component rings will be consulted before a partition is moved in any component ring. This avoids the same partition being simultaneously moved in multiple components.",
+      "plural_index": 0,
+      "a_msgstr": "집합형 링은 '협력적' 재배열을 지원합니다. 이는 재배열 중에 모든 구성_ring이 partition을 이동하기 전에 각 component ring에서 partition을 이동하는 것을 의미합니다. 이로 인해 여러 component ring에서 동시에 partition을 이동하지 않습니다.",
+      "b_msgstr": "집합형 링은 '협력적' 재배열을 지원합니다. 이는 어떤 구성 요소를 이동할 때도 모든 구성 요소 링이Partition이 이동되는 것을 피하는 것입니다. 이로 인해 여러 구성 요소에서 동시에 Partition이 이동됩니다."
+    },
+    {
+      "similarity": 0.9206644296646118,
+      "context": "",
+      "msgid": "Empty container databases (such as might be created on handoffs) now shard much more quickly.",
+      "plural_index": 0,
+      "a_msgstr": "비어있는 컨테이너 데이터베이스 (예를 들어 손가락 옮기기와 같은)가 더 빠르게 쪼개됩니다.",
+      "b_msgstr": "비어있는 컨테이너 데이터베이스 (예를 들어 손가락 옮기기와 같은)가 더 빠르게 공유됩니다."
+    },
+    {
+      "similarity": 0.9209063053131104,
+      "context": "",
+      "msgid": "Added a ``swift-reload`` command to assist with safely reloading WSGI servers.",
+      "plural_index": 0,
+      "a_msgstr": "``swift-reload`` 명령을 추가하여 WSGI 서버를 안전하게.reload할 수 있도록 도와줍니다.",
+      "b_msgstr": "``swift-reload`` 명령을 추가하여 WSGI 서버를 안전하게 재생성하는 데 도움을 주었습니다."
+    },
+    {
+      "similarity": 0.9218596816062927,
+      "context": "",
+      "msgid": "Added a counter metric to the proxy server when caching shard ranges.",
+      "plural_index": 0,
+      "a_msgstr": "캐싱 shard 범위에 대한 counter 메트릭을 프록시 서버에 추가합니다.",
+      "b_msgstr": "캐싱 shard 범위에 대한 프록시 서버의 카운터 메트릭을 추가했습니다."
+    },
+    {
+      "similarity": 0.9219995737075806,
+      "context": "",
+      "msgid": "Cache all answers from nameservers in cname_lookup.",
+      "plural_index": 0,
+      "a_msgstr": "cname_lookup에서 모든 câu trả lời를 캐시합니다.",
+      "b_msgstr": "cname_lookup에서 모든 câu trả lời가 캐시화されます."
+    },
+    {
+      "similarity": 0.9225121140480042,
+      "context": "",
+      "msgid": "Fixed a bug that prevented the s3api pipeline validation described in proxy-server.conf-sample from being performed. As documented, operators can disable this via the ``auth_pipeline_check`` option if proxy startup fails with validation errors.",
+      "plural_index": 0,
+      "a_msgstr": "s3api.pipeline validation을 설명한 proxy-server.conf-sample의 pipeline을 수행하지 못하는 버그를修复했습니다. operator는 document에 명시된 것과 같이 auth_pipeline_check 옵션을 사용하여 이 오류가 발생할 때만 비활성화 할 수 있습니다.",
+      "b_msgstr": "s3api.pipeline validation에 설명된 pipeline을 수행하지 못하는 오류를 고정했습니다. operator는 ``auth_pipeline_check`` 옵션을 사용하여 이 오류가 발생할 때 비롯된 유효성 오류가 발생하면 proxy 시작이 실패할 수 있습니다."
+    },
+    {
+      "similarity": 0.9227069616317749,
+      "context": "",
+      "msgid": "Detect and remove invalid entries from ``hashes.pkl``",
+      "plural_index": 0,
+      "a_msgstr": "hashes.pkl에 있는 유효하지 않은 항목을 감지하고 제거해야 합니다.",
+      "b_msgstr": "hashes.pkl에 존재하지 않는 항목을 감지하여 제거하세요."
+    },
+    {
+      "similarity": 0.9237823486328125,
+      "context": "",
+      "msgid": "Added metrics to count skipped, delayed, and assigned tasks as they're enumerated.",
+      "plural_index": 0,
+      "a_msgstr": "skip, delay, assign tasks의 métrique를 count합니다.",
+      "b_msgstr": "skip, delay, assign tasks의 métrique가 enumeration에 따라 count됩니다."
+    },
+    {
+      "similarity": 0.924176037311554,
+      "context": "",
+      "msgid": "Added a ``log_rsync_transfers`` option to the object-replicator. Set it to false to disable logging rsync \"send\" lines; during large rebalances, such logging can overwhelm log aggregation while providing little useful information.",
+      "plural_index": 0,
+      "a_msgstr": "대형 재배정 시에 로그-aggregation에 오버플로우를 피하기 위해 object-replicator에 ``log_rsync_transfers`` 옵션을 추가했습니다. 이 옵션을 false로 설정하면 로그 rsync \"send\" 라인들을 비활성화합니다.",
+      "b_msgstr": "Object-replicator에 ``log_rsync_transfers`` 옵션을 추가했습니다. 이 옵션을 false로 설정하면 rsync \"send\" 라인을 로그에 기록하지 않습니다. 큰 재배정으로 인해 로그-aggregation에 오버플로우할 수 있지만 유용한 정보가 거의 없기 때문에."
+    },
+    {
+      "similarity": 0.9256047606468201,
+      "context": "",
+      "msgid": "Fixed an encoding issue when handling non-ASCII account names.",
+      "plural_index": 0,
+      "a_msgstr": "non-ASCII 계정 이름을 처리하는 경우 인코딩 문제를 해결했습니다.",
+      "b_msgstr": "non-ASCII 계정 이름을 처리할 때 인코딩 문제를 고정했습니다."
+    },
+    {
+      "similarity": 0.9266436696052551,
+      "context": "",
+      "msgid": "Fixed HTTP framing issues when returning errors for a request with ``Expect: 100-continue``.",
+      "plural_index": 0,
+      "a_msgstr": "HTTP 프레임워크의 오류를 고정하여 오류가 발생할 때에 에러 메시지를 반환하는 경우.",
+      "b_msgstr": "HTTP framing 문제를 고정하여 오류가 발생할 때 요청에 대한 오류를 반환할 때."
+    },
+    {
+      "similarity": 0.9270047545433044,
+      "context": "",
+      "msgid": "Fixed a socket leak when clients try to delete a non-SLO as though it were a Static Large Object.",
+      "plural_index": 0,
+      "a_msgstr": "클라이언트가 SLO가 아닌 비정상적인 Static Large Object를 삭제하려고 시도했을 때 소켓泄漏을修正했습니다.",
+      "b_msgstr": "클라이언트가 SLO가 아닌 Static Large Object를 삭제하려고 시도했을 때 소켓 리크를 고정했습니다."
+    },
+    {
+      "similarity": 0.930976152420044,
+      "context": "",
+      "msgid": "Added the ability for reseller admins to set per-policy account quotas by posting metadata of the form ``X-Account-Quota-Bytes-Policy-<policy name>``.",
+      "plural_index": 0,
+      "a_msgstr": "reseller admins가 policy에 따라 계정의 사용량을 설정할 수 있습니다. X-Account-Quota-Bytes-Policy-<policy name> 형태의 메타데이터를 포스트하여 할 수 있습니다.",
+      "b_msgstr": "reseller 관리자는 policy에 대한 계정 수용량을 설정할 수 있습니다. X-Account-Quota-Bytes-Policy-<policy name> 형태의 메타데이터를 포스트하는 방법을 추가했습니다."
+    },
+    {
+      "similarity": 0.9310203790664673,
+      "context": "",
+      "msgid": "Client disconnects should always be logged within the context of the appropriate client request. Previously, there were some cases where logging would occur during general garbage collection, leading to incorrect or missing transaction IDs in logs.",
+      "plural_index": 0,
+      "a_msgstr": "클라이언트가 disconnect할 때는 항상 적절한 클라이언트 요청의 contexto에 로그를 작성해야 합니다. 이전에는 일반적인 가비지 수집이 발생하는 경우에 로그가 발생했으며, 이로 인해 잘못된 또는 missing한 트랜잭션 ID가 로그에 나타났습니다.",
+      "b_msgstr": "클라이언트가 종료되면 always 로그를 appropriate 클라이언트 요청의 context 내에서 로그해야 합니다. 이전에, general garbage collection 동안 로그가 발생하는 경우가 있었는데, 이는 로그에 잘못된 또는 missing transaction IDs가 발생했습니다."
+    },
+    {
+      "similarity": 0.9315633177757263,
+      "context": "",
+      "msgid": "Added support for verifying additional checksums during upload. All algorithms currently supported by AWS are supported: CRC64NVME, CRC32, CRC32C, SHA1, and SHA256. See also: `Checking object integrity in Amazon S3 <https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html>`__. Note that some algorithms require the availability of additional libraries: ISA-L or anycrc.",
+      "plural_index": 0,
+      "a_msgstr": "AWS는 CRC64NVME, CRC32, CRC32C, SHA1 및 SHA256 알고리즘을 모두 지원합니다. 업로드 시 추가 체크-sum을 확인하는 것은 모든 알고리즘이 지원됩니다. 자세한 정보는 Amazon S3의 사용자 가이드를 확인하십시오. Note that some algorithms require the availability of additional libraries: ISA-L or anycrc.",
+      "b_msgstr": "AWS는 CRC64NVME, CRC32, CRC32C, SHA1 및 SHA256 알고리즘을 모두 지원합니다. 업로드 시 추가 체크-sum을 확인하는 기능을 추가했습니다. 자세한 정보는 Amazon S3의 <https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html> 문서를 확인하십시오. 일부 알고리즘은 추가 라이브러리(ISA-L 또는 anycrc)를 사용하여 작동합니다."
+    },
+    {
+      "similarity": 0.9328221082687378,
+      "context": "",
+      "msgid": "Fixed a server error when the Swift request path has missing account or container components.",
+      "plural_index": 0,
+      "a_msgstr": "Swift 요청 경로에 계정 또는 컨테이너 구성 요소가 missing인 경우 서버 오류를 수정했다.",
+      "b_msgstr": "Swift 요청 경로에 missing account 또는 container 구성 요소가 있는 경우 서버 오류를 고정했습니다."
+    },
+    {
+      "similarity": 0.9352548122406006,
+      "context": "",
+      "msgid": "Added an option to drop privileges when running the relinker as root.",
+      "plural_index": 0,
+      "a_msgstr": "root 계층에서 relinker를 실행할 때 privilege의 privileges를 drop하도록 옵션을 추가했습니다.",
+      "b_msgstr": "root 계에서 relinker를 실행할 때 privilege의 drop 옵션을 추가했습니다."
+    },
+    {
+      "similarity": 0.9354501366615295,
+      "context": "",
+      "msgid": "Cleaned up logged tracebacks when talking to memcached servers.",
+      "plural_index": 0,
+      "a_msgstr": "memcached 서버와의 대화에서 로그ged tracebacks를 clean up했습니다.",
+      "b_msgstr": "memcached 서버와 대화할 때 로그드 트레이스백을 clean up했습니다."
+    },
+    {
+      "similarity": 0.9356423020362854,
+      "context": "",
+      "msgid": "Added support for verifying additional checksums during upload. All algorithms currently supported by AWS are supported: ``CRC64NVME``, ``CRC32``, ``CRC32C``, ``SHA1``, and ``SHA256``. See `Amazon's documentation <https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html>`__. Note that some algorithms require the availability of additional libraries: `ISA-L <https://github.com/intel/isa-l>`__ or `anycrc <https://pypi.org/project/anycrc>`__.",
+      "plural_index": 0,
+      "a_msgstr": "AWS는 CRC64NVME, CRC32, CRC32C, SHA1 및 SHA256 알고리즘을 모두 지원합니다. 업로드 시 추가 체크-sum을 확인하는 것은 모든 알고리즘이 지원됩니다. Amazon의 사용자 가이드를 확인하십시오. Note that some algorithms require the availability of additional libraries: ISA-L <https://github.com/intel/isa-l> 또는 anycrc <https://pypi.org/project/anycrc>.",
+      "b_msgstr": "AWS는 CRC64NVME, CRC32, CRC32C, SHA1 및 SHA256 알고리즘을 모두 지원합니다. 업로드 시 추가 체크-sum을 확인하는 기능을 추가했습니다. 자세한 정보는 Amazon S3의 <https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html> 문서를 확인하십시오. 일부 알고리즘은 추가 라이브러리(ISA-L 또는 anycrc)를 사용하여 작동합니다."
+    },
+    {
+      "similarity": 0.9370589852333069,
+      "context": "",
+      "msgid": "Added a ``keepalive_timeout`` option to the proxy server to limit how long to wait for a client to initiate a request, separate from the general ``client_timeout`` option. Note that this requires eventlet 0.33.4 (currently unreleased) or later.",
+      "plural_index": 0,
+      "a_msgstr": "프록시 서버에 ``keepalive_timeout`` 옵션을 추가하여 클라이언트가 요청을 시작하는 것을 기다리기 위한 시간 제한을 설정했습니다. 이는 일반적으로 ``client_timeout`` 옵션과 separate합니다. 그러나 현재 unreleased) 또는 이후 버전의 eventlet을 사용해야 합니다.",
+      "b_msgstr": "Proxy 서버에 ``keepalive_timeout`` 옵션을 추가하여 클라이언트가 요청을 시작하는 것을 대기하는 시간을 제한합니다. 일반적으로 ``client_timeout`` 옵션과는 separate 합니다. 이 기능은 현재 unreleased인 eventlet 0.33.4 이상이 필요합니다."
+    },
+    {
+      "similarity": 0.9382636547088623,
+      "context": "",
+      "msgid": "Daemons now send ``STOPPING`` and ``RELOADING`` systemd notifications when the service is configured with ``Type=notify``.",
+      "plural_index": 0,
+      "a_msgstr": "시스템да이몬은 Type=notify로 구성된 서비스를 사용할 때, 서비스가 구성되면 STOPPING 및 RELOADING 시스템通知을 보냅니다.",
+      "b_msgstr": "Type=notify로 서비스가 구성된 경우 systemd通知에서 ``STOPPING``과 ``RELOADING``을 보냅니다."
+    },
+    {
+      "similarity": 0.942924976348877,
+      "context": "",
+      "msgid": "COPY now works with unicode account names.",
+      "plural_index": 0,
+      "a_msgstr": "COPY अब 유니코드 계정 이름과 함께 작동합니다.",
+      "b_msgstr": "COPY now은 유니코드 계정 이름과 함께 작동합니다."
+    },
+    {
+      "similarity": 0.9437587857246399,
+      "context": "",
+      "msgid": "Added an option, ``ratelimit_as_client_error``, to return 429s for rate-limited responses. Several clients/SDKs have seem to support retries with backoffs on 429, and having it as a client error cleans up logging and metrics. By default, Swift will respond 503, matching AWS documentation.",
+      "plural_index": 0,
+      "a_msgstr": "rate-limited responses에 rate limit을 return하도록 ``ratelimit_as_client_error`` 옵션을 추가했습니다. Several clients/SDKs가 seem to support retries with backoffs 429, and client error를 clean up logging 및 metrics. By default, Swift will respond 503, matching AWS documentation.",
+      "b_msgstr": "rate-limited responses에 rate limit을 return하여 client error로 설정하는 옵션, ratelimit_as_client_error를 추가했습니다. Several clients/SDKs가 seem support retries with backoffs 429, and client error를 청소 로그 및 메트릭을 정리합니다. By default, Swift는 503 response와 일치합니다."
+    },
+    {
+      "similarity": 0.9445922374725342,
+      "context": "",
+      "msgid": "Added the ability to configure auth region in s3token middleware.",
+      "plural_index": 0,
+      "a_msgstr": "s3token middleware에서 auth region을 구성할 수 있습니다.",
+      "b_msgstr": "s3token 미들웨어에서 auth region을 구성할 수 있습니다."
+    },
+    {
+      "similarity": 0.9468182921409607,
+      "context": "",
+      "msgid": "Added an option to rate-limit how quickly data files are relinked or cleaned up. This may be used to reduce I/O load during partition power increases, improving end-user performance.",
+      "plural_index": 0,
+      "a_msgstr": "데이터 파일이 relinked 또는 청소되는 속도에 rate limit을 추가하여. 이 may be 사용하여 partition power increases와 함께 I/O 로드가 줄어들고 사용자에게 성능이 개선되었습니다.",
+      "b_msgstr": "데이터 파일이 relinked 또는 청소되는 속도에 rate limit을 추가하여 옵션을 추가했습니다. 이 may 사용하여 파티션 파워 증가 시 I/O 로드가 줄어들고 사용자에게 성능이 개선되도록합니다."
+    },
+    {
+      "similarity": 0.9471996426582336,
+      "context": "",
+      "msgid": "Ensure update of the container by object-updater, removing a rare possibility that objects would never be added to a container listing.",
+      "plural_index": 0,
+      "a_msgstr": "컨테이너를 업데이트하여 오브젝트 업데이터를 사용하여, 컨테이너 목록에 오브젝트가 ever never 추가되는可能性가 드물지만 제거하는 것을 확인하세요.",
+      "b_msgstr": "컨테이너를 업데이트하여 오브젝트 업데이터를 사용하도록 하세요. 이로 인해 컨테이너 목록에 오브젝트가 ever never 추가되는 경우가 드물지만 제거할 수 있습니다."
+    },
+    {
+      "similarity": 0.95035320520401,
+      "context": "",
+      "msgid": "Enable cluster-wide CORS Expose-Headers setting via \"cors_expose_headers\".",
+      "plural_index": 0,
+      "a_msgstr": "클러스터 전체에서 CORS Expose-Headers 설정을 활성화하려면 \"cors_expose_headers\"를 사용합니다.",
+      "b_msgstr": "클러스터 전체에서 CORS Expose-Headers 설정을 enable 하려면 \"cors_expose_headers\"."
+    },
+    {
+      "similarity": 0.9506993293762207,
+      "context": "",
+      "msgid": "Fixed a server error when a client exceeds ``client_timeout`` during an upload. Now, a ``RequestTimeout`` error is correctly returned.",
+      "plural_index": 0,
+      "a_msgstr": "client_timeout을 초과하는 클라이언트가 업로드 시服务器 오류가 발생했습니다. 현재 RequestTimeout 오류가 correct하게 반환됩니다.",
+      "b_msgstr": "클라이언트가 업로드 시 client_timeout을 초과하면 서버 오류가 발생했으며, now는 RequestTimeout 오류가 correct하게 반환됩니다."
+    },
+    {
+      "similarity": 0.9509438872337341,
+      "context": "",
+      "msgid": "Added support for per-policy proxy config options. This allows per-policy affinity options to be set for use with duplicated EC policies and composite rings. Certain options found in per-policy conf sections will override their equivalents that may be set in the [app:proxy-server] section. Currently the options handled that way are ``sorting_method``, ``read_affinity``, ``write_affinity``, ``write_affinity_node_count``, and ``write_affinity_handoff_delete_count``.",
+      "plural_index": 0,
+      "a_msgstr": "사용자 정책에 따라 프록시 구성 옵션을 지원합니다. 이 기능은 중복 EC 정책과 복합 ring을 사용할 때 policy-based affinity 옵션을 설정할 수 있습니다. 특정 옵션이 per-policy conf 섹션에서 설정된 것과 같은 equivalents가 override되는 경우 현재 handled하는 옵션은 ``sorting_method``, ``read_affinity``, ``write_affinity``, ``write_affinity_node_count``, 및 ``write_affinity_handoff_delete_count``입니다.",
+      "b_msgstr": "per-policy proxy config 옵션을 지원합니다. 이 기능은 중복 EC 정책과 복합 ring을 사용할 때 policy-based affinity 옵션을 설정할 수 있습니다. certain options found in per-policy conf sections will override their equivalents that may be set in the [app:proxy-server] section. Currently the options handled that way are ``sorting_method``, ``read_affinity``, ``write_affinity``, ``write_affinity_node_count``, and ``write_affinity_handoff_delete_count``."
+    },
+    {
+      "similarity": 0.9511503577232361,
+      "context": "",
+      "msgid": "Fix an error in the proxy server when finalizing data.",
+      "plural_index": 0,
+      "a_msgstr": "proxy server의 finalize 데이터 오류를修正하세요.",
+      "b_msgstr": "proxy server에서 데이터를 finalize하는 동안 오류를修正하십시오."
+    },
+    {
+      "similarity": 0.9529003500938416,
+      "context": "",
+      "msgid": "Developers using Swift's memcache client may now opt in to having a ``MemcacheConnectionError`` be raised when no connection succeeded using a new ``raise_on_error`` keyword argument to ``get``/``set``.",
+      "plural_index": 0,
+      "a_msgstr": "Swift의 memcache 클라이언트를 사용하는 개발자는 'raise_on_error' keyword argument를 new로 추가한 get/set 메소드에서 connection이 성공하지 않으면 MemcacheConnectionError가 발생하도록 선택할 수 있습니다.",
+      "b_msgstr": "Swift의 memcache 클라이언트를 사용하는 개발자는 ``raise_on_error`` keyword argument를 ``get``/``set``에 추가하여 connection이 성공하지 않으면 ``MemcacheConnectionError``가 발생할 수 있습니다."
+    },
+    {
+      "similarity": 0.9541912078857422,
+      "context": "",
+      "msgid": "Fixed an encoding issue when writing non-ASCII object names to sharded containers and shard range caching is not enabled.",
+      "plural_index": 0,
+      "a_msgstr": "shard range 캐싱이 활성화되지 않은 경우, sharded 컨테이너에 non-ASCII 객체 이름을 쓰는 동안 인코딩 문제를 해결했습니다.",
+      "b_msgstr": "shard range 캐싱이 활성화되지 않은 경우, non-ASCII object name을 sharded container에 쓰는 동안 인코딩 문제를 고정했습니다."
+    },
+    {
+      "similarity": 0.954681396484375,
+      "context": "",
+      "msgid": "Change the behavior of the EC reconstructor to perform a fragment rebuild to a handoff node when a primary peer responds with 507 to the REPLICATE request. This changes EC to match the existing behavior of replication when drives fail. After a rebalance of EC rings (potentially removing unmounted/failed devices), it's most IO efficient to run in handoffs_only mode to avoid unnecessary rebuilds.",
+      "plural_index": 0,
+      "a_msgstr": "EC reconstructor의 행동을 변경하여 fragment rebuild를 handoff 노드로 수행하도록 하십시오. primary peer가 REPLICATE 요청에 507를 trả면, EC는 replication과 같은 기존 행동을匹치합니다. drives가 실패할 때입니다. EC 링의 재배열(potentially unmounted/failed 장치를 제거할 수 있습니다)이 완료되면, handoffs_only 모드에서 실행하는 것이 가장 IO 효율적입니다. 불필요한 재건을 피하기 위해.",
+      "b_msgstr": "EC reconstructor의 행동을 변경하여 EC가 드라이브가 실패할 때 replication과 일치하는 것을 위해 fragment를 handoff 노드로 rebuilding합니다. 이 बदल기는 drives가 실패할 때 EC가 replication의 существ하는 행동과 일치하게 합니다. EC ring의 rebalance (potentially unmounted/failed 장치를 제거) 후, most IO 효율적으로 handoffs_only 모드를 사용하여 불필요한 재건을 피해야 합니다."
+    },
+    {
+      "similarity": 0.9548733234405518,
+      "context": "",
+      "msgid": "Deprecate swift-temp-url and call python-swiftclient's implementation instead. This adds python-swiftclient as an optional dependency of Swift.",
+      "plural_index": 0,
+      "a_msgstr": "swift-temp-url을 비활성화하고 python-swiftclient의 구현을 사용하도록 deprecated합니다. 이로 인해 python-swiftclient은 Swift의 옵셔널 의존성이 됩니다.",
+      "b_msgstr": "swift-temp-url을 비활성화하고 python-swiftclient의 구현을 사용하십시오. 이로 인해 python-swiftclient은 Swift의 옵션 의존性에 추가됩니다."
+    },
+    {
+      "similarity": 0.9548875093460083,
+      "context": "",
+      "msgid": "Fixed a performance regression in the handling of misplaced objects.",
+      "plural_index": 0,
+      "a_msgstr": "misplaced objetos의 처리에 대한 성능 저하를修正했습니다.",
+      "b_msgstr": "misplaced objetos의 처리에 대한 성능 저하를 수정했습니다."
+    },
+    {
+      "similarity": 0.955210268497467,
+      "context": "",
+      "msgid": "Fix SLO delete for accounts with non-ASCII names.",
+      "plural_index": 0,
+      "a_msgstr": "SLO를 계정에 대한 비ASCII 이름이 있는 경우 삭제하도록 수정하세요.",
+      "b_msgstr": "SLO를 계정에 대한 비ASCII 이름이 있는 경우 삭제하십시오."
+    },
+    {
+      "similarity": 0.9570905566215515,
+      "context": "",
+      "msgid": "Added the ability to read options from object-server.conf, similar to background daemons.",
+      "plural_index": 0,
+      "a_msgstr": "object-server.conf에 read options을 읽기 similar to background daemons.",
+      "b_msgstr": "object-server.conf에서 read options을 읽기와 background daemon과 유사합니다."
+    },
+    {
+      "similarity": 0.9602759480476379,
+      "context": "",
+      "msgid": "Closed a bug where ssync may have written bad fragment data in some circumstances. A check was added to ensure the correct number of bytes is written for a fragment before finalizing the write. Also, erasure coded fragment metadata will now be validated on read requests and, if bad data is found, the fragment will be quarantined.",
+      "plural_index": 0,
+      "a_msgstr": "SSync가 일부 circumstances에서 나쁜 fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 fragment에 쓰여질 때까지 finalizing write 전에 correct number of bytes가 쓰여질 것을 확인했습니다. 또한, erasure coded fragment metadata가 read 요청에 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다.",
+      "b_msgstr": "SSync가 일부 circumstances에서 bad fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 쓰여진 fragment 전에 finalizing write를 보장하기 위해 확인이 추가되었습니다. 또한, erasure coded fragment metadata가 read 요청에 유효성 kiểm사를 통해 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다."
+    },
+    {
+      "similarity": 0.9602759480476379,
+      "context": "",
+      "msgid": "Closed a bug where ssync may have written bad fragment data in some circumstances. A check was added to ensure the correct number of bytes is written for a fragment before finalizing the write. Also, erasure coded fragment metadata will now be validated when read and, if bad data is found, the fragment will be quarantined.",
+      "plural_index": 0,
+      "a_msgstr": "SSync가 일부 circumstances에서 나쁜 fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 fragment에 쓰여질 때까지 finalizing write 전에 correct number of bytes가 쓰여질 것을 확인했습니다. 또한, erasure coded fragment metadata가 read 요청에 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다.",
+      "b_msgstr": "SSync가 일부 circumstances에서 bad fragment 데이터를 쓰는 bug을 닫았습니다. correct number of bytes가 쓰여진 fragment 전에 finalizing write를 보장하기 위해 확인이 추가되었습니다. 또한, erasure coded fragment metadata가 read 요청에 유효성 kiểm사를 통해 유효한지 확인하고, bad data가 발견되면 fragment는 quarantined됩니다."
+    },
+    {
+      "similarity": 0.9603477120399475,
+      "context": "",
+      "msgid": "Added information (including target account/container) from oldest failed updates to recon dumps, both per-device and aggregated for the node. Use the new ``async_tracker_max_entries`` and ``async_tracker_dump_count`` options to adjust how many records to collect.",
+      "plural_index": 0,
+      "a_msgstr": "oldest failed updates에서 target account/container 정보를 포함한 모든 장치 및 노드의 aggregates로 추가되었습니다. new ``async_tracker_max_entries`` 및 ``async_tracker_dump_count`` 옵션을 사용하여 수집할 레코드의จำนวน을 조정하세요.",
+      "b_msgstr": "oldest failed updates에서 target account/container 정보를 포함하여 모든 장치 및 노드에 대한 aggregates와 각 장치별로 사용할 수 있습니다. new ``async_tracker_max_entries`` 및 ``async_tracker_dump_count`` 옵션을 사용하여 수집한 레코드의 수를 조정하세요."
+    },
+    {
+      "similarity": 0.9607884883880615,
+      "context": "",
+      "msgid": "Cleaned up ``X-Backend-*`` headers in listing responses.",
+      "plural_index": 0,
+      "a_msgstr": "X-Backend-* 헤더를 listing 응답에 cleaner up했습니다.",
+      "b_msgstr": "X-Backend-* 헤더를 listing responses에 clean up했습니다."
+    },
+    {
+      "similarity": 0.9617500305175781,
+      "context": "",
+      "msgid": "Fixed a bug in domain_remap when obj starts/ends with slash.",
+      "plural_index": 0,
+      "a_msgstr": "클라이언트 연결에서 발생한 '이미 실행 중인 생성자' 오류를修复했습니다.",
+      "b_msgstr": "클라이언트 연결에서 발생하는 '기반 생성기가 이미 실행 중입니다.' 오류를修复했습니다."
+    },
+    {
+      "similarity": 0.9625849723815918,
+      "context": "",
+      "msgid": "CompleteMultipartUpload requests with a ``Content-MD5`` now work.",
+      "plural_index": 0,
+      "a_msgstr": "CompleteMultipartUpload 요청의 Content-MD5가 now work합니다.",
+      "b_msgstr": "CompleteMultipartUpload 요청 Content-MD5와 함께 now work합니다."
+    },
+    {
+      "similarity": 0.9649897217750549,
+      "context": "",
+      "msgid": "Correctly send 412 Precondition Failed if a user sends an invalid copy destination. Previously Swift would send a 500 Internal Server Error.",
+      "plural_index": 0,
+      "a_msgstr": "사용자가 유효한 복사 목적지를 전송할 때, 412 Precondition Failed 오류를 correctly 전송하세요. 이전 Swift는 500 Internal Server Error를 전송했습니다.",
+      "b_msgstr": "사용자가 유효한 복사 목적지를 전송하지 않으면 412 Precondition Failed를 correctly 전송하세요. 이전 Swift는 500 Internal Server Error를 전송했습니다."
+    },
+    {
+      "similarity": 0.966178297996521,
+      "context": "",
+      "msgid": "Added an option to write EC fragments with legacy CRC to ensure a smooth upgrade from liberasurecode<=1.5.0 to >=1.6.2. For more information, see `bug 1886088 <https://bugs.launchpad.net/liberasurecode/+bug/1886088>`__.",
+      "plural_index": 0,
+      "a_msgstr": "liberasurecode<=1.5.0에서 >=1.6.2 이상으로 업그레이드를 보장하기 위해 legacy CRC와 함께 EC fragments를 쓰기 옵션을 추가했습니다. 더 많은 정보는 `bug 1886088 <https://bugs.launchpad.net/liberasurecode/+bug/1886088>`__입니다.",
+      "b_msgstr": "legacy CRC와 EC fragments를 쓰는 것을 위해 1.5.0 이상에서 1.6.2 이상으로 업그레이드를 보장하는 것을確保する 옵션을 추가했습니다. 더 많은 정보는 `bug 1886088 <https://bugs.launchpad.net/liberasurecode/+bug/1886088>`__입니다."
+    },
+    {
+      "similarity": 0.9666632413864136,
+      "context": "",
+      "msgid": "Fixed an error when reading encrypted data that was written while running Python 2 for a path that includes non-ASCII characters.",
+      "plural_index": 0,
+      "a_msgstr": "Python 2를 실행할 때 작성된 비대문 문자가 포함된 경로에 대해 암호화 데이터를 읽을 때 오류를修正했습니다.",
+      "b_msgstr": "ASCII 문자가 포함된 경로에 대해 Python 2를 실행한 동안 쓰여진 암호화 데이터를 읽는 오류를修正했습니다."
+    },
+    {
+      "similarity": 0.9674139022827148,
+      "context": "",
+      "msgid": "Experimental support for Python 3.6 and 3.7 is now available. Note that this requires ``eventlet>=0.25.0``. All unit tests pass, and running functional tests under Python 2 will pass against services running under Python 3. Expect full support in the next minor release.",
+      "plural_index": 0,
+      "a_msgstr": "Experimental support for Python 3.6 and 3.7 is now available. Note that this requires ``eventlet>=0.25.0``. All unit tests pass, and running functional tests under Python 2 will pass against services running under Python 3. Expect full support in the next minor release.",
+      "b_msgstr": "Python 3.6 및 3.7의 실험적 지원이 now available. Note that this requires ``eventlet>=0.25.0``. All unit tests pass, and running functional tests under Python 2 will pass against services running under Python 3. Expect full support in the next minor release."
+    },
+    {
+      "similarity": 0.9683238863945007,
+      "context": "",
+      "msgid": "Container sync now synchronizes static symlinks in a way similar to static large objects.",
+      "plural_index": 0,
+      "a_msgstr": "容器 동기화는 정적 symlink을 정적 큰 오브젝트와 유사한 방식으로 동기화합니다.",
+      "b_msgstr": "容器 동기화는 정적 symlink의 동기화를 static large objects와 유사하게 동기화합니다."
+    },
+    {
+      "similarity": 0.9688665270805359,
+      "context": "",
+      "msgid": "Enabled versioned writes on Dynamic Large Objects (DLOs).",
+      "plural_index": 0,
+      "a_msgstr": "동적 큰 오브젝트 (DLOs)의 버전ized 쓰기를 활성화했습니다.",
+      "b_msgstr": "동적 큰 객체 (DLOs)의 버전화된 쓰기를 활성화했습니다."
+    },
+    {
+      "similarity": 0.9697831273078918,
+      "context": "",
+      "msgid": "Added the option to tune down ETag validation in the object-server during full-object reads. By default, every full read will continue to have its ETag validated as bytes are streamed to the proxy-server. The ``etag_validate_pct`` option may be used to configure approximately what percentage of full-object reads should be validated; reducing this can improve performance when object-servers are CPU-constrained.",
+      "plural_index": 0,
+      "a_msgstr": "ETag validation을 object-server에서 full-object reads에서 fine-tune 할 수 있습니다. default는 bytes가 proxy-server로 스트리밍 될 때까지 ETag validation을 계속 유지합니다; etag_validate_pct option을 사용하여 approximately what percentage of full-object reads를 validate할 수 있습니다; reducing this can improve performance when object-servers are CPU-constrained.",
+      "b_msgstr": "ETag validation을 object-server에서 full-object read에 tuning down할 수 있습니다. 기본적으로 모든 full read는 bytes가 proxy-server로 스트리밍되는 동안 ETag validation이 계속됩니다. etag_validate_pct 옵션을 사용하여 approximately what percentage of full-object reads가 validation을 설정할 수 있습니다; CPU-constrained object-servers의 경우 performance를 개선할 수 있습니다."
+    },
+    {
+      "similarity": 0.9706213474273682,
+      "context": "",
+      "msgid": "After upgrading, re-enable and restart the object-reconstructor.",
+      "plural_index": 0,
+      "a_msgstr": "업그레이드 후, 다시 활성화하고 재시작해야 합니다. 오브젝트 재조성자.",
+      "b_msgstr": "업그레이드 후, 다시 활성화하고 재시작해야 합니다. 오브젝트-재건자."
+    },
+    {
+      "similarity": 0.974035918712616,
+      "context": "",
+      "msgid": "Container read ACLs now work with object versioning. This only allows access to the most-recent version via an unversioned URL.",
+      "plural_index": 0,
+      "a_msgstr": "容器 읽기 ACLs는 오브젝트 버전화와 함께 작동합니다. 이 기능은 가장 최근 버전에 대한 접근을 비버전 URL로만 허용합니다.",
+      "b_msgstr": "容器 읽기 ACLs는 오브젝트 버전화와 함께 작동합니다. 이 기능은 가장 최근 버전에 대한 접근을 unversioned URL로만 허용합니다."
+    },
+    {
+      "similarity": 0.9765416979789734,
+      "context": "",
+      "msgid": "Changed where liberasurecode-devel for CentOS 7 is referenced and installed as a dependency.",
+      "plural_index": 0,
+      "a_msgstr": "liberasurecode-devel for CentOS 7를 참조하고 설치된 의존성으로 변경했습니다.",
+      "b_msgstr": "liberasurecode-devel for CentOS 7를 참조하고 설치된 의존성에서 변경했습니다."
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "file_a": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po-example/ko_KR/i18n-docs-source-locale.po",
+    "file_b": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/i18n-docs-source-locale.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 406,
+    "avg_similarity": 0.8712,
+    "median_similarity": 0.9187,
+    "p90_similarity": 0.9985,
+    "pct_over_threshold": 79.56
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.0000007152557373,
+      "context": "",
+      "msgid": "`Open reviews in openstack/i18n <https://review.opendev.org/#/q/status:open+project:openstack/i18n>`_",
+      "plural_index": 0,
+      "a_msgstr": "`Open reviews in openstack/i18n <https://review.opendev.org/#/q/status:open+project:openstack/i18n>`_",
+      "b_msgstr": "`Open reviews in openstack/i18n <https://review.opendev.org/#/q/status:open+project:openstack/i18n>`_"
+    },
+    {
+      "similarity": 1.0000007152557373,
+      "context": "",
+      "msgid": "`create-zanata-xml.py <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/create-zanata-xml.py>`__",
+      "plural_index": 0,
+      "a_msgstr": "`create-zanata-xml.py <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/create-zanata-xml.py>`__",
+      "b_msgstr": "`create-zanata-xml.py <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/create-zanata-xml.py>`__"
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": ":ref:`search`",
+      "plural_index": 0,
+      "a_msgstr": ":ref:`search`",
+      "b_msgstr": ":ref:`search`"
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "Server projects",
+      "plural_index": 0,
+      "a_msgstr": "서버 프로젝트",
+      "b_msgstr": "서버 프로젝트"
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "b_msgstr": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__"
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "plural_index": 0,
+      "a_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "b_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "ReactJS Projects",
+      "plural_index": 0,
+      "a_msgstr": "ReactJS 프로젝트",
+      "b_msgstr": "ReactJS 프로젝트"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Stackalytics",
+      "plural_index": 0,
+      "a_msgstr": "Stackalytics",
+      "b_msgstr": "Stackalytics"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Zanata CLI",
+      "plural_index": 0,
+      "a_msgstr": "Zanata CLI",
+      "b_msgstr": "Zanata CLI"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "common_translation_update.sh",
+      "plural_index": 0,
+      "a_msgstr": "common_translation_update.sh",
+      "b_msgstr": "common_translation_update.sh"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "IRC web client",
+      "plural_index": 0,
+      "a_msgstr": "IRC 웹 클라이언트",
+      "b_msgstr": "IRC 웹 클라이언트"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "`Periodic jobs: Syncing into repos <http://zuul.opendev.org/t/openstack/builds?job_name=propose-translation-update>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Periodic jobs: Syncing into repos <http://zuul.opendev.org/t/openstack/builds?job_name=propose-translation-update>`__",
+      "b_msgstr": "`Periodic jobs: Syncing into repos <http://zuul.opendev.org/t/openstack/builds?job_name=propose-translation-update>`__"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "`releasenotes/pre.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/pre.yaml>`__",
+      "plural_index": 0,
+      "a_msgstr": "`releasenotes/pre.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/pre.yaml>`__",
+      "b_msgstr": "`releasenotes/pre.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/pre.yaml>`__"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "`releasenotes/run.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/run.yaml>`__",
+      "plural_index": 0,
+      "a_msgstr": "`releasenotes/run.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/run.yaml>`__",
+      "b_msgstr": "`releasenotes/run.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/run.yaml>`__"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Official OpenStack translator",
+      "plural_index": 0,
+      "a_msgstr": "공식 OpenStack 번역자",
+      "b_msgstr": "공식 OpenStack 번역자"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "OpenStack project documentation",
+      "plural_index": 0,
+      "a_msgstr": "OpenStack 프로젝트 문서",
+      "b_msgstr": "OpenStack 프로젝트 문서"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "`Post jobs - Syncing to Zanata <https://zuul.opendev.org/t/openstack/builds?job_name=upstream-translation-update>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Post jobs - Syncing to Zanata <https://zuul.opendev.org/t/openstack/builds?job_name=upstream-translation-update>`__",
+      "b_msgstr": "`Post jobs - Syncing to Zanata <https://zuul.opendev.org/t/openstack/builds?job_name=upstream-translation-update>`__"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "`common_translation_update.sh <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/common_translation_update.sh>`__",
+      "plural_index": 0,
+      "a_msgstr": "`common_translation_update.sh <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/common_translation_update.sh>`__",
+      "b_msgstr": "`common_translation_update.sh <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/common_translation_update.sh>`__"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__",
+      "plural_index": 0,
+      "a_msgstr": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__",
+      "b_msgstr": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "[ianychoi] Note: only \"translated\" metric was considered to follow the description in I18n contributor guide. After more detail investigation on previous ATC criteria, review metrics were also considered. Fortunately, the three translators (jftalta - 117 translated & 2897 reviews, myamamot - 725 reviews, mucahit - 1241 reviews) are also regarded ATCs from Newton cycle :) - I keep it as record for the next ATC list changes.",
+      "plural_index": 0,
+      "a_msgstr": "[ianychoi] Note: only \"translated\" metric was considered to follow the description in I18n contributor guide. After more detail investigation on previous ATC criteria, review metrics were also considered. Fortunately, the three translators (jftalta - 117 translated & 2897 reviews, myamamot - 725 reviews, mucahit - 1241 reviews) are also regarded ATCs from Newton cycle :) - I keep it as record for the next ATC list changes.",
+      "b_msgstr": "[ianychoi] Note: only \"translated\" metric was considered to follow the description in I18n contributor guide. After more detail investigation on previous ATC criteria, review metrics were also considered. Fortunately, the three translators (jftalta - 117 translated & 2897 reviews, myamamot - 725 reviews, mucahit - 1241 reviews) are also regarded ATCs from Newton cycle :) - I keep it as record for the next ATC list changes."
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.17242322862148285,
+      "context": "",
+      "msgid": "Loading scripts",
+      "plural_index": 0,
+      "a_msgstr": "스크립트 불러오기",
+      "b_msgstr": "스クリプ트 로드"
+    },
+    {
+      "similarity": 0.22101832926273346,
+      "context": "",
+      "msgid": "Getting in touch",
+      "plural_index": 0,
+      "a_msgstr": "어울리기",
+      "b_msgstr": "연락처"
+    },
+    {
+      "similarity": 0.25819873809814453,
+      "context": "",
+      "msgid": "Documentation",
+      "plural_index": 0,
+      "a_msgstr": "문서화",
+      "b_msgstr": "도キュ먼트"
+    },
+    {
+      "similarity": 0.28434813022613525,
+      "context": "",
+      "msgid": "Translation infrastructure",
+      "plural_index": 0,
+      "a_msgstr": "번역 인프라",
+      "b_msgstr": "ترجمةinfrastructure"
+    },
+    {
+      "similarity": 0.30720388889312744,
+      "context": "",
+      "msgid": "Pike cycle",
+      "plural_index": 0,
+      "a_msgstr": "Pike 버전",
+      "b_msgstr": "피크 사이클"
+    },
+    {
+      "similarity": 0.32135307788848877,
+      "context": "",
+      "msgid": "Documentation projects",
+      "plural_index": 0,
+      "a_msgstr": "문서 프로젝트",
+      "b_msgstr": "도큐먼트 프로젝트"
+    },
+    {
+      "similarity": 0.37644124031066895,
+      "context": "",
+      "msgid": "Usual topics",
+      "plural_index": 0,
+      "a_msgstr": "일반적인 토픽",
+      "b_msgstr": "기상 주제"
+    },
+    {
+      "similarity": 0.3914443254470825,
+      "context": "",
+      "msgid": "Mitaka cycle",
+      "plural_index": 0,
+      "a_msgstr": "Mitaka 버전",
+      "b_msgstr": "미타카 사이클"
+    },
+    {
+      "similarity": 0.44028881192207336,
+      "context": "",
+      "msgid": "Or, more convenient way would be:",
+      "plural_index": 0,
+      "a_msgstr": "또는 더 편리한 방법은 다음과 같습니다:",
+      "b_msgstr": "또는"
+    },
+    {
+      "similarity": 0.44638147950172424,
+      "context": "",
+      "msgid": "Downloading",
+      "plural_index": 0,
+      "a_msgstr": "Downloading",
+      "b_msgstr": "다운로드 중"
+    },
+    {
+      "similarity": 0.449686735868454,
+      "context": "",
+      "msgid": "Monitoring translation jobs status",
+      "plural_index": 0,
+      "a_msgstr": "Translation jobs 상태 모니터링",
+      "b_msgstr": "監控 번역 일자표 status"
+    },
+    {
+      "similarity": 0.460834264755249,
+      "context": "",
+      "msgid": "Stein cycle",
+      "plural_index": 0,
+      "a_msgstr": "Stein 주기",
+      "b_msgstr": "스틴 사이클"
+    },
+    {
+      "similarity": 0.47479671239852905,
+      "context": "",
+      "msgid": "Queens cycle",
+      "plural_index": 0,
+      "a_msgstr": "Queens 주기",
+      "b_msgstr": "퀸스 사이클"
+    },
+    {
+      "similarity": 0.4793221354484558,
+      "context": "",
+      "msgid": "How can I report a bug?",
+      "plural_index": 0,
+      "a_msgstr": "어떻게 버그를 신고할 수 있습니까?",
+      "b_msgstr": "BUG를 보고 싶다면 어떻게 báo cáo할 수 있는가?"
+    },
+    {
+      "similarity": 0.4858705401420593,
+      "context": "",
+      "msgid": "Newton cycle",
+      "plural_index": 0,
+      "a_msgstr": "Newton 버전",
+      "b_msgstr": "뉴턴 주기"
+    },
+    {
+      "similarity": 0.49695131182670593,
+      "context": "",
+      "msgid": "prioritize the bug",
+      "plural_index": 0,
+      "a_msgstr": "번역 우선순위를 지정합니다",
+      "b_msgstr": "bug를 우선시하십시오."
+    },
+    {
+      "similarity": 0.501992404460907,
+      "context": "",
+      "msgid": "Convention",
+      "plural_index": 0,
+      "a_msgstr": "규칙",
+      "b_msgstr": "convention"
+    },
+    {
+      "similarity": 0.5154750943183899,
+      "context": "",
+      "msgid": "Bugs in tool chains",
+      "plural_index": 0,
+      "a_msgstr": "툴 체인 내 버그",
+      "b_msgstr": "도구链에bugs가 있습니다."
+    },
+    {
+      "similarity": 0.5258888602256775,
+      "context": "",
+      "msgid": "Master glossary",
+      "plural_index": 0,
+      "a_msgstr": "마스터 용어집",
+      "b_msgstr": "마스터 glossary"
+    },
+    {
+      "similarity": 0.5281104445457458,
+      "context": "",
+      "msgid": "Contributing",
+      "plural_index": 0,
+      "a_msgstr": "기여하기",
+      "b_msgstr": "보조"
+    }
+  ]
+}

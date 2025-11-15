@@ -1,0 +1,233 @@
+msgid "You can see detail member-level statistics data on `HTML version of the page <https://docs.openstack.org/i18n/latest/atc-stats.html>`_."
+msgstr ""
+
+msgid "I18n team meeting"
+msgstr ""
+
+msgid "Glossary Management"
+msgstr ""
+
+msgid "Train cycle"
+msgstr ""
+
+msgid "Master glossary"
+msgstr ""
+
+msgid "Cross Project Liaisons"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "OpenStack Dashboard"
+msgstr ""
+
+msgid "Uploading"
+msgstr ""
+
+msgid "Discuss and review glossary changes in your language team before you propose changes to the Gerrit review system. Reviewers in the Gerrit review system cannot understand your language in most cases, so they can only check syntax or conventions."
+msgstr ""
+
+msgid "Handling horizon projects"
+msgstr ""
+
+msgid "Translation jobs"
+msgstr ""
+
+msgid "Documentation projects"
+msgstr ""
+
+msgid "Of course there is no need that team coordinators do all items. You can collaborate your team members and share ideas."
+msgstr ""
+
+msgid "Liberty cycle"
+msgstr ""
+
+msgid "Missed translations. Missed translations might be caused by not extracting English strings from the source project, or be caused by real missed translations. If the translations are missed in two different languages, they are probably bugs in the source project. Or else, they are real missed translations."
+msgstr ""
+
+msgid "Release Management"
+msgstr ""
+
+msgid "The convention for heading levels is as follows::"
+msgstr ""
+
+msgid "The diff would be like http://paste.openstack.org/show/802260/."
+msgstr ""
+
+msgid "Meeting agenda"
+msgstr ""
+
+msgid "Active Contributor status in I18n project"
+msgstr ""
+
+msgid "confirm the bug or mark it as incomplete"
+msgstr ""
+
+msgid "A glossary file of your language is found at ``glossary/locale/<lang>/LC_MESSAGES/glossary.po`` in the i18n repository. The file is a usual PO file."
+msgstr ""
+
+msgid "Commenting out CI-specific codes"
+msgstr ""
+
+msgid "Open discussion"
+msgstr ""
+
+msgid "Rocky cycle"
+msgstr ""
+
+msgid "Ocata cycle"
+msgstr ""
+
+msgid "Extracting"
+msgstr ""
+
+msgid "You can refer to `previous meeting logs with their notes <https://meetings.opendev.org/meetings/openstack_i18n_meeting/>`_."
+msgstr ""
+
+msgid "Most teams have single approval for translation imports instead of two core reviewers."
+msgstr ""
+
+msgid "Where you find a bug you are reporting?"
+msgstr ""
+
+msgid "Bugs in tool chains"
+msgstr ""
+
+msgid "Click \"Log in\" button."
+msgstr ""
+
+msgid "Managing a Language Team"
+msgstr ""
+
+msgid "Bugs in a source project"
+msgstr ""
+
+msgid "For documentations, URL and a detail place would be great."
+msgstr ""
+
+msgid "Language translation team"
+msgstr ""
+
+msgid "Who can help you?"
+msgstr ""
+
+msgid "This document gives additional information."
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+
+msgid "Building"
+msgstr ""
+
+msgid "Handling python projects"
+msgstr ""
+
+msgid "Translations are being imported into a project repository daily, so in most cases you do not need to pull translations from Zanata manually. What you need is to pull the latest horizon code."
+msgstr ""
+
+msgid "Launchpad bugs, Gerrit reviews, and broken Zuul jobs"
+msgstr ""
+
+msgid "Language Team"
+msgstr ""
+
+msgid "Reviewer"
+msgstr ""
+
+msgid "As a translator, if reported bugs turns out beyond a translation bug, it is better to ask I18n team members via the mailing list or the IRC channel. They can handle such bugs."
+msgstr ""
+
+msgid "Team activities with release"
+msgstr ""
+
+msgid "OpenStack i18n mascot"
+msgstr ""
+
+msgid "If you have any, don't hesitate to share it :)"
+msgstr ""
+
+msgid "Translation bugs in all languages can be reported here."
+msgstr ""
+
+msgid "About this guide"
+msgstr ""
+
+msgid "Official OpenStack translator"
+msgstr ""
+
+msgid "Monitoring translation jobs status"
+msgstr ""
+
+msgid "You must determine whether bugs are **translation bugs** or **bugs in a source project**. Typical i18n bugs in the source project include:"
+msgstr ""
+
+msgid "Copying upper-constraints.txt"
+msgstr ""
+
+msgid "If you are lucky to use a same name for launchpad and Zanata IDs, you do not need to do the above. Stackalytics will find your statistics automatically."
+msgstr ""
+
+msgid "User configuration"
+msgstr ""
+
+msgid "Heleno Jimenez de la Cruz (id: heleno_jimenez) - Spanish (Mexico)"
+msgstr ""
+
+msgid "assign the bug to you or a member of your language team, and then mark it as \"In Progress\""
+msgstr ""
+
+msgid "ATC Statistics in past releases"
+msgstr ""
+
+msgid "It is a good idea to organize glossaries and initiate related discussion."
+msgstr ""
+
+msgid "It is not a complete document for debugging. It was just written as a note. Feel free to add more topics."
+msgstr ""
+
+msgid "Installing Zanata CLI and its dependencies. Ensure ``zanata-cli`` command is found in your path."
+msgstr ""
+
+msgid "fix it by visiting a corresponding resource in Zanata and correcting translations."
+msgstr ""
+
+msgid "Where can I report a bug?"
+msgstr ""
+
+msgid "Usual topics"
+msgstr ""
+
+msgid "Make sure to include a short introduction because it is the only information which language coordinators can use to determine your join request is valid or not."
+msgstr ""
+
+msgid "bugs in tool chains"
+msgstr ""
+
+msgid "Other projects supported with translation jobs"
+msgstr ""
+
+msgid "Fixing I18n bugs"
+msgstr ""
+
+msgid "Daily Work"
+msgstr ""
+
+msgid "Review of action items from the previous meeting"
+msgstr ""
+
+msgid "Translations on master version in Zanata are normally recommended for upstream contribution."
+msgstr ""
+
+msgid "Handling documentation projects"
+msgstr ""
+
+msgid "OpenStack I18n Guide"
+msgstr ""
+
+msgid "Translation Job Control"
+msgstr ""
+
+msgid "This page describes how end users can report translation bugs."
+msgstr ""

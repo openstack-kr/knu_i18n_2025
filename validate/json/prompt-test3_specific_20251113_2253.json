@@ -1,0 +1,1625 @@
+{
+  "metadata": {
+    "file_a": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po-example/ko_KR/nova-nova-locale.po",
+    "file_b": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/prompt-test3_specific.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 104,
+    "avg_similarity": 0.8239,
+    "median_similarity": 0.8663,
+    "p90_similarity": 0.9578,
+    "pct_over_threshold": 65.38
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Table",
+      "plural_index": 0,
+      "a_msgstr": "테이블",
+      "b_msgstr": "테이블"
+    },
+    {
+      "similarity": 0.9869483113288879,
+      "context": "",
+      "msgid": "Server %(server_id)s has no tag '%(tag)s'",
+      "plural_index": 0,
+      "a_msgstr": "서버 %(server_id)s는 '%(tag)s' 태그가 없습니다.",
+      "b_msgstr": "서버 %(server_id)s에는 태그 '%(tag)s'가 없습니다."
+    },
+    {
+      "similarity": 0.9837663769721985,
+      "context": "",
+      "msgid": "Security group not specified",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹이 지정되지 않음",
+      "b_msgstr": "보안 그룹이 지정되지 않습니다."
+    },
+    {
+      "similarity": 0.9796615242958069,
+      "context": "",
+      "msgid": "Resource could not be found.",
+      "plural_index": 0,
+      "a_msgstr": "자원을 찾을 수 없습니다.",
+      "b_msgstr": "자원이 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.9744277000427246,
+      "context": "",
+      "msgid": "Scheduler Host Filter %(filter_name)s could not be found.",
+      "plural_index": 0,
+      "a_msgstr": "스케줄러 호스트 필터 %(filter_name)s을(를) 찾을 수 없습니다.",
+      "b_msgstr": "스케줄러 호스트 필터 %(filter_name)s가 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.9732794165611267,
+      "context": "",
+      "msgid": "The requested functionality is not supported.",
+      "plural_index": 0,
+      "a_msgstr": "요청된 기능이 지원되지 않습니다.",
+      "b_msgstr": "요청된 기능은 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.9682976603507996,
+      "context": "",
+      "msgid": "RequestSpec not found for instance %(instance_uuid)s",
+      "plural_index": 0,
+      "a_msgstr": "%(instance_uuid)s 인스턴스의 RequestSpec을 찾을 수 없음",
+      "b_msgstr": "인스턴스 %(instance_uuid)s에 대해 RequestSpec이 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.9652349948883057,
+      "context": "",
+      "msgid": "Root element name should be '%(name)s' not '%(tag)s'",
+      "plural_index": 0,
+      "a_msgstr": "루트 요소 이름은 '%(tag)s'이(가) 아닌 '%(name)s'이어야 함",
+      "b_msgstr": "루트 요소 이름은 '%(name)s'가 아니라 '%(tag)s'로해야 합니다."
+    },
+    {
+      "similarity": 0.9595423340797424,
+      "context": "",
+      "msgid": "Snapshot %(snapshot_id)s could not be found.",
+      "plural_index": 0,
+      "a_msgstr": "%(snapshot_id)s 스냅샷을 찾을 수 없습니다.",
+      "b_msgstr": "스냅샷 %(snapshot_id)s가 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.959403932094574,
+      "context": "",
+      "msgid": "Security group %(security_group_name)s already exists for project %(project_id)s.",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 %(security_group_name)s이(가) 프로젝트%(project_id)s.",
+      "b_msgstr": "보안 그룹 %(security_group_name)s는 프로젝트 %(project_id)s에 대해 이미 존재합니다."
+    },
+    {
+      "similarity": 0.956263542175293,
+      "context": "",
+      "msgid": "Started",
+      "plural_index": 0,
+      "a_msgstr": "작동함",
+      "b_msgstr": "작동"
+    },
+    {
+      "similarity": 0.9553760886192322,
+      "context": "",
+      "msgid": "Service %(service_id)s could not be found.",
+      "plural_index": 0,
+      "a_msgstr": "%(service_id)s 서비스를 찾을 수 없습니다.",
+      "b_msgstr": "서비스 %(service_id)s가 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.9544844031333923,
+      "context": "",
+      "msgid": "Scheduling failed: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "스케줄링 실패: %(reason)s",
+      "b_msgstr": "스케줄링에 실패했습니다: %(reason)s"
+    },
+    {
+      "similarity": 0.9504456520080566,
+      "context": "",
+      "msgid": "Security group id should be uuid",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 ID는 uuid여야 함",
+      "b_msgstr": "보안 그룹 id는 uuid 형식이어야 합니다."
+    },
+    {
+      "similarity": 0.9499111175537109,
+      "context": "",
+      "msgid": "The requested availability zone is not available",
+      "plural_index": 0,
+      "a_msgstr": "요청한 가용성 구역을 사용할 수 없음",
+      "b_msgstr": "요청된 가용 구역은 사용할 수 없습니다."
+    },
+    {
+      "similarity": 0.9491307139396667,
+      "context": "",
+      "msgid": "This rule already exists in group %s",
+      "plural_index": 0,
+      "a_msgstr": "이 규칙이 이미 %s 그룹에 존재함",
+      "b_msgstr": "그룹 %s에 이미 존재하는 규칙이 있습니다."
+    },
+    {
+      "similarity": 0.9462037086486816,
+      "context": "",
+      "msgid": "The `os_distro` image metadata property is required",
+      "plural_index": 0,
+      "a_msgstr": "다음의 이미지 메타데이터 속성이 필요합니다. : `os_distro`",
+      "b_msgstr": "os_distro 이미지 메타데이터 속성은 필요합니다"
+    },
+    {
+      "similarity": 0.942891001701355,
+      "context": "",
+      "msgid": "UEFI is not supported",
+      "plural_index": 0,
+      "a_msgstr": "UEFI가 지원되지 않음",
+      "b_msgstr": "UEFI는 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.9425532817840576,
+      "context": "",
+      "msgid": "The instance requires a newer hypervisor version than has been provided.",
+      "plural_index": 0,
+      "a_msgstr": "인스턴스는 제공된 것보다 최신 하이퍼바이저 버전이 필요합니다.",
+      "b_msgstr": "인스턴스는 제공된 하이퍼바이저 버전보다 새로운 버전을 필요합니다."
+    },
+    {
+      "similarity": 0.9417709708213806,
+      "context": "",
+      "msgid": "Service with host %(host)s binary %(binary)s exists.",
+      "plural_index": 0,
+      "a_msgstr": "호스트 %(host)s 바이너리 %(binary)s인 서비스가 존재합니다.",
+      "b_msgstr": "호스트 %(host)s의 서비스 binary %(binary)s가 존재합니다."
+    },
+    {
+      "similarity": 0.9403844475746155,
+      "context": "",
+      "msgid": "The PCI address %(address)s has an incorrect format.",
+      "plural_index": 0,
+      "a_msgstr": "PCI 주소 %(address)s에 올바르지 않은 형식이 있습니다.",
+      "b_msgstr": "PCI 주소 %(address)s의 format이 올바르지 않습니다."
+    },
+    {
+      "similarity": 0.9403771162033081,
+      "context": "",
+      "msgid": "The fixed IP associated with port %(port_id)s is not compatible with the host.",
+      "plural_index": 0,
+      "a_msgstr": "%(port_id)s와 연관되어 있는 고정 IP주소는 해당 호스트와 호환되지 않습니다.",
+      "b_msgstr": "포트 %(port_id)s와 관련된 고정 IP는 호스트와의 호환성이 없습니다."
+    },
+    {
+      "similarity": 0.9362288117408752,
+      "context": "",
+      "msgid": "The requested amount of video memory %(req_vram)d is higher than the maximum allowed by flavor %(max_vram)d.",
+      "plural_index": 0,
+      "a_msgstr": "요청된 양의 비디오 메모리 %(req_vram)d이(가) %(max_vram)d 플레이버에 의해 허용된 최대값보다 높습니다.",
+      "b_msgstr": "요청된 비디오 메모리 %(req_vram)d는 flavor %(max_vram)d의 최대 허용량을 초과합니다."
+    },
+    {
+      "similarity": 0.9350118041038513,
+      "context": "",
+      "msgid": "Request of image %(image_id)s got BadRequest response: %(response)s",
+      "plural_index": 0,
+      "a_msgstr": "%(image_id)s 이미지 요청 결과 BadRequest 응답 발생: %(response)s",
+      "b_msgstr": "이미지 %(image_id)s의 요청은 BadRequest 응답을 받았습니다: %(response)s"
+    },
+    {
+      "similarity": 0.9317445158958435,
+      "context": "",
+      "msgid": "Share '%s' is not supported",
+      "plural_index": 0,
+      "a_msgstr": "공유 '%s'은(는) 지원되지 않음",
+      "b_msgstr": "공유 '%s'는 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.9313644766807556,
+      "context": "",
+      "msgid": "Resource provider has allocations.",
+      "plural_index": 0,
+      "a_msgstr": "자원 제공자는 할당량을 갖고 있습니다.",
+      "b_msgstr": "자원 제공자는 할당이 있습니다."
+    },
+    {
+      "similarity": 0.9304510951042175,
+      "context": "",
+      "msgid": "The created instance's disk would be too small.",
+      "plural_index": 0,
+      "a_msgstr": "작성된 인스턴스의 디스크가 너무 작습니다.",
+      "b_msgstr": "생성된 인스턴스의 디스크는 너무 작을 것입니다."
+    },
+    {
+      "similarity": 0.927899956703186,
+      "context": "",
+      "msgid": "Sort direction size exceeds sort key size",
+      "plural_index": 0,
+      "a_msgstr": "정렬 방향 크기가 정렬 키 크기를 초과함",
+      "b_msgstr": "정렬 방향 크기가 정렬 키 크기보다大き다"
+    },
+    {
+      "similarity": 0.9274847507476807,
+      "context": "",
+      "msgid": "Type and Code must be integers for ICMP protocol type",
+      "plural_index": 0,
+      "a_msgstr": "ICMP 프로토콜 유형의 경우 유형 및 코드는 정수여야 함",
+      "b_msgstr": "타입과 코드가 ICMP 프로토콜 타입의 정수여야 합니다."
+    },
+    {
+      "similarity": 0.9272946119308472,
+      "context": "",
+      "msgid": "Service with host %(host)s topic %(topic)s exists.",
+      "plural_index": 0,
+      "a_msgstr": "호스트 %(host)s 주제 %(topic)s인 서비스가 존재합니다.",
+      "b_msgstr": "호스트 %(host)s의 서비스 topic %(topic)s가 존재합니다."
+    },
+    {
+      "similarity": 0.9257955551147461,
+      "context": "",
+      "msgid": "Requested vCPU limits %(sockets)d:%(cores)d:%(threads)d are impossible to satisfy for vcpus count %(vcpus)d",
+      "plural_index": 0,
+      "a_msgstr": "요청된 vCPU 한계 %(sockets)d:%(cores)d:%(threads)d은(는) vcpus 개수 %(vcpus)d을(를) 충족시킬 수 없음",
+      "b_msgstr": "요청한 vCPU 제한 %(sockets)d:%(cores)d:%(threads)d는 vcpus count %(vcpus)d를 만족할 수 없습니다."
+    },
+    {
+      "similarity": 0.9250115752220154,
+      "context": "",
+      "msgid": "The specified cluster '%s' was not found in vCenter",
+      "plural_index": 0,
+      "a_msgstr": "지정된 클러스터 '%s'을(를) vCenter에서 찾을 수 없음",
+      "b_msgstr": "指定된 클러스터 '%s'는 vCenter에서 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.923903226852417,
+      "context": "",
+      "msgid": "Task %(task_name)s is already running on host %(host)s",
+      "plural_index": 0,
+      "a_msgstr": "%(task_name)s 태스크가 이미 %(host)s 호스트에서 실행 중임",
+      "b_msgstr": "task %(task_name)s는 호스트 %(host)s에서 이미 실행 중입니다."
+    },
+    {
+      "similarity": 0.923588216304779,
+      "context": "",
+      "msgid": "Security group %(security_group_name)s not associated with the instance %(instance)s",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 %(security_group_name)s이(가) 인스턴스와 연관되지 않음%(instance)s 인스턴스와 연관되지 않음",
+      "b_msgstr": "보안 그룹 %(security_group_name)s는 인스턴스 %(instance)s와 연관되어 있지 않습니다."
+    },
+    {
+      "similarity": 0.9185014367103577,
+      "context": "",
+      "msgid": "The current driver does not support preserving ephemeral partitions.",
+      "plural_index": 0,
+      "a_msgstr": "현재 드라이버는 임시 파티션 유지를 지원하지 않습니다.",
+      "b_msgstr": "현재 드라이버는 임시 파티션을 보존하지 않습니다."
+    },
+    {
+      "similarity": 0.916963517665863,
+      "context": "",
+      "msgid": "This method needs to be called with either networks=None and port_ids=None or port_ids and networks as not none.",
+      "plural_index": 0,
+      "a_msgstr": "이 메소드는 networks=None 및 port_ids=None 또는 port_ids와 networks를 none으로 지정하지 않은 상태로 호출해야 합니다.",
+      "b_msgstr": "이 메서드는 networks=None과 port_ids=None을 사용하거나, port_ids와 networks를 사용해야 합니다. networks=None과 port_ids=None은 None이 아닌 값으로 사용되어야 합니다."
+    },
+    {
+      "similarity": 0.900200366973877,
+      "context": "",
+      "msgid": "The token '%(token)s' is invalid or has expired",
+      "plural_index": 0,
+      "a_msgstr": "토큰 '%(token)s'이(가) 올바르지 않거나 만료됨",
+      "b_msgstr": "'%(token)s' 토큰은 유효하지 않거나 만료되었습니다."
+    },
+    {
+      "similarity": 0.8994652628898621,
+      "context": "",
+      "msgid": "Unable to associate floating IP %(address)s to any fixed IPs for instance %(id)s. Instance has no fixed IPv4 addresses to associate.",
+      "plural_index": 0,
+      "a_msgstr": "Floating IP %(address)s을(를) %(id)s 인스턴스의 Fixed IP와 연관시킬 수 없습니다. 인스턴스에 연관시킬 Fixed IPv4 주소가 없습니다.",
+      "b_msgstr": "IP %(address)s을 fixed IP %(id)s 인스턴스와 연결할 수 없습니다. 인스턴스는 fixed IPv4 주소가 none이므로 any fixed IPs와 연결할 수 없습니다."
+    },
+    {
+      "similarity": 0.8979403972625732,
+      "context": "",
+      "msgid": "Stopped",
+      "plural_index": 0,
+      "a_msgstr": "중지됨",
+      "b_msgstr": "중단"
+    },
+    {
+      "similarity": 0.8942109942436218,
+      "context": "",
+      "msgid": "Security group %(security_group_id)s not found for project %(project_id)s.",
+      "plural_index": 0,
+      "a_msgstr": "%(project_id)s 프로젝트에 대한 %(security_group_id)s 보안 그룹을 찾을 수 없습니다.",
+      "b_msgstr": "프로젝트 %(project_id)s의 보안 그룹 %(security_group_id)s이 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8911439180374146,
+      "context": "",
+      "msgid": "The number of defined ports: %(ports)d is over the limit: %(quota)d",
+      "plural_index": 0,
+      "a_msgstr": "정의된 포트 수 %(ports)d이(가) 한계를 초과함: %(quota)d",
+      "b_msgstr": "정의된 포트의 수: %(ports)d는 할당한_quota)d"
+    },
+    {
+      "similarity": 0.8905213475227356,
+      "context": "",
+      "msgid": "The property 'numa_nodes' cannot be '%(nodes)s'. It must be a number greater than 0",
+      "plural_index": 0,
+      "a_msgstr": "속성 'numa_nodes'가 '%(nodes)s'이 될 순 없습니다. 반드시 숫자 0보다 커야 합니다.",
+      "b_msgstr": "속성 'numa_nodes'는 '%(nodes)s'가 아닌 숫자로 must be greater than 0"
+    },
+    {
+      "similarity": 0.8884003162384033,
+      "context": "",
+      "msgid": "Security group %(security_group_id)s not found.",
+      "plural_index": 0,
+      "a_msgstr": "%(security_group_id)s 보안 그룹을 찾을 수 없습니다.",
+      "b_msgstr": "보안 그룹 %(security_group_id)s가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8876885771751404,
+      "context": "",
+      "msgid": "The volume cannot be assigned the same device name as the root device %s",
+      "plural_index": 0,
+      "a_msgstr": "볼륨에 루트 디바이스 %s과(와) 같은 디바이스 이름을 지정할 수 없음",
+      "b_msgstr": "root 디바이스의 이름과 same device name으로 할당할 수 없습니다."
+    },
+    {
+      "similarity": 0.8856020569801331,
+      "context": "",
+      "msgid": "The floating IP request failed with a BadRequest",
+      "plural_index": 0,
+      "a_msgstr": "부동 IP 요청이 실패하여 BadRequest가 생성됨",
+      "b_msgstr": "포트 %(port_id)s에 대한浮动 IP 요청이 BadRequest 에러로 실패했습니다."
+    },
+    {
+      "similarity": 0.8811622262001038,
+      "context": "",
+      "msgid": "The provided RNG device path: (%(path)s) is not present on the host.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 RNG 디바이스 경로: (%(path)s)이(가) 호스트에 없습니다.",
+      "b_msgstr": "제공 RNG 장치 경로: (%(path)s)는 호스트에 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8808845281600952,
+      "context": "",
+      "msgid": "Something went wrong when deleting a volume snapshot: rebasing a %(protocol)s network disk using qemu-img has not been fully tested",
+      "plural_index": 0,
+      "a_msgstr": "볼륨 스냅샷을 삭제할 때 문제 발생: qemu-img를 사용한 %(protocol)s 네트워크 디스크의 리베이스가 완전히 테스트되지 않음",
+      "b_msgstr": "Volume snapshot를 삭제할 때 오류가 발생했습니다. qemu-img를 사용하여 %(protocol)s 네트워크 디스크를 재기반하는 thing은 완전히 테스트되지 않았습니다."
+    },
+    {
+      "similarity": 0.8757513761520386,
+      "context": "",
+      "msgid": "Share level '%s' cannot have share configured",
+      "plural_index": 0,
+      "a_msgstr": "공유 레벨 '%s'에는 공유를 구성할 수 없음",
+      "b_msgstr": "공유 수준 '%s'에 대한 공유 구성이 허용되지 않습니다."
+    },
+    {
+      "similarity": 0.8747612237930298,
+      "context": "",
+      "msgid": "Security group name cannot be empty",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 이름은 공백일 수 없음",
+      "b_msgstr": "보안 그룹 이름은 비어있을 수 없습니다."
+    },
+    {
+      "similarity": 0.8739285469055176,
+      "context": "",
+      "msgid": "Specifying a volume_type with destination_type=local is not supported.",
+      "plural_index": 0,
+      "a_msgstr": "volume_type 구성을 destination_type=local과 함께 설정할 수 없습니다.",
+      "b_msgstr": "destination_type=local 인 volume_type를指定하는 것은 지원되지 않는다."
+    },
+    {
+      "similarity": 0.8709118962287903,
+      "context": "",
+      "msgid": "The supplied device path (%(path)s) is in use.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 디바이스 경로(%(path)s)가 사용 중입니다.",
+      "b_msgstr": "supplied device path (%(path)s)는 사용 중입니다."
+    },
+    {
+      "similarity": 0.8692079782485962,
+      "context": "",
+      "msgid": "Resize error: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "크기 조정 오류: %(reason)s",
+      "b_msgstr": "resize 오류: %(reason)s"
+    },
+    {
+      "similarity": 0.86334228515625,
+      "context": "",
+      "msgid": "ServerGroup policy is not supported: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroup 정책이 지원되지 않음: %(reason)s",
+      "b_msgstr": "서버 그룹 정책은 지원되지 않습니다. 이유는 %(reason)s입니다."
+    },
+    {
+      "similarity": 0.8622406125068665,
+      "context": "",
+      "msgid": "Request is too large.",
+      "plural_index": 0,
+      "a_msgstr": "요청이 너무 큽니다.",
+      "b_msgstr": "요청이 너무 크습니다."
+    },
+    {
+      "similarity": 0.8590018153190613,
+      "context": "",
+      "msgid": "Set admin password is not supported",
+      "plural_index": 0,
+      "a_msgstr": "설정된 관리 비밀번호가 지원되지 않음",
+      "b_msgstr": "관리자 패스워드를 설정하는 것은 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.8565900325775146,
+      "context": "",
+      "msgid": "Task %(task_name)s is not running on host %(host)s",
+      "plural_index": 0,
+      "a_msgstr": "%(task_name)s 태스크가 %(host)s 호스트에서 실행 중이 아님",
+      "b_msgstr": "task %(task_name)s는 호스트 %(host)s에서 실행되지 않습니다."
+    },
+    {
+      "similarity": 0.8561990857124329,
+      "context": "",
+      "msgid": "Quota limit %(limit)s for %(resource)s must be greater than or equal to already used and reserved %(minimum)s.",
+      "plural_index": 0,
+      "a_msgstr": "%(resource)s의 할당량 한계 %(limit)s은(는) 이미 사용되고 예약된 %(minimum)s 이상이어야 합니다.",
+      "b_msgstr": "quota 제한 %(limit)s은 %(resource)s에 대해 이미 사용된 및 보관 된 %(minimum)s보다 큰지 확인해야 합니다."
+    },
+    {
+      "similarity": 0.8556973934173584,
+      "context": "",
+      "msgid": "Requested hardware '%(model)s' is not supported by the '%(virt)s' virt driver",
+      "plural_index": 0,
+      "a_msgstr": "'%(virt)s' virt 드라이버가 요청된 하드웨어 '%(model)s'을(를) 지원하지 않음",
+      "b_msgstr": "요청된 '%(model)s' 모델은 '%(virt)s' virt 드라이버에 의해 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.8530495762825012,
+      "context": "",
+      "msgid": "Quota limit %(limit)s for %(resource)s must be less than or equal to %(maximum)s.",
+      "plural_index": 0,
+      "a_msgstr": "%(resource)s의 할당량 한계 %(limit)s은(는) %(maximum)s 이하여야 합니다.",
+      "b_msgstr": "quota 제한 %(limit)s은 %(resource)s에 대해 %(maximum)s보다 작은지 확인해야 합니다."
+    },
+    {
+      "similarity": 0.8507950305938721,
+      "context": "",
+      "msgid": "Server does not exist",
+      "plural_index": 0,
+      "a_msgstr": "서버가 없음",
+      "b_msgstr": "서버가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8500275611877441,
+      "context": "",
+      "msgid": "Server disk was unable to be resized because: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "서버 디스크의 크기를 재조정할 수 없음. 이유: %(reason)s",
+      "b_msgstr": "서버의 디스크를 확장할 수 없습니다. 이유는 %(reason)s입니다."
+    },
+    {
+      "similarity": 0.8458477854728699,
+      "context": "",
+      "msgid": "Security group %(name)s is not found for project %(project)s",
+      "plural_index": 0,
+      "a_msgstr": "프로젝트 %(project)s에 대해 보안 그룹 %(name)s을(를) 찾을 수 없음",
+      "b_msgstr": "프로젝트 %(project)s의 보안 그룹 %(name)s이 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8332780003547668,
+      "context": "",
+      "msgid": "Requested instance NUMA topology cannot fit the given host NUMA topology",
+      "plural_index": 0,
+      "a_msgstr": "요청된 인스턴스 NUMA 토폴로지를 제공된 호스트 NUMA 토폴로지에 맞출 수 없음",
+      "b_msgstr": "요청된 인스턴스의 NUMA拓구성이 호스트의 NUMA拓구리를 fits할 수 없습니다."
+    },
+    {
+      "similarity": 0.8315595388412476,
+      "context": "",
+      "msgid": "There are not enough hosts available.",
+      "plural_index": 0,
+      "a_msgstr": "사용 가능한 호스트가 부족합니다.",
+      "b_msgstr": "호스트가 부족하여 실행할 수 없습니다."
+    },
+    {
+      "similarity": 0.8153263330459595,
+      "context": "",
+      "msgid": "The console port range %(min_port)d-%(max_port)d is exhausted.",
+      "plural_index": 0,
+      "a_msgstr": "콘솔 포트 범위 %(min_port)d-%(max_port)d이(가) 소진되었습니다.",
+      "b_msgstr": "console 포트 범위 %(min_port)d-%(max_port)d가耗尽되었습니다."
+    },
+    {
+      "similarity": 0.80873042345047,
+      "context": "",
+      "msgid": "Storage policy %s did not match any datastores",
+      "plural_index": 0,
+      "a_msgstr": "스토리지 정책 %s이(가) 데이터 저장소와 일치하지 않음",
+      "b_msgstr": "Storage policy %s가ใด도 datastore와 일치하지 않습니다."
+    },
+    {
+      "similarity": 0.8073314428329468,
+      "context": "",
+      "msgid": "Requested CPU control policy not supported by host",
+      "plural_index": 0,
+      "a_msgstr": "요청된 CPU 제어 정책은 호스트에서 지원되지 않음",
+      "b_msgstr": "호스트에서 지원되지 않는 CPU 제어 정책이 요청되었습니다."
+    },
+    {
+      "similarity": 0.802656888961792,
+      "context": "",
+      "msgid": "Token not found",
+      "plural_index": 0,
+      "a_msgstr": "토큰을 찾을 수 없음",
+      "b_msgstr": "토큰이 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.79438316822052,
+      "context": "",
+      "msgid": "Requested instance NUMA topology together with requested PCI devices cannot fit the given host NUMA topology",
+      "plural_index": 0,
+      "a_msgstr": "요청된 인스턴스 NUMA 토폴로지와 요청된 PCI 디바이스를 함께 제공된 호스트 NUMA 토폴로지에 맞출 수 없음",
+      "b_msgstr": "requested 인스턴스의 NUMA拓도와 요청한 PCI 장치가 same host의 NUMA拓도로 fits할 수 없습니다."
+    },
+    {
+      "similarity": 0.7899309396743774,
+      "context": "",
+      "msgid": "Storage error: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "스토리지 오류: %(reason)s",
+      "b_msgstr": "Storage error: %(reason)s"
+    },
+    {
+      "similarity": 0.7852350473403931,
+      "context": "",
+      "msgid": "The default PBM policy doesn't exist on the backend.",
+      "plural_index": 0,
+      "a_msgstr": "백엔드에 기본 PBM 정책이 없습니다.",
+      "b_msgstr": "기본 PBM 정책은 백엔드에 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.7820793390274048,
+      "context": "",
+      "msgid": "Requested image %(image)s has automatic disk resize disabled.",
+      "plural_index": 0,
+      "a_msgstr": "요청한 이미지 %(image)s에서 자동 디스크 크기 조정을 사용할 수 없습니다.",
+      "b_msgstr": "요청된 이미지 %(image)s의 tự động 디스크 확장 기능이 비활성화되어 있습니다."
+    },
+    {
+      "similarity": 0.7796362638473511,
+      "context": "",
+      "msgid": "Specified fixed address not assigned to instance",
+      "plural_index": 0,
+      "a_msgstr": "지정된 고정 주소가 인스턴스에 연관되지 않음",
+      "b_msgstr": "인스턴스에 할당되지 않은 고정 주소가 지정되었습니다."
+    },
+    {
+      "similarity": 0.778237521648407,
+      "context": "",
+      "msgid": "This compute node's hypervisor is older than the minimum supported version: %(version)s.",
+      "plural_index": 0,
+      "a_msgstr": "이 컴퓨트 노드의 하이퍼바이저가 지원되는 최소 버전 %(version)s보다 이전입니다.",
+      "b_msgstr": "이 컴퓨터 노드의 하이퍼바이저는 지원 최소 버전보다 오래되었습니다: %(version)s."
+    },
+    {
+      "similarity": 0.7575766444206238,
+      "context": "",
+      "msgid": "Swap drive requested is larger than instance type allows.",
+      "plural_index": 0,
+      "a_msgstr": "요청한 스왑 드라이브가 허용되는 인스턴스 유형보다 큽니다.",
+      "b_msgstr": "스왑 드라이브가 인스턴스 타입을 초과하여 요청되었습니다."
+    },
+    {
+      "similarity": 0.7547861933708191,
+      "context": "",
+      "msgid": "ServerGroupAffinityFilter not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupAffinityFilter가 구성되지 않았음",
+      "b_msgstr": "서버 그룹 경계 필터가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.7532985806465149,
+      "context": "",
+      "msgid": "There is no such action: %s",
+      "plural_index": 0,
+      "a_msgstr": "해당 조치가 없음: %s",
+      "b_msgstr": "사용 가능한 action이 없습니다. %s"
+    },
+    {
+      "similarity": 0.7527146935462952,
+      "context": "",
+      "msgid": "Specifying volume type to existing volume is not supported.",
+      "plural_index": 0,
+      "a_msgstr": "볼륨 유형을 존재하는 볼륨으로 설정할 수 없습니다.",
+      "b_msgstr": "existing_volume에 volume_type를 지정하는 것은 지원되지 않는다."
+    },
+    {
+      "similarity": 0.7471747398376465,
+      "context": "",
+      "msgid": "The volume mount at %(mount_path)s is unusable.",
+      "plural_index": 0,
+      "a_msgstr": "%(mount_path)s에 마운트 된 볼륨을 사용할 수 없습니다.",
+      "b_msgstr": "mount_path%s에 volume을 mounting 할 수 없습니다."
+    },
+    {
+      "similarity": 0.7330319285392761,
+      "context": "",
+      "msgid": "Timeout while checking if we can live migrate to host: %s",
+      "plural_index": 0,
+      "a_msgstr": "호스트로 라이브 마이그레이션할 수 있는지 확인하는 중에 제한시간 초과 발생: %s",
+      "b_msgstr": "live migrate를 호스트 %s로 이동하는 동안 타임아웃이 발생했습니다."
+    },
+    {
+      "similarity": 0.7255282998085022,
+      "context": "",
+      "msgid": "Timeout waiting for response from cell",
+      "plural_index": 0,
+      "a_msgstr": "셀의 응답을 대시하는 중에 제한시간 초과",
+      "b_msgstr": "응답을 받기 위해 대기하는 데 시간이 지남에 따라 타임아웃이 발생했습니다."
+    },
+    {
+      "similarity": 0.7253592014312744,
+      "context": "",
+      "msgid": "Service %s not found.",
+      "plural_index": 0,
+      "a_msgstr": "%s 서비스를 찾을 수 없음",
+      "b_msgstr": "서비스 %s가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.716566264629364,
+      "context": "",
+      "msgid": "Resource class '%(resource_class)s' invalid.",
+      "plural_index": 0,
+      "a_msgstr": "리소스 클래스 '%(resource_class)s'가 올바르지 않습니다.",
+      "b_msgstr": "자원 클래스 '%(resource_class)s' 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.7090744972229004,
+      "context": "",
+      "msgid": "The request is invalid.",
+      "plural_index": 0,
+      "a_msgstr": "요청이 올바르지 않습니다.",
+      "b_msgstr": "요청은 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.7037304639816284,
+      "context": "",
+      "msgid": "Resumed",
+      "plural_index": 0,
+      "a_msgstr": "재시작함",
+      "b_msgstr": "재개"
+    },
+    {
+      "similarity": 0.7007434964179993,
+      "context": "",
+      "msgid": "The supplied disk path (%(path)s) already exists, it is expected not to exist.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 디스크 경로(%(path)s)가 이미 존재합니다. 없어야합니다.",
+      "b_msgstr": "supplied disk path (%(path)s)가 이미 존재합니다. 존재할 수 있는지 확인해 주세요."
+    },
+    {
+      "similarity": 0.6956347823143005,
+      "context": "",
+      "msgid": "Service is unavailable at this time.",
+      "plural_index": 0,
+      "a_msgstr": "지금 서비스를 사용할 수 없습니다.",
+      "b_msgstr": "이 시점에 서비스가 unavailable입니다."
+    },
+    {
+      "similarity": 0.6863322854042053,
+      "context": "",
+      "msgid": "The supplied device path (%(path)s) is invalid.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 디바이스 경로(%(path)s)가 올바르지 않습니다.",
+      "b_msgstr": "supplied device path (%(path)s)가 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.679595410823822,
+      "context": "",
+      "msgid": "ServerGroupSoftAffinityWeigher not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupSoftAffinityWeigher이 구성되지 않음",
+      "b_msgstr": "서버 그룹 소프트 경계 가중치 조정기가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.6768781542778015,
+      "context": "",
+      "msgid": "Some required fields are missing",
+      "plural_index": 0,
+      "a_msgstr": "일부 필수 필드가 비어있습니다.",
+      "b_msgstr": "some required fields are missing"
+    },
+    {
+      "similarity": 0.6758701205253601,
+      "context": "",
+      "msgid": "Running batches of %i until complete",
+      "plural_index": 0,
+      "a_msgstr": "완료될 때까지 %i 일괄처리 실행",
+      "b_msgstr": "Running batches of %i until complete"
+    },
+    {
+      "similarity": 0.6728929877281189,
+      "context": "",
+      "msgid": "The supplied hypervisor type of is invalid.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 하이퍼바이저 유형이 올바르지 않습니다.",
+      "b_msgstr": "supplied 하이퍼바이저 타입은 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.6716011762619019,
+      "context": "",
+      "msgid": "Request body and URI mismatch",
+      "plural_index": 0,
+      "a_msgstr": "요청 본문 및 URI 불일치",
+      "b_msgstr": "요청 바디와 URI의 일치가 없습니다."
+    },
+    {
+      "similarity": 0.6578856110572815,
+      "context": "",
+      "msgid": "Sort key supplied was not valid.",
+      "plural_index": 0,
+      "a_msgstr": "제공되는 정렬 키가 올바르지 않습니다.",
+      "b_msgstr": "정렬 키가 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.6565986275672913,
+      "context": "",
+      "msgid": "ServerGroupAntiAffinityFilter not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupAntiAffinityFilter가 구성되지 않았음",
+      "b_msgstr": "서버 그룹 반경계 필터가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.6361415386199951,
+      "context": "",
+      "msgid": "This service is older (v%(thisver)i) than the minimum (v%(minver)i) version of the rest of the deployment. Unable to continue.",
+      "plural_index": 0,
+      "a_msgstr": "이 서비스는 나머지 배치의 최소 (v%(minver)i) 버전보다 이전(v%(thisver)i)입니다.",
+      "b_msgstr": "이 서비스는 배포의 나머지 부분보다 오래된 버전 (v%(thisver)i)입니다. 계속할 수 없습니다."
+    },
+    {
+      "similarity": 0.6262221932411194,
+      "context": "",
+      "msgid": "Rescue device does not exist for instance %s",
+      "plural_index": 0,
+      "a_msgstr": "%s 인스턴스에 대한 복구 디바이스가 없음",
+      "b_msgstr": "인스턴스 %s에 대한 구금 장치가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.6031726002693176,
+      "context": "",
+      "msgid": "ServerGroupSoftAntiAffinityWeigher not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupSoftAntiAffinityWeigher이 구성되지 않음",
+      "b_msgstr": "서버 그룹 소프트 반경계 가중치 조정기가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.5713526606559753,
+      "context": "",
+      "msgid": "Resize to zero disk flavor is not allowed.",
+      "plural_index": 0,
+      "a_msgstr": "0 디스크 플레이버로의 크기 조정은 허용되지 않습니다.",
+      "b_msgstr": "zero disk flavor로 리size하는 것은 허용되지 않습니다."
+    },
+    {
+      "similarity": 0.5140677094459534,
+      "context": "",
+      "msgid": "To and From ports must be integers",
+      "plural_index": 0,
+      "a_msgstr": "발신 및 수신 포트는 정수여야 함",
+      "b_msgstr": "인pu트와 아우터 포트는整数이어야 합니다."
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.25381943583488464,
+      "context": "",
+      "msgid": "Success",
+      "plural_index": 0,
+      "a_msgstr": "완료",
+      "b_msgstr": "thành công"
+    },
+    {
+      "similarity": 0.28105977177619934,
+      "context": "",
+      "msgid": "Suspended",
+      "plural_index": 0,
+      "a_msgstr": "Suspended",
+      "b_msgstr": "정지"
+    },
+    {
+      "similarity": 0.45749714970588684,
+      "context": "",
+      "msgid": "Triggering crash dump is not supported",
+      "plural_index": 0,
+      "a_msgstr": "충돌 덤프 트리거가 지원되지 않음",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 0.4669623374938965,
+      "context": "",
+      "msgid": "The target host can't be the same one.",
+      "plural_index": 0,
+      "a_msgstr": "대상 호스트가 동일한 것이어서는 안됩니다.",
+      "b_msgstr": "대상 호스트가 동일한 ones입니다."
+    },
+    {
+      "similarity": 0.5140677094459534,
+      "context": "",
+      "msgid": "To and From ports must be integers",
+      "plural_index": 0,
+      "a_msgstr": "발신 및 수신 포트는 정수여야 함",
+      "b_msgstr": "인pu트와 아우터 포트는整数이어야 합니다."
+    },
+    {
+      "similarity": 0.5713526606559753,
+      "context": "",
+      "msgid": "Resize to zero disk flavor is not allowed.",
+      "plural_index": 0,
+      "a_msgstr": "0 디스크 플레이버로의 크기 조정은 허용되지 않습니다.",
+      "b_msgstr": "zero disk flavor로 리size하는 것은 허용되지 않습니다."
+    },
+    {
+      "similarity": 0.6031726002693176,
+      "context": "",
+      "msgid": "ServerGroupSoftAntiAffinityWeigher not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupSoftAntiAffinityWeigher이 구성되지 않음",
+      "b_msgstr": "서버 그룹 소프트 반경계 가중치 조정기가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.6262221932411194,
+      "context": "",
+      "msgid": "Rescue device does not exist for instance %s",
+      "plural_index": 0,
+      "a_msgstr": "%s 인스턴스에 대한 복구 디바이스가 없음",
+      "b_msgstr": "인스턴스 %s에 대한 구금 장치가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.6361415386199951,
+      "context": "",
+      "msgid": "This service is older (v%(thisver)i) than the minimum (v%(minver)i) version of the rest of the deployment. Unable to continue.",
+      "plural_index": 0,
+      "a_msgstr": "이 서비스는 나머지 배치의 최소 (v%(minver)i) 버전보다 이전(v%(thisver)i)입니다.",
+      "b_msgstr": "이 서비스는 배포의 나머지 부분보다 오래된 버전 (v%(thisver)i)입니다. 계속할 수 없습니다."
+    },
+    {
+      "similarity": 0.6565986275672913,
+      "context": "",
+      "msgid": "ServerGroupAntiAffinityFilter not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupAntiAffinityFilter가 구성되지 않았음",
+      "b_msgstr": "서버 그룹 반경계 필터가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.6578856110572815,
+      "context": "",
+      "msgid": "Sort key supplied was not valid.",
+      "plural_index": 0,
+      "a_msgstr": "제공되는 정렬 키가 올바르지 않습니다.",
+      "b_msgstr": "정렬 키가 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.6716011762619019,
+      "context": "",
+      "msgid": "Request body and URI mismatch",
+      "plural_index": 0,
+      "a_msgstr": "요청 본문 및 URI 불일치",
+      "b_msgstr": "요청 바디와 URI의 일치가 없습니다."
+    },
+    {
+      "similarity": 0.6728929877281189,
+      "context": "",
+      "msgid": "The supplied hypervisor type of is invalid.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 하이퍼바이저 유형이 올바르지 않습니다.",
+      "b_msgstr": "supplied 하이퍼바이저 타입은 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.6758701205253601,
+      "context": "",
+      "msgid": "Running batches of %i until complete",
+      "plural_index": 0,
+      "a_msgstr": "완료될 때까지 %i 일괄처리 실행",
+      "b_msgstr": "Running batches of %i until complete"
+    },
+    {
+      "similarity": 0.6768781542778015,
+      "context": "",
+      "msgid": "Some required fields are missing",
+      "plural_index": 0,
+      "a_msgstr": "일부 필수 필드가 비어있습니다.",
+      "b_msgstr": "some required fields are missing"
+    },
+    {
+      "similarity": 0.679595410823822,
+      "context": "",
+      "msgid": "ServerGroupSoftAffinityWeigher not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupSoftAffinityWeigher이 구성되지 않음",
+      "b_msgstr": "서버 그룹 소프트 경계 가중치 조정기가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.6863322854042053,
+      "context": "",
+      "msgid": "The supplied device path (%(path)s) is invalid.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 디바이스 경로(%(path)s)가 올바르지 않습니다.",
+      "b_msgstr": "supplied device path (%(path)s)가 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.6956347823143005,
+      "context": "",
+      "msgid": "Service is unavailable at this time.",
+      "plural_index": 0,
+      "a_msgstr": "지금 서비스를 사용할 수 없습니다.",
+      "b_msgstr": "이 시점에 서비스가 unavailable입니다."
+    },
+    {
+      "similarity": 0.7007434964179993,
+      "context": "",
+      "msgid": "The supplied disk path (%(path)s) already exists, it is expected not to exist.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 디스크 경로(%(path)s)가 이미 존재합니다. 없어야합니다.",
+      "b_msgstr": "supplied disk path (%(path)s)가 이미 존재합니다. 존재할 수 있는지 확인해 주세요."
+    },
+    {
+      "similarity": 0.7037304639816284,
+      "context": "",
+      "msgid": "Resumed",
+      "plural_index": 0,
+      "a_msgstr": "재시작함",
+      "b_msgstr": "재개"
+    },
+    {
+      "similarity": 0.7090744972229004,
+      "context": "",
+      "msgid": "The request is invalid.",
+      "plural_index": 0,
+      "a_msgstr": "요청이 올바르지 않습니다.",
+      "b_msgstr": "요청은 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.716566264629364,
+      "context": "",
+      "msgid": "Resource class '%(resource_class)s' invalid.",
+      "plural_index": 0,
+      "a_msgstr": "리소스 클래스 '%(resource_class)s'가 올바르지 않습니다.",
+      "b_msgstr": "자원 클래스 '%(resource_class)s' 유효하지 않습니다."
+    },
+    {
+      "similarity": 0.7253592014312744,
+      "context": "",
+      "msgid": "Service %s not found.",
+      "plural_index": 0,
+      "a_msgstr": "%s 서비스를 찾을 수 없음",
+      "b_msgstr": "서비스 %s가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.7255282998085022,
+      "context": "",
+      "msgid": "Timeout waiting for response from cell",
+      "plural_index": 0,
+      "a_msgstr": "셀의 응답을 대시하는 중에 제한시간 초과",
+      "b_msgstr": "응답을 받기 위해 대기하는 데 시간이 지남에 따라 타임아웃이 발생했습니다."
+    },
+    {
+      "similarity": 0.7330319285392761,
+      "context": "",
+      "msgid": "Timeout while checking if we can live migrate to host: %s",
+      "plural_index": 0,
+      "a_msgstr": "호스트로 라이브 마이그레이션할 수 있는지 확인하는 중에 제한시간 초과 발생: %s",
+      "b_msgstr": "live migrate를 호스트 %s로 이동하는 동안 타임아웃이 발생했습니다."
+    },
+    {
+      "similarity": 0.7471747398376465,
+      "context": "",
+      "msgid": "The volume mount at %(mount_path)s is unusable.",
+      "plural_index": 0,
+      "a_msgstr": "%(mount_path)s에 마운트 된 볼륨을 사용할 수 없습니다.",
+      "b_msgstr": "mount_path%s에 volume을 mounting 할 수 없습니다."
+    },
+    {
+      "similarity": 0.7527146935462952,
+      "context": "",
+      "msgid": "Specifying volume type to existing volume is not supported.",
+      "plural_index": 0,
+      "a_msgstr": "볼륨 유형을 존재하는 볼륨으로 설정할 수 없습니다.",
+      "b_msgstr": "existing_volume에 volume_type를 지정하는 것은 지원되지 않는다."
+    },
+    {
+      "similarity": 0.7532985806465149,
+      "context": "",
+      "msgid": "There is no such action: %s",
+      "plural_index": 0,
+      "a_msgstr": "해당 조치가 없음: %s",
+      "b_msgstr": "사용 가능한 action이 없습니다. %s"
+    },
+    {
+      "similarity": 0.7547861933708191,
+      "context": "",
+      "msgid": "ServerGroupAffinityFilter not configured",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroupAffinityFilter가 구성되지 않았음",
+      "b_msgstr": "서버 그룹 경계 필터가 구성되지 않습니다."
+    },
+    {
+      "similarity": 0.7575766444206238,
+      "context": "",
+      "msgid": "Swap drive requested is larger than instance type allows.",
+      "plural_index": 0,
+      "a_msgstr": "요청한 스왑 드라이브가 허용되는 인스턴스 유형보다 큽니다.",
+      "b_msgstr": "스왑 드라이브가 인스턴스 타입을 초과하여 요청되었습니다."
+    },
+    {
+      "similarity": 0.778237521648407,
+      "context": "",
+      "msgid": "This compute node's hypervisor is older than the minimum supported version: %(version)s.",
+      "plural_index": 0,
+      "a_msgstr": "이 컴퓨트 노드의 하이퍼바이저가 지원되는 최소 버전 %(version)s보다 이전입니다.",
+      "b_msgstr": "이 컴퓨터 노드의 하이퍼바이저는 지원 최소 버전보다 오래되었습니다: %(version)s."
+    },
+    {
+      "similarity": 0.7796362638473511,
+      "context": "",
+      "msgid": "Specified fixed address not assigned to instance",
+      "plural_index": 0,
+      "a_msgstr": "지정된 고정 주소가 인스턴스에 연관되지 않음",
+      "b_msgstr": "인스턴스에 할당되지 않은 고정 주소가 지정되었습니다."
+    },
+    {
+      "similarity": 0.7820793390274048,
+      "context": "",
+      "msgid": "Requested image %(image)s has automatic disk resize disabled.",
+      "plural_index": 0,
+      "a_msgstr": "요청한 이미지 %(image)s에서 자동 디스크 크기 조정을 사용할 수 없습니다.",
+      "b_msgstr": "요청된 이미지 %(image)s의 tự động 디스크 확장 기능이 비활성화되어 있습니다."
+    },
+    {
+      "similarity": 0.7852350473403931,
+      "context": "",
+      "msgid": "The default PBM policy doesn't exist on the backend.",
+      "plural_index": 0,
+      "a_msgstr": "백엔드에 기본 PBM 정책이 없습니다.",
+      "b_msgstr": "기본 PBM 정책은 백엔드에 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.7899309396743774,
+      "context": "",
+      "msgid": "Storage error: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "스토리지 오류: %(reason)s",
+      "b_msgstr": "Storage error: %(reason)s"
+    },
+    {
+      "similarity": 0.79438316822052,
+      "context": "",
+      "msgid": "Requested instance NUMA topology together with requested PCI devices cannot fit the given host NUMA topology",
+      "plural_index": 0,
+      "a_msgstr": "요청된 인스턴스 NUMA 토폴로지와 요청된 PCI 디바이스를 함께 제공된 호스트 NUMA 토폴로지에 맞출 수 없음",
+      "b_msgstr": "requested 인스턴스의 NUMA拓도와 요청한 PCI 장치가 same host의 NUMA拓도로 fits할 수 없습니다."
+    },
+    {
+      "similarity": 0.802656888961792,
+      "context": "",
+      "msgid": "Token not found",
+      "plural_index": 0,
+      "a_msgstr": "토큰을 찾을 수 없음",
+      "b_msgstr": "토큰이 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8073314428329468,
+      "context": "",
+      "msgid": "Requested CPU control policy not supported by host",
+      "plural_index": 0,
+      "a_msgstr": "요청된 CPU 제어 정책은 호스트에서 지원되지 않음",
+      "b_msgstr": "호스트에서 지원되지 않는 CPU 제어 정책이 요청되었습니다."
+    },
+    {
+      "similarity": 0.80873042345047,
+      "context": "",
+      "msgid": "Storage policy %s did not match any datastores",
+      "plural_index": 0,
+      "a_msgstr": "스토리지 정책 %s이(가) 데이터 저장소와 일치하지 않음",
+      "b_msgstr": "Storage policy %s가ใด도 datastore와 일치하지 않습니다."
+    },
+    {
+      "similarity": 0.8153263330459595,
+      "context": "",
+      "msgid": "The console port range %(min_port)d-%(max_port)d is exhausted.",
+      "plural_index": 0,
+      "a_msgstr": "콘솔 포트 범위 %(min_port)d-%(max_port)d이(가) 소진되었습니다.",
+      "b_msgstr": "console 포트 범위 %(min_port)d-%(max_port)d가耗尽되었습니다."
+    },
+    {
+      "similarity": 0.8315595388412476,
+      "context": "",
+      "msgid": "There are not enough hosts available.",
+      "plural_index": 0,
+      "a_msgstr": "사용 가능한 호스트가 부족합니다.",
+      "b_msgstr": "호스트가 부족하여 실행할 수 없습니다."
+    },
+    {
+      "similarity": 0.8332780003547668,
+      "context": "",
+      "msgid": "Requested instance NUMA topology cannot fit the given host NUMA topology",
+      "plural_index": 0,
+      "a_msgstr": "요청된 인스턴스 NUMA 토폴로지를 제공된 호스트 NUMA 토폴로지에 맞출 수 없음",
+      "b_msgstr": "요청된 인스턴스의 NUMA拓구성이 호스트의 NUMA拓구리를 fits할 수 없습니다."
+    },
+    {
+      "similarity": 0.8458477854728699,
+      "context": "",
+      "msgid": "Security group %(name)s is not found for project %(project)s",
+      "plural_index": 0,
+      "a_msgstr": "프로젝트 %(project)s에 대해 보안 그룹 %(name)s을(를) 찾을 수 없음",
+      "b_msgstr": "프로젝트 %(project)s의 보안 그룹 %(name)s이 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8500275611877441,
+      "context": "",
+      "msgid": "Server disk was unable to be resized because: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "서버 디스크의 크기를 재조정할 수 없음. 이유: %(reason)s",
+      "b_msgstr": "서버의 디스크를 확장할 수 없습니다. 이유는 %(reason)s입니다."
+    },
+    {
+      "similarity": 0.8507950305938721,
+      "context": "",
+      "msgid": "Server does not exist",
+      "plural_index": 0,
+      "a_msgstr": "서버가 없음",
+      "b_msgstr": "서버가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8530495762825012,
+      "context": "",
+      "msgid": "Quota limit %(limit)s for %(resource)s must be less than or equal to %(maximum)s.",
+      "plural_index": 0,
+      "a_msgstr": "%(resource)s의 할당량 한계 %(limit)s은(는) %(maximum)s 이하여야 합니다.",
+      "b_msgstr": "quota 제한 %(limit)s은 %(resource)s에 대해 %(maximum)s보다 작은지 확인해야 합니다."
+    },
+    {
+      "similarity": 0.8556973934173584,
+      "context": "",
+      "msgid": "Requested hardware '%(model)s' is not supported by the '%(virt)s' virt driver",
+      "plural_index": 0,
+      "a_msgstr": "'%(virt)s' virt 드라이버가 요청된 하드웨어 '%(model)s'을(를) 지원하지 않음",
+      "b_msgstr": "요청된 '%(model)s' 모델은 '%(virt)s' virt 드라이버에 의해 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.8561990857124329,
+      "context": "",
+      "msgid": "Quota limit %(limit)s for %(resource)s must be greater than or equal to already used and reserved %(minimum)s.",
+      "plural_index": 0,
+      "a_msgstr": "%(resource)s의 할당량 한계 %(limit)s은(는) 이미 사용되고 예약된 %(minimum)s 이상이어야 합니다.",
+      "b_msgstr": "quota 제한 %(limit)s은 %(resource)s에 대해 이미 사용된 및 보관 된 %(minimum)s보다 큰지 확인해야 합니다."
+    },
+    {
+      "similarity": 0.8565900325775146,
+      "context": "",
+      "msgid": "Task %(task_name)s is not running on host %(host)s",
+      "plural_index": 0,
+      "a_msgstr": "%(task_name)s 태스크가 %(host)s 호스트에서 실행 중이 아님",
+      "b_msgstr": "task %(task_name)s는 호스트 %(host)s에서 실행되지 않습니다."
+    },
+    {
+      "similarity": 0.8590018153190613,
+      "context": "",
+      "msgid": "Set admin password is not supported",
+      "plural_index": 0,
+      "a_msgstr": "설정된 관리 비밀번호가 지원되지 않음",
+      "b_msgstr": "관리자 패스워드를 설정하는 것은 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.8622406125068665,
+      "context": "",
+      "msgid": "Request is too large.",
+      "plural_index": 0,
+      "a_msgstr": "요청이 너무 큽니다.",
+      "b_msgstr": "요청이 너무 크습니다."
+    },
+    {
+      "similarity": 0.86334228515625,
+      "context": "",
+      "msgid": "ServerGroup policy is not supported: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "ServerGroup 정책이 지원되지 않음: %(reason)s",
+      "b_msgstr": "서버 그룹 정책은 지원되지 않습니다. 이유는 %(reason)s입니다."
+    },
+    {
+      "similarity": 0.8692079782485962,
+      "context": "",
+      "msgid": "Resize error: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "크기 조정 오류: %(reason)s",
+      "b_msgstr": "resize 오류: %(reason)s"
+    },
+    {
+      "similarity": 0.8709118962287903,
+      "context": "",
+      "msgid": "The supplied device path (%(path)s) is in use.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 디바이스 경로(%(path)s)가 사용 중입니다.",
+      "b_msgstr": "supplied device path (%(path)s)는 사용 중입니다."
+    },
+    {
+      "similarity": 0.8739285469055176,
+      "context": "",
+      "msgid": "Specifying a volume_type with destination_type=local is not supported.",
+      "plural_index": 0,
+      "a_msgstr": "volume_type 구성을 destination_type=local과 함께 설정할 수 없습니다.",
+      "b_msgstr": "destination_type=local 인 volume_type를指定하는 것은 지원되지 않는다."
+    },
+    {
+      "similarity": 0.8747612237930298,
+      "context": "",
+      "msgid": "Security group name cannot be empty",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 이름은 공백일 수 없음",
+      "b_msgstr": "보안 그룹 이름은 비어있을 수 없습니다."
+    },
+    {
+      "similarity": 0.8757513761520386,
+      "context": "",
+      "msgid": "Share level '%s' cannot have share configured",
+      "plural_index": 0,
+      "a_msgstr": "공유 레벨 '%s'에는 공유를 구성할 수 없음",
+      "b_msgstr": "공유 수준 '%s'에 대한 공유 구성이 허용되지 않습니다."
+    },
+    {
+      "similarity": 0.8808845281600952,
+      "context": "",
+      "msgid": "Something went wrong when deleting a volume snapshot: rebasing a %(protocol)s network disk using qemu-img has not been fully tested",
+      "plural_index": 0,
+      "a_msgstr": "볼륨 스냅샷을 삭제할 때 문제 발생: qemu-img를 사용한 %(protocol)s 네트워크 디스크의 리베이스가 완전히 테스트되지 않음",
+      "b_msgstr": "Volume snapshot를 삭제할 때 오류가 발생했습니다. qemu-img를 사용하여 %(protocol)s 네트워크 디스크를 재기반하는 thing은 완전히 테스트되지 않았습니다."
+    },
+    {
+      "similarity": 0.8811622262001038,
+      "context": "",
+      "msgid": "The provided RNG device path: (%(path)s) is not present on the host.",
+      "plural_index": 0,
+      "a_msgstr": "제공된 RNG 디바이스 경로: (%(path)s)이(가) 호스트에 없습니다.",
+      "b_msgstr": "제공 RNG 장치 경로: (%(path)s)는 호스트에 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8856020569801331,
+      "context": "",
+      "msgid": "The floating IP request failed with a BadRequest",
+      "plural_index": 0,
+      "a_msgstr": "부동 IP 요청이 실패하여 BadRequest가 생성됨",
+      "b_msgstr": "포트 %(port_id)s에 대한浮动 IP 요청이 BadRequest 에러로 실패했습니다."
+    },
+    {
+      "similarity": 0.8876885771751404,
+      "context": "",
+      "msgid": "The volume cannot be assigned the same device name as the root device %s",
+      "plural_index": 0,
+      "a_msgstr": "볼륨에 루트 디바이스 %s과(와) 같은 디바이스 이름을 지정할 수 없음",
+      "b_msgstr": "root 디바이스의 이름과 same device name으로 할당할 수 없습니다."
+    },
+    {
+      "similarity": 0.8884003162384033,
+      "context": "",
+      "msgid": "Security group %(security_group_id)s not found.",
+      "plural_index": 0,
+      "a_msgstr": "%(security_group_id)s 보안 그룹을 찾을 수 없습니다.",
+      "b_msgstr": "보안 그룹 %(security_group_id)s가 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8905213475227356,
+      "context": "",
+      "msgid": "The property 'numa_nodes' cannot be '%(nodes)s'. It must be a number greater than 0",
+      "plural_index": 0,
+      "a_msgstr": "속성 'numa_nodes'가 '%(nodes)s'이 될 순 없습니다. 반드시 숫자 0보다 커야 합니다.",
+      "b_msgstr": "속성 'numa_nodes'는 '%(nodes)s'가 아닌 숫자로 must be greater than 0"
+    },
+    {
+      "similarity": 0.8911439180374146,
+      "context": "",
+      "msgid": "The number of defined ports: %(ports)d is over the limit: %(quota)d",
+      "plural_index": 0,
+      "a_msgstr": "정의된 포트 수 %(ports)d이(가) 한계를 초과함: %(quota)d",
+      "b_msgstr": "정의된 포트의 수: %(ports)d는 할당한_quota)d"
+    },
+    {
+      "similarity": 0.8942109942436218,
+      "context": "",
+      "msgid": "Security group %(security_group_id)s not found for project %(project_id)s.",
+      "plural_index": 0,
+      "a_msgstr": "%(project_id)s 프로젝트에 대한 %(security_group_id)s 보안 그룹을 찾을 수 없습니다.",
+      "b_msgstr": "프로젝트 %(project_id)s의 보안 그룹 %(security_group_id)s이 존재하지 않습니다."
+    },
+    {
+      "similarity": 0.8979403972625732,
+      "context": "",
+      "msgid": "Stopped",
+      "plural_index": 0,
+      "a_msgstr": "중지됨",
+      "b_msgstr": "중단"
+    },
+    {
+      "similarity": 0.8994652628898621,
+      "context": "",
+      "msgid": "Unable to associate floating IP %(address)s to any fixed IPs for instance %(id)s. Instance has no fixed IPv4 addresses to associate.",
+      "plural_index": 0,
+      "a_msgstr": "Floating IP %(address)s을(를) %(id)s 인스턴스의 Fixed IP와 연관시킬 수 없습니다. 인스턴스에 연관시킬 Fixed IPv4 주소가 없습니다.",
+      "b_msgstr": "IP %(address)s을 fixed IP %(id)s 인스턴스와 연결할 수 없습니다. 인스턴스는 fixed IPv4 주소가 none이므로 any fixed IPs와 연결할 수 없습니다."
+    },
+    {
+      "similarity": 0.900200366973877,
+      "context": "",
+      "msgid": "The token '%(token)s' is invalid or has expired",
+      "plural_index": 0,
+      "a_msgstr": "토큰 '%(token)s'이(가) 올바르지 않거나 만료됨",
+      "b_msgstr": "'%(token)s' 토큰은 유효하지 않거나 만료되었습니다."
+    },
+    {
+      "similarity": 0.916963517665863,
+      "context": "",
+      "msgid": "This method needs to be called with either networks=None and port_ids=None or port_ids and networks as not none.",
+      "plural_index": 0,
+      "a_msgstr": "이 메소드는 networks=None 및 port_ids=None 또는 port_ids와 networks를 none으로 지정하지 않은 상태로 호출해야 합니다.",
+      "b_msgstr": "이 메서드는 networks=None과 port_ids=None을 사용하거나, port_ids와 networks를 사용해야 합니다. networks=None과 port_ids=None은 None이 아닌 값으로 사용되어야 합니다."
+    },
+    {
+      "similarity": 0.9185014367103577,
+      "context": "",
+      "msgid": "The current driver does not support preserving ephemeral partitions.",
+      "plural_index": 0,
+      "a_msgstr": "현재 드라이버는 임시 파티션 유지를 지원하지 않습니다.",
+      "b_msgstr": "현재 드라이버는 임시 파티션을 보존하지 않습니다."
+    },
+    {
+      "similarity": 0.923588216304779,
+      "context": "",
+      "msgid": "Security group %(security_group_name)s not associated with the instance %(instance)s",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 %(security_group_name)s이(가) 인스턴스와 연관되지 않음%(instance)s 인스턴스와 연관되지 않음",
+      "b_msgstr": "보안 그룹 %(security_group_name)s는 인스턴스 %(instance)s와 연관되어 있지 않습니다."
+    },
+    {
+      "similarity": 0.923903226852417,
+      "context": "",
+      "msgid": "Task %(task_name)s is already running on host %(host)s",
+      "plural_index": 0,
+      "a_msgstr": "%(task_name)s 태스크가 이미 %(host)s 호스트에서 실행 중임",
+      "b_msgstr": "task %(task_name)s는 호스트 %(host)s에서 이미 실행 중입니다."
+    },
+    {
+      "similarity": 0.9250115752220154,
+      "context": "",
+      "msgid": "The specified cluster '%s' was not found in vCenter",
+      "plural_index": 0,
+      "a_msgstr": "지정된 클러스터 '%s'을(를) vCenter에서 찾을 수 없음",
+      "b_msgstr": "指定된 클러스터 '%s'는 vCenter에서 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.9257955551147461,
+      "context": "",
+      "msgid": "Requested vCPU limits %(sockets)d:%(cores)d:%(threads)d are impossible to satisfy for vcpus count %(vcpus)d",
+      "plural_index": 0,
+      "a_msgstr": "요청된 vCPU 한계 %(sockets)d:%(cores)d:%(threads)d은(는) vcpus 개수 %(vcpus)d을(를) 충족시킬 수 없음",
+      "b_msgstr": "요청한 vCPU 제한 %(sockets)d:%(cores)d:%(threads)d는 vcpus count %(vcpus)d를 만족할 수 없습니다."
+    },
+    {
+      "similarity": 0.9272946119308472,
+      "context": "",
+      "msgid": "Service with host %(host)s topic %(topic)s exists.",
+      "plural_index": 0,
+      "a_msgstr": "호스트 %(host)s 주제 %(topic)s인 서비스가 존재합니다.",
+      "b_msgstr": "호스트 %(host)s의 서비스 topic %(topic)s가 존재합니다."
+    },
+    {
+      "similarity": 0.9274847507476807,
+      "context": "",
+      "msgid": "Type and Code must be integers for ICMP protocol type",
+      "plural_index": 0,
+      "a_msgstr": "ICMP 프로토콜 유형의 경우 유형 및 코드는 정수여야 함",
+      "b_msgstr": "타입과 코드가 ICMP 프로토콜 타입의 정수여야 합니다."
+    },
+    {
+      "similarity": 0.927899956703186,
+      "context": "",
+      "msgid": "Sort direction size exceeds sort key size",
+      "plural_index": 0,
+      "a_msgstr": "정렬 방향 크기가 정렬 키 크기를 초과함",
+      "b_msgstr": "정렬 방향 크기가 정렬 키 크기보다大き다"
+    },
+    {
+      "similarity": 0.9304510951042175,
+      "context": "",
+      "msgid": "The created instance's disk would be too small.",
+      "plural_index": 0,
+      "a_msgstr": "작성된 인스턴스의 디스크가 너무 작습니다.",
+      "b_msgstr": "생성된 인스턴스의 디스크는 너무 작을 것입니다."
+    },
+    {
+      "similarity": 0.9313644766807556,
+      "context": "",
+      "msgid": "Resource provider has allocations.",
+      "plural_index": 0,
+      "a_msgstr": "자원 제공자는 할당량을 갖고 있습니다.",
+      "b_msgstr": "자원 제공자는 할당이 있습니다."
+    },
+    {
+      "similarity": 0.9317445158958435,
+      "context": "",
+      "msgid": "Share '%s' is not supported",
+      "plural_index": 0,
+      "a_msgstr": "공유 '%s'은(는) 지원되지 않음",
+      "b_msgstr": "공유 '%s'는 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.9350118041038513,
+      "context": "",
+      "msgid": "Request of image %(image_id)s got BadRequest response: %(response)s",
+      "plural_index": 0,
+      "a_msgstr": "%(image_id)s 이미지 요청 결과 BadRequest 응답 발생: %(response)s",
+      "b_msgstr": "이미지 %(image_id)s의 요청은 BadRequest 응답을 받았습니다: %(response)s"
+    },
+    {
+      "similarity": 0.9362288117408752,
+      "context": "",
+      "msgid": "The requested amount of video memory %(req_vram)d is higher than the maximum allowed by flavor %(max_vram)d.",
+      "plural_index": 0,
+      "a_msgstr": "요청된 양의 비디오 메모리 %(req_vram)d이(가) %(max_vram)d 플레이버에 의해 허용된 최대값보다 높습니다.",
+      "b_msgstr": "요청된 비디오 메모리 %(req_vram)d는 flavor %(max_vram)d의 최대 허용량을 초과합니다."
+    },
+    {
+      "similarity": 0.9403771162033081,
+      "context": "",
+      "msgid": "The fixed IP associated with port %(port_id)s is not compatible with the host.",
+      "plural_index": 0,
+      "a_msgstr": "%(port_id)s와 연관되어 있는 고정 IP주소는 해당 호스트와 호환되지 않습니다.",
+      "b_msgstr": "포트 %(port_id)s와 관련된 고정 IP는 호스트와의 호환성이 없습니다."
+    },
+    {
+      "similarity": 0.9403844475746155,
+      "context": "",
+      "msgid": "The PCI address %(address)s has an incorrect format.",
+      "plural_index": 0,
+      "a_msgstr": "PCI 주소 %(address)s에 올바르지 않은 형식이 있습니다.",
+      "b_msgstr": "PCI 주소 %(address)s의 format이 올바르지 않습니다."
+    },
+    {
+      "similarity": 0.9417709708213806,
+      "context": "",
+      "msgid": "Service with host %(host)s binary %(binary)s exists.",
+      "plural_index": 0,
+      "a_msgstr": "호스트 %(host)s 바이너리 %(binary)s인 서비스가 존재합니다.",
+      "b_msgstr": "호스트 %(host)s의 서비스 binary %(binary)s가 존재합니다."
+    },
+    {
+      "similarity": 0.9425532817840576,
+      "context": "",
+      "msgid": "The instance requires a newer hypervisor version than has been provided.",
+      "plural_index": 0,
+      "a_msgstr": "인스턴스는 제공된 것보다 최신 하이퍼바이저 버전이 필요합니다.",
+      "b_msgstr": "인스턴스는 제공된 하이퍼바이저 버전보다 새로운 버전을 필요합니다."
+    },
+    {
+      "similarity": 0.942891001701355,
+      "context": "",
+      "msgid": "UEFI is not supported",
+      "plural_index": 0,
+      "a_msgstr": "UEFI가 지원되지 않음",
+      "b_msgstr": "UEFI는 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.9462037086486816,
+      "context": "",
+      "msgid": "The `os_distro` image metadata property is required",
+      "plural_index": 0,
+      "a_msgstr": "다음의 이미지 메타데이터 속성이 필요합니다. : `os_distro`",
+      "b_msgstr": "os_distro 이미지 메타데이터 속성은 필요합니다"
+    },
+    {
+      "similarity": 0.9491307139396667,
+      "context": "",
+      "msgid": "This rule already exists in group %s",
+      "plural_index": 0,
+      "a_msgstr": "이 규칙이 이미 %s 그룹에 존재함",
+      "b_msgstr": "그룹 %s에 이미 존재하는 규칙이 있습니다."
+    },
+    {
+      "similarity": 0.9499111175537109,
+      "context": "",
+      "msgid": "The requested availability zone is not available",
+      "plural_index": 0,
+      "a_msgstr": "요청한 가용성 구역을 사용할 수 없음",
+      "b_msgstr": "요청된 가용 구역은 사용할 수 없습니다."
+    },
+    {
+      "similarity": 0.9504456520080566,
+      "context": "",
+      "msgid": "Security group id should be uuid",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 ID는 uuid여야 함",
+      "b_msgstr": "보안 그룹 id는 uuid 형식이어야 합니다."
+    },
+    {
+      "similarity": 0.9544844031333923,
+      "context": "",
+      "msgid": "Scheduling failed: %(reason)s",
+      "plural_index": 0,
+      "a_msgstr": "스케줄링 실패: %(reason)s",
+      "b_msgstr": "스케줄링에 실패했습니다: %(reason)s"
+    },
+    {
+      "similarity": 0.9553760886192322,
+      "context": "",
+      "msgid": "Service %(service_id)s could not be found.",
+      "plural_index": 0,
+      "a_msgstr": "%(service_id)s 서비스를 찾을 수 없습니다.",
+      "b_msgstr": "서비스 %(service_id)s가 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.956263542175293,
+      "context": "",
+      "msgid": "Started",
+      "plural_index": 0,
+      "a_msgstr": "작동함",
+      "b_msgstr": "작동"
+    },
+    {
+      "similarity": 0.959403932094574,
+      "context": "",
+      "msgid": "Security group %(security_group_name)s already exists for project %(project_id)s.",
+      "plural_index": 0,
+      "a_msgstr": "보안 그룹 %(security_group_name)s이(가) 프로젝트%(project_id)s.",
+      "b_msgstr": "보안 그룹 %(security_group_name)s는 프로젝트 %(project_id)s에 대해 이미 존재합니다."
+    },
+    {
+      "similarity": 0.9595423340797424,
+      "context": "",
+      "msgid": "Snapshot %(snapshot_id)s could not be found.",
+      "plural_index": 0,
+      "a_msgstr": "%(snapshot_id)s 스냅샷을 찾을 수 없습니다.",
+      "b_msgstr": "스냅샷 %(snapshot_id)s가 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.9652349948883057,
+      "context": "",
+      "msgid": "Root element name should be '%(name)s' not '%(tag)s'",
+      "plural_index": 0,
+      "a_msgstr": "루트 요소 이름은 '%(tag)s'이(가) 아닌 '%(name)s'이어야 함",
+      "b_msgstr": "루트 요소 이름은 '%(name)s'가 아니라 '%(tag)s'로해야 합니다."
+    },
+    {
+      "similarity": 0.9682976603507996,
+      "context": "",
+      "msgid": "RequestSpec not found for instance %(instance_uuid)s",
+      "plural_index": 0,
+      "a_msgstr": "%(instance_uuid)s 인스턴스의 RequestSpec을 찾을 수 없음",
+      "b_msgstr": "인스턴스 %(instance_uuid)s에 대해 RequestSpec이 찾을 수 없습니다."
+    },
+    {
+      "similarity": 0.9732794165611267,
+      "context": "",
+      "msgid": "The requested functionality is not supported.",
+      "plural_index": 0,
+      "a_msgstr": "요청된 기능이 지원되지 않습니다.",
+      "b_msgstr": "요청된 기능은 지원되지 않습니다."
+    },
+    {
+      "similarity": 0.9744277000427246,
+      "context": "",
+      "msgid": "Scheduler Host Filter %(filter_name)s could not be found.",
+      "plural_index": 0,
+      "a_msgstr": "스케줄러 호스트 필터 %(filter_name)s을(를) 찾을 수 없습니다.",
+      "b_msgstr": "스케줄러 호스트 필터 %(filter_name)s가 찾을 수 없습니다."
+    }
+  ]
+}

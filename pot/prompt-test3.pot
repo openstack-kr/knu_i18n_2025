@@ -1,0 +1,400 @@
+#, python-format
+msgid ""
+"Quota limit %(limit)s for %(resource)s must be greater than or equal to "
+"already used and reserved %(minimum)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Quota limit %(limit)s for %(resource)s must be less than or equal to "
+"%(maximum)s."
+msgstr ""
+
+msgid "Request body and URI mismatch"
+msgstr ""
+
+msgid "Request is too large."
+msgstr ""
+
+#, python-format
+msgid "Request of image %(image_id)s got BadRequest response: %(response)s"
+msgstr ""
+
+#, python-format
+msgid "RequestSpec not found for instance %(instance_uuid)s"
+msgstr ""
+
+msgid "Requested CPU control policy not supported by host"
+msgstr ""
+
+#, python-format
+msgid ""
+"Requested hardware '%(model)s' is not supported by the '%(virt)s' virt driver"
+msgstr ""
+
+#, python-format
+msgid "Requested image %(image)s has automatic disk resize disabled."
+msgstr ""
+
+msgid ""
+"Requested instance NUMA topology cannot fit the given host NUMA topology"
+msgstr ""
+
+msgid ""
+"Requested instance NUMA topology together with requested PCI devices cannot "
+"fit the given host NUMA topology"
+msgstr ""
+
+#, python-format
+msgid ""
+"Requested vCPU limits %(sockets)d:%(cores)d:%(threads)d are impossible to "
+"satisfy for vcpus count %(vcpus)d"
+msgstr ""
+
+#, python-format
+msgid "Rescue device does not exist for instance %s"
+msgstr ""
+
+#, python-format
+msgid "Resize error: %(reason)s"
+msgstr ""
+
+msgid "Resize to zero disk flavor is not allowed."
+msgstr ""
+
+#, python-format
+msgid "Resource class '%(resource_class)s' invalid."
+msgstr ""
+
+msgid "Resource could not be found."
+msgstr ""
+
+msgid "Resource provider has allocations."
+msgstr ""
+
+msgid "Resumed"
+msgstr ""
+
+#, python-format
+msgid "Root element name should be '%(name)s' not '%(tag)s'"
+msgstr ""
+
+#, python-format
+msgid "Running batches of %i until complete"
+msgstr ""
+
+#, python-format
+msgid "Scheduler Host Filter %(filter_name)s could not be found."
+msgstr ""
+
+#, python-format
+msgid "Scheduling failed: %(reason)s"
+msgstr ""
+
+#, python-format
+msgid "Security group %(name)s is not found for project %(project)s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Security group %(security_group_id)s not found for project %(project_id)s."
+msgstr ""
+
+#, python-format
+msgid "Security group %(security_group_id)s not found."
+msgstr ""
+
+#, python-format
+msgid ""
+"Security group %(security_group_name)s already exists for project "
+"%(project_id)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Security group %(security_group_name)s not associated with the instance "
+"%(instance)s"
+msgstr ""
+
+msgid "Security group id should be uuid"
+msgstr ""
+
+msgid "Security group name cannot be empty"
+msgstr ""
+
+msgid "Security group not specified"
+msgstr ""
+
+#, python-format
+msgid "Server %(server_id)s has no tag '%(tag)s'"
+msgstr ""
+
+#, python-format
+msgid "Server disk was unable to be resized because: %(reason)s"
+msgstr ""
+
+msgid "Server does not exist"
+msgstr ""
+
+#, python-format
+msgid "ServerGroup policy is not supported: %(reason)s"
+msgstr ""
+
+msgid "ServerGroupAffinityFilter not configured"
+msgstr ""
+
+msgid "ServerGroupAntiAffinityFilter not configured"
+msgstr ""
+
+msgid "ServerGroupSoftAffinityWeigher not configured"
+msgstr ""
+
+msgid "ServerGroupSoftAntiAffinityWeigher not configured"
+msgstr ""
+
+#, python-format
+msgid "Service %(service_id)s could not be found."
+msgstr ""
+
+#, python-format
+msgid "Service %s not found."
+msgstr ""
+
+msgid "Service is unavailable at this time."
+msgstr ""
+
+#, python-format
+msgid "Service with host %(host)s binary %(binary)s exists."
+msgstr ""
+
+#, python-format
+msgid "Service with host %(host)s topic %(topic)s exists."
+msgstr ""
+
+msgid "Set admin password is not supported"
+msgstr ""
+
+#, python-format
+msgid "Share '%s' is not supported"
+msgstr ""
+
+#, python-format
+msgid "Share level '%s' cannot have share configured"
+msgstr ""
+
+#, python-format
+msgid "Snapshot %(snapshot_id)s could not be found."
+msgstr ""
+
+msgid "Some required fields are missing"
+msgstr ""
+
+#, python-format
+msgid ""
+"Something went wrong when deleting a volume snapshot: rebasing a "
+"%(protocol)s network disk using qemu-img has not been fully tested"
+msgstr ""
+
+msgid "Sort direction size exceeds sort key size"
+msgstr ""
+
+msgid "Sort key supplied was not valid."
+msgstr ""
+
+msgid "Specified fixed address not assigned to instance"
+msgstr ""
+
+msgid "Specifying a volume_type with destination_type=local is not supported."
+msgstr ""
+
+msgid "Specifying volume type to existing volume is not supported."
+msgstr ""
+
+msgid "Started"
+msgstr ""
+
+msgid "Stopped"
+msgstr ""
+
+#, python-format
+msgid "Storage error: %(reason)s"
+msgstr ""
+
+#, python-format
+msgid "Storage policy %s did not match any datastores"
+msgstr ""
+
+msgid "Success"
+msgstr ""
+
+msgid "Suspended"
+msgstr ""
+
+msgid "Swap drive requested is larger than instance type allows."
+msgstr ""
+
+msgid "Table"
+msgstr ""
+
+#, python-format
+msgid "Task %(task_name)s is already running on host %(host)s"
+msgstr ""
+
+#, python-format
+msgid "Task %(task_name)s is not running on host %(host)s"
+msgstr ""
+
+#, python-format
+msgid "The PCI address %(address)s has an incorrect format."
+msgstr ""
+
+msgid "The `os_distro` image metadata property is required"
+msgstr ""
+
+#, python-format
+msgid "The console port range %(min_port)d-%(max_port)d is exhausted."
+msgstr ""
+
+msgid "The created instance's disk would be too small."
+msgstr ""
+
+msgid "The current driver does not support preserving ephemeral partitions."
+msgstr ""
+
+msgid "The default PBM policy doesn't exist on the backend."
+msgstr ""
+
+#, python-format
+msgid ""
+"The fixed IP associated with port %(port_id)s is not compatible with the "
+"host."
+msgstr ""
+
+msgid "The floating IP request failed with a BadRequest"
+msgstr ""
+
+msgid ""
+"The instance requires a newer hypervisor version than has been provided."
+msgstr ""
+
+#, python-format
+msgid "The number of defined ports: %(ports)d is over the limit: %(quota)d"
+msgstr ""
+
+#, python-format
+msgid ""
+"The property 'numa_nodes' cannot be '%(nodes)s'. It must be a number greater "
+"than 0"
+msgstr ""
+
+#, python-format
+msgid "The provided RNG device path: (%(path)s) is not present on the host."
+msgstr ""
+
+msgid "The request is invalid."
+msgstr ""
+
+#, python-format
+msgid ""
+"The requested amount of video memory %(req_vram)d is higher than the maximum "
+"allowed by flavor %(max_vram)d."
+msgstr ""
+
+msgid "The requested availability zone is not available"
+msgstr ""
+
+msgid "The requested functionality is not supported."
+msgstr ""
+
+#, python-format
+msgid "The specified cluster '%s' was not found in vCenter"
+msgstr ""
+
+#, python-format
+msgid "The supplied device path (%(path)s) is in use."
+msgstr ""
+
+#, python-format
+msgid "The supplied device path (%(path)s) is invalid."
+msgstr ""
+
+#, python-format
+msgid ""
+"The supplied disk path (%(path)s) already exists, it is expected not to "
+"exist."
+msgstr ""
+
+msgid "The supplied hypervisor type of is invalid."
+msgstr ""
+
+msgid "The target host can't be the same one."
+msgstr ""
+
+#, python-format
+msgid "The token '%(token)s' is invalid or has expired"
+msgstr ""
+
+#, python-format
+msgid ""
+"The volume cannot be assigned the same device name as the root device %s"
+msgstr ""
+
+#, python-format
+msgid "The volume mount at %(mount_path)s is unusable."
+msgstr ""
+
+msgid "There are not enough hosts available."
+msgstr ""
+
+#, python-format
+msgid "There is no such action: %s"
+msgstr ""
+
+#, python-format
+msgid ""
+"This compute node's hypervisor is older than the minimum supported version: "
+"%(version)s."
+msgstr ""
+
+msgid ""
+"This method needs to be called with either networks=None and port_ids=None "
+"or port_ids and networks as not none."
+msgstr ""
+
+#, python-format
+msgid "This rule already exists in group %s"
+msgstr ""
+
+#, python-format
+msgid ""
+"This service is older (v%(thisver)i) than the minimum (v%(minver)i) version "
+"of the rest of the deployment. Unable to continue."
+msgstr ""
+
+msgid "Timeout waiting for response from cell"
+msgstr ""
+
+#, python-format
+msgid "Timeout while checking if we can live migrate to host: %s"
+msgstr ""
+
+msgid "To and From ports must be integers"
+msgstr ""
+
+msgid "Token not found"
+msgstr ""
+
+msgid "Triggering crash dump is not supported"
+msgstr ""
+
+msgid "Type and Code must be integers for ICMP protocol type"
+msgstr ""
+
+msgid "UEFI is not supported"
+msgstr ""
+
+#, python-format
+msgid ""
+"Unable to associate floating IP %(address)s to any fixed IPs for instance "
+"%(id)s. Instance has no fixed IPv4 addresses to associate."
+msgstr ""

@@ -21,7 +21,7 @@ python translate.py \
   --glossary_dir ./glossary \
   --example_dir ./po-example \
   --pot_url "https://tarballs.opendev.org/openstack/translation-source/swift/master/releasenotes/source/locale/releasenotes.pot" \
-  --target_pot_file "i18n-docs-source-locale.pot" \
+  --target_pot_file "prompt-test3.pot" \
   --glossary_url "https://opendev.org/openstack/i18n/raw/commit/129b9de7be12740615d532591792b31566d0972f/glossary/locale/{lang}/LC_MESSAGES/glossary.po" \
   --glossary_po_file "glossary.po" \
   --glossary_json_file "glossary.json" \
@@ -29,4 +29,4 @@ python translate.py \
   --example_file "nova-nova-locale.po" \
   --fixed_example_json "fixed_examples.json" \
   --batch-size "5" \
-  --languages "ko_KR,ru,ja,zh_CN"
+  --languages "ko_KR"

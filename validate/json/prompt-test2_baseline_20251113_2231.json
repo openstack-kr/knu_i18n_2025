@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "file_a": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po-example/ko_KR/nova-nova-locale.po",
+    "file_b": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/prompt-test2_baseline.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 0,
+    "avg_similarity": 0.0,
+    "median_similarity": null,
+    "p90_similarity": 0.0,
+    "pct_over_threshold": 0.0
+  },
+  "top_k_most_similar": [],
+  "top_k_least_similar": []
+}

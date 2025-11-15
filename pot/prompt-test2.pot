@@ -1,0 +1,1260 @@
+#: ../../<reno.sphinxext stable/stein>:352
+msgid ""
+"Added a ``keep_idle`` config option to configure KEEPIDLE time for TCP "
+"sockets. The default value is the old constant of 600."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2023.2>:23
+msgid ""
+"Added a ``keepalive_timeout`` option to the proxy server to limit how long "
+"to wait for a client to initiate a request, separate from the general "
+"``client_timeout`` option. Note that this requires eventlet 0.33.4 "
+"(currently unreleased) or later."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:63
+msgid ""
+"Added a ``log_rsync_transfers`` option to the object-replicator. Set it to "
+"false to disable logging rsync \"send\" lines; during large rebalances, such "
+"logging can overwhelm log aggregation while providing little useful "
+"information."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:86
+msgid ""
+"Added a ``ring_ip`` option for various object services. This may be used to "
+"find own devices in the ring in a containerized environment where the "
+"``bind_ip`` may not appear in the ring at all."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:53
+msgid ""
+"Added a ``stale_worker_timeout`` configuration option to the WSGI servers. "
+"Once this time elapses following a reload, the manager process will issue "
+"SIGKILLs to any remaining stale workers."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:57
+msgid ""
+"Added a ``swift-reload`` command to assist with safely reloading WSGI "
+"servers."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:111
+msgid ""
+"Added a configurable URL base to staticweb, fixing issues when the "
+"accessible endpoint isn't known to the Swift cluster (eg http vs https)."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:280
+msgid "Added a configurable URL base to staticweb."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:73
+msgid "Added a counter metric to the proxy server when caching shard ranges."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:244
+msgid ""
+"Added a delay before deleting non-durable data. A new configuration option, "
+"``commit_window`` in the ``[DEFAULT]`` section of object-server.conf, "
+"adjusts this delay; the default is 60 seconds. This improves the durability "
+"of both back-dated PUTs (from the reconciler or container-sync, for example) "
+"and fresh writes to handoffs by preventing the reconstructor from deleting "
+"data that the object-server was still writing."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:288
+msgid "Added a handoffs-only mode."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:73
+msgid ""
+"Added a new 'analyze' command to automatically identify overlapping shard "
+"ranges and recommend a resolution based on a JSON listing of shard ranges "
+"such as produced by the 'show' command."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:70
+msgid ""
+"Added a new 'repair' command to automatically identify and optionally "
+"resolve overlapping shard ranges."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:123
+msgid ""
+"Added a new ``swift.proxy_logging_status`` request environment key that "
+"middlewares may use to override the logged status for a request."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:148
+msgid ""
+"Added a new config option, ``minimum_shard_size``. When scanning for shard "
+"ranges, if the final shard would otherwise contain fewer than this many "
+"objects, the previous shard will instead be expanded to the end of the "
+"namespace (and so may contain up to ``rows_per_shard + minimum_shard_size`` "
+"objects). This reduces the number of small shards generated. The default "
+"value is ``rows_per_shard / 5``."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:144
+msgid ""
+"Added a new config option, ``rows_per_shard``, to specify how many objects "
+"should be in each shard when scanning for ranges. The default is "
+"``shard_container_threshold / 2``, preserving existing behavior."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:117
+msgid ""
+"Added a new config option, ``shrink_threshold``, to specify the absolute "
+"size below which a shard will be considered for shrinking. This overrides "
+"the ``shard_shrink_point`` configuration option, which expressed this as a "
+"percentage of ``shard_container_threshold``. ``shard_shrink_point`` is now "
+"deprecated."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:91
+msgid ""
+"Added a new middleware that allows users and operators to configure accounts "
+"and containers to use RFC-compliant (i.e., double-quoted) ETags. This may be "
+"useful when using Swift as an origin for some content delivery networks. For "
+"more information, see `the middleware documentation <https://docs.openstack."
+"org/swift/latest/middleware.html#etag-quoter>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:192
+msgid ""
+"Added a new middleware to allow accounts and containers to opt-in to RFC-"
+"compliant ETags. For more information, see `the documentation <https://docs."
+"openstack.org/swift/latest/middleware.html#module-swift.common.middleware."
+"etag_quoter>`__. Clients should be aware of the fact that ETags may be "
+"quoted for RFC compliance; this may become the default behavior in some "
+"future release."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:182
+msgid ""
+"Added a new object versioning mode, with APIs for querying and accessing old "
+"versions. For more information, see `the documentation <https://docs."
+"openstack.org/swift/latest/middleware.html#module-swift.common.middleware."
+"versioned_writes.object_versioning>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:46
+msgid ""
+"Added a new object-expirer configuration option, "
+"``round_robin_task_cache_size``, to adjust the number of tasks to cache "
+"before processing. This may be used to trade faster expirer start-up for "
+"more lumpy container-server load."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:49
+msgid ""
+"Added a new optional proxy-logging field ``{wire_status_int}`` for the "
+"status code returned to the client. For more information, see `the "
+"documentation <https://docs.openstack.org/swift/latest/logs.html#proxy-"
+"logs>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:74
+msgid ""
+"Added a proxy-server configuration option: ``allow_open_expired``. This "
+"defaults to false; if true, clients may intereact with expired objects by "
+"including an ``X-Open-Expired: true`` header in GET, HEAD, or POST requests."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:218
+msgid ""
+"Added an experimental ``swift-ring-composer`` CLI tool to build composite "
+"rings."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:315
+msgid ""
+"Added an operator tool, ``swift-container-deleter``, to asynchronously "
+"delete some or all objects in a container using the object expirers."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:147
+msgid "Added an option to drop privileges when running the relinker as root."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:149
+msgid ""
+"Added an option to rate-limit how quickly data files are relinked or cleaned "
+"up. This may be used to reduce I/O load during partition power increases, "
+"improving end-user performance."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:187
+msgid ""
+"Added an option to write EC fragments with legacy CRC to ensure a smooth "
+"upgrade from liberasurecode<=1.5.0 to >=1.6.2. For more information, see "
+"`bug 1886088 <https://bugs.launchpad.net/liberasurecode/+bug/1886088>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:177
+msgid ""
+"Added an option, ``ratelimit_as_client_error``, to return 429s for rate-"
+"limited responses. Several clients/SDKs have seem to support retries with "
+"backoffs on 429, and having it as a client error cleans up logging and "
+"metrics. By default, Swift will respond 503, matching AWS documentation."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:223
+msgid ""
+"Added an optional ``read_only`` middleware to make an entire cluster or "
+"individual accounts read only."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:265
+msgid ""
+"Added container sharding, an operator controlled feature that may be used to "
+"shard very large container databases into a number of smaller shard "
+"containers. This mitigates the issues with one large DB by distributing the "
+"data across multiple smaller databases throughout the cluster. Please read "
+"the full overview at https://docs.openstack.org/swift/latest/"
+"overview_container_sharding.html"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:130
+msgid "Added container/object listing with prefix to InternalClient."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:63
+msgid ""
+"Added information (including target account/container) from oldest failed "
+"updates to recon dumps, both per-device and aggregated for the node. Use the "
+"new ``async_tracker_max_entries`` and ``async_tracker_dump_count`` options "
+"to adjust how many records to collect."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:61
+msgid "Added last start time to recon dumps as ``object_updater_last``."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:83
+msgid ""
+"Added metrics to count skipped, delayed, and assigned tasks as they're "
+"enumerated."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:77
+msgid ""
+"Added metrics to the formpost and tempurl middlewares to monitor digest "
+"usage in signatures."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:67
+msgid ""
+"Added more metrics to the container-server, allowing GET and PUT timings to "
+"be broken out for listings, shard range operations, and container creation."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:71
+msgid ""
+"Added per-account and per-container reaping delays. These may be used to "
+"offer some grace period in which to recover expired objects."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:219
+msgid "Added support for Python 3.8."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:132
+msgid "Added support for Python 3.9."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:188
+msgid "Added support for S3 versioning using the above new mode."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:16
+msgid ""
+"Added support for aws-chunked transfers. Recent AWS clients recently began "
+"defaulting to this mode. See `Amazon's documentation <https://docs.aws."
+"amazon.com/AmazonS3/latest/API/sigv4-streaming.html>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:16 current stable/2025.2>:16
+msgid ""
+"Added support for aws-chunked transfers. Recent AWS clients recently began "
+"defaulting to this mode. See also: `Transferring Payload in Multiple Chunks "
+"(Chunked Upload) <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-"
+"streaming.html>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:29 current stable/2025.2>:29
+msgid "Added support for create-without-overwrite conditional writes."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:46 current stable/2025.2>:46
+msgid ""
+"Added support for emitting labeled statsd metrics in a variety of formats. "
+"Middleware authors should see `the LabeledStatsdClient documentation "
+"<https://docs.openstack.org/swift/latest/misc.html#swift.common."
+"statsd_client.LabeledStatsdClient>`__ for more information."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:55
+msgid "Added support for inline data segments in SLO manifests."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:144
+msgid ""
+"Added support for per-policy proxy config options. This allows per-policy "
+"affinity options to be set for use with duplicated EC policies and composite "
+"rings. Certain options found in per-policy conf sections will override their "
+"equivalents that may be set in the [app:proxy-server] section. Currently the "
+"options handled that way are ``sorting_method``, ``read_affinity``, "
+"``write_affinity``, ``write_affinity_node_count``, and "
+"``write_affinity_handoff_delete_count``."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:87
+msgid "Added support for recent versions of eventlet."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:202
+msgid ""
+"Added support for retrieving the encryption root secret from an external key "
+"management system. In practice, this is currently limited to Barbican."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:20
+msgid ""
+"Added support for system-scoped \"reader\" roles when authenticating using "
+"Keystone. Operators may configure this using the ``system_reader_roles`` "
+"option in the ``[filter:keystoneauth]`` section of their proxy-server.conf."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:21 current stable/2025.2>:21
+msgid ""
+"Added support for verifying additional checksums during upload. All "
+"algorithms currently supported by AWS are supported: CRC64NVME, CRC32, "
+"CRC32C, SHA1, and SHA256. See also: `Checking object integrity in Amazon S3 "
+"<https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-"
+"integrity.html>`__. Note that some algorithms require the availability of "
+"additional libraries: ISA-L or anycrc."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:20
+msgid ""
+"Added support for verifying additional checksums during upload. All "
+"algorithms currently supported by AWS are supported: ``CRC64NVME``, "
+"``CRC32``, ``CRC32C``, ``SHA1``, and ``SHA256``. See `Amazon's documentation "
+"<https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-"
+"integrity.html>`__. Note that some algorithms require the availability of "
+"additional libraries: `ISA-L <https://github.com/intel/isa-l>`__ or `anycrc "
+"<https://pypi.org/project/anycrc>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:37
+msgid "Added symlink objects support."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2023.2>:18
+msgid ""
+"Added the ability for reseller admins to set per-policy account quotas by "
+"posting metadata of the form ``X-Account-Quota-Bytes-Policy-<policy name>``."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:79
+msgid "Added the ability to configure auth region in s3token middleware."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:158
+msgid ""
+"Added the ability to configure cooperative yielding when servicing GET "
+"responses, via the ``cooperative_period`` option. See the example config for "
+"more information."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:56 unmaintained/wallaby>:37
+msgid ""
+"Added the ability to connect to memcached over TLS. See the ``tls_*`` "
+"options in etc/memcache.conf-sample"
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:233
+msgid ""
+"Added the ability to quarantine EC fragments that have no (or few) other "
+"fragments in the cluster. A new configuration option, "
+"``quarantine_threshold``, in the reconstructor controls the point at the "
+"fragment will be quarantined; the default (0) will never quarantine. Only "
+"fragments older than ``quarantine_age`` (default: ``reclaim_age``) may be "
+"quarantined. Before quarantining, the reconstructor will attempt to fetch "
+"fragments from handoff nodes in addition to the usual primary nodes; a new "
+"``request_node_count`` option (default ``2 * replicas``) limits the total "
+"number of nodes to contact."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:164
+msgid ""
+"Added the ability to read options from object-server.conf, similar to "
+"background daemons."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:71
+msgid ""
+"Added the option to tune down ETag validation in the object-server during "
+"full-object reads. By default, every full read will continue to have its "
+"ETag validated as bytes are streamed to the proxy-server. The "
+"``etag_validate_pct`` option may be used to configure approximately what "
+"percentage of full-object reads should be validated; reducing this can "
+"improve performance when object-servers are CPU-constrained."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2023.2>:48
+msgid "Added timing metrics to the container sharder for various operations."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:114
+msgid "After upgrading, re-enable and restart the object-reconstructor."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:189
+msgid ""
+"All 416 responses will now include a Content-Range header with an "
+"unsatisfied-range value. This allows the caller to know the valid range "
+"request value for an object."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:37
+msgid ""
+"All background daemons now use the replication network. This allows better "
+"isolation between external, client-facing traffic and internal, background "
+"traffic. Note that during a rolling upgrade, replication servers may respond "
+"with ``405 Method Not Allowed``. To avoid this, operators should remove the "
+"config option ``replication_server = true`` from their replication servers; "
+"this will allow them to handle all request methods before upgrading."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:235
+msgid "Allow ``fallocate_reserve`` to be specified as a percentage."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/stein>:363
+msgid "Allow direct_client users to overwrite the ``X-Timestamp`` header."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:227
+msgid ""
+"Allow operators to pass either raw or URL-quoted paths to ``swift-get-"
+"nodes``. Notably, this allows ``swift-get-nodes`` to work with the reserved "
+"namespace used for object versioning."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:78
+msgid "Allow proxy-logging middlewares to be configured more independently."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:247
+msgid ""
+"Allow ratelimit to be placed multiple times in a proxy pipeline, such as "
+"both before s3api and auth (to handle swift requests without needing to make "
+"an auth decision) and after (to limit S3 requests)."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:29
+msgid ""
+"Allow static large object segments to be deleted asynchronously. Operators "
+"may opt into this new behavior by enabling the new ``allow_async_delete`` "
+"option in the ``[filter:slo]`` section in their proxy-server.conf. For more "
+"information, see `the documentation <https://docs.openstack.org/swift/latest/"
+"overview_large_objects.html#deleting-a-large-object>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:86
+msgid "Allow the expirer to gracefully move past updating stale work items."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:267
+msgid "Always set Swift processes to use UTC."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:67
+msgid ""
+"As a result, some errors that previously resulted in exit code 2 will now "
+"exit with code 1."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:124
+msgid ""
+"Avoid upgrading liberasurecode until swift and liberasurecode better-support "
+"a rolling upgrade. Swift remains compatible with liberasurecode 1.5.0 and "
+"earlier."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:47 stable/stein>:42 stable/train>:394
+msgid "Background corruption-detection improvements"
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:103 current stable/2023.2>:102
+#: stable/2024.1>:10 stable/2024.1>:93 stable/2024.2>:10 stable/2024.2>:133
+#: stable/2025.1>:104 stable/2025.2>:103 stable/newton>:10 stable/newton>:75
+#: stable/newton>:178 stable/ocata>:10 stable/ocata>:38 stable/ocata>:135
+#: stable/ocata>:207 stable/pike>:10 stable/pike>:49 stable/pike>:293
+#: stable/queens>:10 stable/rocky>:10 stable/rocky>:103 stable/stein>:10
+#: stable/stein>:179 stable/train>:10 stable/train>:97 stable/train>:162
+#: stable/train>:226 stable/train>:349 stable/ussuri>:39 stable/ussuri>:107
+#: stable/ussuri>:237 unmaintained/2023.1>:10 unmaintained/victoria>:180
+#: unmaintained/wallaby>:195 unmaintained/xena>:28 unmaintained/xena>:131
+#: unmaintained/yoga>:28 unmaintained/yoga>:59 unmaintained/zed>:23
+#: unmaintained/zed>:140
+msgid "Bug Fixes"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:237
+msgid "COPY now works with unicode account names."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:81
+msgid ""
+"CORS-related headers are now passed through appropriately when using the S3 "
+"API. Note that allowed origins and other container metadata must still be "
+"`configured through the Swift API <https://docs.openstack.org/swift/latest/"
+"cors.html>`__."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:287
+msgid "Cache all answers from nameservers in cname_lookup."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:116
+msgid ""
+"Certain S3 API headers are now lower case as they would be coming from AWS."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/stein>:91
+msgid ""
+"Change the behavior of the EC reconstructor to perform a fragment rebuild to "
+"a handoff node when a primary peer responds with 507 to the REPLICATE "
+"request. This changes EC to match the existing behavior of replication when "
+"drives fail. After a rebalance of EC rings (potentially removing unmounted/"
+"failed devices), it's most IO efficient to run in handoffs_only mode to "
+"avoid unnecessary rebuilds."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:125
+msgid ""
+"Changed where liberasurecode-devel for CentOS 7 is referenced and installed "
+"as a dependency."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:139
+msgid "Cleaned up ``X-Backend-*`` headers in listing responses."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:238
+msgid "Cleaned up logged tracebacks when talking to memcached servers."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:217
+msgid ""
+"Cleanup is more robust to files and directories being deleted by another "
+"process."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:155
+msgid ""
+"Client disconnects should always be logged within the context of the "
+"appropriate client request. Previously, there were some cases where logging "
+"would occur during general garbage collection, leading to incorrect or "
+"missing transaction IDs in logs."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:276
+msgid ""
+"Closed a bug where ssync may have written bad fragment data in some "
+"circumstances. A check was added to ensure the correct number of bytes is "
+"written for a fragment before finalizing the write. Also, erasure coded "
+"fragment metadata will now be validated on read requests and, if bad data is "
+"found, the fragment will be quarantined."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:79
+msgid ""
+"Closed a bug where ssync may have written bad fragment data in some "
+"circumstances. A check was added to ensure the correct number of bytes is "
+"written for a fragment before finalizing the write. Also, erasure coded "
+"fragment metadata will now be validated when read and, if bad data is found, "
+"the fragment will be quarantined."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:55
+msgid "CompleteMultipartUpload requests may now be safely retried."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:32 stable/stein>:34 stable/train>:386
+msgid "CompleteMultipartUpload requests with a ``Content-MD5`` now work."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:104
+msgid ""
+"Composite rings can be used for explicit replica placement and \"replicated "
+"EC\" for global erasure codes policies."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:107
+msgid ""
+"Composite rings support 'cooperative' rebalance which means that during "
+"rebalance all component rings will be consulted before a partition is moved "
+"in any component ring. This avoids the same partition being simultaneously "
+"moved in multiple components."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:21 unmaintained/yoga>:21
+#: unmaintained/zed>:129
+msgid ""
+"Constant-time string comparisons are now used when checking S3 API "
+"signatures."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:76
+msgid ""
+"Container ACLs are now cloned to the ``+segments`` container when it is "
+"created."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/stein>:23 stable/train>:252
+msgid ""
+"Container metadata related to sharding are now removed when no longer needed."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:233
+msgid ""
+"Container read ACLs now work with object versioning. This only allows access "
+"to the most-recent version via an unversioned URL."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:115
+msgid "Container sharding deprecations:"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:190
+msgid ""
+"Container sync can now copy SLOs more efficiently by allowing the manifest "
+"to be synced before all of the referenced segments. This fixes a bug where "
+"container sync would not copy SLO manifests."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:260
+msgid ""
+"Container sync now synchronizes static symlinks in a way similar to static "
+"large objects."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:141
+msgid ""
+"Container-server logs now include the shard path in the referer field when "
+"receiving stat updates."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:211
+msgid "Correctly handle deleted files with if-none-match requests."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:44 stable/ocata>:215
+msgid ""
+"Correctly send 412 Precondition Failed if a user sends an invalid copy "
+"destination. Previously Swift would send a 500 Internal Server Error."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:353
+msgid "Correctness improvements"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:336
+msgid "Critical Issues"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:77 stable/stein>:61
+msgid ""
+"Cross-account symlinks now store correct account information in container "
+"listings. This was previously fixed in 2.22.0."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:128
+msgid ""
+"Currently the default is still only one process, and no workers. Set "
+"``reconstructor_workers`` in the ``[object-reconstructor]`` section to some "
+"whole number <= the number of devices on a node to get that many "
+"reconstructor workers."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:62
+msgid ""
+"Daemons now send ``STOPPING`` and ``RELOADING`` systemd notifications when "
+"the service is configured with ``Type=notify``."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:173
+msgid "Daemons send object updates via the replication network in more cases."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:107 stable/ocata>:304
+msgid "Daemons using InternalClient can now be properly killed with SIGTERM."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/stein>:311
+msgid "Data encryption updates"
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:210
+msgid ""
+"Database replication connections are now closed following an error or "
+"timeout. This prevents a traceback in some cases when the replicator tries "
+"to reuse the connection."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:151
+msgid "Databases marked deleted are now processed by the sharder."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:20 unmaintained/victoria>:204
+msgid ""
+"Deleted shard containers are no longer considered root containers. This "
+"prevents unnecessary sharding audit failures and allows the deleted shard "
+"database to actually be unlinked."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:79
+msgid ""
+"Deleting an expiring object will now cause less work in the system. The "
+"number of async pending files written has been reduced for all objects and "
+"greatly reduced for erasure-coded objects. This dramatically reduces the "
+"burden on container servers."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:115
+msgid "Dependency update: lxml must be at least 4.2.3."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/stein>:296
+msgid ""
+"Deployers with clusters that relied on the old implicit default location of "
+"\"US\" should explicitly set ``location = US`` in the ``[filter:s3api]`` "
+"section of proxy-server.conf before upgrading."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:168
+msgid ""
+"Deprecate swift-temp-url and call python-swiftclient's implementation "
+"instead. This adds python-swiftclient as an optional dependency of Swift."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:93 current stable/2023.2>:90
+#: stable/2024.2>:121 stable/2025.1>:86 stable/2025.2>:93 stable/ocata>:117
+#: stable/ussuri>:225 unmaintained/xena>:111 unmaintained/yoga>:49
+#: unmaintained/zed>:112
+msgid "Deprecation Notes"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:49 stable/stein>:44 stable/train>:396
+msgid "Detect and remove invalid entries from ``hashes.pkl``"
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:98
+msgid ""
+"Developers using Swift's memcache client may now opt in to having a "
+"``MemcacheConnectionError`` be raised when no connection succeeded using a "
+"new ``raise_on_error`` keyword argument to ``get``/``set``."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:104
+msgid ""
+"Device names are now included in new database IDs. This provides more "
+"context when examining incoming/outgoing sync tables or sharding "
+"CleaveContexts."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:213
+msgid ""
+"Device region and zone can now be changed via ``swift-ring-builder``. Note "
+"that this may cause a lot of data movement on the next rebalance as the "
+"builder tries to reach full dispersion."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:73
+msgid "Disallow X-Delete-At header values equal to the X-Timestamp header."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/stein>:127
+msgid "Display crypto data/metadata details in swift-object-info."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:106
+msgid "Display more info on empty rings."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:279
+msgid "Do not follow CNAME when host is in storage_domain."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:42 unmaintained/victoria>:214
+msgid "Don't inject shard ranges when user quits."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:335
+msgid "Drop support for auth-server from common/manager.py and `swift-init`."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:161
+msgid ""
+"During clean-up, stop warning about tombstones that got reaped from the new "
+"location but not the old."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:218
+msgid ""
+"During rebalances, clients should no longer get 404s for data that exists "
+"but whose replicas are overloaded."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:255
+msgid "EC Fragment Duplication - Foundational Global EC Cluster Support."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/yoga>:80
+msgid ""
+"Empty account and container partition directories are now cleaned up "
+"immediately after replication, rather than needing to wait for an additional "
+"replication cycle."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:255
+msgid ""
+"Empty container databases (such as might be created on handoffs) now shard "
+"much more quickly."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:283
+msgid ""
+"Enable cluster-wide CORS Expose-Headers setting via \"cors_expose_headers\"."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:154
+msgid "Enabled versioned writes on Dynamic Large Objects (DLOs)."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:42
+msgid ""
+"Ensure that non-durable data and .meta files are purged from handoffs after "
+"syncing."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:56 stable/ocata>:223
+msgid ""
+"Ensure update of the container by object-updater, removing a rare "
+"possibility that objects would never be added to a container listing."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:142
+msgid ""
+"Erasure code GET performance has been significantly improved in clusters "
+"that are not completely healthy."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:89
+msgid ""
+"Erasure code reconstruction handles moving data from handoff nodes better. "
+"Instead of moving the data to another handoff, it waits until it can be "
+"moved to a primary node."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:231
+msgid "Erasure coding fixes:"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:174
+msgid ""
+"Erasure-coded storage policies using ``isa_l_rs_vand`` and ``nparity`` >= 5 "
+"must be configured as deprecated, preventing any new containers from being "
+"created with such a policy. This configuration is known to harm data "
+"durability. Any data in such policies should be migrated to a new policy. "
+"See See `Launchpad bug 1639691 <https://bugs.launchpad.net/swift/"
+"+bug/1639691>`__ for more information."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:199
+msgid ""
+"Errors downloading a Static Large Object that cause a shorter-than-expected "
+"response are now logged as 500s."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:142
+msgid ""
+"Errors encountered while validating static symlink targets no longer cause "
+"BadResponseLength errors in the proxy-server."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:270
+msgid ""
+"Errors encountered while validating static symlink targets no longer cause "
+"``BadResponseLength`` errors in the proxy-server."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:280
+msgid ""
+"Errors when setting keys in memcached are now logged. This helps operators "
+"detect when shard ranges for caching have gotten too large to be stored, for "
+"example."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:60
+msgid "Exit codes are now applied more consistently:"
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:300
+msgid ""
+"Experimental support for Python 3.6 and 3.7 is now available. Note that this "
+"requires ``eventlet>=0.25.0``. All unit tests pass, and running functional "
+"tests under Python 2 will pass against services running under Python 3. "
+"Expect full support in the next minor release."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:79
+msgid ""
+"Expiring object queue entries now include the size of the object to be "
+"expired in the ``swift_expirer_bytes`` parameter of the queue entry's "
+"content-type."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:119
+msgid "Expose sharding statistics in the backend recon middleware."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:14
+msgid ""
+"Extend concurrent reads to erasure coded policies. Previously, the options "
+"``concurrent_gets`` and ``concurrency_timeout`` only applied to replicated "
+"policies."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/2023.1>:38
+msgid ""
+"Fewer backend requests are now required when account or container "
+"information is missing from memcache."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:26 stable/queens>:14 stable/stein>:195
+#: stable/stein>:211
+msgid "Fix SLO delete for accounts with non-ASCII names."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:126 stable/ussuri>:62
+#: unmaintained/victoria>:258
+msgid ""
+"Fix a proxy-server error when retrieving erasure coded data when there are "
+"durable fragments but not enough to reconstruct."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/victoria>:263
+msgid "Fix an error in the proxy server when finalizing data."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:131 stable/ussuri>:146
+msgid ""
+"Fixed 500 from cname_lookup middleware. Previously, if the looked-up domain "
+"was used by domain_remap to update the request path, the server would "
+"respond Internal Error."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:109 current stable/2025.2>:109
+msgid ""
+"Fixed HTTP framing issues when returning errors for a request with ``Expect: "
+"100-continue``."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:301
+msgid ""
+"Fixed UnicodeDecodeError in the object reconstructor that would prevent "
+"objects with non-ascii names from being reconstructed and caused the "
+"reconstructor process to hang."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:272
+msgid ""
+"Fixed XML responses (eg on bulk extractions and SLO upload failures) to be "
+"more correct. The enclosing \"delete\" tag was removed where it doesn't make "
+"sense and replaced with \"extract\" or \"upload\" depending on the context."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:20 stable/2024.2>:20 stable/2025.1>:133
+msgid ""
+"Fixed ``Content-Type`` and ``Content-Length`` headers in account and "
+"container ``HEAD`` responses (with eventlet>=0.38.0)."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:241
+msgid "Fixed ``rsync`` output parsing."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2023.2>:119
+msgid "Fixed a ``generator already executing`` error on client disconnect."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:193
+msgid "Fixed a bug in domain_remap when obj starts/ends with slash."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/queens>:22 stable/rocky>:115 stable/stein>:219
+#: stable/stein>:231
+msgid ""
+"Fixed a bug in how Swift uses eventlet that was exposed under high "
+"concurrency."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:42
+msgid ""
+"Fixed a bug in the EC reconstructor where an unsuccessful sync would cause "
+"extra disk I/O load on the remote server. Now the extra checking work is "
+"only requested if the sync request was successful."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ussuri>:162
+msgid ""
+"Fixed a bug in the new object versioning API that would cause more than "
+"``limit`` results to be returned when listing."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/2023.1>:48
+msgid ""
+"Fixed a bug in the object replicator that would cause an under-reporting of "
+"failures."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:53
+msgid ""
+"Fixed a bug introduced in 2.15.0 where the object reconstructor would exit "
+"with a traceback if no EC policy was configured."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:267
+msgid "Fixed a bug that could cause EC GET responses to return a server error."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:206
+msgid ""
+"Fixed a bug that prevented the s3api pipeline validation described in proxy-"
+"server.conf-sample from being performed. As documented, operators can "
+"disable this via the ``auth_pipeline_check`` option if proxy startup fails "
+"with validation errors."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:189
+msgid "Fixed a bug where SSYNC would fail to replicate unexpired object."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:182
+msgid ""
+"Fixed a bug where a container listing delimiter wouldn't work with "
+"encryption."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:147
+msgid ""
+"Fixed a bug where an SLO download with a range request may have resulted in "
+"a 5xx series response."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:56 stable/stein>:151
+msgid ""
+"Fixed a bug where encryption would store the incorrect key metadata if the "
+"object name starts with a slash."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:186
+msgid ""
+"Fixed a bug where some headers weren't being copied correctly in a COPY "
+"request."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:194
+msgid "Fixed a bug where some tombstone files might never be reclaimed."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:138
+msgid ""
+"Fixed a bug where stale state files would cause misplaced data during "
+"multiple partition power increases."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:32 stable/ocata>:139
+msgid ""
+"Fixed a bug where the ring builder would not allow removal of a device when "
+"min_part_seconds_left was greater than zero."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:148
+msgid ""
+"Fixed a bug where the sharder could fail to find a device to use for "
+"cleaving."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/rocky>:228
+msgid ""
+"Fixed a bug where zero-byte PUTs would not work properly with \"If-None-"
+"Match: \\*\" conditional requests."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:27 stable/pike>:14 stable/stein>:183
+msgid ""
+"Fixed a cache invalidation issue related to GET and PUT requests to "
+"containers that would occasionally cause object PUTs to a container to 404 "
+"after the container had been successfully created."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:201
+msgid "Fixed a few areas where the ``swiftdir`` option was not respected."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:32 unmaintained/yoga>:32
+#: unmaintained/zed>:27
+msgid ""
+"Fixed a path-rewriting bug introduced in Python 3.7.14, 3.8.14, 3.9.14, and "
+"3.10.6 that could cause some ``domain_remap`` requests to be routed to the "
+"wrong object."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/2023.1>:23
+msgid "Fixed a performance regression in the handling of misplaced objects."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:52
+msgid "Fixed a potential server error when getting symlink details."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:50
+msgid "Fixed a potential server error when uploading data via a tempurl."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:238
+msgid ""
+"Fixed a race condition in ssync that could lead to a loss of data durability "
+"(or even loss of data, for two-replica policies) when some object servers "
+"have outdated rings. Replication via rsync is likely still affected by a "
+"similar bug."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:317
+msgid ""
+"Fixed a race condition in updating hashes.pkl where a partition suffix "
+"invalidation may have been skipped."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/newton>:91 stable/ocata>:219
+msgid "Fixed a rare infinite loop in `swift-ring-builder` while placing parts."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/ocata>:19 stable/queens>:233
+msgid ""
+"Fixed a rare issue where multiple backend timeouts could result in bad data "
+"being returned to the client."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:120 current stable/2025.2>:120
+msgid "Fixed a recursion error in the account-quota middleware."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:14 unmaintained/yoga>:14
+#: unmaintained/zed>:14
+msgid ""
+"Fixed a security issue in how ``s3api`` handles XML parsing that allowed "
+"authenticated S3 clients to read arbitrary files from proxy servers. Refer "
+"to `CVE-2022-47950 <https://cve.circl.lu/cve/CVE-2022-47950>`__ for more "
+"information."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:269
+msgid "Fixed a server error during GET of a symlink with some proxy pipelines."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:183
+msgid ""
+"Fixed a server error in bucket listings when ``s3_acl`` is enabled and "
+"staticweb is configured for the container."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:186
+msgid ""
+"Fixed a server error when a client exceeds ``client_timeout`` during an "
+"upload. Now, a ``RequestTimeout`` error is correctly returned."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2025.1>:125
+msgid "Fixed a server error when deleting a specific version via the S3 API."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:189
+msgid ""
+"Fixed a server error when downloading multipart uploads/static large objects "
+"that have missing or inaccessible segments. This is a state that cannot "
+"arise in AWS, so a new ``BrokenMPU`` error is returned, indicating that "
+"retrying the request is unlikely to succeed."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.1>:114
+msgid "Fixed a server error when handling conditional GET requests."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/xena>:266
+msgid ""
+"Fixed a server error when performing a PUT authorized via tempurl with some "
+"proxy pipelines."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:164
+msgid ""
+"Fixed a server error when the Swift request path has missing account or "
+"container components."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2024.2>:139
+msgid "Fixed a server error when using non-ASCII access key IDs."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:197
+msgid "Fixed a socket leak in copy middleware when a large object was copied."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/zed>:133
+msgid ""
+"Fixed a socket leak when clients try to delete a non-SLO as though it were a "
+"Static Large Object."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2023.2>:117
+msgid "Fixed an encoding issue when handling non-ASCII account names."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/2023.2>:114
+msgid ""
+"Fixed an encoding issue when writing non-ASCII object names to sharded "
+"containers and shard range caching is not enabled."
+msgstr ""
+
+#: ../../<reno.sphinxext branch>:124 current stable/2025.2>:124
+msgid ""
+"Fixed an error in ``invalidate_hash`` when the partition is deleted while "
+"waiting for the partition lock."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/train>:103 stable/ussuri>:45
+#: unmaintained/victoria>:186
+msgid ""
+"Fixed an error when reading encrypted data that was written while running "
+"Python 2 for a path that includes non-ASCII characters."
+msgstr ""
+
+#: ../../<reno.sphinxext unmaintained/wallaby>:257
+msgid "Fixed an import-ordering issue in ``swift-dispersion-populate``."
+msgstr ""
+
+#: ../../<reno.sphinxext stable/pike>:30 stable/queens>:18 stable/stein>:199
+#: stable/stein>:215
+msgid ""
+"Fixed an issue in COPY where concurrent requests may have copied the wrong "
+"data."
+msgstr ""

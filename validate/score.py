@@ -133,7 +133,7 @@ def main():
     ap.add_argument("--skip-fuzzy", action="store_true")
     ap.add_argument("--normalize-text", action="store_true")
     ap.add_argument("--lowercase", action="store_true")
-    ap.add_argument("--topk", type=int, default=20)
+    ap.add_argument("--topk", type=int, default=100)
     ap.add_argument("--experiments_csv", default=str(Path(__file__).
     resolve().parent.parent / "experiments.csv"))
     args = ap.parse_args()

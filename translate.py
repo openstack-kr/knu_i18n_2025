@@ -132,6 +132,7 @@ def translate_batch(payload, language_name):
     * You MUST NOT repeat phrases. Repetition is strictly forbidden.
     
     **[Glossary]**
+    
     """
     SYSTEM_PROMPT = SYSTEM_PROMPT_BASE + FORMATTED_GLOSSARY
     

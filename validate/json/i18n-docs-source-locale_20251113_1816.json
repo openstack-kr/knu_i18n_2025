@@ -1,0 +1,825 @@
+{
+  "metadata": {
+    "file_a": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po-example/ko_KR/i18n-docs-source-locale.po",
+    "file_b": "/Users/juyeong/Desktop/JSP1/knu_i18n_2025/validate/../po/llama3.2:3b/ko_KR/i18n-docs-source-locale.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 451,
+    "avg_similarity": 0.8694,
+    "median_similarity": 0.9129,
+    "p90_similarity": 0.9998,
+    "pct_over_threshold": 81.37
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.0000007152557373,
+      "context": "",
+      "msgid": "`create-zanata-xml.py <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/create-zanata-xml.py>`__",
+      "plural_index": 0,
+      "a_msgstr": "`create-zanata-xml.py <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/create-zanata-xml.py>`__",
+      "b_msgstr": "`create-zanata-xml.py <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/create-zanata-xml.py>`__"
+    },
+    {
+      "similarity": 1.0000005960464478,
+      "context": "",
+      "msgid": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "b_msgstr": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__"
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "Server projects",
+      "plural_index": 0,
+      "a_msgstr": "서버 프로젝트",
+      "b_msgstr": "서버 프로젝트"
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "`releasenotes/run.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/run.yaml>`__",
+      "plural_index": 0,
+      "a_msgstr": "`releasenotes/run.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/run.yaml>`__",
+      "b_msgstr": "`releasenotes/run.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/run.yaml>`__"
+    },
+    {
+      "similarity": 1.0000004768371582,
+      "context": "",
+      "msgid": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "plural_index": 0,
+      "a_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "b_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Project Goals And Translation Plan",
+      "plural_index": 0,
+      "a_msgstr": "프로젝트 목표 및 번역 계획",
+      "b_msgstr": "프로젝트 목표 및 번역 계획"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "ReactJS Projects",
+      "plural_index": 0,
+      "a_msgstr": "ReactJS 프로젝트",
+      "b_msgstr": "ReactJS 프로젝트"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Stackalytics",
+      "plural_index": 0,
+      "a_msgstr": "Stackalytics",
+      "b_msgstr": "Stackalytics"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Translation tools",
+      "plural_index": 0,
+      "a_msgstr": "번역 도구",
+      "b_msgstr": "번역 도구"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Zanata CLI",
+      "plural_index": 0,
+      "a_msgstr": "Zanata CLI",
+      "b_msgstr": "Zanata CLI"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "`releasenotes/pre.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/pre.yaml>`__",
+      "plural_index": 0,
+      "a_msgstr": "`releasenotes/pre.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/pre.yaml>`__",
+      "b_msgstr": "`releasenotes/pre.yaml <https://opendev.org/openstack/project-config/src/playbooks/releasenotes/pre.yaml>`__"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "common_translation_update.sh",
+      "plural_index": 0,
+      "a_msgstr": "common_translation_update.sh",
+      "b_msgstr": "common_translation_update.sh"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "IRC web client",
+      "plural_index": 0,
+      "a_msgstr": "IRC 웹 클라이언트",
+      "b_msgstr": "IRC 웹 클라이언트"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Jori Kuusinen (id: nuyori) - Finnish (Finland)",
+      "plural_index": 0,
+      "a_msgstr": "Jori Kuusinen (id: nuyori) - Finnish (Finland)",
+      "b_msgstr": "Jori Kuusinen (id: nuyori) - Finnish (Finland)"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Project configuration",
+      "plural_index": 0,
+      "a_msgstr": "프로젝트 구성",
+      "b_msgstr": "프로젝트 구성"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "`Periodic jobs: Syncing into repos <http://zuul.opendev.org/t/openstack/builds?job_name=propose-translation-update>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Periodic jobs: Syncing into repos <http://zuul.opendev.org/t/openstack/builds?job_name=propose-translation-update>`__",
+      "b_msgstr": "`Periodic jobs: Syncing into repos <http://zuul.opendev.org/t/openstack/builds?job_name=propose-translation-update>`__"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "``<Zanata-project-name>`` is Zanata project name,",
+      "plural_index": 0,
+      "a_msgstr": "``<Zanata-project-name>`` 는 Zanata 프로젝트 이름입니다.",
+      "b_msgstr": "``<Zanata-project-name>``는 Zanata 프로젝트 이름입니다."
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__",
+      "plural_index": 0,
+      "a_msgstr": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__",
+      "b_msgstr": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Using translations",
+      "plural_index": 0,
+      "a_msgstr": "번역 사용",
+      "b_msgstr": "번역 사용"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "`common_translation_update.sh <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/common_translation_update.sh>`__",
+      "plural_index": 0,
+      "a_msgstr": "`common_translation_update.sh <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/common_translation_update.sh>`__",
+      "b_msgstr": "`common_translation_update.sh <https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/common_translation_update.sh>`__"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Stein cycle",
+      "plural_index": 0,
+      "a_msgstr": "Stein 주기",
+      "b_msgstr": "Stein 주기"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "`openstack-i18n in Launchpad <https://bugs.launchpad.net/openstack-i18n>`_",
+      "plural_index": 0,
+      "a_msgstr": "`openstack-i18n in Launchpad <https://bugs.launchpad.net/openstack-i18n>`_",
+      "b_msgstr": "`openstack-i18n in Launchpad <https://bugs.launchpad.net/openstack-i18n>`_"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "`upstream-translation-update.yaml <https://opendev.org/openstack/project-config/src/playbooks/translation/upstream-translation-update.yaml>`__",
+      "plural_index": 0,
+      "a_msgstr": "`upstream-translation-update.yaml <https://opendev.org/openstack/project-config/src/playbooks/translation/upstream-translation-update.yaml>`__",
+      "b_msgstr": "`upstream-translation-update.yaml <https://opendev.org/openstack/project-config/src/playbooks/translation/upstream-translation-update.yaml>`__"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "propose_translation_update.sh",
+      "plural_index": 0,
+      "a_msgstr": "propose_translation_update.sh",
+      "b_msgstr": "propose_translation_update.sh"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Translation",
+      "plural_index": 0,
+      "a_msgstr": "번역",
+      "b_msgstr": "번역"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Translations",
+      "plural_index": 0,
+      "a_msgstr": "번역",
+      "b_msgstr": "번역"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "``dashboards/admin/aggregates/views.py:104``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/admin/aggregates/views.py:104``",
+      "b_msgstr": "``dashboards/admin/aggregates/views.py:104``"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "`https://review.opendev.org/#/c/488226/ <https://review.opendev.org/#/c/488226/>`__",
+      "plural_index": 0,
+      "a_msgstr": "`https://review.opendev.org/#/c/488226/ <https://review.opendev.org/#/c/488226/>`__",
+      "b_msgstr": "`https://review.opendev.org/#/c/488226/ <https://review.opendev.org/#/c/488226/>`__"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "``dashboards/project/containers/templates/containers/_update.html:21``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/project/containers/templates/containers/_update.html:21``",
+      "b_msgstr": "``dashboards/project/containers/templates/containers/_update.html:21``"
+    },
+    {
+      "similarity": 0.9999998211860657,
+      "context": "",
+      "msgid": "Contents",
+      "plural_index": 0,
+      "a_msgstr": "내용",
+      "b_msgstr": "내용"
+    },
+    {
+      "similarity": 0.9999998211860657,
+      "context": "",
+      "msgid": "Preparations",
+      "plural_index": 0,
+      "a_msgstr": "준비",
+      "b_msgstr": "준비"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "TBD",
+      "plural_index": 0,
+      "a_msgstr": "TBD",
+      "b_msgstr": "TBD"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "`propose-translation-update.yaml <https://opendev.org/openstack/project-config/src/playbooks/translation/propose-translation-update.yaml>`__",
+      "plural_index": 0,
+      "a_msgstr": "`propose-translation-update.yaml <https://opendev.org/openstack/project-config/src/playbooks/translation/propose-translation-update.yaml>`__",
+      "b_msgstr": "`propose-translation-update.yaml <https://opendev.org/openstack/project-config/src/playbooks/translation/propose-translation-update.yaml>`__"
+    },
+    {
+      "similarity": 0.9999997019767761,
+      "context": "",
+      "msgid": "...",
+      "plural_index": 0,
+      "a_msgstr": "...",
+      "b_msgstr": "..."
+    },
+    {
+      "similarity": 0.9999997019767761,
+      "context": "",
+      "msgid": "Titles",
+      "plural_index": 0,
+      "a_msgstr": "제목",
+      "b_msgstr": "제목"
+    },
+    {
+      "similarity": 0.9999997019767761,
+      "context": "",
+      "msgid": "`Translation plan <https://translate.openstack.org/>`_",
+      "plural_index": 0,
+      "a_msgstr": "`번역 계획 <https://translate.openstack.org/>`_",
+      "b_msgstr": "`번역 계획 <https://translate.openstack.org/>`_"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Django Projects",
+      "plural_index": 0,
+      "a_msgstr": "Django 프로젝트",
+      "b_msgstr": "Django 프로젝트"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Translation Statistics",
+      "plural_index": 0,
+      "a_msgstr": "번역 통계",
+      "b_msgstr": "번역 통계"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "`Sphinx documentation <http://sphinx.readthedocs.io/en/latest/rest.html>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Sphinx documentation <http://sphinx.readthedocs.io/en/latest/rest.html>`__",
+      "b_msgstr": "`Sphinx documentation <http://sphinx.readthedocs.io/en/latest/rest.html>`__"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "b_msgstr": "``dashboards/project/loadbalancers/workflows.py:44``"
+    },
+    {
+      "similarity": 0.9999995827674866,
+      "context": "",
+      "msgid": "OpenStack I18n team",
+      "plural_index": 0,
+      "a_msgstr": "OpenStack I18n 팀",
+      "b_msgstr": "OpenStack I18n 팀"
+    },
+    {
+      "similarity": 0.9999995827674866,
+      "context": "",
+      "msgid": "`OpenStack manuals <https://bugs.launchpad.net/openstack-manuals>`_",
+      "plural_index": 0,
+      "a_msgstr": "`OpenStack manuals <https://bugs.launchpad.net/openstack-manuals>`_",
+      "b_msgstr": "`OpenStack manuals <https://bugs.launchpad.net/openstack-manuals>`_"
+    },
+    {
+      "similarity": 0.9999995231628418,
+      "context": "",
+      "msgid": "Tools",
+      "plural_index": 0,
+      "a_msgstr": "도구",
+      "b_msgstr": "도구"
+    },
+    {
+      "similarity": 0.9999995231628418,
+      "context": "",
+      "msgid": "`Translation statistics <https://docs.openstack.org/i18n/latest/translation_stats.html>`_",
+      "plural_index": 0,
+      "a_msgstr": "`번역 통계 <https://docs.openstack.org/i18n/latest/translation_stats.html>`_",
+      "b_msgstr": "`번역 통계 <https://docs.openstack.org/i18n/latest/translation_stats.html>`_"
+    },
+    {
+      "similarity": 0.9999995231628418,
+      "context": "",
+      "msgid": "`https://review.opendev.org/#/c/451625/ <https://review.opendev.org/#/c/451625/>`__",
+      "plural_index": 0,
+      "a_msgstr": "`https://review.opendev.org/#/c/451625/ <https://review.opendev.org/#/c/451625/>`__",
+      "b_msgstr": "`https://review.opendev.org/#/c/451625/ <https://review.opendev.org/#/c/451625/>`__"
+    },
+    {
+      "similarity": 0.9989262223243713,
+      "context": "",
+      "msgid": "Finally, we could generate HTML files by",
+      "plural_index": 0,
+      "a_msgstr": "마지막으로, HTML 파일을 생성 할 수 있습니다.",
+      "b_msgstr": "마지막으로, HTML 파일을 생성할 수 있습니다."
+    },
+    {
+      "similarity": 0.9961636066436768,
+      "context": "",
+      "msgid": "Mailing List: `openstack-i18n@lists.openstack.org <http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-i18n>`_",
+      "plural_index": 0,
+      "a_msgstr": "메일링리스트: `openstack-i18n@lists.openstack.org <http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-i18n>`_",
+      "b_msgstr": "메일리스트: `openstack-i18n@lists.openstack.org <http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-i18n>`_"
+    },
+    {
+      "similarity": 0.9935596585273743,
+      "context": "",
+      "msgid": "Is your Zanata ID included in the `translator list <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__?",
+      "plural_index": 0,
+      "a_msgstr": "Zanata ID가 `translator list <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__ 내에 포함되어 있습니까?",
+      "b_msgstr": "Zanata ID가 `translator list <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__에 포함되어 있는지 확인하세요?"
+    },
+    {
+      "similarity": 0.9927805066108704,
+      "context": "",
+      "msgid": "This script requires Zanata admin privilege.",
+      "plural_index": 0,
+      "a_msgstr": "이 스크립트에는 Zanata 관리자 권한이 필요합니다.",
+      "b_msgstr": "이 스크립트는 Zanata 관리자 권한이 필요합니다."
+    },
+    {
+      "similarity": 0.9926650524139404,
+      "context": "",
+      "msgid": "The POT file is found under ``http://tarballs.openstack.org/translation-source/<Zanata-project-name>/<Zanata-project-version>/<path>/<resource>.pot``, where:",
+      "plural_index": 0,
+      "a_msgstr": "POT 파일은 ``http://tarballs.openstack.org/translation-source/<Zanata-project-name>/<Zanata-project-version>/<path>/<resource>.pot`` 에서 찾을 수 있습니다. 여기서,",
+      "b_msgstr": "POT 파일은 `http://tarballs.openstack.org/translation-source/<Zanata-project-name>/<Zanata-project-version>/<path>/<resource>.pot`에 위치하고 있습니다. 여기서:"
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.17242322862148285,
+      "context": "",
+      "msgid": "Loading scripts",
+      "plural_index": 0,
+      "a_msgstr": "스크립트 불러오기",
+      "b_msgstr": "스クリプ트 로드"
+    },
+    {
+      "similarity": 0.22244636714458466,
+      "context": "",
+      "msgid": "Slicing",
+      "plural_index": 0,
+      "a_msgstr": "Slicing",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.22429533302783966,
+      "context": "",
+      "msgid": "Getting in touch",
+      "plural_index": 0,
+      "a_msgstr": "어울리기",
+      "b_msgstr": "연락처를 얻는"
+    },
+    {
+      "similarity": 0.23071123659610748,
+      "context": "",
+      "msgid": "Convention",
+      "plural_index": 0,
+      "a_msgstr": "규칙",
+      "b_msgstr": "전통"
+    },
+    {
+      "similarity": 0.28707700967788696,
+      "context": "",
+      "msgid": "You can set the components of your AIO installation in ``tests/vars/bootstrap-aio-vars.yml``. Dependly on your environment the installation takes 1-2 hours. For more details on the AIO configuration, please see `OSA AIO documentation <https://docs.openstack.org/openstack-ansible/latest/user/aio/quickstart.html#building-an-aio>`_.",
+      "plural_index": 0,
+      "a_msgstr": "AIO 설치에 대한 구성요소는 ``tests/vars/bootstrap-aio-vars.yml`` 에서 설정할 수 있습니다. 대상 환경에 따라 달라지지만, 설치 과정은 보통 1-2시간 소요됩니다. AIO 구성에 대한 보다 자세한 정보는 `OSA AIO documentation <https://docs.openstack.org/openstack-ansible/latest/user/aio/quickstart.html#building-an-aio>`_ 을 살펴봅니다.",
+      "b_msgstr": "비어 있는 구성요소"
+    },
+    {
+      "similarity": 0.30720388889312744,
+      "context": "",
+      "msgid": "Pike cycle",
+      "plural_index": 0,
+      "a_msgstr": "Pike 버전",
+      "b_msgstr": "피크 사이클"
+    },
+    {
+      "similarity": 0.35371312499046326,
+      "context": "",
+      "msgid": "A person who can submit translations.",
+      "plural_index": 0,
+      "a_msgstr": "번역을 제출할 수 있는 사람입니다.",
+      "b_msgstr": "translator"
+    },
+    {
+      "similarity": 0.36617326736450195,
+      "context": "",
+      "msgid": "Debugging job scripts",
+      "plural_index": 0,
+      "a_msgstr": "작업 스크립트 디버깅",
+      "b_msgstr": "调试作业脚本"
+    },
+    {
+      "similarity": 0.38289299607276917,
+      "context": "",
+      "msgid": "Translation infrastructure",
+      "plural_index": 0,
+      "a_msgstr": "번역 인프라",
+      "b_msgstr": "ترranslation infrastructure"
+    },
+    {
+      "similarity": 0.3833480477333069,
+      "context": "",
+      "msgid": "A privileged member in a translation team who can help in team management tasks, such as approving new members and reviewing contributions to that language. We also have task coordinators for specific tasks.",
+      "plural_index": 0,
+      "a_msgstr": "새로운 구성원 승인 및 해당 언어에 대한 컨트리뷰션을 검토하는 것과 같은 팀 관리 작업을 도울 수 있는 번역 팀 내 권한을 가진 구성원입니다. 또한 특정 작업별 코디네이터 또한 있습니다.",
+      "b_msgstr": "team lead"
+    },
+    {
+      "similarity": 0.3914715647697449,
+      "context": "",
+      "msgid": "A person who can proofread translations and mark them as reviewed (approved) or rejected.",
+      "plural_index": 0,
+      "a_msgstr": "번역을 검토하고 해당 항목을 리뷰함 (승인함) 또는 거절함으로 구분할 수 있는 사람입니다.",
+      "b_msgstr": "proofreader"
+    },
+    {
+      "similarity": 0.3928247392177582,
+      "context": "",
+      "msgid": "Contributing",
+      "plural_index": 0,
+      "a_msgstr": "기여하기",
+      "b_msgstr": "참여"
+    },
+    {
+      "similarity": 0.4139612317085266,
+      "context": "",
+      "msgid": "Handy links (always sort of on the agenda)",
+      "plural_index": 0,
+      "a_msgstr": "관련 링크 (항상 안건에 따라 정렬됩니다)",
+      "b_msgstr": "가드 リンク (시empre 주제에 있지만 정상적으로 표시되지 않습니다)."
+    },
+    {
+      "similarity": 0.4393843114376068,
+      "context": "",
+      "msgid": "Downloading",
+      "plural_index": 0,
+      "a_msgstr": "Downloading",
+      "b_msgstr": "다운로드"
+    },
+    {
+      "similarity": 0.4399275481700897,
+      "context": "",
+      "msgid": "Mitaka cycle",
+      "plural_index": 0,
+      "a_msgstr": "Mitaka 버전",
+      "b_msgstr": "미타카 주기"
+    },
+    {
+      "similarity": 0.4427046775817871,
+      "context": "",
+      "msgid": "How can I report a bug?",
+      "plural_index": 0,
+      "a_msgstr": "어떻게 버그를 신고할 수 있습니까?",
+      "b_msgstr": "BUG를 보고 싶은 방법은 무엇인가?"
+    },
+    {
+      "similarity": 0.4472259283065796,
+      "context": "",
+      "msgid": "Glossary of your language",
+      "plural_index": 0,
+      "a_msgstr": "대상 언어 내 용어집",
+      "b_msgstr": "어言어言의 glossary"
+    },
+    {
+      "similarity": 0.46720653772354126,
+      "context": "",
+      "msgid": "Coordinator",
+      "plural_index": 0,
+      "a_msgstr": "코디네이터",
+      "b_msgstr": "주도자"
+    },
+    {
+      "similarity": 0.47479671239852905,
+      "context": "",
+      "msgid": "Queens cycle",
+      "plural_index": 0,
+      "a_msgstr": "Queens 주기",
+      "b_msgstr": "퀸스 사이클"
+    },
+    {
+      "similarity": 0.4838907718658447,
+      "context": "",
+      "msgid": "prioritize the bug",
+      "plural_index": 0,
+      "a_msgstr": "번역 우선순위를 지정합니다",
+      "b_msgstr": "bug를 우선시하십시오"
+    },
+    {
+      "similarity": 0.48459914326667786,
+      "context": "",
+      "msgid": "Translation infrastructure tasks and scripts",
+      "plural_index": 0,
+      "a_msgstr": "번역 인프라 업무와 스크립트",
+      "b_msgstr": "ترranslation infrastructure tasks and scripts"
+    },
+    {
+      "similarity": 0.4858705401420593,
+      "context": "",
+      "msgid": "Newton cycle",
+      "plural_index": 0,
+      "a_msgstr": "Newton 버전",
+      "b_msgstr": "뉴턴 주기"
+    },
+    {
+      "similarity": 0.4938296973705292,
+      "context": "",
+      "msgid": "You can see detail member-level statistics data on `HTML version of the page <https://docs.openstack.org/i18n/latest/atc-stats.html>`_.",
+      "plural_index": 0,
+      "a_msgstr": "자세한 구성원에 대한 통계 데이터를 `HTML version of the page <https://docs.openstack.org/i18n/latest/atc-stats.html>`_ 에서 확인하실 수 있습니다.",
+      "b_msgstr": "포트 %(port_id)s에 대해 바인딩에 실패했습니다. 자세한 정보는 neutron 로그를 확인하십시오."
+    },
+    {
+      "similarity": 0.4969785809516907,
+      "context": "",
+      "msgid": "I18n team meeting",
+      "plural_index": 0,
+      "a_msgstr": "I18n 팀 미팅",
+      "b_msgstr": "국가 번역 팀 회의"
+    },
+    {
+      "similarity": 0.5003683567047119,
+      "context": "",
+      "msgid": "Glossary Management",
+      "plural_index": 0,
+      "a_msgstr": "용어집 관리",
+      "b_msgstr": "집합 관리"
+    },
+    {
+      "similarity": 0.5026854276657104,
+      "context": "",
+      "msgid": "Train cycle",
+      "plural_index": 0,
+      "a_msgstr": "Train 주기",
+      "b_msgstr": "학습 주기"
+    },
+    {
+      "similarity": 0.5258888602256775,
+      "context": "",
+      "msgid": "Master glossary",
+      "plural_index": 0,
+      "a_msgstr": "마스터 용어집",
+      "b_msgstr": "마스터 glossary"
+    },
+    {
+      "similarity": 0.5403701066970825,
+      "context": "",
+      "msgid": "Cross Project Liaisons",
+      "plural_index": 0,
+      "a_msgstr": "크로스 프로젝트 연락 조직 (Liaison)",
+      "b_msgstr": "교차 프로젝트 협력자"
+    },
+    {
+      "similarity": 0.5418468713760376,
+      "context": "",
+      "msgid": "Documentation",
+      "plural_index": 0,
+      "a_msgstr": "문서화",
+      "b_msgstr": "文档"
+    },
+    {
+      "similarity": 0.5460798144340515,
+      "context": "",
+      "msgid": "OpenStack Dashboard",
+      "plural_index": 0,
+      "a_msgstr": "OpenStack 대시보드",
+      "b_msgstr": "오픈 스톡 Dashboard"
+    },
+    {
+      "similarity": 0.54915851354599,
+      "context": "",
+      "msgid": "Uploading",
+      "plural_index": 0,
+      "a_msgstr": "Uploading",
+      "b_msgstr": "업로드"
+    },
+    {
+      "similarity": 0.5691322684288025,
+      "context": "",
+      "msgid": "Discuss and review glossary changes in your language team before you propose changes to the Gerrit review system. Reviewers in the Gerrit review system cannot understand your language in most cases, so they can only check syntax or conventions.",
+      "plural_index": 0,
+      "a_msgstr": "변경 사항을 Gerrit 리뷰 시스템에 제안하기 이전에 대상 언어팀에서 용어집 변경 사항에 대해 토론 및 리뷰를 거칩니다. Gerrit 리뷰 시스템 내 검토자는 대부분의 경우 대상 언어를 이해할 수 없기에, 문법 또는 통용규칙만을 확인할 수 있습니다.",
+      "b_msgstr": "语言团队中 glossary 변경的讨论和审查之前，请在 Gerrit 评论系统提议更改。Gerrit 评论系统中的审查者大多数情况下无法理解您的语言，因此他们只能检查语法或约定."
+    },
+    {
+      "similarity": 0.6510352492332458,
+      "context": "",
+      "msgid": "Handling horizon projects",
+      "plural_index": 0,
+      "a_msgstr": "horizon 프로젝트 처리",
+      "b_msgstr": "아키텍처 프로젝트를 처리합니다."
+    },
+    {
+      "similarity": 0.6552594900131226,
+      "context": "",
+      "msgid": "Translation jobs",
+      "plural_index": 0,
+      "a_msgstr": "Translation jobs",
+      "b_msgstr": "ترranslation jobs"
+    },
+    {
+      "similarity": 0.6569955945014954,
+      "context": "",
+      "msgid": "Documentation projects",
+      "plural_index": 0,
+      "a_msgstr": "문서 프로젝트",
+      "b_msgstr": "文档 프로젝트"
+    },
+    {
+      "similarity": 0.6571146249771118,
+      "context": "",
+      "msgid": "Of course there is no need that team coordinators do all items. You can collaborate your team members and share ideas.",
+      "plural_index": 0,
+      "a_msgstr": "물론 팀 코디네이터가 모든 항목을 할 필요는 없습니다. 팀 구성원과 협력 및 아이디어를 공유할 수 있습니다.",
+      "b_msgstr": "naturally there is no need that team coordinators do all items. You can collaborate your team members and share ideas."
+    },
+    {
+      "similarity": 0.6660576462745667,
+      "context": "",
+      "msgid": "Liberty cycle",
+      "plural_index": 0,
+      "a_msgstr": "Liberty 버전",
+      "b_msgstr": "Liberty cycle"
+    },
+    {
+      "similarity": 0.6778080463409424,
+      "context": "",
+      "msgid": "Missed translations. Missed translations might be caused by not extracting English strings from the source project, or be caused by real missed translations. If the translations are missed in two different languages, they are probably bugs in the source project. Or else, they are real missed translations.",
+      "plural_index": 0,
+      "a_msgstr": "번역되지 않은 경우. 해당 번역은 소스 프로젝트에서 영문 문자열 추출이 이루어지지 않았거나, 실제 번역이 되지 않았기에 야기되었을 수 있습니다. 해당 번역이 서로 다른 두 언어 (이상)에서 놓친 경우, 아마도 소스 프로젝트 내 버그일 가능성이 있습니다. 또는, 그렇지 않다면, 실제로 번역이 (아직) 이루어지지 않은 경우입니다.",
+      "b_msgstr": "missed translations. missed translations might be caused by not extracting english strings from the source project, or be caused by real missed translations. if the translations are missed in two different languages, they are probably bugs in the source project. else, they are real missed translations."
+    },
+    {
+      "similarity": 0.6791930794715881,
+      "context": "",
+      "msgid": "Release Management",
+      "plural_index": 0,
+      "a_msgstr": "릴리즈 관리",
+      "b_msgstr": "리リース 관리"
+    },
+    {
+      "similarity": 0.6792820692062378,
+      "context": "",
+      "msgid": "The convention for heading levels is as follows::",
+      "plural_index": 0,
+      "a_msgstr": "머리말 부분을 위한 규칙은 다음과 같습니다::",
+      "b_msgstr": "heading level의 전통적 규칙은 다음과 같습니다.:"
+    },
+    {
+      "similarity": 0.6944705247879028,
+      "context": "",
+      "msgid": "The diff would be like http://paste.openstack.org/show/802260/.",
+      "plural_index": 0,
+      "a_msgstr": "변경 사항은 http://paste.openstack.org/show/802260/ 과 같을 것입니다.",
+      "b_msgstr": "diff는 http://paste.openstack.org/show/802260/_로 표시됩니다."
+    },
+    {
+      "similarity": 0.7021526098251343,
+      "context": "",
+      "msgid": "Meeting agenda",
+      "plural_index": 0,
+      "a_msgstr": "미팅 주제",
+      "b_msgstr": "회합 정서"
+    },
+    {
+      "similarity": 0.7028188705444336,
+      "context": "",
+      "msgid": "Active Contributor status in I18n project",
+      "plural_index": 0,
+      "a_msgstr": "I18n 프로젝트 내 활동 컨트리뷰터 (AC) 상태",
+      "b_msgstr": "I18n 프로젝트에서 활성적인 기여자 상태"
+    },
+    {
+      "similarity": 0.703298807144165,
+      "context": "",
+      "msgid": "confirm the bug or mark it as incomplete",
+      "plural_index": 0,
+      "a_msgstr": "버그를 확인하거나 incomplete로 구분합니다",
+      "b_msgstr": "bug를 확인하거나 비대면으로 표시하세요."
+    },
+    {
+      "similarity": 0.7034856677055359,
+      "context": "",
+      "msgid": "A glossary file of your language is found at ``glossary/locale/<lang>/LC_MESSAGES/glossary.po`` in the i18n repository. The file is a usual PO file.",
+      "plural_index": 0,
+      "a_msgstr": "대상 언어에 대한 용어집 파일은 i18n 저장소 내 ``glossary/locale/<lang>/LC_MESSAGES/glossary.po`` 에서 찾을 수 있습니다. 해당 파일은 일반적인 PO 파일입니다.",
+      "b_msgstr": "glossary/locale/<lang>/LC_MESSAGES/glossary.po"
+    },
+    {
+      "similarity": 0.7070998549461365,
+      "context": "",
+      "msgid": "Commenting out CI-specific codes",
+      "plural_index": 0,
+      "a_msgstr": "CI에 특화된 코드 주석 처리",
+      "b_msgstr": "CI-Specifc 코드를 coment아웃합니다."
+    },
+    {
+      "similarity": 0.7079480886459351,
+      "context": "",
+      "msgid": "Open discussion",
+      "plural_index": 0,
+      "a_msgstr": "기타 토론",
+      "b_msgstr": "토론 열기"
+    },
+    {
+      "similarity": 0.7100228667259216,
+      "context": "",
+      "msgid": "Rocky cycle",
+      "plural_index": 0,
+      "a_msgstr": "Rocky 주기",
+      "b_msgstr": "락키 사이클"
+    },
+    {
+      "similarity": 0.7102640867233276,
+      "context": "",
+      "msgid": "Ocata cycle",
+      "plural_index": 0,
+      "a_msgstr": "Ocata 버전",
+      "b_msgstr": "Ocata cycle"
+    },
+    {
+      "similarity": 0.7141610383987427,
+      "context": "",
+      "msgid": "Extracting",
+      "plural_index": 0,
+      "a_msgstr": "Extracting",
+      "b_msgstr": "추출 중입니다"
+    }
+  ]
+}
