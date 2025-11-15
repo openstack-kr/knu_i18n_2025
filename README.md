@@ -161,7 +161,9 @@ However, few errors can not be fixed with this command and you have to fix them 
 
 ## 7. Paper-Experiments Reproducibility
 
-
+To validate how our pipeline works well, we did ablation study. <br>
+In this pipeline, we applied 3 methods, (a) Batch-Method, (b) Few-Shot Example, (c) Language Specific Prompt. <br>
+In this study, we test how (a) and (b) powerful. <br>
 
 ### Environment
 
@@ -171,9 +173,12 @@ However, few errors can not be fixed with this command and you have to fix them 
 - Full Dependencies: Check [requirements.txt](https://github.com/openstack-kr/knu_i18n_2025/blob/main/requirements.txt)
 - LLM Framework: ollama (Python package, v0.6.0)
 - LLM: Llama 3.2 (3B)
-- target POT
+- target file: https://opendev.org/openstack/i18n/src/branch/master/doc/source/locale
 
 ### Evalution Metric
+
+We measured the similarity between the AI-generated preliminary translation (.po) and the human-translated .po for each target file.<br>
+Similarity was computed using the mean-pooling method of the SentenceTransformer library.<br>
 
 ### Result
 
@@ -198,6 +203,8 @@ However, few errors can not be fixed with this command and you have to fix them 
 | --- | --- | --- | --- | --- |
 |before a, b(%)|	75.96|	84.63|	54.71|	928.96s|
 |after a, b(%)|	89.30|	93.46|	85.94|	927.74s|
+
+For Korean, translation quality improved by 16.19%, and across four languages, the average improvement was 12.68%.
 
 ### Reproducibility
 
