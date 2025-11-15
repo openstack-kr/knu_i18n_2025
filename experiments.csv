@@ -1,0 +1,5 @@
+timestamp,model,pot_file,po_file,duration_sec,language,accuracy,git_commit,git_branch,Avg_sim,Med_sim,sim_over_0.8(≥0.8)
+2025-11-14T18:00:16,llama3.2:3b,/home/ubuntu/jth/pot/i18n-docs-source-locale-zh_CN.pot,/home/ubuntu/jth/po/llama3.2:3b/zh_CN/i18n-docs-source-locale-zh_CN.po,825.14,zh_CN,,65a69b3801f181739d0777673d56cde4fba6138e,testA,0.7596,0.8463,54.71
+2025-11-14T18:22:59,llama3.2:3b,/home/ubuntu/jth/pot/i18n-docs-source-locale-ru.pot,/home/ubuntu/jth/po/llama3.2:3b/ru/i18n-docs-source-locale-ru.po,1363.18,ru,,65a69b3801f181739d0777673d56cde4fba6138e,testA,0.8442,0.9203,72.81
+2025-11-14T18:33:25,llama3.2:3b,/home/ubuntu/jth/pot/i18n-docs-source-locale-ja.pot,/home/ubuntu/jth/po/llama3.2:3b/ja/i18n-docs-source-locale-ja.po,625.2,ja,,65a69b3801f181739d0777673d56cde4fba6138e,testA,0.6876,0.7402,40.88
+2025-11-14T18:53:44,llama3.2:3b,/home/ubuntu/jth/pot/i18n-docs-source-locale-ko_KR.pot,/home/ubuntu/jth/po/llama3.2:3b/ko_KR/i18n-docs-source-locale-ko_KR.po,1218.78,ko_KR,,65a69b3801f181739d0777673d56cde4fba6138e,testA,0.6806,0.7523,42.80

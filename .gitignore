@@ -1,6 +1,5 @@
 .tox/
 
-experiments.csv
 *.log
 
 po/
