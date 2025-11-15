@@ -201,7 +201,7 @@ Similarity was computed using the mean-pooling method of the SentenceTransformer
 
 | Russian | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
-|without a, b(%)|	844.2|	92.03|	72.81|	1432.77s|
+|without a, b(%)|	84.42|	92.03|	72.81|	1432.77s|
 |with a, b(%)|	90.20|	96.25|	82.71|	1647.99s|			
 
 For Korean, translation quality improved by 16.19%, and across four languages, the average improvement was 12.68%.
