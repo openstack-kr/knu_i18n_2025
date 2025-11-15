@@ -103,6 +103,10 @@ ur.txt
 ...
 ```
 
+```
+find . -name "language_code.txt"
+```
+
 - If a file for your language already exists
   → Open it and update or improve the prompts inside.
 
@@ -148,7 +152,9 @@ By running `run.sh` as shown below, you can measure how similar the translations
 
 python po_quality_check.py --a "answer.po" --b "ko.po" --out result_ko.json --model BM-K/KoSimCSE-roberta-multitask --only-translated --normalize-text
 ```
-
+- if you don't have an answer.po file(fully translated reference), you can choose one of the following options:
+1. Skip the validation entirely. It is optional.
+2. Use other fully translated  PO file from a previous commit. Then extract the corresponding .pot file from that commit, re-translate it using your updated primpt, and run the quality validation against the old .po file.
 ### Final Step: Submit a Pull Request
 
 Commit your new files:
