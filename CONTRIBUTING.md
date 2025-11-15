@@ -1,6 +1,6 @@
-## Contribute to Few Shot Example
+## 📝 Contribute to Few Shot Example
 
-### Why Contribute?
+### Why contribute to this project?
 
 AI models find it difficult to grasp the exact tone, style, and variable handling just from rules alone.
 
@@ -70,9 +70,73 @@ Open a Pull Request. The pipeline will now automatically detect and use your hig
 
 Thank you for your contribution!
 
-## Contribute to Language Specific Prompt
+## 📝 Contribute to Language Specific Prompt
 
-## Run Validation Code
+### Why contribute to this project?
+
+In the previous version, the same prompt was used for all target languages. Therefore, generating prompts that account for the grammar and linguistic characteristics of each target language is expected to improve performance and help maintain a more consistent translation tone.
+
+⚠️ Caution
+
+1. When the prompt was long, lower-parameter models showed weaker performance.
+2. Lower-parameter models had poorer contextual understanding compared to larger models.
+3. Even if a translation is contextually natural, it may be considered incorrect if its nuance does not match the expected answer.
+
+### How to Contribute?
+
+## 1. Navigate to the `prompts` Folder
+
+All language-specific prompt files are stored in the `prompts/` directory located at the project root
+
+```
+cd prompts
+```
+
+## 2. Locate Your Language Code File
+
+Inside the prompts folder, you will find prompt files named using language codes, such as:
+
+```
+en.txt
+ko.txt
+jp.txt
+fr.txt
+...
+```
+
+- If a file for your language already exists
+  → Open it and update or improve the prompts inside.
+
+- If the file does not exist
+  → Create a new file using the appropriate language code (e.g., `de.txt`, `id.txt`, `it.txt`, etc.).
+
+## 3. Use the Korean Prompt as a Reference
+
+When creating a new language-specific prompt, you may refer to the `ko_KR.txt` file.
+
+This will help you understand:
+
+- The overall structure
+- Section formatting
+- Tone and style
+
+## 4. Customize the Prompt for Your Language
+
+Feel free to adapt and rewrite the prompt so that it fits naturally within your language.
+
+You may adjust:
+
+- Grammar and sentence structure
+- Tone and formality
+- Cultural or linguistic nuances
+
+The goal is to create a prompt that produces natural and consistent translations in your language.
+
+## 5. Run Validation Code
+
+After adding or updating your prompt, run the provided validation code to measure similarity across languages and ensure consistency.
+
+This step helps maintain a coherent structure and style across all prompt files.
 
 ```bash
 # Options:
