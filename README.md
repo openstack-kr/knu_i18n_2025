@@ -185,13 +185,7 @@ Similarity was computed using the mean-pooling method of the SentenceTransformer
 | Korean | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
 |before a, b(%)|	68.06|	75.23|	42.80|	1250.69s|
-|after a, b(%)| 	84.25|	89.98|	76.00|	742.78s|
-				
-				
-| Russian | Avg | Median |≥0.8|time|
-| --- | --- | --- | --- | --- |
-|before a, b(%)|	844.2|	92.03|	72.81|	1432.77s|
-|after a, b(%)|	90.20|	96.25|	82.71|	1647.99s|			
+|after a, b(%)| 	84.25|	89.98|	76.00|	742.78s|	
 				
 | Japanese | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
@@ -203,6 +197,11 @@ Similarity was computed using the mean-pooling method of the SentenceTransformer
 | --- | --- | --- | --- | --- |
 |before a, b(%)|	75.96|	84.63|	54.71|	928.96s|
 |after a, b(%)|	89.30|	93.46|	85.94|	927.74s|
+
+| Russian | Avg | Median |≥0.8|time|
+| --- | --- | --- | --- | --- |
+|before a, b(%)|	844.2|	92.03|	72.81|	1432.77s|
+|after a, b(%)|	90.20|	96.25|	82.71|	1647.99s|		
 
 For Korean, translation quality improved by 16.19%, and across four languages, the average improvement was 12.68%.
 
