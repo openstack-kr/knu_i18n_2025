@@ -124,38 +124,13 @@ LANG_MAP = {
 ```
 
 ```bash
-#!/bin/bash
-set -e
-
+# Choose LLM
 MODEL=${1:-"llama3.2:3b"}
 
-# 1) make sure the model is available in local ollama
-if command -v ollama >/dev/null 2>&1; then
-  echo "[main.sh] pulling model: $MODEL ..."
-  # if the model already exists, this is a quick no-op
-  ollama pull $MODEL || echo "[main.sh] warning: could not pull model (ollama daemon running?)"
-else
-  echo "[main.sh] warning: ollama is not installed or not in PATH. skipping model pull."
-fi
-
-python translate.py \
-  --model $MODEL \
-  --workers 4 \
-  --start 0 --end 200 \
-  --pot_dir ./pot \
-  --po_dir ./po \
-  --glossary_dir ./glossary \
-  --example_dir ./po-example \
-  --pot_url "https://tarballs.opendev.org/openstack/translation-source/swift/master/releasenotes/source/locale/releasenotes.pot" \
-  --target_pot_file "i18n-docs-source-locale.pot" \
-  --glossary_url "https://opendev.org/openstack/i18n/raw/commit/129b9de7be12740615d532591792b31566d0972f/glossary/locale/{lang}/LC_MESSAGES/glossary.po" \
-  --glossary_po_file "glossary.po" \
-  --glossary_json_file "glossary.json" \
-  --example_url "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po" \
-  --example_file "nova-nova-locale.po" \
-  --fixed_example_json "fixed_examples.json" \
-  --batch-size "5" \
-  --languages "ko_KR"
+# Arguments we recommend to change
+#  --pot_url "" \ (You can download target pot by URL)
+#  --target_pot_file "" \ (If you download it manually, you
+#  --languages "ko_KR, ja, ru" (Please set the languages code you want)
 ```
 
 ## 5. How to Improve Performance?
@@ -186,7 +161,9 @@ However, few errors can not be fixed with this command and you have to fix them 
 
 ## 7. Paper-Experiments Reproducibility
 
-###  Environment
+
+
+### Environment
 
 - OS: Ubuntu 22.04
 - Hardware: 8-core CPU, 16GB memory
@@ -194,30 +171,48 @@ However, few errors can not be fixed with this command and you have to fix them 
 - Full Dependencies: Check [requirements.txt](https://github.com/openstack-kr/knu_i18n_2025/blob/main/requirements.txt)
 - LLM Framework: ollama (Python package, v0.6.0)
 - LLM: Llama 3.2 (3B)
+- target POT
 
-### Setup & Installation
+### Evalution Metric
 
-1. Clone the repository:
+### Result
+
+| Korean | Avg | Median |≥0.8|time|
+| --- | --- | --- | --- | --- |
+|before a, b(%)|	68.06|	75.23|	42.80|	1250.69s|
+|after a, b(%)| 	84.25|	89.98|	76.00|	742.78s|
+				
+				
+| Russian | Avg | Median |≥0.8|time|
+| --- | --- | --- | --- | --- |
+|before a, b(%)|	844.2|	92.03|	72.81|	1432.77s|
+|after a, b(%)|	90.20|	96.25|	82.71|	1647.99s|			
+				
+| Japanese | Avg | Median |≥0.8|time|
+| --- | --- | --- | --- | --- |
+|before a, b(%)|	68.76|	74.02|	40.88|	751.5s|
+|after a, b(%)|	84.19|	88.97|	69.38|	744.13s|
+			
+				
+| Chinese(China) | Avg | Median |≥0.8|time|
+| --- | --- | --- | --- | --- |
+|before a, b(%)|	75.96|	84.63|	54.71|	928.96s|
+|after a, b(%)|	89.30|	93.46|	85.94|	927.74s|
+
+### Reproducibility
+
+1. Chekout to branch: testA or testB:
 ```bash
-git clone https://github.com/openstack-kr/knu_i18n_2025.git
-cd knu_i18n_2025
+git checkout TestA
 ```
-2. Upgrade pip and install dependencies:
-```
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-3. Install Ollama:
-```
-curl -fsSL https://ollama.com/install.sh | sh
-```
-4. (Optional) Use the provided tox environment for isolated setup and execution:
-```
+
+2-1. Use the provided tox environment for isolated setup and execution:
+```bash
 tox -e i18n -vv
 ```
-5. Running the Prototype
+2-2. (Optional) Running the Prototype
 - Execute the translation system via main.sh:
-```
+```bash
 bash main.sh
 ```
 
