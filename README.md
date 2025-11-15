@@ -136,7 +136,7 @@ MODEL=${1:-"llama3.2:3b"}
 ## 5. How to Improve Performance?
 
 You can adjust Few Shot Example and Language Specific Promopt.
-Please refer CONTRIBUTING.md
+Please refer [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## 6. Code Quality Check
 We use [tox](https://tox.wiki) to ensure code consistency and quality.
