@@ -84,7 +84,7 @@ In the previous version, the same prompt was used for all target languages. Ther
 
 ### How to Contribute?
 
-#### 1. Navigate to the `prompts` Folder
+#### Step 1. Navigate to the `prompts` Folder
 
 All language-specific prompt files are stored in the `prompts/` directory located at the project root
 
@@ -92,15 +92,14 @@ All language-specific prompt files are stored in the `prompts/` directory locate
 cd prompts
 ```
 
-#### 2. Locate Your Language Code File
+#### Step 2. Locate Your Language Code File
 
-Inside the prompts folder, you will find prompt files named using language codes, such as:
+Inside the `prompts` folder, you will find prompt files named using language codes, such as:
 
 ```
-en.txt
-ko.txt
-jp.txt
-fr.txt
+ko_KR.txt
+vi_VN.txt
+ur.txt
 ...
 ```
 
@@ -108,9 +107,9 @@ fr.txt
   → Open it and update or improve the prompts inside.
 
 - If the file does not exist
-  → Create a new file using the appropriate language code (e.g., `de.txt`, `id.txt`, `it.txt`, etc.).
+  → Create a new file using the appropriate language code (e.g., `language_code.txt`). In this case, you must also add the `language_code:language_name` pair to the `LANG_MAP` function in `main.sh`
 
-#### 3. Use the Korean Prompt as a Reference
+#### Step 3. Use the Korean Prompt as a Reference
 
 When creating a new language-specific prompt, you may refer to the `ko_KR.txt` file.
 
@@ -120,7 +119,7 @@ This will help you understand:
 - Section formatting
 - Tone and style
 
-#### 4. Customize the Prompt for Your Language
+#### Step 4. Customize the Prompt for Your Language
 
 Feel free to adapt and rewrite the prompt so that it fits naturally within your language.
 
@@ -132,7 +131,7 @@ You may adjust:
 
 The goal is to create a prompt that produces natural and consistent translations in your language.
 
-#### 5. Run Validation Code
+#### Step 5. Run Validation Code
 
 By modifying `main.sh` as shown below, you can check how similar the translations produced by the updated prompt are to the reference (`answer.po`) files, allowing you to evaluate whether the prompt generates accurate and reliable translations.
 
@@ -149,4 +148,5 @@ By modifying `main.sh` as shown below, you can check how similar the translation
 
 python po_quality_check.py --a "answer.po" --b "ko.po" --out result_ko.json --model BM-K/KoSimCSE-roberta-multitask --only-translated --normalize-text
 ```
+
 
