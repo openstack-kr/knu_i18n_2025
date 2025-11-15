@@ -1,13 +1,35 @@
-# knu_i18n_2025
+# AI-based Translation System for OpenStack
+
+This system is an open-source AI translation system developed for OpenStack, which supports multilingual translation using flexible LLMs, few-shot learning, and batch optimization.
 
 ## Overview
 
+We have built a prototype translation system that runs on CPU environments and provides a foundation for OpenStack’s internationalization needs. It integrates few-shot learning and batch-size optimization to improve translation efficiency.
+
+⚠️ The full automation pipeline will be added in the near future to enable workflow automation.
+
 ## Key Features
+
+- **Open-source**: Fully built on open-source AI models
+- **Multilingual Support**: Supports multilingual translation
+- **Flexible LLM Usage**: Can experiment with and switch between different LLM models on CPU environments
+- **Few-shot Learning**: Improves translation quality with minimal examples
+- **Batch-size Optimization**: Enhances translation efficiency for large-scale datasets
+- **Scalable Architecture**: Provides a foundation for future workflow automation and full pipeline integration
 
 ## How It Works
 <img width="1655" height="808" alt="tox Build virtual environment (2)" src="https://github.com/user-attachments/assets/67961759-cfb4-4566-8320-36d15c0cbad0" />
 
-We will add Automation Pipeline Soon!
+The system uses the lightweight LLM framework **Ollama** and a **tox** virtual environment to perform initial AI-assisted translations.
+
+Users can select the target language, LLM, and `.pot` files to be translated via `main.sh`.
+
+1. During execution, `.pot` files that have not yet been translated in **Weblate** are downloaded from a specified URL.
+2. For documents containing hundreds or thousands of lines, multiple sentences are divided into **(a) batches** and input into the LLM.
+3. By default, a general prompt is applied, and if a **(c) language-specific prompt** exists for the target language, it is used instead.
+4. When reference documents are available, a few examples are provided using the **(b) few-shot learning** method. The system also refers to the OpenStack **glossary** during translation.
+
+Initial translation results are exported as `.po` files, uploaded to **Gerrit**, reviewed by human translators, and then merged into **Weblate**.
 
 ## Getting Started
 ### 1. Clone The Repository & Install Tox
@@ -164,6 +186,49 @@ However, few errors can not be fixed with this command and you have to fix them 
 
 ## 7. Paper-Experiments Reproducibility
 
+###  Environment
+
+- OS: Ubuntu 22.04
+- Hardware: 8-core CPU, 16GB memory
+- Python: 3.10
+- Full Dependencies: Check [requirements.txt](https://github.com/openstack-kr/knu_i18n_2025/blob/main/requirements.txt)
+- LLM Framework: ollama (Python package, v0.6.0)
+- LLM: Llama 3.2 (3B)
+
+### Setup & Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/openstack-kr/knu_i18n_2025.git
+cd knu_i18n_2025
+```
+2. Upgrade pip and install dependencies:
+```
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+3. Install Ollama:
+```
+curl -fsSL https://ollama.com/install.sh | sh
+```
+4. (Optional) Use the provided tox environment for isolated setup and execution:
+```
+tox -e i18n -vv
+```
+5. Running the Prototype
+- Execute the translation system via main.sh:
+```
+bash main.sh
+```
+
+📝 **Notes**
+
+- All URLs for .pot, glossary, and example files are specified in main.sh for reproducibility.
+
 ## Team
 
-## Getting in Touch
+- [Lee Juyeong](https://github.com/ale8ander)
+- [Oh Jiwoo](https://github.com/5hjiwoo)
+- [Jo Taeho](https://github.com/o-heat)
+- [Chun Sihyeon](https://github.com/sihyeon22)
+- [Hwang Jiyoung](https://github.com/imjyong)
