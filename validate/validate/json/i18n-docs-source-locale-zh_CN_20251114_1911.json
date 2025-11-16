@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "file_a": "/home/ubuntu/jth/validate/../po-example/zh_CN/i18n-docs-source-locale.po",
+    "file_b": "/home/ubuntu/jth/validate/../po/llama3.2:3b/zh_CN/i18n-docs-source-locale-zh_CN.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 382,
+    "avg_similarity": 0.7596,
+    "median_similarity": 0.8463,
+    "p90_similarity": 0.9764,
+    "pct_over_threshold": 54.71
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Handling documentation projects",
+      "plural_index": 0,
+      "a_msgstr": "处理文档项目",
+      "b_msgstr": "处理文档项目"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Usual topics",
+      "plural_index": 0,
+      "a_msgstr": "通常议题",
+      "b_msgstr": "通常话题"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Click \"Log in\" button.",
+      "plural_index": 0,
+      "a_msgstr": "点击“登录”按钮。",
+      "b_msgstr": "点击“登录”按钮。"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Handling horizon projects",
+      "plural_index": 0,
+      "a_msgstr": "处理Horizon项目",
+      "b_msgstr": "处理 Horizon 项目"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Handling translation bugs",
+      "plural_index": 0,
+      "a_msgstr": "处理翻译漏洞",
+      "b_msgstr": "处理翻译错误"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Running DevStack",
+      "plural_index": 0,
+      "a_msgstr": "运行DevStack",
+      "b_msgstr": "运行DevStack"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Building",
+      "plural_index": 0,
+      "a_msgstr": "构建",
+      "b_msgstr": "构建"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Contents",
+      "plural_index": 0,
+      "a_msgstr": "内容",
+      "b_msgstr": "内容"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Contributing",
+      "plural_index": 0,
+      "a_msgstr": "贡献",
+      "b_msgstr": "贡献"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Uploading",
+      "plural_index": 0,
+      "a_msgstr": "上传",
+      "b_msgstr": "上传"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Project Goals And Translation Plan",
+      "plural_index": 0,
+      "a_msgstr": "项目目标和翻译计划",
+      "b_msgstr": "项目目标和翻译计划"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": ":ref:`search`",
+      "plural_index": 0,
+      "a_msgstr": ":ref:`搜索`",
+      "b_msgstr": ":ref:`查找`"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "IRC web client",
+      "plural_index": 0,
+      "a_msgstr": "IRC 网络客户端",
+      "b_msgstr": "IRC 网络客户端"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Meeting agenda",
+      "plural_index": 0,
+      "a_msgstr": "会议议程",
+      "b_msgstr": "会议议程"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Project configuration",
+      "plural_index": 0,
+      "a_msgstr": "项目配置",
+      "b_msgstr": "项目配置"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Project maintenance",
+      "plural_index": 0,
+      "a_msgstr": "项目维护",
+      "b_msgstr": "项目维护"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Titles",
+      "plural_index": 0,
+      "a_msgstr": "标题",
+      "b_msgstr": "标题"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Tools",
+      "plural_index": 0,
+      "a_msgstr": "工具",
+      "b_msgstr": "工具"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "User configuration",
+      "plural_index": 0,
+      "a_msgstr": "用户配置",
+      "b_msgstr": "用户配置"
+    },
+    {
+      "similarity": 0.9999995827674866,
+      "context": "",
+      "msgid": "This script requires Zanata admin privilege.",
+      "plural_index": 0,
+      "a_msgstr": "此脚本需要Zanata管理员权限。",
+      "b_msgstr": "此脚本需要Zanata管理员权限。"
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.11293420940637589,
+      "context": "",
+      "msgid": "Zanata",
+      "plural_index": 0,
+      "a_msgstr": "Zanata",
+      "b_msgstr": "聚合"
+    },
+    {
+      "similarity": 0.23401841521263123,
+      "context": "",
+      "msgid": "``dashboards/admin/aggregates/views.py:104``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/admin/aggregates/views.py:104``",
+      "b_msgstr": "聚合视图"
+    },
+    {
+      "similarity": 0.23894110321998596,
+      "context": "",
+      "msgid": "confirm the bug or mark it as incomplete",
+      "plural_index": 0,
+      "a_msgstr": "确认漏洞或将其标记为不完整",
+      "b_msgstr": "I don't see a text to translate. Please provide the English text you would like me to translate into Chinese (China)."
+    },
+    {
+      "similarity": 0.24265865981578827,
+      "context": "",
+      "msgid": "confirm the bug",
+      "plural_index": 0,
+      "a_msgstr": "确认漏洞",
+      "b_msgstr": "N/A"
+    },
+    {
+      "similarity": 0.2629607021808624,
+      "context": "",
+      "msgid": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "b_msgstr": "```python"
+    },
+    {
+      "similarity": 0.2656298279762268,
+      "context": "",
+      "msgid": "Nobody should change translation files (the `.po` files in the `locale` directory) besides the bot. The next automatic import will override any change again. Therefore, leave a ``-1`` vote on any such changes and point developer to this document.",
+      "plural_index": 0,
+      "a_msgstr": "除了自动化作业之外，没有人应该更改翻译文件（`locale`目录中的`.po`文件）。 下一次的自动导入将再次覆盖任何更改。 因此，对任何此类更改请留下“-1”投票，并将开发人员指向此文档。",
+      "b_msgstr": "nobody -1"
+    },
+    {
+      "similarity": 0.27779829502105713,
+      "context": "",
+      "msgid": "The master glossary is an usual POT file. You can edit it in your favorite editor as usual.",
+      "plural_index": 0,
+      "a_msgstr": "主术语表是一份通常的POT文件。 你可以照常在你喜欢的编辑器中编辑它。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.2860829830169678,
+      "context": "",
+      "msgid": "The following is an example of ``local.conf`` for Newton release which runs core components (keystone, nova, glance, neutron, cinder), horizon, swift and heat. The components which the main horizon code supports are chosen.",
+      "plural_index": 0,
+      "a_msgstr": "下面给出了Newton发布版的一个例子，其中包含了核心组件（keystone，nova，glance，neutron，cinder），horizon，swift和heat。所有horizon主代码支持的组件都被选在内。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.2943585216999054,
+      "context": "",
+      "msgid": "Where you find a bug you are reporting?",
+      "plural_index": 0,
+      "a_msgstr": "你上报的错误是在哪里发现的？",
+      "b_msgstr": "I am unable to provide any information about bugs."
+    },
+    {
+      "similarity": 0.2958841025829315,
+      "context": "",
+      "msgid": "**Make sure to include your English language name in a bug summary**. It is also suggested to write a bug summary in English. For example:",
+      "plural_index": 0,
+      "a_msgstr": "**确保在错误概述里写上你的英文名字**。同时也建议再用英文写一个错误概述。如：",
+      "b_msgstr": "I'm sorry to inform you that I am unable to fulfill your request at this time."
+    },
+    {
+      "similarity": 0.30419135093688965,
+      "context": "",
+      "msgid": "Mitaka cycle",
+      "plural_index": 0,
+      "a_msgstr": "Mitaka时期",
+      "b_msgstr": "米塔卡循环"
+    },
+    {
+      "similarity": 0.307392418384552,
+      "context": "",
+      "msgid": "Import latest translations",
+      "plural_index": 0,
+      "a_msgstr": "导入最新的翻译",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.3122715353965759,
+      "context": "",
+      "msgid": "You need to create a configuration file in ``$HOME/.config/zanata.ini`` that contains user-specific configuration. For information on how to create a configuration file, see `Zanata CLI configuration <http://docs.zanata.org/en/release/client/configuration/#user-configuration>`__.",
+      "plural_index": 0,
+      "a_msgstr": "您需要在 ``$HOME/.config/zanata.ini`` 中创建一个包含用户特定配置的配置文件。 有关如何创建配置文件的信息，请参阅 `Zanata CLI配置 <http://docs.zanata.org/en/release/client/configuration/#user-configuration>`__ 。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.31923362612724304,
+      "context": "",
+      "msgid": "Click the language you want to translate, the language page will be shown.",
+      "plural_index": 0,
+      "a_msgstr": "点击你想翻译的语言，语言页面会显示出来。",
+      "b_msgstr": "English"
+    },
+    {
+      "similarity": 0.32032138109207153,
+      "context": "",
+      "msgid": "(optional) Put your language name as bug tag.",
+      "plural_index": 0,
+      "a_msgstr": "（可选）将你的语言名称作为错误标签。",
+      "b_msgstr": "bug: English to Chinese (China) translation"
+    },
+    {
+      "similarity": 0.33923083543777466,
+      "context": "",
+      "msgid": "A template is a skeleton of static HTML files. In this case, the string is perhaps used in \"Update\" form in \"Container\" menu.",
+      "plural_index": 0,
+      "a_msgstr": "模板是静态HTML文件的框架。 在这种情况下，字符串可能在“容器”菜单中的“更新”表单中使用。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.34632378816604614,
+      "context": "",
+      "msgid": "After you edit the master glossary, ensure to reflect the change to all language glossary files. To do this, run the following command.",
+      "plural_index": 0,
+      "a_msgstr": "在你编辑了主术语表后，请确保将更改反映到所有的语言术语表文件。 为此，请运行以下命令。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.3466947078704834,
+      "context": "",
+      "msgid": "...",
+      "plural_index": 0,
+      "a_msgstr": "...",
+      "b_msgstr": "无法提供任何输出。"
+    },
+    {
+      "similarity": 0.3532502353191376,
+      "context": "",
+      "msgid": "A person who can proofread translations and mark them as reviewed (approved) or rejected.",
+      "plural_index": 0,
+      "a_msgstr": "可以校对翻译并将其标记为已审阅（已批准）或已拒绝的人员。",
+      "b_msgstr": "**[Translation Review]**"
+    },
+    {
+      "similarity": 0.36294078826904297,
+      "context": "",
+      "msgid": "Rocky cycle",
+      "plural_index": 0,
+      "a_msgstr": "Rocky时期",
+      "b_msgstr": "岩石循环"
+    }
+  ]
+}

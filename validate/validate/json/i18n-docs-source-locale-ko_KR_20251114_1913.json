@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "file_a": "/home/ubuntu/jth/validate/../po-example/ko_KR/i18n-docs-source-locale.po",
+    "file_b": "/home/ubuntu/jth/validate/../po/llama3.2:3b/ko_KR/i18n-docs-source-locale-ko_KR.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 465,
+    "avg_similarity": 0.6806,
+    "median_similarity": 0.7523,
+    "p90_similarity": 0.9584,
+    "pct_over_threshold": 42.8
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Contents",
+      "plural_index": 0,
+      "a_msgstr": "내용",
+      "b_msgstr": "내용"
+    },
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Tools",
+      "plural_index": 0,
+      "a_msgstr": "도구",
+      "b_msgstr": "도구"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Environment",
+      "plural_index": 0,
+      "a_msgstr": "환경",
+      "b_msgstr": "환경"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Project configuration",
+      "plural_index": 0,
+      "a_msgstr": "프로젝트 구성",
+      "b_msgstr": "프로젝트 구성"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Server projects",
+      "plural_index": 0,
+      "a_msgstr": "서버 프로젝트",
+      "b_msgstr": "서버 프로젝트"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "TBD",
+      "plural_index": 0,
+      "a_msgstr": "TBD",
+      "b_msgstr": "TBD"
+    },
+    {
+      "similarity": 0.9999999403953552,
+      "context": "",
+      "msgid": "Preparations",
+      "plural_index": 0,
+      "a_msgstr": "준비",
+      "b_msgstr": "준비"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "...",
+      "plural_index": 0,
+      "a_msgstr": "...",
+      "b_msgstr": "..."
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "IRC web client",
+      "plural_index": 0,
+      "a_msgstr": "IRC 웹 클라이언트",
+      "b_msgstr": "IRC 웹 클라이언트"
+    },
+    {
+      "similarity": 0.9999995231628418,
+      "context": "",
+      "msgid": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "plural_index": 0,
+      "a_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html",
+      "b_msgstr": "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html"
+    },
+    {
+      "similarity": 0.9963077306747437,
+      "context": "",
+      "msgid": "This `Script in I18n repo <https://opendev.org/openstack/i18n/src/tools/zanata/zanata_users.py>`__ collects all users and their activities.",
+      "plural_index": 0,
+      "a_msgstr": "`Script in I18n repo <https://opendev.org/openstack/i18n/src/tools/zanata/zanata_users.py>`__ 는 모든 사용자 및 활동을 수집합니다.",
+      "b_msgstr": "이 `Script in I18n repo <https://opendev.org/openstack/i18n/src/tools/zanata/zanata_users.py>` __는 모든 사용자와 활동을 수집합니다."
+    },
+    {
+      "similarity": 0.9952783584594727,
+      "context": "",
+      "msgid": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "plural_index": 0,
+      "a_msgstr": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__",
+      "b_msgstr": "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`"
+    },
+    {
+      "similarity": 0.9927802681922913,
+      "context": "",
+      "msgid": "This script requires Zanata admin privilege.",
+      "plural_index": 0,
+      "a_msgstr": "이 스크립트에는 Zanata 관리자 권한이 필요합니다.",
+      "b_msgstr": "이 스크립트는 Zanata 관리자 권한이 필요합니다."
+    },
+    {
+      "similarity": 0.989211916923523,
+      "context": "",
+      "msgid": "The statistics are calculated using `a Python script <https://opendev.org/openstack/i18n/src/tools/zanata/zanata_stats.py>`__ powered by `Zanata statistics API <http://zanata.org/zanata-platform/rest-api-docs/resource_StatisticsResource.html>`__ Translator list is maintained by `translation_team.yaml <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__ stored in `openstack/i18n git repository <https://opendev.org/openstack/i18n>`__.",
+      "plural_index": 0,
+      "a_msgstr": "통계는 `Python 스크립트 <https://opendev.org/openstack/i18n/src/tools/zanata/zanata_stats.py>`__ 를 사용해 계산되며 `Zanata 통계 API <http://zanata.org/zanata-platform/rest-api-docs/resource_StatisticsResource.html>`__ 를 활용합니다. 번역자 목록은 `translation_team_yaml <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__ 을 통해 유지되며 `openstack/i18n git 저장소 <https://opendev.org/openstack/i18n>`__ 에 있습니다.",
+      "b_msgstr": "통계는 Python 스크립트 <https://opendev.org/openstack/i18n/src/tools/zanata/zanata_stats.py>를 사용하여 계산됩니다. <http://zanata.org/zanata-platform/rest-api-docs/resource_StatisticsResource.html> Zanata 통계 API에 의해 제공됩니다. 번역자 목록은 `translation_team.yaml` <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__에 유지 관리され 있으며, <https://opendev.org/openstack/i18n/>의 openstack/i18n Git 저장소에 저장됩니다."
+    },
+    {
+      "similarity": 0.9882926940917969,
+      "context": "",
+      "msgid": "Language translation team",
+      "plural_index": 0,
+      "a_msgstr": "언어 번역팀",
+      "b_msgstr": "언어 번역 팀"
+    },
+    {
+      "similarity": 0.9835537075996399,
+      "context": "",
+      "msgid": "For most of the Python projects, the preferred tools for I18N are gettext and babel. The gettext module provides internationalization (I18N) and localization (L10N) services for your Python modules and applications. Babel are a collection of tools for internationalizing Python applications.",
+      "plural_index": 0,
+      "a_msgstr": "대부분의 Python 프로젝트에서, I18N을 위해 선호되는 도구는 gettext와 babel입니다. gettext 모듈은 Python 모듈 및 응용 프로그램에 대한 국제화 (I18N) 및 지역화 (L10N) 서비스를 제공합니다. Babel은 Python 응용 프로그램을 국제화하기 위한 도구 모음입니다.",
+      "b_msgstr": "Python 프로젝트에서 대부분의 경우, I18N을 위한 선호도 있는 도구는 gettext과 babel입니다. gettext 모듈은 Python 모듈 및 애플리케이션에 국제화 (I18N)와 지역화 (L10N) 서비스를 제공합니다. babel은 Python 애플리케이션의 국제화 (internationalization) 서비스를 제공하는 collection of tools입니다."
+    },
+    {
+      "similarity": 0.983296275138855,
+      "context": "",
+      "msgid": "OpenStack I18n team is a team to coordinate all language translations and cooperation with the I18n team and the development teams. I18n team usually has a working plan.",
+      "plural_index": 0,
+      "a_msgstr": "OpenStack I18n팀은 I18n팀 및 여러 개발팀과 함께 모든 언어에 대한 번역 및 (상호) 협력을 조정하는 하나의 팀입니다. I18n팀은 일반적으로 작업 계획을 가지고 있습니다.",
+      "b_msgstr": "OpenStack I18n 팀은 모든 언어 번역 및 I18n 팀과 개발 팀의 협력을 조정하는 팀입니다. 일반적으로 I18n 팀은 작업 계획을 가지고 있습니다."
+    },
+    {
+      "similarity": 0.9824371933937073,
+      "context": "",
+      "msgid": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__",
+      "plural_index": 0,
+      "a_msgstr": "`https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>`__",
+      "b_msgstr": "https://review.opendev.org/#/c/483452/ <https://review.opendev.org/#/c/483452/>"
+    },
+    {
+      "similarity": 0.9802015423774719,
+      "context": "",
+      "msgid": "Register a user ID in Zanata",
+      "plural_index": 0,
+      "a_msgstr": "사용자 ID를 Zanata에 등록하기",
+      "b_msgstr": "사용자 ID를 Zanata에서 등록하십시오."
+    },
+    {
+      "similarity": 0.9784124493598938,
+      "context": "",
+      "msgid": "I18n team meeting",
+      "plural_index": 0,
+      "a_msgstr": "I18n 팀 미팅",
+      "b_msgstr": "I18n 팀 회의"
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.0069636753760278225,
+      "context": "",
+      "msgid": "Is your Zanata ID included in the `translator list <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__?",
+      "plural_index": 0,
+      "a_msgstr": "Zanata ID가 `translator list <https://opendev.org/openstack/i18n/src/tools/zanata/translation_team.yaml>`__ 내에 포함되어 있습니까?",
+      "b_msgstr": "아니요."
+    },
+    {
+      "similarity": 0.016459019854664803,
+      "context": "",
+      "msgid": "``<resource>`` is a document name in Zanata.",
+      "plural_index": 0,
+      "a_msgstr": "``<resource>`` Zanata 내 문서 이름입니다.",
+      "b_msgstr": "자산"
+    },
+    {
+      "similarity": 0.03258295729756355,
+      "context": "",
+      "msgid": "No detail data.",
+      "plural_index": 0,
+      "a_msgstr": "자세한 데이터가 없습니다.",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.03469526767730713,
+      "context": "",
+      "msgid": "If you are a translator or a person involved in I18n effort, you may be interested in triaging and fixing translation bugs :)",
+      "plural_index": 0,
+      "a_msgstr": "번역자 또는 I18n 기여와 관련된 사람인 경우, 번역 버그를 구분하고 수정하는 데 관심이 있을 것입니다 :)",
+      "b_msgstr": "가정집합"
+    },
+    {
+      "similarity": 0.05120250582695007,
+      "context": "",
+      "msgid": "Note: the period is relative short because of release cycle change",
+      "plural_index": 0,
+      "a_msgstr": "참고 : 릴리스 사이클 변경으로 인해 기간이 상대적으로 짧습니다.",
+      "b_msgstr": "IP 할당"
+    },
+    {
+      "similarity": 0.06563889980316162,
+      "context": "",
+      "msgid": "When you want to update a glossary of your language, edit a corresponding glossary file using your favorite editor and propose a change to the Gerrit review system.",
+      "plural_index": 0,
+      "a_msgstr": "대상 언어에 대한 용어집을 수정하려면, 선호하는 편집기를 사용하여 대응하는 용어집 파일을 편집한 후 Gerrit 리뷰 시스템에 변경 사항을 제안합니다.",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.08787351846694946,
+      "context": "",
+      "msgid": "Extract Zanata user information",
+      "plural_index": 0,
+      "a_msgstr": "Zanata 사용자 정보 추출",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.11699466407299042,
+      "context": "",
+      "msgid": "prioritize the bug",
+      "plural_index": 0,
+      "a_msgstr": "번역 우선순위를 지정합니다",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.12109077721834183,
+      "context": "",
+      "msgid": "Discuss and review glossary changes in your language team before you propose changes to the Gerrit review system. Reviewers in the Gerrit review system cannot understand your language in most cases, so they can only check syntax or conventions.",
+      "plural_index": 0,
+      "a_msgstr": "변경 사항을 Gerrit 리뷰 시스템에 제안하기 이전에 대상 언어팀에서 용어집 변경 사항에 대해 토론 및 리뷰를 거칩니다. Gerrit 리뷰 시스템 내 검토자는 대부분의 경우 대상 언어를 이해할 수 없기에, 문법 또는 통용규칙만을 확인할 수 있습니다.",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.13294854760169983,
+      "context": "",
+      "msgid": "translation bugs",
+      "plural_index": 0,
+      "a_msgstr": "번역 버그",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.1350938379764557,
+      "context": "",
+      "msgid": "Using translations",
+      "plural_index": 0,
+      "a_msgstr": "번역 사용",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.15127268433570862,
+      "context": "",
+      "msgid": "Pike cycle",
+      "plural_index": 0,
+      "a_msgstr": "Pike 버전",
+      "b_msgstr": "집합 주기"
+    },
+    {
+      "similarity": 0.16561391949653625,
+      "context": "",
+      "msgid": "Loading scripts",
+      "plural_index": 0,
+      "a_msgstr": "스크립트 불러오기",
+      "b_msgstr": "스クリプ트 로드 중입니다."
+    },
+    {
+      "similarity": 0.16587108373641968,
+      "context": "",
+      "msgid": "Reviewing",
+      "plural_index": 0,
+      "a_msgstr": "리뷰",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.17585748434066772,
+      "context": "",
+      "msgid": "You need to create a configuration file in ``$HOME/.config/zanata.ini`` that contains user-specific configuration. For information on how to create a configuration file, see `Zanata CLI configuration <http://docs.zanata.org/en/release/client/configuration/#user-configuration>`__.",
+      "plural_index": 0,
+      "a_msgstr": "사용자 별 설정이 들어있는 ``$HOME/.config/zanata.ini`` 에 설정 파일을 만들어야합니다. 설정 파일을 만드는 방법에 대한 정보는 `Zanata CLI configuration <http://docs.zanata.org/en/release/client/configuration/#user-configuration>`__ 을 살펴보시면 됩니다.",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.17856182157993317,
+      "context": "",
+      "msgid": "If you have any, don't hesitate to share it :)",
+      "plural_index": 0,
+      "a_msgstr": "관련해 있는 경우, 여기에 공유하는 것을 잊지 말아주십시오 :)",
+      "b_msgstr": "N/A"
+    },
+    {
+      "similarity": 0.18376782536506653,
+      "context": "",
+      "msgid": "When your request is approved, you will get an email notification.",
+      "plural_index": 0,
+      "a_msgstr": "요청이 수락된 경우, 이메일 통지를 받을 것입니다.",
+      "b_msgstr": "N/A"
+    },
+    {
+      "similarity": 0.18401692807674408,
+      "context": "",
+      "msgid": "Translation",
+      "plural_index": 0,
+      "a_msgstr": "번역",
+      "b_msgstr": "집합"
+    },
+    {
+      "similarity": 0.19105637073516846,
+      "context": "",
+      "msgid": "If you notice bad translations in a language, file a bug (see :ref:`reporting_translation_bugs`). Then the translation team will update the translation. We recommend to still import this change as is and import later the fix to not block other valid translations to merge.",
+      "plural_index": 0,
+      "a_msgstr": "언어에 대해서 잘못된 번역을 발견한 경우에는 버그를 보고합니다 (:ref:`reporting_translation_bugs` 참고). 이후 번역팀이 번역을 업데이트할 것입니다. 해당 변경사항을 가져오고, 수정된 사항을 나중에 (한 번 더) 가져오기 하여 다른 유효한 번역이 머지되는 것을 막지 않는 것을 권장합니다.",
+      "b_msgstr": "집합은 여러 집합을 포함하는 큰 집합입니다."
+    },
+    {
+      "similarity": 0.19798144698143005,
+      "context": "",
+      "msgid": "We use sphinx-build to translate RST files to POT files. Because we want to have a single POT file per document, we use msgcat to merge those POTs after sphinx-build.",
+      "plural_index": 0,
+      "a_msgstr": "우리는 RST 파일을 POT 파일로 변환하기 위해 sphinx-build를 사용합니다. 문서 당 하나의 POT 파일을 갖기를 원하기 때문에 우리는 msgcat을 사용하여 sphinx-build 이후에 해당 POT과 병합합니다.",
+      "b_msgstr": "```"
+    }
+  ]
+}

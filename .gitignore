@@ -4,7 +4,6 @@
 
 po/
 !po/.keep
-validate/validate/json
 
 venv/
 .env/

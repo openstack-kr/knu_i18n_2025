@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "file_a": "/home/ubuntu/jth/validate/../po-example/ru/i18n-docs-source-locale.po",
+    "file_b": "/home/ubuntu/jth/validate/../po/llama3.2:3b/ru/i18n-docs-source-locale-ru.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 456,
+    "avg_similarity": 0.8442,
+    "median_similarity": 0.9203,
+    "p90_similarity": 0.9918,
+    "pct_over_threshold": 72.81
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Reviewing translation imports",
+      "plural_index": 0,
+      "a_msgstr": "Ревью импорта переводов",
+      "b_msgstr": "Оценка импортов перевода"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Translation infrastructure tasks and scripts",
+      "plural_index": 0,
+      "a_msgstr": "Задания и скрипты инфраструктуры переводов",
+      "b_msgstr": "Задачи и скрипты инфраструктуры перевода"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "FAQ: I cannot find my name in Stackalytics",
+      "plural_index": 0,
+      "a_msgstr": "ЧАВО: Я не могу найти своего имени в Stackalytics.",
+      "b_msgstr": "Вопрос: Я не могу найти свой номер в Stackalytics."
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Language Team",
+      "plural_index": 0,
+      "a_msgstr": "Команда переводчиков языка",
+      "b_msgstr": "Команда по переводу"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "No detail data.",
+      "plural_index": 0,
+      "a_msgstr": "Нет детализированных данных.",
+      "b_msgstr": "Нет детальной информации."
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Project Goals And Translation Plan",
+      "plural_index": 0,
+      "a_msgstr": "Цели проекта и планы переводов",
+      "b_msgstr": "Цели проекта и план перевода"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Statistics are available through: https://docs.google.com/spreadsheets/d/1YpDJU_uNA4I5fzFG69T6L9gpFsy5yNtA9a-lSxnqeAY/edit#gid=1366189722",
+      "plural_index": 0,
+      "a_msgstr": "Статистика доступна здесь: https://docs.google.com/spreadsheets/d/1YpDJU_uNA4I5fzFG69T6L9gpFsy5yNtA9a-lSxnqeAY/edit#gid=1366189722",
+      "b_msgstr": "Статистика доступна по: https://docs.google.com/spreadsheets/d/1YpDJU_uNA4I5fzFG69T6L9gpFsy5yNtA9a-lSxnqeAY/edit#gid=1366189722"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "To run the script:",
+      "plural_index": 0,
+      "a_msgstr": "Чтобы запустить скрипт:",
+      "b_msgstr": "Чтобы запустить скрипт:"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "Translation infrastructure tasks are stored and managed in `openstack/project-config <https://opendev.org/openstack/project-config/>`__ repository. The translation infrastructure scripts are stored and managed in `openstack/openstack-zuul-jobs <https://opendev.org/openstack/openstack-zuul-jobs>`__ repository.",
+      "plural_index": 0,
+      "a_msgstr": "Задания инфраструктуры переводов хранятся и управляются в репозитории `openstack/project-config <https://opendev.org/openstack/project-config/>`__. Скрипты инфраструктуры переводов хранятся и управляются в репозитории `openstack/openstack-zuul-jobs <https://opendev.org/openstack/openstack-zuul-jobs>`__.",
+      "b_msgstr": "Инфраструктура перевода задачы хранится и управляется в репозитории `openstack/project-config <https://opendev.org/openstack/project-config/>`__. Скрипты инфраструктуры перевода хранятся и управляются в репозитории `openstack/openstack-zuul-jobs <https://opendev.org/openstack/openstack-zuul-jobs>`__."
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "A person who can submit translations.",
+      "plural_index": 0,
+      "a_msgstr": "Люди, которые могут отправлять переводы.",
+      "b_msgstr": "Человек, который может подать переводы."
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Documentation projects",
+      "plural_index": 0,
+      "a_msgstr": "Проекты документации",
+      "b_msgstr": "Документационные проекты"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Meeting agenda",
+      "plural_index": 0,
+      "a_msgstr": "Повестка совещаний",
+      "b_msgstr": "Съездочный план"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Previous meetings",
+      "plural_index": 0,
+      "a_msgstr": "Предыдущие совещания",
+      "b_msgstr": "Бывшие встречи"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Project configuration",
+      "plural_index": 0,
+      "a_msgstr": "Конфигурация проекта",
+      "b_msgstr": "Конфигурация проекта"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Project maintenance",
+      "plural_index": 0,
+      "a_msgstr": "Поддержка проекта",
+      "b_msgstr": "Охрана проекта"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "Server projects",
+      "plural_index": 0,
+      "a_msgstr": "Серверные проекты",
+      "b_msgstr": "Серверные проекты"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "bugs in tool chains",
+      "plural_index": 0,
+      "a_msgstr": "ошибки в инструментах перевода",
+      "b_msgstr": "Буги в инструментах цепочки"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "Bugs in tool chains",
+      "plural_index": 0,
+      "a_msgstr": "Ошибки в инструментах перевода",
+      "b_msgstr": "Буги в инструментах цепочки"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "Extracting",
+      "plural_index": 0,
+      "a_msgstr": "Экстракция",
+      "b_msgstr": "Вывод"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "Tools",
+      "plural_index": 0,
+      "a_msgstr": "Инструменты",
+      "b_msgstr": "Тools"
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.09920601546764374,
+      "context": "",
+      "msgid": "Zanata",
+      "plural_index": 0,
+      "a_msgstr": "Zanata",
+      "b_msgstr": "Заната"
+    },
+    {
+      "similarity": 0.2297399491071701,
+      "context": "",
+      "msgid": "More complex cases",
+      "plural_index": 0,
+      "a_msgstr": "Более сложные случаи",
+      "b_msgstr": "**[Output Format Rules (MUST Follow)]**"
+    },
+    {
+      "similarity": 0.2851264476776123,
+      "context": "",
+      "msgid": "Mitaka cycle",
+      "plural_index": 0,
+      "a_msgstr": "Цикл Mitaka",
+      "b_msgstr": "Цикл Митака."
+    },
+    {
+      "similarity": 0.2952365279197693,
+      "context": "",
+      "msgid": "Stackalytics",
+      "plural_index": 0,
+      "a_msgstr": "Stackalytics",
+      "b_msgstr": "Сбалансированность стека."
+    },
+    {
+      "similarity": 0.3225991129875183,
+      "context": "",
+      "msgid": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.34585097432136536,
+      "context": "",
+      "msgid": "Queens cycle",
+      "plural_index": 0,
+      "a_msgstr": "Цикл Queens",
+      "b_msgstr": "Королевский цикл"
+    },
+    {
+      "similarity": 0.35964635014533997,
+      "context": "",
+      "msgid": "Ocata cycle",
+      "plural_index": 0,
+      "a_msgstr": "Цикл Ocata",
+      "b_msgstr": "Сикл Оцата."
+    },
+    {
+      "similarity": 0.36572033166885376,
+      "context": "",
+      "msgid": "Pike cycle",
+      "plural_index": 0,
+      "a_msgstr": "Цикл Pike",
+      "b_msgstr": "Сикл Пика"
+    },
+    {
+      "similarity": 0.3683243691921234,
+      "context": "",
+      "msgid": "What is wrong? What should be improved?",
+      "plural_index": 0,
+      "a_msgstr": "Что именно не корректно? Или что можно улучшить?",
+      "b_msgstr": "Nothing. Your request was clear and concise. I will translate the text from English to Russian."
+    },
+    {
+      "similarity": 0.37122321128845215,
+      "context": "",
+      "msgid": "Builds release notes in both the original (English) version and translated versions (if any).",
+      "plural_index": 0,
+      "a_msgstr": "Выполняет сборку аннотаций к версиям в оригинальной (английской) и в переведённых версиях (если они есть).",
+      "b_msgstr": "**Original English Version**"
+    },
+    {
+      "similarity": 0.37754103541374207,
+      "context": "",
+      "msgid": "Common code used by **propose_translation_update.sh** and **upstream_translation_update.sh**",
+      "plural_index": 0,
+      "a_msgstr": "Общий код, используемый **propose_translation_update.sh** и **upstream_translation_update.sh**",
+      "b_msgstr": "```bash"
+    },
+    {
+      "similarity": 0.38939470052719116,
+      "context": "",
+      "msgid": "(optional) Put your language name as bug tag.",
+      "plural_index": 0,
+      "a_msgstr": "Включите название своего языка в тег сообщения об ошибке (не обязательно)",
+      "b_msgstr": "bug: russian"
+    },
+    {
+      "similarity": 0.3911544680595398,
+      "context": "",
+      "msgid": "Translate **master** version on Zanata.",
+      "plural_index": 0,
+      "a_msgstr": "Перевести **master** версию в Zanata.",
+      "b_msgstr": "Мастер"
+    },
+    {
+      "similarity": 0.3932361602783203,
+      "context": "",
+      "msgid": ":ref:`search`",
+      "plural_index": 0,
+      "a_msgstr": ":ref:`search`",
+      "b_msgstr": "Поиск"
+    },
+    {
+      "similarity": 0.40782293677330017,
+      "context": "",
+      "msgid": "Newton cycle",
+      "plural_index": 0,
+      "a_msgstr": "Цикл Newton",
+      "b_msgstr": "Цикл Ньютона"
+    },
+    {
+      "similarity": 0.40962129831314087,
+      "context": "",
+      "msgid": "``dashboards/admin/aggregates/views.py:104``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/admin/aggregates/views.py:104``",
+      "b_msgstr": "`агрегаты административного интерфейса`"
+    },
+    {
+      "similarity": 0.4103868007659912,
+      "context": "",
+      "msgid": "Rocky cycle",
+      "plural_index": 0,
+      "a_msgstr": "Цикл Rocky",
+      "b_msgstr": "サイкл Рокки"
+    },
+    {
+      "similarity": 0.4184277057647705,
+      "context": "",
+      "msgid": "Finally, propose a patch including all of the above changes to the Gerrit review system.",
+      "plural_index": 0,
+      "a_msgstr": "И, наконец, предложите патч, включающий в себя все сделанные выше изменения, в систему ревью Gerrit.",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.42806196212768555,
+      "context": "",
+      "msgid": "Stein cycle",
+      "plural_index": 0,
+      "a_msgstr": "Цикл Stein",
+      "b_msgstr": "Стильный цикл"
+    },
+    {
+      "similarity": 0.42869850993156433,
+      "context": "",
+      "msgid": "Django Projects",
+      "plural_index": 0,
+      "a_msgstr": "Проекты на Django",
+      "b_msgstr": "Дjangо-проекты"
+    }
+  ]
+}

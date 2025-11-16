@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "file_a": "/home/ubuntu/jth/validate/../po-example/ja/i18n-docs-source-locale.po",
+    "file_b": "/home/ubuntu/jth/validate/../po/llama3.2:3b/ja/i18n-docs-source-locale-ja.po",
+    "model": "BM-K/KoSimCSE-roberta-multitask",
+    "batch_size": 64,
+    "threshold": 0.8,
+    "only_translated": true,
+    "skip_fuzzy": false,
+    "normalize_text": true,
+    "lowercase": false,
+    "device": "cpu"
+  },
+  "summary": {
+    "num_common_pairs": 274,
+    "avg_similarity": 0.6876,
+    "median_similarity": 0.7402,
+    "p90_similarity": 0.9578,
+    "pct_over_threshold": 40.88
+  },
+  "top_k_most_similar": [
+    {
+      "similarity": 1.0000003576278687,
+      "context": "",
+      "msgid": "Managing a Language Team",
+      "plural_index": 0,
+      "a_msgstr": "言語チームの管理",
+      "b_msgstr": "言語チームの管理"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Creating a Language Team",
+      "plural_index": 0,
+      "a_msgstr": "言語チームの作成",
+      "b_msgstr": "言語チームの作成"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Project configuration",
+      "plural_index": 0,
+      "a_msgstr": "プロジェクト設定",
+      "b_msgstr": "プロジェクトの設定"
+    },
+    {
+      "similarity": 1.000000238418579,
+      "context": "",
+      "msgid": "Reporting translation bugs",
+      "plural_index": 0,
+      "a_msgstr": "翻訳バグの報告",
+      "b_msgstr": "翻訳エラー報告"
+    },
+    {
+      "similarity": 1.0000001192092896,
+      "context": "",
+      "msgid": "Language Team",
+      "plural_index": 0,
+      "a_msgstr": "言語チーム",
+      "b_msgstr": "言語チーム"
+    },
+    {
+      "similarity": 1.0,
+      "context": "",
+      "msgid": "User configuration",
+      "plural_index": 0,
+      "a_msgstr": "ユーザー設定",
+      "b_msgstr": "ユーザー設定"
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "...",
+      "plural_index": 0,
+      "a_msgstr": "...",
+      "b_msgstr": "..."
+    },
+    {
+      "similarity": 0.9999998807907104,
+      "context": "",
+      "msgid": "I18n team meeting",
+      "plural_index": 0,
+      "a_msgstr": "I18n チームミーティング",
+      "b_msgstr": "I18n チームミーティング"
+    },
+    {
+      "similarity": 0.9999997615814209,
+      "context": "",
+      "msgid": "Tools",
+      "plural_index": 0,
+      "a_msgstr": "ツール",
+      "b_msgstr": "ツール"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "About this guide",
+      "plural_index": 0,
+      "a_msgstr": "このガイドについて",
+      "b_msgstr": "このガイドについて"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Coordinator",
+      "plural_index": 0,
+      "a_msgstr": "コーディネーター",
+      "b_msgstr": "コーディネーター"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Documentation",
+      "plural_index": 0,
+      "a_msgstr": "ドキュメント",
+      "b_msgstr": "ドキュメント"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Reviewer",
+      "plural_index": 0,
+      "a_msgstr": "レビューアー",
+      "b_msgstr": "レビュー"
+    },
+    {
+      "similarity": 0.9999996423721313,
+      "context": "",
+      "msgid": "Zanata",
+      "plural_index": 0,
+      "a_msgstr": "Zanata",
+      "b_msgstr": "Zanata"
+    },
+    {
+      "similarity": 0.9954098463058472,
+      "context": "",
+      "msgid": "Bugs in tool chains",
+      "plural_index": 0,
+      "a_msgstr": "ツール類のバグ",
+      "b_msgstr": "バグがtool chainに含まれている"
+    },
+    {
+      "similarity": 0.9837504029273987,
+      "context": "",
+      "msgid": "If your Zanata ID is not included in the translator list, you need to update the list to include your Zanata ID. Contact your language coordinator, email the i18n mailing list. You can also submit a patch to update the list by yourself (For detail, see :ref:`sync-translator-list`).",
+      "plural_index": 0,
+      "a_msgstr": "Zanata ID が翻訳者リストに載っていない場合、あなたの Zanata ID がリストに含まれるようにリストを更新する必要があります。あなたの言語チームのコーディネーターに依頼するか、 I18n メーリングリストにメールを送ってください。自分でリストを更新するパッチを投稿することもできます (詳細は :ref:`sync-translator-list` を参照)。",
+      "b_msgstr": "Zanata ID を含まない場合、Zanata ID を翻訳リストに追加する必要があります。翻訳リストを更新するには、言語コーディネーターに連絡し、i18n マーリング リストにメールを送します。 Alternatively、自己でリストを更新することができます (詳細については :ref:`sync-translator-list` を参照してください)。"
+    },
+    {
+      "similarity": 0.974460244178772,
+      "context": "",
+      "msgid": "Bugs in translated documents or dashboard are mainly classified into the following areas:",
+      "plural_index": 0,
+      "a_msgstr": "翻訳されたドキュメントやダッシュボードのバグは、主に以下のカテゴリーに分類できます。",
+      "b_msgstr": "バグは翻訳されたドキュメントやダッシュボードに主に以下の領域で分類される。"
+    },
+    {
+      "similarity": 0.9733084440231323,
+      "context": "",
+      "msgid": "`Language translation team <https://wiki.openstack.org/wiki/I18nTeam/team>`_: you can ask in your language :-)",
+      "plural_index": 0,
+      "a_msgstr": "`各言語の翻訳チーム <https://wiki.openstack.org/wiki/I18nTeam/team>`_: 自分の言語で質問できます:-)",
+      "b_msgstr": "言語翻訳チーム <https://wiki.openstack.org/wiki/I18nTeam/team>：あなたの言語で質問できます。"
+    },
+    {
+      "similarity": 0.9733060002326965,
+      "context": "",
+      "msgid": "Search in this guide",
+      "plural_index": 0,
+      "a_msgstr": "ガイド内検索",
+      "b_msgstr": "検索"
+    },
+    {
+      "similarity": 0.9717046022415161,
+      "context": "",
+      "msgid": "`OpenStack-Ansible (OSA) <https://docs.openstack.org/openstack-ansible/latest/>`__ provides Ansible playbooks and roles for the deployment and configuration of an OpenStack environment. As part of the project a feature named 'Translation Check Site' is developed. An OSA instance will fetch translation strings from `translation platform <https://translate.openstack.org/>`__, compile and serve these strings in Horizon. You need a machine with two or four CPU cores, at least 8 GB memory and 70 GB disk to run OSA.",
+      "plural_index": 0,
+      "a_msgstr": "`OpenStack-Ansible (OSA) <https://docs.openstack.org/openstack-ansible/latest/>`__ は、 OpenStack 環境のデプロイや設定を行う Ansible プレイブックやロールを提供しています。このプロジェクトの中で「翻訳確認サイト」という機能が開発されました。 OSA インスタンスは、 `translation platform <https://translate.openstack.org/>`__ から翻訳ストリングを取得し、コンパイルを行ってから、 Horizon で参照できるようにします。 OSA を実行するには、 2 個か 4 個の CPU コア、少なくとも 8GB のメモリーと 70 GB のディスクを持ったマシンが必要です。",
+      "b_msgstr": "OpenStack-Ansible (OSA) <https://docs.openstack.org/openstack-ansible/latest/> は、オープン スタック環境の展開と構成を目的とした Ansible プレイブックとロールを提供します。プロジェクトの一環として '翻訳チェックサイト'という機能が開発されました。OSA インスタンスは、`translation platform <https://translate.openstack.org/>`__ から翻訳文字列を取得し、コンパイルしてこれらの文字列を Horizon で提供します。OSA を実行するためのマシンには、2 CPU コア以上、8 GB メモリ以上、70 GB ディスクが必要です。"
+    }
+  ],
+  "top_k_least_similar": [
+    {
+      "similarity": 0.1352974772453308,
+      "context": "",
+      "msgid": "OpenStack Dashboard",
+      "plural_index": 0,
+      "a_msgstr": "OpenStack Dashboard",
+      "b_msgstr": "オープンソース・クラウドコンピューティング・プラットフォームのオペレーション・コントロール・インターフェイス"
+    },
+    {
+      "similarity": 0.15029361844062805,
+      "context": "",
+      "msgid": "Patch on governance repository: https://review.opendev.org/633398",
+      "plural_index": 0,
+      "a_msgstr": "governance レポジトリーの対応パッチ: https://review.opendev.org/633398",
+      "b_msgstr": "PATCH"
+    },
+    {
+      "similarity": 0.1568659245967865,
+      "context": "",
+      "msgid": "Pull translations from Zanata",
+      "plural_index": 0,
+      "a_msgstr": "Zanata からの翻訳の取得",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.17166373133659363,
+      "context": "",
+      "msgid": "Patch on governance repository: https://review.opendev.org/532982",
+      "plural_index": 0,
+      "a_msgstr": "governance レポジトリーの対応パッチ: https://review.opendev.org/532982",
+      "b_msgstr": "PATCH"
+    },
+    {
+      "similarity": 0.19055867195129395,
+      "context": "",
+      "msgid": "Patch on governance repository: https://review.opendev.org/586751",
+      "plural_index": 0,
+      "a_msgstr": "governance レポジトリーの対応パッチ: https://review.opendev.org/586751",
+      "b_msgstr": "PATCH"
+    },
+    {
+      "similarity": 0.19338896870613098,
+      "context": "",
+      "msgid": "Patch on governance repository: https://review.opendev.org/483452",
+      "plural_index": 0,
+      "a_msgstr": "governance レポジトリーの対応パッチ: https://review.opendev.org/483452",
+      "b_msgstr": "PATCH"
+    },
+    {
+      "similarity": 0.19811420142650604,
+      "context": "",
+      "msgid": "Import latest translations",
+      "plural_index": 0,
+      "a_msgstr": "最新の翻訳の入手方法",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.20692132413387299,
+      "context": "",
+      "msgid": "Masaki Matsushita (id: mmasaki) - Japanese",
+      "plural_index": 0,
+      "a_msgstr": "Masaki Matsushita (id: mmasaki) - Japanese",
+      "b_msgstr": "マサキ・マツシタ（いちばん：まさき、ふつう：まつした、マツシタ）"
+    },
+    {
+      "similarity": 0.21059343218803406,
+      "context": "",
+      "msgid": "Stackalytics",
+      "plural_index": 0,
+      "a_msgstr": "Stackalytics",
+      "b_msgstr": "スタックアナリティクス"
+    },
+    {
+      "similarity": 0.23468348383903503,
+      "context": "",
+      "msgid": "OpenStack I18n team",
+      "plural_index": 0,
+      "a_msgstr": "OpenStack I18n チーム",
+      "b_msgstr": "オープンソース・クラウドコンピューティング・プラットフォーム・オープンソース・クラウド・コンピューティング・プラットフォーム"
+    },
+    {
+      "similarity": 0.26026207208633423,
+      "context": "",
+      "msgid": "TBD",
+      "plural_index": 0,
+      "a_msgstr": "TBD",
+      "b_msgstr": "未実行"
+    },
+    {
+      "similarity": 0.2629607021808624,
+      "context": "",
+      "msgid": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "plural_index": 0,
+      "a_msgstr": "``dashboards/project/loadbalancers/workflows.py:44``",
+      "b_msgstr": "```python"
+    },
+    {
+      "similarity": 0.2672162652015686,
+      "context": "",
+      "msgid": "Building",
+      "plural_index": 0,
+      "a_msgstr": "作成中",
+      "b_msgstr": "建造"
+    },
+    {
+      "similarity": 0.26890480518341064,
+      "context": "",
+      "msgid": "After you edit the master glossary, ensure to reflect the change to all language glossary files. To do this, run the following command.",
+      "plural_index": 0,
+      "a_msgstr": "用語集のマスターファイルを編集したら、すべての言語の用語集ファイルへの反映を忘れないでください。具体的には、以下のコマンドを実行します。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.27336400747299194,
+      "context": "",
+      "msgid": "Sync the translator list with Zanata",
+      "plural_index": 0,
+      "a_msgstr": "翻訳者リストの Zanata との同期",
+      "b_msgstr": "**[Glossary]**"
+    },
+    {
+      "similarity": 0.2759819030761719,
+      "context": "",
+      "msgid": "The master glossary is an usual POT file. You can edit it in your favorite editor as usual.",
+      "plural_index": 0,
+      "a_msgstr": "用語集のマスターファイルは、通常の POT ファイルです。いつも通り、お気に入りのエディターで編集できます。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.2762972414493561,
+      "context": "",
+      "msgid": "When you add a new entry to the glossary, it is highly recommended to add the entry to the master glossary ``glossary/locale/glossary.pot``. By doing this, all language teams can share the glossary.",
+      "plural_index": 0,
+      "a_msgstr": "用語集に新しいエントリーを追加する際は、用語集のマスターファイル ``glossary/locale/glossary.pot`` にもエントリーを追加するようにしてください。これにより、すべての言語チームが用語集を共有できます。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.28440433740615845,
+      "context": "",
+      "msgid": "The POT file is found under ``http://tarballs.openstack.org/translation-source/<Zanata-project-name>/<Zanata-project-version>/<path>/<resource>.pot``, where:",
+      "plural_index": 0,
+      "a_msgstr": "POT ファイルは ``http://tarballs.openstack.org/translation-source/<Zanata-project-name>/<Zanata-project-version>/<path>/<resource>.pot`` にあります。",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.2982252240180969,
+      "context": "",
+      "msgid": "Original string or message is not correct.",
+      "plural_index": 0,
+      "a_msgstr": "オリジナルのストリングやメッセージの誤り",
+      "b_msgstr": "```"
+    },
+    {
+      "similarity": 0.2984881103038788,
+      "context": "",
+      "msgid": "Where you find a bug you are reporting?",
+      "plural_index": 0,
+      "a_msgstr": "どこで報告しようとしているバグを見つけたか？",
+      "b_msgstr": "[/usr/bin/python -m unittest discover -s /usr/share/doc/python/ -p 'test*.py']"
+    }
+  ]
+}
