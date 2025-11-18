@@ -1,7 +1,7 @@
 # AI-based Translation System for OpenStack
 
 This system is an open-source AI translation system developed for OpenStack, which supports multilingual translation using flexible LLMs, few-shot learning, and batch optimization.
-<br> This is part of OpenStack i18n(internationalization). If you want to know it in detail, plase refer [i18n guide](https://docs.openstack.org/i18n/latest/index.html)
+<br> This is part of OpenStack i18n(internationalization). If you want to know it in detail, please refer [i18n guide](https://docs.openstack.org/i18n/latest/index.html)
 
 ## Overview
 
@@ -42,7 +42,7 @@ git clone https://github.com/openstack-kr/knu_i18n_2025.git
 ```
 ```bash
 cd knu_i18n_2025
-# if you troule in upgrading pip, we recommend to use venv
+# if you trouble in upgrading pip, we recommend to use venv
 python -m pip install --upgrade pip
 pip install tox
 curl -fsSL https://ollama.com/install.sh | sh
@@ -136,7 +136,7 @@ MODEL=${1:-"llama3.2:3b"}
 
 ## 5. How to Improve Performance?
 
-You can adjust (b) Few Shot Example and Language (c) Specific Promopt.
+You can adjust (b) Few Shot Example and Language (c) Specific Prompt.
 Please refer [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## 6. Code Quality Check
@@ -176,7 +176,7 @@ In this study, we test how (a) and (b) powerful. <br>
 - LLM: Llama 3.2 (3B)
 - target file: https://opendev.org/openstack/i18n/src/branch/master/doc/source/locale
 
-### Evalution Metric
+### Evaluation Metric
 
 We measured the similarity between the AI-generated preliminary translation (.po) and the human-translated .po for each target file.<br>
 Similarity was computed using the mean-pooling method of the SentenceTransformer library.<br>
@@ -208,7 +208,7 @@ For Korean, translation quality improved by 16.19%, and across four languages, t
 
 ### Reproducibility
 
-1. Chekout to branch: testA or testB:
+1. Checkout to branch: testA or testB:
 ```bash
 git checkout TestA
 ```
