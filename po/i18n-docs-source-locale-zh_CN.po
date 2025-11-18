@@ -1,0 +1,1877 @@
+Initial translation by AI (batch mode).
+# Chinese (Simplified, China) translations for I18n Contributor.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the I18n Contributor
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: I18n Contributor Guide\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-04-17 23:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+msgid "(optional) Put your language name as bug tag."
+msgstr "(可选) 将您的语言名称作为bug标签。"
+
+msgid ""
+"**Make sure to include your English language name in a bug summary**. It "
+"is also suggested to write a bug summary in English. For example:"
+msgstr "**确保在bug总结中包含您的英语语言名称**。建议将bug总结写成英语。例如："
+
+msgid ""
+"**tox** is available on PyPI and also available in various Linux "
+"distribution. ``pip install tox`` or ``apt-get install python-tox`` (in "
+"case of Ubuntu) installs **tox**."
+msgstr ""
+"**tox** 可以从 PyPI 安装，也可以在各种 Linux 分布中找到。 ``pip install tox`` 或 ``apt-get "
+"install python-tox`` (在 Ubuntu 中) 安装了 **tox**。"
+
+msgid "..."
+msgstr "..."
+
+msgid ""
+":doc:`Your language team <lang_team>` may have useful information to help"
+" our translation efforts including translation guidelines, priorities, "
+"communication tools and so on. It is worth visited. You can find your "
+"language team page at https://wiki.openstack.org/wiki/I18nTeam/team. If "
+"you have questions, you can contact your coordinators."
+msgstr ""
+":doc:`您的语言团队 <lang_team>` 可能有有用信息来帮助我们的翻译努力，包括翻译指南、优先级、沟通工具等。它值得访问。您可以在 "
+"https://wiki.openstack.org/wiki/I18nTeam/team "
+"找到您的语言团队页面。如果您有问题，可以联系您的协调员。"
+
+msgid ":ref:`search`"
+msgstr "搜索"
+
+msgid ""
+"A glossary file of your language is found at "
+"``glossary/locale/<lang>/LC_MESSAGES/glossary.po`` in the i18n "
+"repository. The file is a usual PO file."
+msgstr ""
+"翻译词典的语言包位于 ``glossary/locale/<lang>/LC_MESSAGES/glossary.po`` 在 i18n "
+"存储库中。该文件是常规 PO 文件。"
+
+msgid ""
+"A person who can proofread translations and mark them as reviewed "
+"(approved) or rejected."
+msgstr "可以检查并标记翻译是否已审查（批准）或拒绝的翻译人员。"
+
+msgid "A person who can submit translations."
+msgstr "可以提交翻译的人员。"
+
+msgid ""
+"A privileged member in a translation team who can help in team management"
+" tasks, such as approving new members and reviewing contributions to that"
+" language. We also have task coordinators for specific tasks."
+msgstr "在翻译团队中的特权成员，可以帮助团队管理任务，例如批准新成员和审查贡献。我们还有一些专门负责具体任务的任务协调员。"
+
+msgid ""
+"A series of tasks in OpenStack infrastructure is used to manage "
+"translation changes in Zanata. Without running the tasks, translation "
+"changes will not be reflected into OpenStack projects. This page explains"
+" how the infrastructure tasks run actual scripts as `Zuul "
+"<https://docs.openstack.org/infra/zuul/>`_ jobs and monitor the job "
+"status."
+msgstr ""
+"OpenStack基础设施中的任务系列用于管理Zanata的翻译变化。没有运行这些任务，翻译变化不会反映到OpenStack项目中。这页解释了如何运行实际脚本作为`Zuul"
+" <https://docs.openstack.org/infra/zuul/>`_任务，并监控任务状态。"
+
+msgid ""
+"A template is a skeleton of static HTML files. In this case, the string "
+"is perhaps used in \"Update\" form in \"Container\" menu."
+msgstr "模板是静态HTML文件的骨架。在这种情况下，字符串可能用于 \"更新\"按钮在 \"容器\"菜单中的 \"更新\"按钮。"
+
+msgid "ATC Statistics in past releases"
+msgstr "过去发布版本的ATC统计数据"
+
+msgid ""
+"ATC candidates are translators who has translated more than 200 words and"
+" reported their e-mail and name to language coordinators, and also signed"
+" ICLA."
+msgstr "I18n项目的ATC候选者（翻译者）"
+
+msgid "ATC members of I18n project"
+msgstr "I18n项目的ATC成员"
+
+msgid "About this guide"
+msgstr "关于本指南"
+
+msgid ""
+"After the documents are translated and reviewed well, updating existing "
+"``www/<lang>/index.html`` or creating a new language landing page is "
+"needed."
+msgstr "在翻译和审查完成后，需要更新现有``www/<lang>/index.html``或创建新语言的入门页面。"
+
+msgid ""
+"After the official release, translating master version is welcome for "
+"upstream translation contribution, but the original strings may be "
+"changed frequently due to upstream development on the projects."
+msgstr ""
+"发布后，翻译master版本是 welcomed for upstream translation "
+"contribution，但原始字符串可能会频繁更改，因为上游开发项目的变化。"
+
+msgid ""
+"After you edit the master glossary, ensure to reflect the change to all "
+"language glossary files. To do this, run the following command."
+msgstr "编辑主词典后，确保反映更改到所有语言词典文件中。要做到这一点，请运行以下命令。"
+
+msgid ""
+"All upstream OpenStack documents in ``openstack-manuals`` and project "
+"repositories use ``master`` branch and can have stable branches depending"
+" on release models and maintaining documents in different project teams. "
+"Cross-project liaisons are strongly encouraged to communicate with I18n "
+"team so that I18n team can discuss and decide which stable documents are "
+"the target in I18n team and when translators start to translate stable "
+"documents."
+msgstr ""
+"所有上游OpenStack文档在``openstack-"
+"manuals``和项目仓库中使用``master``分支，并且可以根据发布模型和维护文档的不同项目团队而保持稳定分支。强烈建议跨项目联络员与I18n团队进行沟通，以便I18n团队能够讨论并决定哪些稳定文档是目标，何时翻译稳定文档。"
+
+msgid ""
+"Also, release notes translations are only needed on master since release "
+"notes are published only from master, the translations get removed on "
+"stable branches."
+msgstr "同时，发布说明的翻译只需要在master分支上，因为发布说明仅从master分支中发布，翻译会在稳定分支上被移除。"
+
+msgid ""
+"Although each language team could follow the I18n team working plan, your"
+" team may also decide your own work items and priorities as a language "
+"team."
+msgstr "尽管每个语言团队都可以遵循I18n团队工作计划，但你的团队也可以决定自己的工作项目和优先级作为一个语言团队。"
+
+msgid "Amandeep Singh Saini (jimidar) - Punjabi (India)"
+msgstr "Amandeep Singh Saini (jimidar) - 皮尔斯语（印度）"
+
+msgid ""
+"Another convenient way is to check dashboard translations is to run "
+"DevStack in your local environment. To run DevStack, you need to prepare "
+"``local.conf`` file, but no worries. Several ``local.conf`` files are "
+"shared on the Internet and a minimum example is shown below. From our "
+"experience, you need a machine with two or four CPU cores, 8 GB memory "
+"and 20 GB disk to run DevStack comfortably. If you enable just major "
+"OpenStack projects, the machine requirement would be much smaller like "
+"2~4GB memory."
+msgstr ""
+"另一种方便的方法是检查仪表板翻译是通过运行DevStack在本地环境中。要运行DevStack，您需要准备 "
+"``local.conf``文件，但无需担心。几个 "
+"``local.conf``文件共享在互联网上，一个最小化的示例如下。根据我们的经验，您需要一个具有两个或四个CPU核心、8GB内存和20GB硬盘的机器来运行DevStack舒适地。如果您只启用主要OpenStack项目，那么机器的要求就比这个要小，比如2~4GB内存。"
+
+msgid ""
+"As a translator, if reported bugs turns out beyond a translation bug, it "
+"is better to ask I18n team members via the mailing list or the IRC "
+"channel. They can handle such bugs."
+msgstr "作为翻译，如果报告的bug被证明是翻译bug，建议通过电子邮件列表或IRC频道向I18n团队成员询问。他们可以处理这样的问题。"
+
+msgid ""
+"As with I18n Core Team, the same things apply here. Launchpad I18n Core "
+"Team focuses on determining the importance of a translation and/or I18n "
+"bug and triaging bug priorities. You can find the member list on "
+"`Launchpad I18n Core Member list <https://launchpad.net/~openstack-i18n-"
+"core>`__."
+msgstr ""
+"与I18n Core团队一样，以下内容也适用。Launchpad I18n Core团队专注于确定翻译的重要性和/或I18n "
+"bug的优先级，并进行bug优先级的分配。您可以在`<https://launchpad.net/~openstack-i18n-"
+"core>`__中找到成员列表。"
+
+msgid ""
+"Before use sphinx-build to build HTML file, we need to feed the "
+"translations from the single PO file into those small PO files. For "
+"example:"
+msgstr "使用sphinx-build前，需要将单个PO文件中的翻译 feed到小PO文件中。例如："
+
+msgid "Bugs in a source project"
+msgstr "源项目中的bug"
+
+msgid "Bugs in tool chains"
+msgstr "工具链中的bug"
+
+msgid ""
+"Bugs in translated documents or dashboard are mainly classified into the "
+"following areas:"
+msgstr "翻译文档或仪表板中的bug主要分为以下几个类别："
+
+msgid ""
+"Bugs to report English strings are hard to translate in your language. "
+"For example, translators cannot control the order of words, or a plural "
+"form is not supported. Usually, this kind of bugs are in the original "
+"strings and cannot be fixed just by changing the strings and more work is"
+" needed."
+msgstr "报告中的错误，英语字符串难以在您的语言中翻译。例如，翻译人员无法控制词的顺序，或不支持复数形式。通常，这类错误出现在原始字符串中，并且仅更改字符串是不够的，需要进行更多工作。"
+
+msgid "Building"
+msgstr "构建"
+
+msgid "Building: Build HTML from RST documents and the translated results."
+msgstr "构建：从RST文档生成HTML，使用翻译结果。"
+
+msgid ""
+"Builds release notes in both the original (English) version and "
+"translated versions (if any)."
+msgstr "发布说明书在原始版本（英语）和翻译版本（如果有）中都生成。"
+
+msgid "CLI (command line interface)"
+msgstr "CLI (命令行接口)"
+
+msgid "Click \"...\" on the right, and select \"Request to join team\"."
+msgstr "点击右侧的...，并选择 '加入团队请求'。"
+
+msgid "Click \"Languages\" on the top, all languages will be listed."
+msgstr "点击顶部的 '语言'，所有语言都会被列出。"
+
+msgid "Click \"Log in\" button."
+msgstr "点击登录按钮。"
+
+msgid "Click the language you want to translate, the language page will be shown."
+msgstr "点击您要翻译的语言，语言页面会显示。"
+
+msgid ""
+"Common code used by **propose_translation_update.sh** and "
+"**upstream_translation_update.sh**"
+msgstr ""
+"共用 **propose_translation_update.sh** 和 **upstream_translation_update.sh**"
+" 的常用代码"
+
+msgid "Contents"
+msgstr "内容"
+
+msgid "Contributing"
+msgstr "贡献"
+
+msgid "Convention"
+msgstr "约定"
+
+msgid "Coordinator"
+msgstr "协调者"
+
+msgid "Creating a Language Team"
+msgstr "创建语言团队"
+
+msgid "Cross Project Liaisons"
+msgstr "跨项目联络"
+
+msgid "Daily Work"
+msgstr "日常工作"
+
+msgid ""
+"Discuss and review glossary changes in your language team before you "
+"propose changes to the Gerrit review system. Reviewers in the Gerrit "
+"review system cannot understand your language in most cases, so they can "
+"only check syntax or conventions."
+msgstr "在您的语言团队中讨论和审查词汇表的更改之前，请提议更改到Gerrit审查系统。Gerrit审查系统中的审查者很难理解您的语言，大多数情况下只能检查语法或约定。"
+
+msgid "Documentation"
+msgstr "文档"
+
+msgid "Documentation projects"
+msgstr "文档项目"
+
+msgid "Downloading"
+msgstr "下载"
+
+msgid "Downloading: Download the translated results by automation scripts."
+msgstr "下载：自动化脚本下载翻译结果。"
+
+msgid ""
+"During translating a dashboard related project, you may want to know "
+"\"where is this string used in the dashboard?\"."
+msgstr "在翻译dashboards相关项目时，你可能会想知道“这个字符串在dashboards中用到了哪里？”。"
+
+msgid ""
+"Each language team has useful information to help our translation "
+"efforts. It is worth visited. You can find your language team at "
+"https://wiki.openstack.org/wiki/I18nTeam/team."
+msgstr "每个语言团队都有有用的信息来帮助我们的翻译努力。它值得访问。你可以在https://wiki.openstack.org/wiki/I18nTeam/team找到你的语言团队。"
+
+msgid ""
+"Each language team may have useful information to help our translation "
+"efforts including translation guidelines, priorities, communication tools"
+" and so on. It is worth visited. You can find your language team page at "
+"https://wiki.openstack.org/wiki/I18nTeam/team. If you have questions, you"
+" can contact your coordinators."
+msgstr "每个语言团队可能会有有用的信息来帮助我们的翻译努力，包括翻译指南、优先级、沟通工具等。它值得访问。你可以在https://wiki.openstack.org/wiki/I18nTeam/team找到你的语言团队页面。如果你有问题，你可以联系你的协调者。"
+
+msgid ""
+"Everybody can propose agenda topics on `I18nTeamMeeting Wiki Page "
+"<https://wiki.openstack.org/wiki/Meetings/I18nTeamMeeting#Agenda_for_next_meeting>`_."
+" If there are no topics proposed, the meeting might be canceled for that "
+"week."
+msgstr ""
+"所有人都可以在 `I18nTeamMeeting Wiki Page "
+"<https://wiki.openstack.org/wiki/Meetings/I18nTeamMeeting#Agenda_for_next_meeting>`_."
+" 如果没有提议的话，那个周的会议可能会被取消。"
+
+msgid "Everyone in the OpenStack community is glad to help you."
+msgstr "开源栈社区对您非常高兴。"
+
+msgid "Extract Zanata user information"
+msgstr "提取Zanata用户信息"
+
+msgid "Extracting"
+msgstr "提取中..."
+
+msgid "FAQ: I cannot find my name in Stackalytics"
+msgstr "FAQ：我无法在Stackalytics中找到我的名字"
+
+msgid ""
+"Finally, propose a patch including all of the above changes to the Gerrit"
+" review system."
+msgstr "最终，建议在 Gerrit 评论系统中提交包含所有上述更改的补丁 patch。"
+
+msgid "Finally, we could generate HTML files by"
+msgstr "最终，我们可以通过"
+
+msgid ""
+"Finding and reporting translation bugs is an important step towards "
+"better quality of translations in OpenStack."
+msgstr "发现并报告翻译错误是向更好的翻译质量的重要一步。"
+
+msgid "Fixing I18n bugs"
+msgstr "修复国际化bug"
+
+msgid ""
+"Follow :doc:`the step <official_translator>` to register an ID in the "
+"translation website."
+msgstr "请遵循 <doc:`步骤 <official_translator>` > 来在翻译网站中注册 ID。"
+
+msgid ""
+"For a document in a stable branch, such as the installation guide for "
+"Liberty, you need to update the file ``doc-tools-check-languages.conf`` "
+"in the target stable branch directly."
+msgstr "在稳定分支中的文档需要更新文件 doc-tools-check-languages.conf 直接到目标稳定分支。"
+
+msgid "For documentations, URL and a detail place would be great."
+msgstr "对于文档，URL和详细位置很好。"
+
+msgid ""
+"For each Python project in OpenStack, there is an automation job daily to"
+" download the translations in PO file to the \"locale\" folder under the "
+"source folder of each project. See :doc:`here <infra>`. It will generate "
+"a review request in Gerrit. After :doc:`review <reviewing-translation-"
+"import>`, the translation in PO file will be merged."
+msgstr ""
+"每个OpenStack的Python项目都有一个 daily 的自动化任务，下载 PO 文件到 \"locale\" 下的源代码文件夹中的 "
+"\"locale\" 目录中。查看 :doc:`这里 <infra>`. 这会生成一个 Gerrit 的审查请求。审查 <reviewing-"
+"translation-import> 后，PO 文件的翻译将被合并。"
+
+msgid ""
+"For each Python project in OpenStack, there is an automation job to "
+"extract the messages , generate PO template and upload to Zanata, which "
+"is triggered by the \"commit\" event. See :doc:`here <infra>`."
+msgstr ""
+"每个OpenStack的Python项目都有一个自动化任务，提取消息、生成 PO模板，并将其上传到 Zanata，这是由 \"commit\" "
+"事件触发的。查看 :doc:`这里 <infra>`。"
+
+msgid "For example, in case of nova,"
+msgstr "例如，在 nova 的情况下,"
+
+msgid ""
+"For most of the Python projects, the preferred tools for I18N are gettext"
+" and babel. The gettext module provides internationalization (I18N) and "
+"localization (L10N) services for your Python modules and applications. "
+"Babel are a collection of tools for internationalizing Python "
+"applications."
+msgstr "对于大多数的Python项目，gettext和babel是I18N的首选工具。gettext模块提供了国际化（I18N）和本地化（L10N）服务，适用于您的Python模块和应用程序。babel是一个集成的工具集合，用于国际化Python应用程序."
+
+msgid "For the dashboard, panel or form name."
+msgstr "dashboard"
+
+msgid ""
+"Foundation membership was validated by calling a REST API in https"
+"://openstackid-resources.openstack.org"
+msgstr "开源ID资源验证"
+
+msgid "Getting in touch"
+msgstr "联系我们"
+
+msgid "Glossary Management"
+msgstr "词汇表管理"
+
+msgid "Glossary of your language"
+msgstr "glossary of your language"
+
+msgid "Go to `Zanata server <https://translate.openstack.org/>`_"
+msgstr "Go to `Zanata server <https://translate.openstack.org/>`_"
+
+msgid ""
+"Go to the :doc:`translation tools <tools>` page to understand the tools "
+"and scripts which support our translation platform."
+msgstr ""
+"Go to the :doc:`translation tools <tools>` page to understand the tools "
+"and scripts which support our translation platform."
+
+msgid "Handling documentation projects"
+msgstr "Handling documentation projects"
+
+msgid "Handling horizon projects"
+msgstr "Handling horizon projects"
+
+msgid "Handling python projects"
+msgstr "处理 Python 项目"
+
+msgid "Handling translation bugs"
+msgstr "处理翻译bug"
+
+msgid "Handy links (always sort of on the agenda)"
+msgstr "手册链接（总是在议程上提及）"
+
+msgid "Heleno Jimenez de la Cruz (id: heleno_jimenez) - Spanish (Mexico)"
+msgstr "Heleno Jimenez de la Cruz (id: heleno_jimenez) - 西班牙语（墨西哥）"
+
+msgid "Here is the check list for such case:"
+msgstr "这是解决这种情况的检查清单："
+
+msgid "How are translations handled?"
+msgstr "如何处理翻译?"
+
+msgid "How can I report a bug?"
+msgstr "如何报告bug?"
+
+msgid "How to check translations"
+msgstr "检查翻译方法"
+
+msgid "I18n Core Team"
+msgstr "i18n核心团队"
+
+msgid "I18n Mailing List Management"
+msgstr "i18n邮件列表管理"
+
+msgid ""
+"I18n blueprints are listed also on `Launchpad "
+"<https://blueprints.launchpad.net/openstack-i18n>`__. In normal case a "
+"blueprint has an assignee and describes a larger course of a process."
+msgstr ""
+"翻译蓝图在Launchpad <https://blueprints.launchpad.net/openstack-i18n> "
+"也有列出。正常情况下，一个蓝图会有分配者，并描述了一个更大的过程步骤。"
+
+msgid ""
+"I18n team helps release activities on other projects if the projects have"
+" cross-project liaison on I18n team and upon request."
+msgstr "I18n团队帮助其他项目的发布活动，如果这些项目有跨项目联络员在I18n团队中，并且需要时。"
+
+msgid "I18n team meeting"
+msgstr "I18n团队会议"
+
+msgid "IRC meeting commands"
+msgstr "IRC会议指令"
+
+msgid "IRC web client"
+msgstr "IRC web 客户端"
+
+msgid ""
+"If a bug reports translation errors of a certain language, it could be "
+"called **translation bug**. The translation bug should be fixed in the "
+"translation tool."
+msgstr "如果报告翻译错误的语言，可能被称为**翻译bug**。翻译bug应该在翻译工具中修复。"
+
+msgid "If a reported bug turns out to be bugs in a source project, You could help"
+msgstr "如果报告的bug实际上是源项目中的bug，你可以帮助"
+
+msgid ""
+"If there is a translation bug on a stable version in Zanata, it is highly"
+" recommended to fix the same translation bug on the corresponding string "
+"in the master version."
+msgstr "如果在Zanata稳定版本中发现翻译bug，那么建议在master版本中修复同样的翻译bug."
+
+msgid "If you are a speaker of this language, you could help"
+msgstr "如果你是这个语言的发音者，你可以帮助"
+
+msgid "If you are a translator of this language, you could help"
+msgstr "如果你是这个语言的翻译者，你可以帮助"
+
+msgid ""
+"If you are a translator or a person involved in I18n effort, you may be "
+"interested in triaging and fixing translation bugs :)"
+msgstr "如果您是翻译师或参与I18n工作的人员，您可能感兴趣的是处理翻译错误：)"
+
+msgid ""
+"If you are lucky to use a same name for launchpad and Zanata IDs, you do "
+"not need to do the above. Stackalytics will find your statistics "
+"automatically."
+msgstr "如果您幸运地使用Launchpad和Zanata ID的相同名称，则不需要进行上述步骤。Stackalytics会自动发现您的统计数据。"
+
+msgid "If you are reviewing these translations, keep the following in mind:"
+msgstr "如果您正在审查这些翻译，请记住以下几点："
+
+msgid ""
+"If you are unfamiliar with translations in OpenStack, read the `Project "
+"Team Guide on Internationalization and Translation "
+"<http://docs.openstack.org/project-team-guide/i18n.html>`_ first."
+msgstr ""
+"如果您不熟悉OpenStack中的翻译，请先阅读 <http://docs.openstack.org/project-team-"
+"guide/i18n.html>`_关于国际化和翻译的项目团队指南。"
+
+msgid ""
+"If you cannot find your local team, you can request to :ref:`create a "
+"local translation team <creating-lang-team>`."
+msgstr "如果您无法找到本地团队，可以 :ref:`创建一个本地翻译团队<creating-lang-team>`。"
+
+msgid ""
+"If you encounter more complicated things including translation tool "
+"chains or something others, the most recommended way is to ask it in the "
+"I18n mailing list ``openstack-i18n@lists.openstack.org``. Of course, you "
+"can file a bug against a related project directly."
+msgstr ""
+"如果遇到更复杂的问题，包括翻译工具链或其他东西，请在 openstack-i18n@lists.openstack.org "
+"这个邮件列表中询问。当然，您可以直接对相关项目上报bug。"
+
+msgid "If you have a machine running DevStack, there are two ways."
+msgstr "如果您有运行DevStack的机器，那么有两种方法。"
+
+msgid "If you have any, don't hesitate to share it :)"
+msgstr "如果您有任何问题，请不 hesitate to share it :)"
+
+msgid ""
+"If you notice bad translations in a language, file a bug (see "
+":ref:`reporting_translation_bugs`). Then the translation team will update"
+" the translation. We recommend to still import this change as is and "
+"import later the fix to not block other valid translations to merge."
+msgstr ""
+"如果您注意到某个语言中的翻译错误，请在 <a href='https://bugs.launchpad.net/openstack-i18n"
+"'>openstack-i18n launchpad</a> 中报告bug（请参见：<a "
+"href='reporting_translation_bugs'>reporting_translation_bugs</a>）。然后，翻译团队会更新翻译。我们建议您仍然将此更改直接导入，并在后面导入修复，以避免阻碍其他有效的翻译合并。"
+
+msgid ""
+"If you visit `openstack-i18n launchpad <https://bugs.launchpad.net"
+"/openstack-i18n>`_, we can find **Report a bug** at the right-upper "
+"corner. Click to report a bug."
+msgstr ""
+"如果您访问 <https://bugs.launchpad.net/openstack-i18n> ，我们可以在右上角找到 **Report a "
+"bug** 。点击即可报告bug."
+
+msgid ""
+"If you want to create a language team and you want to be a coordinator, "
+"please follow below steps:"
+msgstr "如果您想创建一个语言团队并且想成为协调者，请按照以下步骤："
+
+msgid ""
+"If you want to help fix I18n bugs of OpenStack, we can find them in the "
+"following places:"
+msgstr "如果您想帮助修复OpenStack的I18nbug，我们可以在以下地方找到它们："
+
+msgid ""
+"If you want to help to report bugs, add more wishlists, and improve them,"
+" you can report and fix bugs at `openstack-i18n in Launchpad "
+"<https://bugs.launchpad.net/openstack-i18n>`_. Mark bugs with a tag "
+"\"tools\"."
+msgstr ""
+"如果您想报告bug，添加更多wishlists，并改进它们，您可以在 `openstack-i18n in Launchpad "
+"<https://bugs.launchpad.net/openstack-i18n>`_ 中报告和修复bug。标记bug使用“工具”标签。"
+
+msgid ""
+"If your Zanata ID is not included in the translator list, you need to "
+"update the list to include your Zanata ID. Contact your language "
+"coordinator, email the i18n mailing list. You can also submit a patch to "
+"update the list by yourself (For detail, see :ref:`sync-translator-"
+"list`)."
+msgstr ""
+"如果您的Zanata ID不在翻译者列表中，需要更新列表以包含您的Zanata "
+"ID。联系您的语言协调者，发送电子邮件到i18n邮件列表。您也可以自行提交一个更新列表的补丁（请参见： :ref:`sync-"
+"translator-list`）。"
+
+msgid "Import latest translations"
+msgstr "导入最新翻译"
+
+msgid ""
+"In addition to IRC, I18n team communication takes place via a mailing "
+"list. The `Mailing List Administrator <http://lists.openstack.org/cgi-"
+"bin/mailman/admin/openstack-i18n>`__ is watching new subscribers, not "
+"allowed posts, and all the other things that come with the operation of "
+"such a list."
+msgstr ""
+"除了IRC之外，i18n团队的沟通方式是通过邮件列表。`<http://lists.openstack.org/cgi-"
+"bin/mailman/admin/openstack-i18n>`__ 是监控新订阅者、不允许发布内容以及其他与此类列表运营相关的事情。"
+
+msgid "In most cases, a source project would be one of:"
+msgstr "在大多数情况下，一个源项目通常是："
+
+msgid ""
+"In the beginning of each cycle it is a good idea to think about goals for"
+" the project in the next months and establish a translation plan. Goals "
+"are maybe still left from the last cycle and are to be reviewed. New "
+"goals are to be defined on `PTG <https://www.openstack.org/ptg/>`__ or an"
+" equivalent event. Orient the team to the `OpenStack-wide goals "
+"<https://governance.openstack.org/tc/goals/>`__."
+msgstr ""
+"每个周期的开始时，建议思考下个月的项目目标，并制定翻译计划。目标可能仍然存在于上个周期中，并需要审查。新目标可以在`<https://www.openstack.org/ptg/>`__"
+" 或类似的事件中定义。让团队了解 `<https://governance.openstack.org/tc/goals/>`__ "
+"的开源栈全局目标。"
+
+msgid ""
+"Input a short introduction of yourself, including your name, as "
+"\"Additional information\", then click \"Send message\"."
+msgstr "输入一段关于自己，包括你的名字，作为 \"额外信息\"，然后点击 \"发送消息\"。"
+
+msgid ""
+"Internationalization (I18n) is essential to make OpenStack ubiquitous. "
+"The mission of OpenStack I18n team is to make OpenStack ubiquitously "
+"accessible to people of all language backgrounds, by enhancing OpenStack "
+"software internationalization, providing translation, maintaining a "
+"translation platform and managing translation process for better quality "
+"of outcomes."
+msgstr ""
+"国际化（I18n）对于使OpenStack普遍可用至关重要。OpenStack i18n团队的 mission 是通过增强 OpenStack "
+"软件的国际化、提供翻译、维护翻译平台和管理翻译流程来实现，使 OpenStack 可以让所有语言背景的人都使用。"
+
+msgid "Is your Zanata ID different from your launchpad ID?"
+msgstr "你的Zanata ID与Launchpad ID是否相同?"
+
+msgid "It is a good idea to organize glossaries and initiate related discussion."
+msgstr "组织词汇表和相关讨论是有益的。"
+
+msgid "It is highly recommended to include the following information."
+msgstr "强烈建议包含以下信息。"
+
+msgid ""
+"It is important to understand how an original string is used in the "
+"source code with contextual knowledge for better quality of translations."
+" Unfortunately Zanata translation interface does not show where a target "
+"string is used in a source code correspondingly."
+msgstr ""
+"理解原版字符串在源代码中如何被使用，需要上下文知识以提高翻译质量。 unfortunately Zanata "
+"译接口无法显示目标字符串在源代码中的对应位置。"
+
+msgid "Jori Kuusinen (id: nuyori) - Finnish (Finland)"
+msgstr "Jori Kuusinen (id: nuyori) - 芬兰"
+
+msgid ""
+"Keep in mind to work with your `local user group "
+"<https://groups.openstack.org/>`_ and the `OpenStack Ambassadors "
+"<https://groups.openstack.org/ambassador-program>`_ to raise awareness "
+"and gather members :)"
+msgstr ""
+"请注意，和您的本地用户组 <https://groups.openstack.org/> _ 和 OpenStack Ambassadors "
+"<https://groups.openstack.org/ambassador-program>_ 一起合作，提高 awareness "
+"并收集成员 :)"
+
+msgid "Language Team"
+msgstr "语言团队"
+
+msgid "Language translation team"
+msgstr "语言翻译团队"
+
+msgid "Launchpad I18n Core Team"
+msgstr "Launchpad I18n Core Team"
+
+msgid "Launchpad bugs & blueprints"
+msgstr "Launchpad bugs & blueprints"
+
+msgid "Launchpad bugs, Gerrit reviews, and broken Zuul jobs"
+msgstr "Launchpad bugs, Gerrit reviews, and broken Zuul jobs"
+
+msgid "Liberty cycle"
+msgstr "自由周期"
+
+msgid ""
+"Mailing List: `openstack-i18n@lists.openstack.org "
+"<http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-i18n>`_"
+msgstr ""
+"邮件列表：openstack-i18n@lists.openstack.org <http://lists.openstack.org/cgi-"
+"bin/mailman/listinfo/openstack-i18n>`_"
+
+msgid ""
+"Make sure to include a short introduction because it is the only "
+"information which language coordinators can use to determine your join "
+"request is valid or not."
+msgstr "确保包含一个简短的介绍，因为这是语言协调者唯一可以使用来确定您的加入请求有效性或不的信息。"
+
+msgid "Managing a Language Team"
+msgstr "管理语言团队"
+
+msgid "Masaki Matsushita (id: mmasaki) - Japanese"
+msgstr "Masaki Matsushita (id: mmasaki) - 日语"
+
+msgid "Master glossary"
+msgstr "主词典"
+
+msgid "Meeting agenda"
+msgstr "会议议程"
+
+msgid "Member (translator)"
+msgstr "成员（翻译者）"
+
+msgid ""
+"Missed translations. Missed translations might be caused by not "
+"extracting English strings from the source project, or be caused by real "
+"missed translations. If the translations are missed in two different "
+"languages, they are probably bugs in the source project. Or else, they "
+"are real missed translations."
+msgstr "未完成翻译。未完成翻译可能是由于从源项目中提取英文字符串失败，或者是真实的未完成翻译。如果在两个语言中都未完成翻译，那么很可能是源项目中的bug。否则，那么它们就是真实的未完成翻译."
+
+msgid "Mitaka cycle"
+msgstr "明田周期"
+
+msgid "Monitoring translation jobs status"
+msgstr "监控翻译任务状态"
+
+msgid ""
+"More convenient way is to use **tox** like ``tox -e venv -- python "
+"<script-name>``."
+msgstr "使用**tox**比如``tox -e venv -- python <script-name>``更方便。"
+
+msgid ""
+"More information on mailing list: http://lists.openstack.org/pipermail"
+"/openstack-i18n/2015-July/001220.html"
+msgstr ""
+"邮件列表中关于更多信息：http://lists.openstack.org/pipermail/openstack-"
+"i18n/2015-July/001220.html"
+
+msgid ""
+"More information: https://releases.openstack.org/ocata/schedule.html & "
+"https://ttx.re/splitting-out-design-summit.html"
+msgstr ""
+"更多信息：https://releases.openstack.org/ocata/schedule.html & https://ttx.re"
+"/splitting-out-design-summit.html"
+
+msgid ""
+"Most teams have single approval for translation imports instead of two "
+"core reviewers."
+msgstr "团队中大多数使用单个审批人处理翻译导入，而不是两个核心审查者."
+
+msgid "Newton cycle"
+msgstr "新顿周期"
+
+msgid "No detail data."
+msgstr "没有详细数据。"
+
+msgid ""
+"Nobody should change translation files (the `.po` files in the `locale` "
+"directory) besides the bot. The next automatic import will override any "
+"change again. Therefore, leave a ``-1`` vote on any such changes and "
+"point developer to this document."
+msgstr ""
+"nobody "
+"应该改变翻译文件（.po文件在locale目录下），除了机器人。下一次自动导入将再次覆盖任何更改。因此，请在此类变化上投票-1，指向开发人员到这个文档。"
+
+msgid ""
+"Note that not all translation changes are the target for translation "
+"jobs. The goal is to have consistent translated programs, UIs, and "
+"documentation. There is not much sense if only a few lines are "
+"translated. The team has decided that files that have at least 75 percent"
+" of messages translated will be in the git repositories."
+msgstr "注意，不是所有的翻译变动都是目标翻译工作任务。目标是保持一致的翻译程序、UI和文档。如果只翻译了几行，那么没有太大的意义。团队决定，至少有75％的消息被翻译后，将在git仓库中存储."
+
+msgid ""
+"Note that the scripts in the tasks use `zanata-cli "
+"<http://docs.zanata.org/en/release/client/>`__ to pull and push "
+"translation content."
+msgstr ""
+"注意，任务中的脚本使用zanata-cli "
+"<http://docs.zanata.org/en/release/client/>__来拉取和推送翻译内容。"
+
+msgid ""
+"Note that you need to log into Zanata to see your activity in the above "
+"pages."
+msgstr "需要登录Zanata才能查看上述页面中您的活动。"
+
+msgid "Note: the period is relative short because of release cycle change"
+msgstr "注意：此时间段相对较短是因为发布周期的变化。"
+
+msgid ""
+"Now you can start your translation. You can actually become an OpenStack "
+"official translator by contributing translations. You can find "
+":doc:`various ways of contributions <contributing>`."
+msgstr ""
+"现在您可以开始翻译了。您实际上可以成为OpenStack官方翻译者，通过贡献翻译来实现。这您可以找到 :doc:`贡献方式 "
+"<contributing>`。"
+
+msgid "Ocata cycle"
+msgstr "Ocata周期"
+
+msgid ""
+"Odd and even values are calculated based on `ISO week numbers "
+"<https://www.timeanddate.com/date/weeknumber.html>`_."
+msgstr "奇数值和偶数值基于 `ISO 周数 <https://www.timeanddate.com/date/weeknumber.html>`_ 计算。"
+
+msgid ""
+"Of course there is no need that team coordinators do all items. You can "
+"collaborate your team members and share ideas."
+msgstr "当然，团队协调员不需要做所有事情。您可以与您的团队成员合作并分享想法。"
+
+msgid "Official OpenStack translator"
+msgstr "官方OpenStack翻译者"
+
+msgid ""
+"On the other hand, translating stable version as upstream contribution is"
+" not encouraged after the translated strings are packaged with releases. "
+"The stable version will be closed earlier than or around EOL."
+msgstr "另一方面，稳定版本作为上游贡献的翻译不是在发布后建议的。稳定版本将比EOL之前或更早关闭。"
+
+msgid ""
+"One of main goals in I18n team is to incorporate translated strings into "
+"a new release so that more global users experience translated version of "
+"OpenStack. To accomplish this goal, some of team activities need to be "
+"aligned with a release schedule."
+msgstr "I18n团队的一个主要目标是将翻译字符串整合到新发布中，以便更多全球用户体验翻译版本的OpenStack。为了实现这个目标，需要与发布时间表对齐一些团队活动。"
+
+msgid ""
+"One way is to update the horizon code only. The following shell script "
+"fetches the latest horizon code, compiles translation message catalogs "
+"and reloads the apache httpd server. Replace ``$BRANCH`` with an "
+"appropriate branch such as ``master``, ``stable/newton`` or "
+"``stable/mitaka``."
+msgstr ""
+"一项方法是只更新horizon代码。以下shell脚本从最新的horizon代码中获取，编译翻译消息目录，重新加载Apache "
+"HTTP服务器。请将``$BRANCH``替换为适当的分支，如``master``, "
+"``stable/newton``或``stable/mitaka``。"
+
+msgid ""
+"Open a POT file you find and search a string you are interested in. Then "
+"you can find an entry like:"
+msgstr "找到一个POT文件并搜索你感兴趣的字符串，然后可以找到类似这样的条目："
+
+msgid "Open discussion"
+msgstr "开 discussion"
+
+msgid "Open reviews I18n repository"
+msgstr "Open reviews I18n repository"
+
+msgid "OpenStack Dashboard"
+msgstr "OpenStack Dashboard"
+
+msgid "OpenStack I18n Guide"
+msgstr "OpenStack 国际化指南"
+
+msgid "OpenStack I18n team"
+msgstr "OpenStack 国际化团队"
+
+msgid ""
+"OpenStack I18n team is a team to coordinate all language translations and"
+" cooperation with the I18n team and the development teams. I18n team "
+"usually has a working plan."
+msgstr "OpenStack 国际化团队是所有语言翻译和与国际化团队、开发团队合作的协调机构。国际化团队通常有一个工作计划."
+
+msgid ""
+"OpenStack I18n team uses `Launchpad <https://bugs.launchpad.net"
+"/openstack-i18n>`_ for the bug tracking."
+msgstr "OpenStack 国际化团队使用 <https://bugs.launchpad.net/openstack-i18n> 来跟踪bug。"
+
+msgid "OpenStack I18n team: See :ref:`label-i18n-team-contact`"
+msgstr "OpenStack 国际化团队：参见 :ref:`label-i18n-team-contact`"
+
+msgid ""
+"OpenStack documents are using RST format. The steps to translate RST "
+"documents include:"
+msgstr "OpenStack 文档采用 RST 格式。将RST文档翻译的步骤包括："
+
+msgid ""
+"OpenStack uses Zanata as a translation platform. While most operations "
+"around the translation platform are automated, if you want to communicate"
+" with the translation platform manually, you can use `Zanata CLI "
+"<http://docs.zanata.org/en/release/client/>`__."
+msgstr ""
+"OpenStack 使用Zanata作为翻译平台。虽然大多数在翻译平台上的操作都是自动化的，但如果您想要手动与翻译平台交互，您可以使用 "
+"`Zanata CLI <http://docs.zanata.org/en/release/client/>`__。"
+
+msgid "Or, more convenient way would be:"
+msgstr "或，方便的方法是："
+
+msgid "Original string or message is not correct."
+msgstr "原始字符串或消息不正确。"
+
+msgid "Other projects supported with translation jobs"
+msgstr "其他项目支持翻译任务"
+
+msgid ""
+"POT files are no longer stored in git repositories. The change was made "
+"at the beginning of Newton development cycle [#]_."
+msgstr "POT文件不再存储在git仓库中。该更改于新特定开发周期的开始时进行了 [#]_."
+
+msgid "Period: 2015-08-01 to 2016-01-30"
+msgstr "时间段：2015-08-01至2016-01-30"
+
+msgid "Period: 2016-02-01 to 2016-07-31"
+msgstr "时间段：2016-02-01至2016-07-31"
+
+msgid "Period: 2016-08-01 to 2017-01-05"
+msgstr "时间段：2016-08-01至2017-01-05"
+
+msgid "Period: 2017-01-06 to 2017-06-30"
+msgstr "时间段：2017-01-06至2017-06-30"
+
+msgid "Period: 2017-07-01 to 2018-01-10"
+msgstr "时间段：2017-07-01至2018-01-10"
+
+msgid "Period: 2018-01-11 to 2018-07-09"
+msgstr "时间段：2018-01-11至2018-07-09"
+
+msgid "Period: 2018-07-10 to 2019-01-25"
+msgstr "时间段：2018-07-10至2019-01-25"
+
+msgid "Period: from 2014-11-01 to 2015-07-16"
+msgstr "时间段：从 2014-11-01 至 2015-07-16"
+
+msgid "Pike cycle"
+msgstr "皮克周期"
+
+msgid "Previous meetings"
+msgstr "之前的会议"
+
+msgid "Project Goals And Translation Plan"
+msgstr "项目目标和翻译计划"
+
+msgid "Project configuration"
+msgstr "项目配置"
+
+msgid "Project maintenance"
+msgstr "项目维护"
+
+msgid "Projects affecting StringFreezes"
+msgstr "影响StringFreezes的项目"
+
+msgid "Pull translations from Zanata"
+msgstr "从Zanata获取翻译"
+
+msgid "Python script to setup projects for Zanata"
+msgstr "为Zanata设置项目的Python脚本"
+
+msgid "Queens cycle"
+msgstr "皇后周期"
+
+msgid "Register a user ID in Zanata"
+msgstr "在Zanata注册用户ID"
+
+msgid "Release Management"
+msgstr "释放管理"
+
+msgid ""
+"Replace ``$BRANCH`` with an appropriate branch such as ``master``, "
+"``stable/newton`` or ``stable/mitaka``."
+msgstr "替换 $BRANCH 为适当分支，如 master、stable/newton 或 stable/mitaka。"
+
+msgid "Reporting translation bugs"
+msgstr "报告翻译错误"
+
+msgid "Request to join a translation team"
+msgstr "加入翻译团队的请求"
+
+msgid "Retrieve translation statistics"
+msgstr "获取翻译统计信息"
+
+msgid "Review of action items from the previous meeting"
+msgstr "前一次会议行动项审查"
+
+msgid "Reviewer"
+msgstr "审查者"
+
+msgid "Reviewing"
+msgstr "审查"
+
+msgid "Reviewing translation imports"
+msgstr "审查翻译导入"
+
+msgid "Rob Cresswell (id: robcresswell) - English (United Kingdom)"
+msgstr "罗伯克雷斯威尔(id: robcresswell) - 英国英语"
+
+msgid "Rocky cycle"
+msgstr "岩石周期"
+
+msgid "Roles in a Language Team"
+msgstr "语言团队中的角色"
+
+msgid "Running DevStack"
+msgstr "运行DevStack"
+
+msgid "Running OpenStack-Ansible"
+msgstr "运行OpenStack-Ansible"
+
+msgid "Search in this guide"
+msgstr "在此指南中搜索"
+
+msgid "Server projects"
+msgstr "服务器项目"
+
+msgid ""
+"Setting up a communication channel among team members is recommended. It "
+"encourage team communications to discuss various translation related "
+"topics."
+msgstr "在团队成员之间建立沟通渠道是推荐的。它可以促进团队交流讨论各种翻译相关话题。"
+
+msgid "Slicing"
+msgstr "切割"
+
+msgid "Slicing: generate PO templates from RST documents"
+msgstr "切割：从RST文档生成PO模板"
+
+msgid ""
+"Sphinx is a tool to translate RST source files to various output formats,"
+" including POT and HTML. You need to install Sphinx before you go to "
+"below steps. Almost all projects have ``test-requirements.txt`` in their "
+"repositories and you can check the required version of Sphinx by checking"
+" this file."
+msgstr ""
+"Sphinx 是一个工具，用于将 RST 源文件转换为多种输出格式，包括 POT 和 HTML。您需要安装 Sphinx "
+"才能继续下一步。几乎所有项目都有 ``test-requirements.txt`` 在其仓库中，并且可以通过检查这个文件来查看 Sphinx "
+"的所需版本。"
+
+msgid "Stackalytics"
+msgstr "堆栈分析"
+
+msgid ""
+"Statistics are available through: https://docs.google.com/spreadsheets/d"
+"/1YpDJU_uNA4I5fzFG69T6L9gpFsy5yNtA9a-lSxnqeAY/edit#gid=1366189722"
+msgstr ""
+"统计数据可通过：https://docs.google.com/spreadsheets/d"
+"/1YpDJU_uNA4I5fzFG69T6L9gpFsy5yNtA9a-lSxnqeAY/edit#gid=1366189722"
+
+msgid "Stein cycle"
+msgstr "斯坦周期"
+
+msgid "Steps to become a OpenStack translator"
+msgstr "成为OpenStack翻译者的步骤"
+
+msgid "Sync the translator list with Zanata"
+msgstr "同步翻译列表与Zanata"
+
+msgid "TBD"
+msgstr "待定"
+
+msgid "Team activities with release"
+msgstr ""
+
+msgid ""
+"The I18n project maintains a list of language teams and their members. "
+"The list is used by Stackalytics to gather translation statistics (See "
+":ref:`stats-stackalytics` for detail). It is also used by the scripts "
+"below."
+msgstr ""
+
+msgid "The I18n team welcomes any kinds of contribution."
+msgstr ""
+
+msgid ""
+"The OpenStack infra scripts executed by tasks currently download new "
+"files that are at least **75 percent** translated and if files grow over "
+"time but do not get new translations (or strings change too much), they "
+"will be removed again automatically from the project with a lower "
+"threshold of currently **40 percent**."
+msgstr ""
+
+msgid ""
+"The POT file is found under ``http://tarballs.openstack.org/translation-"
+"source/<Zanata-project-name>/<Zanata-project-"
+"version>/<path>/<resource>.pot``, where:"
+msgstr ""
+
+msgid "The above run the following internally:"
+msgstr "上述运行以下内部："
+
+msgid ""
+"The bug triaging process are following the `general bug triaging process "
+"<https://wiki.openstack.org/wiki/BugTriage>`_. If you want to help bug "
+"triaging tasks, join the `OpenStack I18n bug team <https://launchpad.net"
+"/~openstack-i18n-bugs>`_ first."
+msgstr ""
+"bug triage 过程遵循 <https://wiki.openstack.org/wiki/BugTriage> 的通用 bug "
+"triaging 过程。如果您想帮助 bug triaging 任务，请加入 <https://launchpad.net/~openstack-"
+"i18n-bugs>`_。"
+
+msgid ""
+"The change is done by a bot. If anything looks wrong with it, you need to"
+" actively reach out to the :ref:`OpenStack I18n team "
+"<openstack_i18n_team>` and point the problem out."
+msgstr "该更改由机器人完成。如果有任何问题，请主动联系 <openstack_i18n_team>` 并指出问题。"
+
+msgid "The convention for heading levels is as follows::"
+msgstr "头部标题级别的约定如下：::"
+
+msgid ""
+"The easiest way would be to open http://tarballs.openstack.org"
+"/translation-source and then follow ``<Zanata-project-name>``, ``<Zanata-"
+"version>`` and corresponding links."
+msgstr ""
+"最简单的方法是打开 http://tarballs.openstack.org/translation-source ，然后遵循 "
+"``<Zanata-project-name>`，``<Zanata-version>`` 和 corresponding 链接。"
+
+msgid "The filename of the list is ``tools/translation_team.yaml``."
+msgstr "工具/翻译团队.yaml文件的名称是tools/translation_team.yaml。"
+
+msgid ""
+"The following is an example of ``local.conf`` for Newton release which "
+"runs core components (keystone, nova, glance, neutron, cinder), horizon, "
+"swift and heat. The components which the main horizon code supports are "
+"chosen."
+msgstr ""
+"以下是一个新tons Newton发布版本的local.conf示例，支持core组件（keystone, nova, glance, "
+"neutron, cinder）、horizon、swift和heat。主要 horizon 代码所支持的组件是那些。"
+
+msgid ""
+"The following is an example of ``zanata.xml``. In most cases, what you "
+"need to edit are **project** and **project-version**."
+msgstr "以下是一个zanata.xml的示例。在大多数情况下，您需要编辑的是**project**和**project-version**。"
+
+msgid "The followings are useful links when writing documents in RST."
+msgstr "以下是一些在写RST文档时有用的链接。"
+
+msgid ""
+"The goal of the review is that the structure of the change is fine, it's "
+"not that the strings are translated properly. The review of translated "
+"strings is done by teams using the translation server."
+msgstr "翻译团队的目标是结构变化良好，而不是字符串正确翻译。使用翻译服务器，翻译团队进行翻译字符串的审查。"
+
+msgid ""
+"The guide is written in reStructuredText (RST) markup syntax with Sphinx "
+"extensions. Most conventions follow `those of the openstack-manuals "
+"project <http://docs.openstack.org/contributor-guide/rst-conv.html>`__."
+msgstr ""
+"指南是使用reStructuredText (RST)标记语法，结合Sphinx扩展。大多数约定遵循 `openstack-manuals项目的 "
+"those <http://docs.openstack.org/contributor-guide/rst-conv.html>`__。"
+
+msgid ""
+"The master glossary is an usual POT file. You can edit it in your "
+"favorite editor as usual."
+msgstr "主词典是一个普通POT文件。您可以在您的favorite编辑器中如常编辑它。"
+
+msgid ""
+"The other way is to rerun DevStack. Ensure to include ``RECLONE=True`` in"
+" your ``local.conf`` before running ``stack.sh`` again so that DevStack "
+"retrieve the latest codes of horizon and other projects."
+msgstr ""
+"另一种方法是重新运行DevStack。确保在运行``stack.sh``时包含 ``RECLONE=True`` 在您的 "
+"``local.conf`` 中，以便DevStack获取最新的horizon和其他项目的代码。"
+
+msgid ""
+"The proposal bot also removes files, it removes files that have very few "
+"translations in them. Note that no translations will be lost, they are "
+"still in the translation server."
+msgstr "提案机器人还移除文件，移除那些有很少翻译的文件。注意，无论如何，翻译都不会丢失，它们仍然存在于翻译服务器上。"
+
+msgid ""
+"The script ``tools/zanata/zanata_stats.py`` helps retrieving translation "
+"statistics from Zanata."
+msgstr "脚本``tools/zanata/zanata_stats.py``帮助从Zanata获取翻译统计信息。"
+
+msgid ""
+"The script ``tools/zanata/zanata_userinfo.py`` helps this. It generates a"
+" CSV file by reading a YAML file which contains the list of translators "
+"(e.g., ``translation_team.yaml``) with user name and e-mail addresses by "
+"interacting with Zanata API."
+msgstr ""
+"脚本 tools/zanata/zanata_userinfo.py 帮助了。它生成一个 CSV 文件，通过读取一个 YAML文件（例如 "
+"``translation_team.yaml``）来获取翻译人员的列表（例如：用户名称和电子邮件地址），与 Zanata API 进行交互。"
+
+msgid ""
+"The scripts below depend on several python modules. To install these "
+"dependencies, run ``pip install -e requirements.txt``."
+msgstr "以下脚本依赖于多个 Python 模块。要安装这些依赖项，请运行 ``pip install -e requirements.txt``。"
+
+msgid ""
+"The translatable strings are extracted from a source project. So some "
+"i18n bugs might be caused by bugs in the original strings/source codes of"
+" a source project which contains these translatable strings. Those kind "
+"of bugs should be fixed in the source project."
+msgstr "可转换的字符串是从一个源项目中提取出来的。因此，可能会因为在源项目中的 i18n BUG 而引起一些错误。那些类型的 BUG 应该在源项目中修复。"
+
+msgid ""
+"The translation plan is announced on `Zanata "
+"<https://translate.openstack.org>`__ and contains the projects with the "
+"highest priority in translation. Usually these are all user-visible "
+"projects, like Horizon."
+msgstr ""
+"翻译计划在 `Zanata <https://translate.openstack.org>`__ "
+"中宣布，并包含优先翻译的项目列表。通常这些都是所有用户可见的项目，例如 Horizon。"
+
+msgid ""
+"Then, for every PO file, we should execute the following command to build"
+" into MO file:"
+msgstr "然后，对于每个 PO 文件，我们应该执行以下命令来生成 MO 文件："
+
+msgid ""
+"Then, your locale translation team is created successfully. You can "
+"enroll more people to join and start your translation work."
+msgstr "然后，您的本地化翻译团队创建成功。您可以邀请更多人加入并开始进行翻译工作。"
+
+msgid ""
+"There are cases where you cannot see your translation statistics in "
+"Stackalytics even after you translate strings in Zanata."
+msgstr "在某些情况下，您即使在Zanata中翻译了字符串，也无法在Stackalytics看到您的翻译统计数据。"
+
+msgid "There are several ways to know your translation activity."
+msgstr "了解您的翻译活动有多种方法。"
+
+msgid "There are three different roles in a translation team:"
+msgstr "翻译团队中有三个不同的角色："
+
+msgid ""
+"This document explains to reviewers details about the automatic import of"
+" translations from Zanata."
+msgstr "本文解释了如何为 reviewers 提供关于自动从 Zanata 导入翻译的详细信息。"
+
+msgid "This document gives additional information."
+msgstr "本文提供了额外信息。"
+
+msgid ""
+"This guide itself is I18n-ed and you can translate it into your language."
+" To translate it, visit `i18n "
+"<https://translate.openstack.org/project/view/i18n>`__ project in `Zanata"
+" <https://translate.openstack.org/>`__. Document **doc** in **i18n** "
+"project corresponds to this guide. You can translate it in the same way "
+"as you do for other projects like dashboard or manuals. Once the "
+"translation progress becomes higher than the threshold (For more "
+"information on the threshold, see :ref:`translation-jobs`), the "
+"translated version of the guide will be published."
+msgstr ""
+"本指南本身已经进行了国际化，您可以将其翻译为您的语言。要翻译它，请访问 `i18n "
+"<https://translate.openstack.org/project/view/i18n>`__ 的项目，在 `Zanata "
+"<https://translate.openstack.org/>`__. `i18n` 项目中的 **doc** "
+"文档与本指南对应。您可以按照其他项目（如仪表板或手册）翻译它的一样方式进行翻译。当翻译进度超过阈值（有关更多信息，请参见： :ref"
+":`translation-jobs`），则将发布指南的翻译版本。"
+
+msgid ""
+"This guide provides detailed instructions on the I18n contribution "
+"workflow and conventions to be considered by all contributors."
+msgstr "本指南提供了详细的国际化贡献流程和要被所有贡献者考虑的约定。"
+
+msgid "This is a useful commands for the IRC meeting."
+msgstr "这是一个有用的 IRC会议命令。"
+
+msgid ""
+"This is written about openstack-manuals project. As of the end of Pike "
+"development cycle, `the document migration community-wide effort "
+"<https://specs.openstack.org/openstack/docs-specs/specs/pike/os-manuals-"
+"migration.html>`__ is being done. The process documented here might be "
+"changed in near future."
+msgstr ""
+"这是一篇关于openstack-manuals项目的文章。截至Pike开发周期结束， `the document migration "
+"community-wide effort <https://specs.openstack.org/openstack/docs-"
+"specs/specs/pike/os-manuals-migration.html>`__ 正在进行中。该过程可能在近期发生变化。"
+
+msgid ""
+"This list is a cache of information on Zanata, and we need to keep it "
+"synced with Zanata."
+msgstr "这是Zanata信息的缓存列表，我们需要保持与Zanata同步。"
+
+msgid ""
+"This means \"Aggregates\" menu in \"Admin\" group in the left side menu. "
+"In Horizon code, the second level corresponds to a dashboard group like "
+"\"Project\" or \"Admin\" and the third level corresponds to a panel like "
+"\"Aggregates\" (in this example), \"Instances\" or \"Networks\"."
+msgstr ""
+"这意味着\"聚合\"菜单在左侧菜单中的\"管理\"组。 在Horizon代码中，第二级对应于一个dashboards "
+"group，如\"项目\"或\"管理\"，而第三级对应于一个panel，如\"聚合\"（本例中），\"实例\"或\"网络\"。"
+
+msgid "This page collects small tips and tricks around translations."
+msgstr "这个页面收集了关于翻译的小窍门和技巧。"
+
+msgid "This page covers various operations around i18n activities."
+msgstr "这个页面涵盖了i18n活动的各种操作。"
+
+msgid "This page describes how end users can report translation bugs."
+msgstr "这个页面描述了用户如何报告翻译错误。"
+
+msgid "This page describes the conventions and tips on writing this guide itself."
+msgstr "本页面描述了如何编写此指南的约定和建议。"
+
+msgid ""
+"This page documents what I18n team concerns and which things are needed "
+"to do with OpenStack releases. Each OpenStack release has around 6-month "
+"cycle and the corresponding schedule is available on "
+"https://releases.openstack.org/ (e.g., "
+"https://releases.openstack.org/ocata/schedule.html describes Ocata "
+"release schedule)."
+msgstr ""
+"本页面介绍了国际化团队关注的问题以及需要做什么与OpenStack发布版本相关联。每个OpenStack发布版本大约有6个月的周期， "
+"corresponding "
+"的发布计划可在https://releases.openstack.org/（例如，https://releases.openstack.org/ocata/schedule.html描述了Ocata发布计划）可见。"
+
+msgid "This script requires Zanata admin privilege."
+msgstr "本脚本需要Zanata管理员权限。"
+
+msgid ""
+"This section tries to share best practices on how team coordinators "
+"manages their language team. Feel free to add useful information!"
+msgstr "本部分试图分享如何团队协调员管理语言团队的最佳实践。您可以添加有用的信息！"
+
+msgid "This should be done after a stable version on Zanata is created."
+msgstr "应该在创建稳定版本的Zanata后完成。"
+
+msgid "Titles"
+msgstr "标题"
+
+msgid ""
+"To add a link to a generated document, you need to update the file "
+"``www/<lang>/index.html`` in the ``master`` branch of the ``openstack-"
+"manuals`` repository. Note that the web pages are published from "
+"``master`` branch, which contains the pages for all releases, such as "
+"Liberty. Therefore, you don't need to update the file "
+"``www/<lang>/index.html`` in the stable branch."
+msgstr ""
+"在生成文档中添加链接，需要更新文件www/<lang>/index.html在openstack-"
+"manuals项目的master分支中。注意，web页面从master分支发布，包含所有版本，如自由度。因此，不需要更新文件www/<lang>/index.html在稳定分支中。"
+
+msgid ""
+"To communicate with the translation platform, you need to prepare a "
+"project configuration file named ``zanata.xml`` in the top directory of a"
+" project you are interested in. OpenStack projects does not contain "
+"``zanata.xml`` in their git repositories, so you need to create it "
+"manually."
+msgstr "要与翻译平台进行通信，需要准备一个名为zanata.xml的项目配置文件，在项目顶级目录下。openstack项目不包含zanata.xml文件在其git仓库中，因此需要手动创建它。"
+
+msgid ""
+"To display translated messages in python server projects, you need to "
+"compile message catalogs and also need to configure your server services "
+"following instructions described at `oslo.i18n documentation "
+"<https://docs.openstack.org/oslo.i18n/latest/user/usage.html#displaying-"
+"translated-messages>`__."
+msgstr ""
+"要在Python服务器项目中显示翻译消息，需要编译消息目录并且需要根据oslo.i18n文档描述的方式配置你的服务。查看<https://docs.openstack.org/oslo.i18n/latest/user/usage.html"
+"#displaying-translated-messages>。"
+
+msgid ""
+"To download translations from Zanata, run the following command after "
+"going into a project directory. You are usually interested in only a few "
+"of languages, so ``--locales`` option would be useful. For more options, "
+"see the output of ``zanata pull --help``."
+msgstr ""
+"要从Zanata下载翻译，请在项目目录中运行以下命令。通常只感兴趣于几种语言，因此``--locales``选项很有用。要了解更多选项，请查看zanata"
+" pull --help的输出。"
+
+msgid ""
+"To fetch translated files regularly, execute this command manually or as "
+"a cron:"
+msgstr "为了定期获取翻译文件，手动执行此命令或作为一个cron："
+
+msgid ""
+"To help with translation, :doc:`become an official translator "
+"<official_translator>` and join your language team. Then go to "
+"`translation website <https://translate.openstack.org/>`_ to start "
+"translation. You can find prioritized translation jobs as I18n team at "
+"the top of the page."
+msgstr ""
+"帮助翻译： :doc:`成为正式翻译者 <official_translator>` 并加入你的语言团队。然后去 `翻译网站 "
+"<https://translate.openstack.org/>`_ 开始翻译。你可以在页面顶部找到优先翻译任务。"
+
+msgid ""
+"To not have too much churn and last minute string fixes lead to files get"
+" removed, there is also a lower threshold for releases of **66 percent** "
+"of messages translated as policy - which is only manually enforced."
+msgstr "为了避免过度的变动和最后一分钟的字符串修复导致文件被删除，存在一个**66%**的消息翻译率的较低门槛 - 这个政策仅由手工执行。"
+
+msgid "To report translation errors, see :doc:`bug_report`."
+msgstr "要报告翻译错误，请参阅 :doc:`bug_report`。"
+
+msgid "To run the script:"
+msgstr "要运行脚本："
+
+msgid "To sync the translator list, run the following command:"
+msgstr "同步翻译列表，请运行以下命令："
+
+msgid "Tools"
+msgstr "工具"
+
+msgid "Train cycle"
+msgstr "训练周期"
+
+msgid "Translate **master** version on Zanata."
+msgstr "在Zanata上翻译**master**版本。"
+
+msgid ""
+"Translated strings are automatically synced between translation server "
+"and Openstack infrastructure. The procedure is robust, but sometimes "
+"something can go wrong. For this reason there is a section :ref"
+":`monitoring-translation-job-status` in the infrastructure chapter."
+msgstr ""
+"翻译后的字符串自动同步到翻译服务器和Openstack基础设施之间。虽然程序是 robust 的，但偶尔会出现问题。因此，在基础设施章节中有一个 "
+":ref:`monitoring-translation-job-status` 部分"
+
+msgid ""
+"Translating: manage the translation in Zanata, including the translation "
+"memory and glossary management"
+msgstr "管理Zanata中的翻译，包括翻译记忆和词典管理"
+
+msgid "Translation"
+msgstr "翻译"
+
+msgid "Translation Job Control"
+msgstr "翻译任务控制"
+
+msgid "Translation Statistics"
+msgstr "翻译统计"
+
+msgid "Translation activities with plans from language teams"
+msgstr "语言团队制定的翻译活动"
+
+msgid "Translation bugs"
+msgstr "翻译bug"
+
+msgid ""
+"Translation bugs are tracked on `Launchpad <https://bugs.launchpad.net"
+"/openstack-i18n>`__. Often only the language teams are able to handle "
+"translation bugs, e.g. wrong translation words or senses. PTL fits "
+"thereon or designates bug triage liaison."
+msgstr ""
+"翻译bug在`Launchpad <https://bugs.launchpad.net/openstack-"
+"i18n>`__中追踪。通常只语言团队负责处理翻译bug，例如错误的翻译词语或含义。PTL负责此处或指定 bug 问题解决人。"
+
+msgid "Translation bugs in all languages can be reported here."
+msgstr "所有语言中的翻译bug都可以在这里报告。"
+
+msgid "Translation infrastructure"
+msgstr "翻译基础设施"
+
+msgid "Translation infrastructure tasks and scripts"
+msgstr "翻译基础设施任务和脚本"
+
+msgid ""
+"Translation is another kind of important contribution to OpenStack "
+"community. If you want to become a official translator, you need to "
+"finish following steps:"
+msgstr "翻译是OpenStack社区的另一种重要贡献。要成为正式翻译，需要完成以下步骤："
+
+msgid "Translation jobs"
+msgstr "翻译任务"
+
+msgid "Translation tips"
+msgstr "翻译指南"
+
+msgid "Translation tools"
+msgstr "翻译工具"
+
+msgid "Translations"
+msgstr "翻译结果"
+
+msgid ""
+"Translations are being imported into a project repository daily, so in "
+"most cases you do not need to pull translations from Zanata manually. "
+"What you need is to pull the latest horizon code."
+msgstr "每天都在项目仓库中导入翻译，通常不需要手动从Zanata获取翻译。您只需拉取最新的horizon代码即可。"
+
+msgid ""
+"Translations on master version in Zanata are normally recommended for "
+"upstream contribution."
+msgstr "在master版本上存储的翻译通常是 upstream贡献的推荐。"
+
+msgid ""
+"Translators translate repositories using the `translation server "
+"<http://translate.openstack.org>`_ which runs the Zanata software."
+msgstr "翻译者使用 `translation server <http://translate.openstack.org>`_ 来翻译仓库。"
+
+msgid ""
+"Update jobs for Zanata start after patches are merged on OpenStack "
+"project repositories, and Zuul starts to run tasks everyday at **6:00 "
+"UTC** for the updates on OpenStack project repositories."
+msgstr "Zuul从每天 **6:00 UTC** 开始运行任务，等待OpenStack项目仓库中的更新完成后再开始执行更新任务。"
+
+msgid "Uploading"
+msgstr "上载"
+
+msgid "Uploading: Upload the translation resources to Zanata"
+msgstr "上传中：将翻译资源上传到Zanata"
+
+msgid "User configuration"
+msgstr "用户配置"
+
+msgid "Using translations"
+msgstr "使用翻译"
+
+msgid "Usual topics"
+msgstr "常见话题"
+
+msgid ""
+"Visit `Stackalytics <http://stackalytics.com/>`__ and choose "
+"``Translations`` as ``Metric`` dropdown menu at the upper-right."
+msgstr "访问<http://stackalytics.com/>__并选择上右角的“翻译”选项作为“指标”菜单"
+
+msgid ""
+"We have two types of Zuul jobs for translations: syncing source strings "
+"into Zanata with the latest repositories and pushing translations from "
+"Zanata into the repositories. The first job is for Zanata-side updates. "
+"Up-to-date source strings to be translated are compared and updated "
+"between OpenStack project repositories and Zanata. If source texts in "
+"OpenStack project repositories are changed, then change sets are pushed "
+"into Zanata so translators deal with up-to-date source strings. On the "
+"other hand, the second job is aimed to reflect changes in translated "
+"strings in Zanata (after translators do translation activities) into "
+"corresponding OpenStack project repositories. The job will propose "
+"changes as :doc:`Translation Import <reviewing-translation-import>` "
+"Gerrit patches."
+msgstr ""
+"我们使用Zuul "
+"jobs进行翻译：在Zanata中同步最新的源代码并将其推送到OpenStack项目的仓库。第一个job是用于Zanata更新。比较OpenStack项目仓库中的最新源代码，并将它们推入Zanata。若OpenStack项目仓库中的源代码发生变化，则会将更改集推入Zanata，使翻译人员能够处理最新的源代码。另一方面，第二个job是为了在翻译完成后，将Zanata中翻译后的字符串反映到"
+" corresponding OpenStack项目仓库中。该job将提案更改： :doc:`<reviewing-translation-"
+"import>` Gerrit patch."
+
+msgid ""
+"We use :ref:`Zanata CLI <zanata-cli>` to download the translated PO files"
+" from the translation platform."
+msgstr "我们使用 :ref:`Zanata CLI <zanata-cli>` 下载从翻译平台下载的 PO 文件。"
+
+msgid ""
+"We use :ref:`Zanata CLI <zanata-cli>` to upload the POT file to the "
+"translate platform."
+msgstr "我们使用 :ref:`Zanata CLI <zanata-cli>` 将 POT文件上传到翻译平台。"
+
+msgid ""
+"We use sphinx-build to translate RST files to POT files. Because we want "
+"to have a single POT file per document, we use msgcat to merge those POTs"
+" after sphinx-build."
+msgstr ""
+"我们使用sphinx-"
+"build将RST文件转换为POT文件。因为我们希望每个文档都有一个单独的POT文件，我们使用msgcat合并这些POT文件后。"
+
+msgid "What is wrong? What should be improved?"
+msgstr "什么是错误的？需要改进吗？"
+
+msgid ""
+"When a filename is ``workflows.py`` or ``forms.py``, it means it is used "
+"in a form for creating or editing something."
+msgstr "当文件名为 ``workflows.py`` 或 ``forms.py`` 时，表示其用于创建或编辑某事物的表单中。"
+
+msgid ""
+"When a new member request is received, a coordinator approves (or rarely "
+"rejects) the request. At the moment, Zanata provides no way to "
+"communicate with language team members, so it is better to inform the new"
+" member of ways usually used in the language team."
+msgstr "当接收到新成员请求时，协调员会审批（或少数情况下拒绝）请求。目前，Zanata没有提供与语言团队成员直接交流的方式，因此更好地告知新成员通常在语言团队使用的方法。"
+
+msgid ""
+"When a translation period towards a new OpenStack release approaches, it "
+"is recommended to coordinate and prioritize translation efforts."
+msgstr "当对新开源发布版本的翻译周期接近时，建议协调和优先排序翻译努力。"
+
+msgid ""
+"When you add a new entry to the glossary, it is highly recommended to add"
+" the entry to the master glossary ``glossary/locale/glossary.pot``. By "
+"doing this, all language teams can share the glossary."
+msgstr ""
+"当您添加新条目到词典中时，强烈建议将其添加到主词典 ``glossary/locale/glossary.pot`` "
+"中。通过这样做，所有语言团队都可以共享词典。"
+
+msgid ""
+"When you are using OpenStack (including the dashboard, API or CLI) or are"
+" reading translated documentations, if you find something wrong, "
+"something you cannot understand, something you cannot agree, or something"
+" to be improved, please consider reporting it."
+msgstr "当您使用开源软件（包括控制台、API或CLI）或阅读翻译文档时，如果您发现有错误，无法理解，无法同意，或者需要改进，请考虑报告它。"
+
+msgid ""
+"When you want to update a glossary of your language, edit a corresponding"
+" glossary file using your favorite editor and propose a change to the "
+"Gerrit review system."
+msgstr "当您想更新您的语言的词典时，使用您的 favorite编辑器编辑 corresponding 词典文件，然后在 Gerrit 评论系统中提出更改."
+
+msgid ""
+"When your request is approved, add an item in \"Local Translation Teams\""
+" in the wiki page, create a wiki page under page `I18nTeam "
+"<https://wiki.openstack.org/wiki/I18nTeam/team>`_ (for example, "
+"I18nTeam/team/zh_cn) to introduce your team, with the following "
+"information at least: the contact information, the web page, and the work"
+" items."
+msgstr "当您的请求得到批准后，您需要在wiki页面中添加一个“本地翻译团队”中的项目，创建一个wiki页面（例如I18nTeam/team/zh_cn），以介绍您的团队，并至少提供以下信息：联系方式、网站和工作项目。"
+
+msgid "When your request is approved, you will get an email notification."
+msgstr "当您的请求得到批准后，您将收到电子邮件通知."
+
+msgid "Where a string is used in Dashboard UI?"
+msgstr "在_dashboard UI中使用的字符串位置?"
+
+msgid "Where a string is used in source code?"
+msgstr "在源代码中使用的字符串位置?"
+
+msgid "Where can I report a bug?"
+msgstr "哪里可以报告bug?"
+
+msgid "Where you find a bug you are reporting?"
+msgstr "你在哪里发现的bug，你要报告的?"
+
+msgid "Who can help you?"
+msgstr "谁能帮助你?"
+
+msgid ""
+"Write an email to \"openstack-i18n@lists.openstack.org\" to introduce "
+"yourself and the language team you want to create, together with your ID "
+"on Zanata."
+msgstr ""
+"写邮件到 \"openstack-i18n@lists.openstack.org\" 来自我介绍和你想创建的语言团队，同样带上你的 ID 在 "
+"Zanata。"
+
+msgid ""
+"You are encouraged to register with your business email, which will help "
+"your company to get the credit. If you don't want to, use your personal "
+"email will be OK too."
+msgstr "你被鼓励注册你的商业邮箱，这将有助于你的公司获得认证。如果不想注册，你可以使用自己的个人邮箱也是可行的。"
+
+msgid "You can also check:"
+msgstr "您也可以检查："
+
+msgid ""
+"You can estimate where a string is used from a location in a source code."
+" (See the previous entry on how to find a location.)"
+msgstr "您可以从源代码的位置估算一个字符串的使用情况。 (请参阅如何找到位置的前一条记录。)"
+
+msgid ""
+"You can extract the messages in code to PO template (POT) with pybabel, "
+"where **PROJECT** is a project name like ``nova`` and **VERSION** is a "
+"version number. Note that you can omit ``--project`` and ``--version`` "
+"options if you just use them locally as they are just used in the POT "
+"file header."
+msgstr ""
+"您可以将消息提取到 PO 模板（POT）中，使用 pybabel，其中 **PROJECT** 是项目名称，如 ``nova``，而 "
+"**VERSION** 是版本号。 请注意，您可以省略 ``--project`` 和 ``--version`` "
+"选项，如果仅在本地使用它们，它们只是 POT 文件头部的标记。"
+
+msgid "You can find the location in a source code by checking the POT file."
+msgstr "您可以从 PO 模板中找到位置。"
+
+msgid "You can report a bug in your language (or English)."
+msgstr "您可以报告您的语言（或英语）中的bug。"
+
+msgid ""
+"You can set the components of your AIO installation in ``tests/vars"
+"/bootstrap-aio-vars.yml``. Dependly on your environment the installation "
+"takes 1-2 hours. For more details on the AIO configuration, please see "
+"`OSA AIO documentation <https://docs.openstack.org/openstack-"
+"ansible/latest/user/aio/quickstart.html#building-an-aio>`_."
+msgstr ""
+"您可以在 ``tests/vars/bootstrap-aio-vars.yml`` 中设置您的 AIO "
+"安装的组件。根据环境，安装需要1-2小时。有关更多关于 AIO 配置的信息，请参阅 <https://docs.openstack.org"
+"/openstack-ansible/latest/user/aio/quickstart.html#building-an-aio>`_。"
+
+msgid ""
+"You must determine whether bugs are **translation bugs** or **bugs in a "
+"source project**. Typical i18n bugs in the source project include:"
+msgstr "您必须确定bug是 **翻译错误** 或 **源项目中的 bug**。源项目中常见的 i18n 错误包括："
+
+msgid ""
+"You need to create a configuration file in ``$HOME/.config/zanata.ini`` "
+"that contains user-specific configuration. For information on how to "
+"create a configuration file, see `Zanata CLI configuration "
+"<http://docs.zanata.org/en/release/client/configuration/#user-"
+"configuration>`__."
+msgstr ""
+"您需要在 ``$HOME/.config/zanata.ini`` 中创建一个配置文件，包含用户特有的配置。有关如何创建配置文件的信息，请参阅 "
+"<http://docs.zanata.org/en/release/client/configuration/#user-"
+"configuration>`__。"
+
+msgid "Zanata"
+msgstr "Zanata"
+
+msgid "Zanata CLI"
+msgstr "Zanata CLI"
+
+msgid ""
+"Zanata provides suggestions for translation based on a glossary of your "
+"language. The glossary is maintained in the i18n repository."
+msgstr "Zanata提供基于词典的翻译建议。词典由语言维护人员维护在i18n库中。"
+
+msgid "Zanata provides ways to know your activity on Zanata."
+msgstr "Zanata提供了解您的活动的方法。"
+
+msgid "Zbyněk Schwarz (id: tsbook) - Czech"
+msgstr "Zbyněk Schwarz (id: tsbook) - 据说是捷克"
+
+msgid ""
+"[Infra] Setup translation jobs such as ``translation-jobs-newton`` to "
+"import translations for stable branches."
+msgstr "[Infra] 设置新 translation-jobs-newton jobs以导入稳定分支的翻译."
+
+msgid "[Project] Official release!"
+msgstr "[Project] 正式发布!"
+
+msgid ""
+"[Project] RC2 or RC3 release will be shipped with latest translations. "
+"Final RC release will happen one week before the official release week."
+msgstr "[项目] RC2 或 RC3 发布将带有最新的翻译。 最终RC发布会在正式发布周之前发生一周。"
+
+msgid ""
+"[Project] Release RC1 and create a stable branch. ``Hard StringFreeze`` "
+"is in effect."
+msgstr "[项目] 发布RC1并创建一个稳定分支。 ``Hard StringFreeze`` 在有效。"
+
+msgid "[Project] Release milestone-3. ``Soft StringFreeze`` is in effect."
+msgstr "[项目] 发布milestone-3。 ``Soft StringFreeze`` 在有效。"
+
+msgid ""
+"[Translator] It is suggested to complete translation work by Monday or "
+"Tuesday of the Final RC week."
+msgstr "[翻译者] 建议完成翻译工作到Final RC 周的星期一或二日。"
+
+msgid "[Translator] Start translations for the release."
+msgstr "[翻译者] 开始翻译发布。"
+
+msgid ""
+"[ianychoi] Although one year was already passed (as of now: Jan 15, "
+"2017), I really would like to say those translators also contributed "
+"translations with I18n team members. For acknowledgement purpose, I write"
+" their Zanata ID, name, and language team in here :"
+msgstr ""
+"[ianychoi] "
+"尽管一年已经过去（截至2017年1月15日），我真的希望说那些翻译者也参与了I18n团队的翻译。为了表达感谢，以下是他们的Zanata "
+"ID、姓名和语言团队："
+
+msgid ""
+"[ianychoi] Note: only \"translated\" metric was considered to follow the "
+"description in I18n contributor guide. After more detail investigation on"
+" previous ATC criteria, review metrics were also considered. Fortunately,"
+" the three translators (jftalta - 117 translated & 2897 reviews, myamamot"
+" - 725 reviews, mucahit - 1241 reviews) are also regarded ATCs from "
+"Newton cycle :) - I keep it as record for the next ATC list changes."
+msgstr ""
+"[ianychoi] "
+"提示：只考虑“翻译”指标来遵循I18n贡献者指南。进一步调查之前ATC标准后，审计指标也被考虑。幸运的是，三位翻译（jftalta - 117 "
+"个翻译 & 2897 次评论，myamamot - 725 次评论，mucahit - 1241 次评论）也是新tons周期中的ATCs :) -"
+" 我保留它为下一次ATC列表更改的记录。"
+
+msgid "`Bug lists <https://bugs.launchpad.net/openstack-i18n>`_"
+msgstr "<https://bugs.launchpad.net/openstack-i18n>"
+
+msgid ""
+"`Dashboard <https://translate.openstack.org/dashboard/>`__ page shows "
+"your recent activity statistics this month and detail activity."
+msgstr "<https://translate.openstack.org/dashboard/> `__ 本页显示您本月和详细活动统计信息。"
+
+msgid "`Horizon (OpenStack dashboard) <https://bugs.launchpad.net/horizon>`_"
+msgstr "<https://bugs.launchpad.net/horizon>`_"
+
+msgid ""
+"`Horizon I18n bugs "
+"<https://bugs.launchpad.net/horizon/+bugs?field.tag=i18n>`_"
+msgstr ""
+"`Horizon I18n bugs "
+"<https://bugs.launchpad.net/horizon/+bugs?field.tag=i18n>`_"
+
+msgid ""
+"`Language translation team "
+"<https://wiki.openstack.org/wiki/I18nTeam/team>`_: you can ask in your "
+"language :-)"
+msgstr "`语言翻译团队 <https://wiki.openstack.org/wiki/I18nTeam/team>`：您可以在您的语言中问候:-)"
+
+msgid "`OpenStack manuals <https://bugs.launchpad.net/openstack-manuals>`_"
+msgstr "`OpenStack 手册 <https://bugs.launchpad.net/openstack-manuals>`_"
+
+msgid ""
+"`OpenStack-Ansible (OSA) <https://docs.openstack.org/openstack-"
+"ansible/latest/>`__ provides Ansible playbooks and roles for the "
+"deployment and configuration of an OpenStack environment. As part of the "
+"project a feature named 'Translation Check Site' is developed. An OSA "
+"instance will fetch translation strings from `translation platform "
+"<https://translate.openstack.org/>`__, compile and serve these strings in"
+" Horizon. You need a machine with two or four CPU cores, at least 8 GB "
+"memory and 70 GB disk to run OSA."
+msgstr ""
+"`OpenStack-Ansible (OSA) <https://docs.openstack.org/openstack-"
+"ansible/latest/>`__ 提供 Ansible playbooks 和 roles 为部署和配置 OpenStack "
+"环境。作为项目的一部分，开发了一个名为 'Translation Check Site' 的功能。Osa 实例会从 `翻译平台 "
+"<https://translate.openstack.org/>`__ 中获取翻译字符串，编译并在 Horizon "
+"服务这些字符串。您需要一个具有两个或四个 CPU 核心、至少 8 GB 内存和 70 GB 硬盘的机器来运行 Osa。"
+
+msgid ""
+"`Profile <https://translate.openstack.org/profile/>`__ page provides more"
+" nice statistics view. It shows your statistics in this month and last "
+"month."
+msgstr ""
+"`用户资料 <https://translate.openstack.org/profile/>`__ "
+"页提供更好的统计视图。它显示了本月和上个月的统计信息。"
+
+msgid ""
+"`Quick reStructuredText "
+"<http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__"
+msgstr ""
+"`聚合快速使用RST指南 "
+"<http://docutils.sourceforge.net/docs/user/rst/quickref.html>`__"
+
+msgid ""
+"`Sphinx documentation "
+"<http://sphinx.readthedocs.io/en/latest/rest.html>`__"
+msgstr "`Sphinx 文档 <http://sphinx.readthedocs.io/en/latest/rest.html>`__"
+
+msgid ""
+"`Stackalytics <http://stackalytics.com/>`__ is a popular web site which "
+"allows us to know various statistics related to OpenStack. It supports "
+"translation statistics :)"
+msgstr ""
+"`Stackalytics <http://stackalytics.com/>`__ "
+"是一个流行的网站，允许我们了解OpenStack的多种统计信息。它支持翻译统计：)"
+
+msgid "`Translation plan <https://translate.openstack.org/>`_"
+msgstr "`翻译计划 <https://translate.openstack.org/>`_"
+
+msgid "``--help`` option shows the detail usage."
+msgstr "``--help`` 选项显示详细使用说明."
+
+msgid "``<Zanata-project-name>`` is Zanata project name,"
+msgstr "<Zanata-project-name>是Zanata项目名称，"
+
+msgid ""
+"``<Zanata-project-version>`` is Zanata project version such as ``master``"
+" or ``stable-mitaka``,"
+msgstr "<Zanata-project-version>是Zanata项目版本，如master或稳定mitaka，"
+
+msgid ""
+"``<path>`` is a path of a document such as ``nova/locale``, "
+"``openstack_dashboard/locale`` or ``releasenotes/source/locale``,"
+msgstr "<path>是文件路径，如nova/locale、openstack_dashboard/locale或releasenotes/source/locale，"
+
+msgid "``<resource>`` is a document name in Zanata."
+msgstr "<resource>在Zanata中是文件名称，如dashboards/admin/aggregates/views.py:104，"
+
+msgid "``dashboards/admin/aggregates/views.py:104``"
+msgstr "dashboards/admin/aggregates/views.py:104"
+
+msgid "``dashboards/project/containers/templates/containers/_update.html:21``"
+msgstr "``dashboards/project/containers/templates/containers/_update.html:21``"
+
+msgid "``dashboards/project/loadbalancers/workflows.py:44``"
+msgstr "``dashboards/project/loadbalancers/workflows.py:44``"
+
+msgid "`openstack-i18n in Launchpad <https://bugs.launchpad.net/openstack-i18n>`_"
+msgstr "`openstack-i18n in Launchpad <https://bugs.launchpad.net/openstack-i18n>`_"
+
+msgid "add the source project to \"Also affects project\" of this bug."
+msgstr "将源项目添加到 \"Also affects project\" 的bug中。"
+
+msgid ""
+"assign the bug to you or a member of your language team, and then mark it"
+" as \"In Progress\""
+msgstr "将该bug分配给您或您的语言团队成员，并标记为 \"In Progress\""
+
+msgid "bugs in a source project"
+msgstr "源项目中的bug"
+
+msgid "bugs in tool chains"
+msgstr "工具链中的bug"
+
+msgid "confirm the bug"
+msgstr "确认存在bug"
+
+msgid "confirm the bug or mark it as incomplete"
+msgstr "确认存在bug或标记为不完整"
+
+msgid ""
+"exported the translators contribution statistics from Transifex since "
+"2014-11-01 to 2015-07-16"
+msgstr "从Transifex导出翻译贡献统计信息自2014-11-01至2015-07-16"
+
+msgid ""
+"fix it by visiting a corresponding resource in Zanata and correcting "
+"translations."
+msgstr "修复请访问 corresponding resource in Zanata 并更正翻译。"
+
+msgid "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html"
+msgstr "http://lists.openstack.org/pipermail/openstack-dev/2016-May/094215.html"
+
+msgid "prioritize the bug"
+msgstr "优先级化bug"
+
+msgid "tag it with the project name, for example \"horizon\" or \"docs\"."
+msgstr "将项目名称作为标签，例如 \"horizon\" 或 \"docs\"。"
+
+msgid "tag the bug with a language name"
+msgstr "将 bug 标记为语言名称"
+
+msgid "translation bugs"
+msgstr "错误翻译"
+
+msgid "Łukasz Jernas (id: deejay1) - Polish (Poland)"
+msgstr "Łukasz Jernas (id: deejay1) - 波兰"
+
