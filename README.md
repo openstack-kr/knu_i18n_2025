@@ -179,32 +179,34 @@ In this study, we test how (a) and (b) powerful. <br>
 ### Evaluation Metric
 
 We measured the similarity between the AI-generated preliminary translation (.po) and the human-translated .po for each target file.<br>
-Similarity was computed using the mean-pooling method of the SentenceTransformer library.<br>
+Cosine similarity was computed using the mean-pooling method of the SentenceTransformer library.<br>
 
 ### Result
 
+The value of Avg, Median is cosine similarity. Range: [-1. 1]
+
 | Korean | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
-|without a, b(%)|	0.6806|	0.7523|	0.4280|	1250.69s|
-|with a, b(%)| 	0.8425|	0.8998|	0.7600|	742.78s|	
+|without a, b(%)|	0.6806|	0.7523|	42.80%|	1250.69s|
+|with a, b(%)| 	0.8425|	0.8998|	76.00%|	742.78s|	
 				
 | Japanese | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
-|without a, b(%)|	0.6876|	0.7402|	0.4088|	751.5s|
-|with a, b(%)|	0.8419|	0.8897|	0.6938|	744.13s|
+|without a, b(%)|	0.6876|	0.7402|	40.88%|	751.5s|
+|with a, b(%)|	0.8419|	0.8897|	69.38%|	744.13s|
 			
 				
 | Chinese(China) | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
-|without a, b(%)|	0.7596|	0.8463|	0.5471|	928.96s|
-|with a, b(%)|	0.8930|	0.9346|	0.8594|	927.74s|
+|without a, b(%)|	0.7596|	0.8463|	54.71%|	928.96s|
+|with a, b(%)|	0.8930|	0.9346|	85.94%|	927.74s|
 
 | Russian | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
-|without a, b(%)|	0.8442|	0.9203|	0.7281|	1432.77s|
-|with a, b(%)|	0.9020|	0.9625|	0.8271|	1647.99s|			
+|without a, b(%)|	0.8442|	0.9203|	72.81%|	1432.77s|
+|with a, b(%)|	0.9020|	0.9625|	82.71%|	1647.99s|			
 
-For Korean, translation quality improved by 16.19%, and across four languages, the average improvement was 12.68%.
+For Korean, translation quality improved by 0.1619, and across four languages, the average improvement was 0.1268.
 
 ### Reproducibility
 
