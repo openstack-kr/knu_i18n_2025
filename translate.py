@@ -92,6 +92,7 @@ LANG_MAP = {
 
 # --- 추가: 프롬프트 디렉터리 및 지원 프롬프트 로더 ---
 PROMPT_DIR = os.path.join(os.path.dirname(__file__), "prompts")
+PRINTED_CUSTOM_PROMPT_NOTICE = False
 
 
 def load_support_prompt(language_code: str):
@@ -126,6 +127,8 @@ def translate_batch(payload, language_code, language_name):
     GLOSSARY_TEXT_LINES = [f"* '{en}': '{ko}'" for en, ko in GLOSSARY.items()]
     FORMATTED_GLOSSARY = "\n".join(GLOSSARY_TEXT_LINES)
     PROMPT_DIR = os.path.join(os.path.dirname(__file__), "prompts")
+    global PRINTED_CUSTOM_PROMPT_NOTICE
+
     
     SYSTEM_PROMPT_BASE = """
     You are a strict translation engine.
@@ -152,7 +155,9 @@ def translate_batch(payload, language_code, language_name):
 
     custom_prompt_text = load_support_prompt(language_code)
     if custom_prompt_text:
-        print(f"Using custom support prompt for {language_code}")
+        if not PRINTED_CUSTOM_PROMPT_NOTICE:
+            print(f"Using custom support prompt for {language_code}")
+            PRINTED_CUSTOM_PROMPT_NOTICE = True
         SYSTEM_PROMPT_BASE = custom_prompt_text
 
     SYSTEM_PROMPT = SYSTEM_PROMPT_BASE + FORMATTED_GLOSSARY
