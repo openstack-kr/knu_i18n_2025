@@ -146,12 +146,7 @@ We use [tox](https://tox.wiki) to ensure code consistency and quality.
 tox -e pep8
 ```
 
-2. Ansible Playbook Check
-```bash
-tox -e ansible
-```
-
-3. Fix Style Errors with autopep8
+2. Fix Style Errors with autopep8
 You can correct fix all style issues in the repository by running the command below:
 ```bash
 autopep8 --in-place --aggressive --aggressive -r .
