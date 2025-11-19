@@ -21,7 +21,6 @@ import ollama
 import os
 import time
 import concurrent.futures
-from string import Template
 import json
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
@@ -123,33 +122,31 @@ def translate_batch(payload, language_code, language_name):
                 - 오류/파싱 실패 시: translation(msgstr)을 빈 문자열("")로 둔 채 반환한다.
     """
     entries, batch_idx, total_batches = payload
-    
+
     GLOSSARY_TEXT_LINES = [f"* '{en}': '{ko}'" for en, ko in GLOSSARY.items()]
     FORMATTED_GLOSSARY = "\n".join(GLOSSARY_TEXT_LINES)
-    PROMPT_DIR = os.path.join(os.path.dirname(__file__), "prompts")
     global PRINTED_CUSTOM_PROMPT_NOTICE
 
-    
     SYSTEM_PROMPT_BASE = """
     You are a strict translation engine.
     You are translating from English to {language_name}.
-    
+
     **[Output Format Rules (MUST Follow)]**
     * Respond ONLY with the raw, translated text for {language_name}.
     * Your answer MUST be 100% in {language_name}.
     * Do NOT mix in any other languages (including English).
     * Do NOT add explanations, comments, apologies, or quotes.
-    
+
     **[Critical Preservation Rules (MUST Follow)]**
     * Preserve all reStructuredText (RST) syntax exactly.
     * Preserve all placeholders exactly.
     * Preserve all HTML tags exactly.
     * You MUST use the exact translations provided in the `[Glossary]` section.
-    
+
     **[Anti-Hallucination Rules (MUST Follow)]**
     * You MUST NOT add placeholders that are NOT in the original `msgid`.
     * You MUST NOT repeat phrases. Repetition is strictly forbidden.
-    
+
     **[Glossary]**
     """
 
@@ -163,7 +160,7 @@ def translate_batch(payload, language_code, language_name):
     SYSTEM_PROMPT = SYSTEM_PROMPT_BASE + FORMATTED_GLOSSARY
 
     entries, batch_idx, total_batches = payload
-    
+
     messages = [
         # System 역할: 전체 규칙과 '전체' 용어집을 한 번에 전달
         {
@@ -171,11 +168,11 @@ def translate_batch(payload, language_code, language_name):
             "content": SYSTEM_PROMPT.format(language_name=language_name),
         },
     ]
-    
+
     # Few-shot 예시 추가 (batch 형식)
     example_input = [msgid for msgid, _ in FEW_SHOT_EXAMPLES]
     example_output = [msgstr for _, msgstr in FEW_SHOT_EXAMPLES]
-    
+
     messages.append({
         "role": "user",
         "content": (
@@ -187,19 +184,19 @@ def translate_batch(payload, language_code, language_name):
         "role": "assistant",
         "content": json.dumps(example_output, ensure_ascii=False)
     })
-    
+
     # 실제 번역할 텍스트들을 JSON 배열로 구성
     texts_to_translate = [entry.id for entry in entries]
     user_content = (
         f"Translate the following {len(texts_to_translate)} items.\n"
         f"Your response MUST be a single, valid JSON array `[...]` "
-        f"containing exactly {len(texts_to_translate)} translated strings in the same order."
+        "containing exactly {len(texts_to_translate)} translated strings "
+        "in the same order."
         "Do NOT add any other text, explanations, or markdown formatting.\n\n"
-        f"{json.dumps(texts_to_translate, ensure_ascii=False)}"
-    )
-    
+        f"{json.dumps(texts_to_translate, ensure_ascii=False)}")
+
     messages.append({"role": "user", "content": user_content})
-    
+
     try:
         response = ollama.chat(
             model=MODEL_NAME,
@@ -211,16 +208,21 @@ def translate_batch(payload, language_code, language_name):
                 "repetition_penalty": 1.2,
             },
         )
-        
+
         translation_text = response["message"]["content"].strip()
-        
+
         # JSON 파싱 시도
         try:
             translations = json.loads(translation_text)
         except json.JSONDecodeError:
             # JSON 파싱 실패 시 대체 처리
-            print(f"!!! Batch [{batch_idx + 1}/{total_batches}] JSON parsing failed, trying to extract array !!!")
-            print(f"Falling back: extract simple array for this batch.")
+            print(
+                (
+                    "!!! Batch [{idx}/{total}] JSON parsing failed, "
+                    "trying to extract array !!!"
+                ).format(idx=batch_idx + 1, total=total_batches)
+            )
+            print("Falling back: extract simple array for this batch.")
             # 간단한 array 추출 시도
             start = translation_text.find('[')
             end = translation_text.rfind(']') + 1
@@ -228,42 +230,56 @@ def translate_batch(payload, language_code, language_name):
                 translations = json.loads(translation_text[start:end])
             else:
                 raise ValueError("Cannot extract JSON array from response")
-        
+
         # 번역 결과와 entry 매칭
         if len(translations) != len(entries):
             print(
-                f"!!! Batch [{batch_idx + 1}/{total_batches}] "
-                f"Translation count mismatch: expected {len(entries)}, got {len(translations)} !!!"
+                (
+                    "!!! Batch [{idx}/{total}] Translation count mismatch: "
+                    "expected {expected}, got {actual} !!!"
+                ).format(
+                    idx=batch_idx + 1,
+                    total=total_batches,
+                    expected=len(entries),
+                    actual=len(translations),
+                )
             )
-            print(f"Falling back: leaving msgstr empty for this batch.")
+            print("Falling back: leaving msgstr empty for this batch.")
             results = []
             for entry in entries:
                 results.append((entry.id, "", entry.locations))
             return results
-        
+
         results = []
         for entry, translation in zip(entries, translations):
             results.append((entry.id, translation.strip(), entry.locations))
         return results
-        
+
     except Exception as e:
         print(
-            f"!!! Batch [{batch_idx + 1}/{total_batches}] Error translating batch: {e} !!!"
+            (
+                "!!! Batch [{idx}/{total}] Error translating batch: "
+                "{error} !!!"
+            ).format(
+                idx=batch_idx + 1,
+                total=total_batches,
+                error=e,
+            )
         )
         results = []
         for entry in entries:
-            results.append((entry.id, "", entry.locations)) 
+            results.append((entry.id, "", entry.locations))
         return results
 
 
 def create_batches(entries, batch_size):
     """
     Entry 리스트를 지정된 크기의 batch로 분할하는 함수.
-    
+
     Args:
         entries (list): 전체 entry 리스트
         batch_size (int): 각 batch의 크기
-    
+
     Returns:
         list: batch로 분할된 entry 리스트의 리스트
     """
@@ -273,10 +289,16 @@ def create_batches(entries, batch_size):
     return batches
 
 
-def translate_pot_file(pot_path, po_path, language_code, language_name, batch_size=5):
+def translate_pot_file(
+        pot_path,
+        po_path,
+        language_code,
+        language_name,
+        batch_size=5):
     """
     POT 파일을 읽어 batch 단위로 병렬 번역 후 PO 파일로 저장하는 함수.
-    Reads a .pot file, translates entries in batches in parallel, and saves as .po file.
+    Reads a .pot file, translates entries in batches in parallel,
+    and saves as .po file.
 
     Args:
         pot_path (str): 원본 POT 파일 경로
@@ -301,11 +323,12 @@ def translate_pot_file(pot_path, po_path, language_code, language_name, batch_si
         language_team=pot.language_team,
         charset="UTF-8",
     )
-    po.header_comment = "Initial translation by AI (batch mode).\n" + pot.header_comment
+    po.header_comment = "Initial translation by AI (batch mode).\n" + \
+        pot.header_comment
 
     entries_to_translate = [entry for entry in pot if entry.id]
     total_entries = len(entries_to_translate)
-    
+
     # entry를 batch로 분할
     batches = create_batches(entries_to_translate, batch_size)
     total_batches = len(batches)
@@ -322,7 +345,9 @@ def translate_pot_file(pot_path, po_path, language_code, language_name, batch_si
         for i, batch in enumerate(batches)
     ]
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=MAX_WORKERS
+    ) as executor:
         results = list(
             tqdm(
                 executor.map(
@@ -415,7 +440,7 @@ if __name__ == "__main__":
             GLOSSARY_JSON_FILE,
             GLOSSARY_DIR
         )
-        
+
         FEW_SHOT_EXAMPLES = load_fixed_examples(
             lang_code,
             EXAMPLE_DIR,

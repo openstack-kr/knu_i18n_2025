@@ -27,7 +27,6 @@ import sys
 import io
 import statistics
 import csv
-from datetime import datetime
 from pathlib import Path
 
 import polib
@@ -36,6 +35,7 @@ from sentence_transformers import SentenceTransformer, util
 from babel.messages.pofile import read_po as babel_read_po
 
 timestamp = (datetime.now() + timedelta(hours=9)).strftime("%Y%m%d_%H%M")
+
 
 def normalize_text(s: str, do_norm=False, do_lower=False) -> str:
     if s is None:
@@ -134,8 +134,11 @@ def main():
     ap.add_argument("--normalize-text", action="store_true")
     ap.add_argument("--lowercase", action="store_true")
     ap.add_argument("--topk", type=int, default=20)
-    ap.add_argument("--experiments_csv", default=str(Path(__file__).
-    resolve().parent.parent / "experiments.csv"))
+    ap.add_argument(
+        "--experiments_csv",
+        default=str(
+            Path(__file__). resolve().parent.parent /
+            "experiments.csv"))
     args = ap.parse_args()
 
     pa, pb, pout = Path(args.a), Path(args.b), Path(args.out)
@@ -280,7 +283,8 @@ def main():
             if not po_field:
                 continue
             try:
-                same = (str(Path(po_field).resolve()) == target_po_abs) or (Path(po_field).name == target_po_name)
+                same = (str(Path(po_field).resolve()) == target_po_abs) or (
+                    Path(po_field).name == target_po_name)
             except Exception:
                 same = (Path(po_field).name == target_po_name)
             if same:
@@ -303,7 +307,13 @@ def main():
                 "sim_over_0.8(≥0.8)": f"{ratio:.2f}",
             })
             # 누락보정
-            for k in ["timestamp", "model", "pot_file", "duration_sec", "git_commit", "git_branch"]:
+            for k in [
+                "timestamp",
+                "model",
+                "pot_file",
+                "duration_sec",
+                "git_commit",
+                    "git_branch"]:
                 if k not in fields:
                     fields.append(k)
 
