@@ -27,6 +27,9 @@ def parse_args():
         default="./pot",
         help="Path to the POT file directory")
     parser.add_argument(
+        "--pot_file",
+        help="Path to an existing POT file")
+    parser.add_argument(
         "--po_dir",
         default="./po",
         help="Path to save the translated PO files")
@@ -52,11 +55,9 @@ def parse_args():
         help="Number of parallel worker threads")
     parser.add_argument(
         "--pot_url",
-        required=True,
         help="URL for downloading the POT file")
     parser.add_argument(
         "--target_pot_file",
-        required=True,
         help="Target POT filename")
     parser.add_argument(
         "--glossary_url",

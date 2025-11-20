@@ -389,6 +389,7 @@ if __name__ == "__main__":
     args = parse_args()
     MODEL_NAME = args.model
     POT_DIR = args.pot_dir
+    POT_FILE = args.pot_file
     PO_DIR = args.po_dir
     GLOSSARY_DIR = args.glossary_dir
     EXAMPLE_DIR = args.example_dir
@@ -411,15 +412,25 @@ if __name__ == "__main__":
     print("=================================================\n")
 
     # 폴더 생성 + POT 다운로드
-    pot_file_path = init_environment(
+    os.makedirs(POT_DIR, exist_ok=True)
+    os.makedirs(PO_DIR, exist_ok=True)
+    os.makedirs(GLOSSARY_DIR, exist_ok=True)
+    os.makedirs(EXAMPLE_DIR, exist_ok=True)
+
+    if POT_FILE:
+        pot_file_path=POT_FILE
+        print(f"Using local POT file: {pot_file_path}")
+        if not os.path.exists(pot_file_path):
+            raise FileNotFoundError(f"POT file not found:{pot_file_path}")
+    else:
+        pot_file_path = init_environment(
         pot_dir=POT_DIR,
         po_dir=PO_DIR,
         glossary_dir=GLOSSARY_DIR,
         example_dir=EXAMPLE_DIR,
         pot_url=POT_URL,
         target_pot_file=TARGET_POT_FILE,
-    )
-
+        )
     # 모델별 폴더 구성 + 파일 경로
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
 

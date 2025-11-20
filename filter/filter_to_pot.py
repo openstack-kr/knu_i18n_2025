@@ -5,18 +5,18 @@ from copy import deepcopy
 
 def is_translated(entry: polib.POEntry) -> bool:
     """msgstr(또는 복수형 msgstr_plural) 중 하나라도 채워져 있으면 '번역됨'으로 판단."""
-    # 헤더는 건드리지 않음
+    # 헤더 건드리지 않음
     if entry.msgid == "":
         return False
 
-    # obsolete(주석 처리된) 엔트리는 무시
+    # 주석 처리된 엔트리는 무시
     if entry.obsolete:
         return False
 
-    # 복수형인 경우
+    # 복수형일 때
     if entry.msgid_plural:
         return any(s.strip() for s in entry.msgstr_plural.values())
-    # 단수형인 경우
+    # 단수형일 때
     return bool(entry.msgstr.strip())
 
 def make_key(entry: polib.POEntry):
