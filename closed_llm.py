@@ -26,7 +26,7 @@ def call_openai_chat(messages, model: str = "gpt-4o"):
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("Missing OPENAI_API_KEY. Please set it in your environment.")
-    
+
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     resp = client.chat.completions.create(
         model=model,
@@ -36,7 +36,7 @@ def call_openai_chat(messages, model: str = "gpt-4o"):
     return resp.choices[0].message.content.strip()
 
 
-def call_claude_chat(messages, model: str = "claude-3-5-sonnet-latest"):
+def call_claude_chat(messages, model: str = "claude-3-5-haiku-latest", system: str = None):
     """
     Call the Anthropic Claude Messages API.
 
@@ -52,23 +52,27 @@ def call_claude_chat(messages, model: str = "claude-3-5-sonnet-latest"):
         messages (list[dict]): A list of chat messages with "role" and "content".
         model (str): Name of the Claude model to call. Defaults to
             "claude-3-5-sonnet-latest".
+        system (str): System prompt to guide the model's behavior.
 
     Returns:
         str: The model's generated text.
 
     Raises:
         RuntimeError: If `ANTHROPIC_API_KEY` is missing.
-    """  
+    """
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
         raise RuntimeError("Missing ANTHROPIC_API_KEY. Please set it in your environment.")
-    
+
     client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-    resp = client.messages.create(
-        model=model,
-        max_tokens=4096,
-        messages=messages,
-    )
+    api_params = {
+        "model": model,
+        "max_tokens": 4096,
+        "messages": messages,
+    }
+    if system:
+        api_params["system"] = system
+    resp = client.messages.create(**api_params)
     # Claude는 content가 list로 옴
     return resp.content[0].text.strip()
 

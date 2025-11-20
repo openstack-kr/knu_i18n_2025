@@ -220,9 +220,19 @@ def translate_batch(payload, language_code, language_name):
         # )
 
         # === (Option 2): Claude ===
+        # claude_messages = []
+        # claude_system = None
+
+        # for msg in messages:
+        #     if msg['role'] == 'system':
+        #         claude_system = msg['content']
+        #     else:
+        #         claude_messages.append(msg)
+
         # translation_text = call_claude_chat(
-        #     messages,
-        #     model="claude-3-5-sonnet-latest",
+        #     claude_messages,
+        #     model="claude-3-5-haiku-latest",
+        #     system=claude_system
         # )
 
         # === (Option 3): Gemini ===
@@ -343,8 +353,6 @@ def translate_pot_file(
         language_team=pot.language_team,
         charset="UTF-8",
     )
-    po.header_comment = "Initial translation by AI (batch mode).\n" + \
-        pot.header_comment
 
     entries_to_translate = [entry for entry in pot if entry.id]
     total_entries = len(entries_to_translate)
@@ -384,7 +392,8 @@ def translate_pot_file(
     for batch_result in results:
         if batch_result:
             for msgid, translation, locations in batch_result:
-                po.add(id=msgid, string=translation, locations=locations)
+                po.add(id=msgid, string=translation, locations=locations,
+                       user_comments=["Initial translation by AI."])
 
     try:
         with open(po_path, "wb") as f:
