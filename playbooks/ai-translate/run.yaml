@@ -1,0 +1,75 @@
+# playbooks/knu-translate/run.yaml
+- hosts: all
+  gather_facts: false
+
+  vars:
+    model: "{{ model | default('llama3.2:3b') }}"
+    project_dir: "{{ zuul.project.src_dir }}"
+
+  tasks:
+
+    - name: Ensure directories exist
+      file:
+        path: "{{ project_dir }}/{{ item }}"
+        state: directory
+      loop:
+        - pot
+        - po
+        - glossary
+        - po-example
+
+    - name: Check if ollama is installed
+      stat:
+        path: "/usr/bin/ollama"
+      register: ollama_path
+
+    - name: Pull model via ollama
+      command: ollama pull {{ model }}
+      when: ollama_path.stat.exists
+
+    - name: Ensure required python packages installed
+      pip:
+        requirements: "{{ project_dir }}/requirements.txt"
+        executable: pip3
+
+    - name: Run translate.py
+      command:
+        argv:
+          - python3
+          - translate.py
+          - "--model"
+          - "{{ model }}"
+          - "--workers"
+          - "4"
+          - "--start"
+          - "0"
+          - "--end"
+          - "200"
+          - "--pot_dir"
+          - "./pot"
+          - "--po_dir"
+          - "./po"
+          - "--pot_file"
+          - "./pot/nova_ex.pot"
+          - "--glossary_dir"
+          - "./glossary"
+          - "--example_dir"
+          - "./po-example"
+          - "--glossary_url"
+          - "https://opendev.org/openstack/i18n/raw/commit/129b9de7be12740615d532591792b31566d0972f/glossary/locale/{lang}/LC_MESSAGES/glossary.po"
+          - "--glossary_po_file"
+          - "glossary.po"
+          - "--glossary_json_file"
+          - "glossary.json"
+          - "--example_url"
+          - "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po"
+          - "--example_file"
+          - "nova-nova-locale.po"
+          - "--fixed_example_json"
+          - "fixed_examples.json"
+          - "--batch-size"
+          - "5"
+          - "--languages"
+          - "ru"
+      args:
+        chdir: "{{ project_dir }}"
