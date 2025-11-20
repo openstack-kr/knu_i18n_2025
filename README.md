@@ -170,15 +170,24 @@ In this study, we test how (a) and (b) powerful. <br>
 - LLM Framework: ollama (Python package, v0.6.0)
 - LLM: Llama 3.2 (3B)
 - target file: https://opendev.org/openstack/i18n/src/branch/master/doc/source/locale
+- We used the POT source files and four language-specific PO translation files from the openstack/openstack-i18n repository.<br>
+Each PO file consists of msgid–msgstr pairs. The baseline human translation (msgstr) was compared against the AI-generated draft translation to evaluate quality.<br>
 
 ### Evaluation Metric
 
-We measured the similarity between the AI-generated preliminary translation (.po) and the human-translated .po for each target file.<br>
-Cosine similarity was computed using the mean-pooling method of the SentenceTransformer library.<br>
+We extracted sentence embeddings using the Mean Pooling method from the Sentence Transformers library, and computed cosine similarity (range: 0–1) based on vector dot products to quantitatively assess translation quality.
+
+Similarity thresholds are defined as follows:
+	- ≥ 0.8: semantically similar
+	- ≥ 0.9: semantically almost identical
+
+Using these criteria, we objectively compared and analyzed the quality of AI translations.
 
 ### Result
 
-The value of Avg, Median is cosine similarity. Range: [-1. 1]
+(a) Batch Method, (b) Few-Shot Example
+
+* The >=0.8 column represents the percentage of msgid entries whose similarity score is 0.8 or higher, indicating how many sentences the model translated with strong semantic accuracy.
 
 | Korean | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |
