@@ -12,9 +12,9 @@ Execution Flow:
     1. utils.argparse로 CLI 인자값을 수신
     2. utils.init_environment()에서 POT 폴더 생성 및 파일 다운로드
     3. load_glossary()로 언어별 glossary 파일 다운로드 및 로드
-    4. load_examples()로 언어별 예시 파일 다운로드 및 로드
-    4. translate_pot_file()-> translate_entry()에서 병렬 번역 및 tqdm 표시
-    5. save_experiment_log()로 결과 기록 및 Git 메타데이터 저장
+    4. load_fixed_examples()로 언어별 예시 로드
+    5. translate_pot_file()-> translate_batch()에서 병렬 배치 번역 및 tqdm 표시
+    6. save_experiment_log()로 결과 기록 및 Git 메타데이터 저장
 """
 
 import ollama
@@ -115,6 +115,7 @@ def translate_batch(payload, language_code, language_name):
             entries (list): 번역 대상 메시지 객체 리스트
             batch_index (int): 현재 batch 순서
             total_batches (int): 전체 batch 수
+        language_code (str): 번역하는 언어 코드
         language_name (str): 번역하는 언어 이름
 
     Returns:
@@ -211,7 +212,7 @@ def translate_batch(payload, language_code, language_name):
             },
         )
         translation_text = response["message"]["content"].strip()
-        
+
         # === (Option 1): OpenAI GPT ===
         # translation_text = call_openai_chat(
         #     messages,
