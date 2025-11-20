@@ -170,8 +170,8 @@ In this study, we test how (a) and (b) powerful. <br>
 - LLM Framework: ollama (Python package, v0.6.0)
 - LLM: Llama 3.2 (3B)
 - target file: https://opendev.org/openstack/i18n/src/branch/master/doc/source/locale
-- We used the POT source files and four language-specific PO translation files from the openstack/openstack-i18n repository.<br>
-Each PO file consists of msgid–msgstr pairs. The baseline human translation (msgstr) was compared against the AI-generated draft translation to evaluate quality.<br>
+	- We used the POT source files and four language-specific PO translation files from the openstack/openstack-i18n repository.<br>
+	Each PO file consists of msgid–msgstr pairs. The baseline human translation (msgstr) was compared against the AI-generated draft translation to evaluate quality.<br>
 
 ### Evaluation Metric
 
