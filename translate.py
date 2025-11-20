@@ -31,6 +31,7 @@ from utils import (
     load_fixed_examples,
     save_experiment_log
 )
+from closed_llm import *
 
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
@@ -208,8 +209,25 @@ def translate_batch(payload, language_code, language_name):
                 "repetition_penalty": 1.2,
             },
         )
-
         translation_text = response["message"]["content"].strip()
+        
+        # === (선택 1): OpenAI GPT ===
+        # translation_text = call_openai_chat(
+        #     messages,
+        #     model="gpt-4o",
+        # )
+
+        # === (선택 2): Claude ===
+        # translation_text = call_claude_chat(
+        #     messages,
+        #     model="claude-3-5-sonnet-latest",
+        # )
+
+        # === (선택 3): Gemini ===
+        # translation_text = call_gemini_chat(
+        #     messages,
+        #     model="gemini-1.5-flash",
+        # )
 
         # JSON 파싱 시도
         try:
