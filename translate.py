@@ -199,6 +199,7 @@ def translate_batch(payload, language_code, language_name):
     messages.append({"role": "user", "content": user_content})
 
     try:
+        # === (Default): Open Sourced LLM ===
         response = ollama.chat(
             model=MODEL_NAME,
             messages=messages,
@@ -211,19 +212,19 @@ def translate_batch(payload, language_code, language_name):
         )
         translation_text = response["message"]["content"].strip()
         
-        # === (선택 1): OpenAI GPT ===
+        # === (Option 1): OpenAI GPT ===
         # translation_text = call_openai_chat(
         #     messages,
         #     model="gpt-4o",
         # )
 
-        # === (선택 2): Claude ===
+        # === (Option 2): Claude ===
         # translation_text = call_claude_chat(
         #     messages,
         #     model="claude-3-5-sonnet-latest",
         # )
 
-        # === (선택 3): Gemini ===
+        # === (Option 3): Gemini ===
         # translation_text = call_gemini_chat(
         #     messages,
         #     model="gemini-1.5-flash",
