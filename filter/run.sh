@@ -3,7 +3,7 @@ set -e  # 오류 발생 시 즉시 종료
 
 # 입력 파일
 SRC_PO="nova/en_AU/LC_MESSAGES/nova.po" #필요시 수정 가능
-TRANS_PO="nova/ru/LC_MESSAGES/nova.po" #필요시 수정 가능
+TRANS_PO="nova/ko_KR/LC_MESSAGES/nova.po" #필요시 수정 가능
 
 mkdir -p ../pot
 

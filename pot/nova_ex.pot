@@ -21,26 +21,9 @@ msgstr ""
 "Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 4.3.3\n"
 
-#: nova/block_device.py:212
-msgid "Specifying a volume_type with destination_type=local is not supported."
-msgstr ""
-
-#: nova/block_device.py:219
-msgid "Specifying volume type to existing volume is not supported."
-msgstr ""
-
-#: nova/exception.py:130
-#, python-format
-msgid "Failed to unplug virtual interface: %(reason)s"
-msgstr ""
-
 #: nova/exception.py:147
 #, python-format
 msgid "Connection to manila service failed: %(reason)s"
-msgstr ""
-
-#: nova/exception.py:179
-msgid "Feature not supported with instances that have accelerators."
 msgstr ""
 
 #: nova/exception.py:183
@@ -79,22 +62,6 @@ msgid ""
 "%(arch)s."
 msgstr ""
 
-#: nova/exception.py:238
-#, python-format
-msgid "Failed to quiesce instance: %(reason)s"
-msgstr ""
-
-#: nova/exception.py:243
-msgid "Configuration is Invalid."
-msgstr ""
-
-#: nova/exception.py:279
-msgid ""
-"Ephemeral disks requested are larger than the instance type allows. If no "
-"size is given in one block device mapping, flavor ephemeral size will be "
-"used."
-msgstr ""
-
 #: nova/exception.py:304
 #, python-format
 msgid ""
@@ -107,16 +74,6 @@ msgstr ""
 msgid ""
 "Block Device Mapping is invalid: The provided disk bus %(disk_bus)s is not "
 "valid."
-msgstr ""
-
-#: nova/exception.py:328
-#, python-format
-msgid "Volume %(volume_id)s could not be detached. Reason: %(reason)s"
-msgstr ""
-
-#: nova/exception.py:333
-#, python-format
-msgid "Volume %(volume_id)s could not be extended. Reason: %(reason)s"
 msgstr ""
 
 #: nova/exception.py:342
@@ -144,10 +101,6 @@ msgid ""
 "not supported."
 msgstr ""
 
-#: nova/exception.py:368
-msgid "Volume size extension is not supported by the hypervisor."
-msgstr ""
-
 #: nova/exception.py:377
 msgid "Tagged volume attachment is not supported for this server instance."
 msgstr ""
@@ -163,28 +116,9 @@ msgid ""
 "instance."
 msgstr ""
 
-#: nova/exception.py:412
-#, python-format
-msgid "The volume mount at %(mount_path)s is unusable."
-msgstr ""
-
-#: nova/exception.py:450
-#, python-format
-msgid ""
-"Version of %(name)s %(min_ver)s %(max_ver)s intersects with another "
-"versions."
-msgstr ""
-
 #: nova/exception.py:486
 #, python-format
 msgid "Aggregate %(aggregate_id)s already contain metadata key %(key)s."
-msgstr ""
-
-#: nova/exception.py:500
-#, python-format
-msgid ""
-"The property 'numa_nodes' cannot be '%(nodes)s'. It must be a number greater"
-" than 0"
 msgstr ""
 
 #: nova/exception.py:563
@@ -227,17 +161,6 @@ msgid ""
 "%(oldest_supported_version)s but the minimum compute service level in your "
 "%(scope)s is %(min_service_level)d and the oldest supported service level is"
 " %(oldest_supported_service)d."
-msgstr ""
-
-#: nova/exception.py:688
-#, python-format
-msgid "Import of image %(image_id)s refused: %(reason)s"
-msgstr ""
-
-#: nova/exception.py:692
-#, python-format
-msgid ""
-"Quota exceeded or out of space for image %(image_id)s in the image service."
 msgstr ""
 
 #: nova/exception.py:719
@@ -348,29 +271,9 @@ msgstr ""
 msgid "Volume type %(id_or_name)s could not be found."
 msgstr ""
 
-#: nova/exception.py:837
-#, python-format
-msgid "Device detach failed for %(device)s: %(reason)s"
-msgstr ""
-
 #: nova/exception.py:857
 #, python-format
 msgid "The %(volume_driver)s volume driver is not supported on this platform."
-msgstr ""
-
-#: nova/exception.py:866
-#, python-format
-msgid "Invalid image property name %(image_property_name)s."
-msgstr ""
-
-#: nova/exception.py:879
-#, python-format
-msgid "Conflict deleting image. Reason: %(reason)s."
-msgstr ""
-
-#: nova/exception.py:917
-#, python-format
-msgid "Unable to automatically allocate a network for project %(project_id)s"
 msgstr ""
 
 #: nova/exception.py:975
@@ -387,33 +290,11 @@ msgid ""
 "check neutron logs for more information"
 msgstr ""
 
-#: nova/exception.py:985
-#, python-format
-msgid "Port update failed for port %(port_id)s: %(reason)s"
-msgstr ""
-
 #: nova/exception.py:989
 #, python-format
 msgid ""
 "Attaching SR-IOV port %(port_id)s to server %(instance_uuid)s is not "
 "supported. SR-IOV ports must be specified during server creation."
-msgstr ""
-
-#: nova/exception.py:999
-#, python-format
-msgid "Instance %(instance_uuid)s does not have fixed IP '%(ip)s'."
-msgstr ""
-
-#: nova/exception.py:1013
-#, python-format
-msgid ""
-"The fixed IP associated with port %(port_id)s is not compatible with the "
-"host."
-msgstr ""
-
-#: nova/exception.py:1068
-#, python-format
-msgid "No conf group name could be found for service type %(stype)s."
 msgstr ""
 
 #: nova/exception.py:1128
@@ -426,11 +307,6 @@ msgid ""
 "Cannot apply both stateful and stateless security groups on the same port."
 msgstr ""
 
-#: nova/exception.py:1162
-#, python-format
-msgid "Active live migration for instance %(instance_id)s not found"
-msgstr ""
-
 #: nova/exception.py:1248
 #, python-format
 msgid "device %(file_path)s is busy."
@@ -438,11 +314,6 @@ msgstr ""
 
 #: nova/exception.py:1356
 msgid "Only volume-backed servers are allowed for flavors with zero disk."
-msgstr ""
-
-#: nova/exception.py:1365
-#, python-format
-msgid "Scheduling failed: %(reason)s"
 msgstr ""
 
 #: nova/exception.py:1369
@@ -633,11 +504,6 @@ msgid ""
 "got '%(num_ports)s'"
 msgstr ""
 
-#: nova/exception.py:1942
-#, python-format
-msgid "Maximum number of serial port exceeds %(allowed)d for %(virt_type)s"
-msgstr ""
-
 #: nova/exception.py:1956
 #, python-format
 msgid ""
@@ -658,10 +524,6 @@ msgstr ""
 
 #: nova/exception.py:1978
 msgid "The generated token is invalid"
-msgstr ""
-
-#: nova/exception.py:1990
-msgid "Guest agent is not enabled for the instance"
 msgstr ""
 
 #: nova/exception.py:2016
@@ -716,10 +578,6 @@ msgstr ""
 msgid "This firmware doesn't require (support) SMM"
 msgstr ""
 
-#: nova/exception.py:2123
-msgid "Libguestfs does not have permission to read host kernel."
-msgstr ""
-
 #: nova/exception.py:2127
 msgid ""
 "Use of realtime CPUs requires either one or more non-realtime CPU(s) or "
@@ -772,15 +630,6 @@ msgid ""
 "'%(conf)s') Please refer to the nova config-reference."
 msgstr ""
 
-#: nova/exception.py:2183
-msgid "Resource provider has allocations."
-msgstr ""
-
-#: nova/exception.py:2187
-#, python-format
-msgid "Failed to get resource provider with UUID %(uuid)s"
-msgstr ""
-
 #: nova/exception.py:2191
 #, python-format
 msgid "Failed to get aggregates for resource provider with UUID %(uuid)s"
@@ -806,44 +655,10 @@ msgstr ""
 msgid "Failed to update resource provider via URL %(url)s: %(error)s"
 msgstr ""
 
-#: nova/exception.py:2214
-#, python-format
-msgid "No such resource provider %(name_or_uuid)s."
-msgstr ""
-
-#: nova/exception.py:2218
-msgid ""
-"Failed to synchronize the placement service with resource provider "
-"information supplied by the compute host."
-msgstr ""
-
-#: nova/exception.py:2223
-msgid "Unable to communicate with the Placement API."
-msgstr ""
-
-#: nova/exception.py:2230
-#, python-format
-msgid ""
-"A conflict was encountered attempting to invoke the placement API at URL "
-"%(url)s: %(error)s"
-msgstr ""
-
-#: nova/exception.py:2238
-#, python-format
-msgid ""
-"A conflict was encountered attempting to update resource provider %(uuid)s "
-"(generation %(generation)d): %(error)s"
-msgstr ""
-
 #: nova/exception.py:2247
 #, python-format
 msgid ""
 "A conflict was encountered attempting to reshape a provider tree: %(error)s"
-msgstr ""
-
-#: nova/exception.py:2253
-#, python-format
-msgid "Resource class '%(resource_class)s' invalid."
 msgstr ""
 
 #: nova/exception.py:2257
@@ -1405,10 +1220,6 @@ msgstr ""
 msgid "Can't force to a non-provided destination"
 msgstr ""
 
-#: nova/api/openstack/compute/floating_ips.py:215
-msgid "Instance network is not ready yet"
-msgstr ""
-
 #: nova/api/openstack/compute/hypervisors.py:169
 msgid ""
 "Paging over hypervisors with the hypervisor_hostname_pattern query parameter"
@@ -1441,11 +1252,6 @@ msgstr ""
 msgid ""
 "Creating an anti-affinity group with rule max_server_per_host > 1 is not yet"
 " supported."
-msgstr ""
-
-#: nova/api/openstack/compute/server_tags.py:80
-#, python-format
-msgid "Server %(server_id)s has no tag '%(tag)s'"
 msgstr ""
 
 #: nova/api/openstack/compute/server_tags.py:117
@@ -1858,10 +1664,6 @@ msgstr ""
 
 #: nova/cmd/manage.py:1398
 msgid "Cell cannot be disabled and enabled at the same time."
-msgstr ""
-
-#: nova/cmd/manage.py:1402
-msgid "Cell0 cannot be disabled."
 msgstr ""
 
 #: nova/cmd/manage.py:1409
@@ -3708,12 +3510,6 @@ msgid ""
 "validation in partition list."
 msgstr ""
 
-#: nova/virt/libvirt/volume/vzstorage.py:58
-#, python-format
-msgid ""
-"You can't use %s options in vzstorage_mount_opts configuration parameter."
-msgstr ""
-
 #: nova/virt/libvirt/volume/vzstorage.py:86
 msgid "Valid share format is [mds[,mds1[...]]:/]clustername[:password]"
 msgstr ""
@@ -3761,8 +3557,4 @@ msgid ""
 "Can't spawn instance with template '%s', The zVM hypervisor does not support"
 " instance names longer than 8 characters. Please change your config of "
 "instance_name_template."
-msgstr ""
-
-#: nova/virt/zvm/driver.py:162
-msgid "The `os_distro` image metadata property is required"
 msgstr ""

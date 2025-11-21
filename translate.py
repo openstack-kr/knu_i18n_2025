@@ -453,6 +453,7 @@ if __name__ == "__main__":
     args = parse_args()
     MODEL_NAME = args.model
     LLM_MODE = args.llm_mode
+    configure_llm_caller(LLM_MODE, MODEL_NAME)
     POT_DIR = args.pot_dir
     POT_FILE = args.pot_file
     PO_DIR = args.po_dir

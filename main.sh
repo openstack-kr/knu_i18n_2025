@@ -2,7 +2,7 @@
 set -e
 
 MODEL=${1:-"llama3.2:3b"}
-LANGS=${2:-"ko_KR,ja"}
+LANGS=${2:-"ko_KR"}
 LLM_MODE=${3:-"ollama"}
 
 # 1) make sure the model is available in local ollama
@@ -20,7 +20,7 @@ python translate.py \
   --model $MODEL \
   --llm-mode "$LLM_MODE" \
   --workers 4 \
-  --start 0 --end 200 \
+  --start 0 --end 10 \
   --pot_dir ./pot \
   --po_dir ./po \
   --pot_file "./pot/nova_ex.pot" \

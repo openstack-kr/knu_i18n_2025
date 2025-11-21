@@ -2,7 +2,7 @@
 set -e
 
 MODEL=${1:-"llama3.2:3b"}
-LANG=ru
+LANG=ko_KR
 
 # 기존 번역 포함된 원본 PO
 ORIGIN_PO="../filter/nova/$LANG/LC_MESSAGES/nova.po"
