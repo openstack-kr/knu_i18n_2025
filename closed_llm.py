@@ -1,7 +1,7 @@
 # === Closed-source LLM helpers (optional) ===
 import os
 from openai import OpenAI
-import anthropic  # lazy import
+import anthropic
 import google.generativeai as genai
 
 def call_openai_chat(messages, model: str = "gpt-4o"):

@@ -2,6 +2,7 @@
 set -e
 
 MODEL=${1:-"llama3.2:3b"}
+LANGS=${2:-"ko_KR,ja"}
 
 # 1) make sure the model is available in local ollama
 if command -v ollama >/dev/null 2>&1; then
@@ -29,4 +30,4 @@ python translate.py \
   --example_file "nova-nova-locale.po" \
   --fixed_example_json "fixed_examples.json" \
   --batch-size "5" \
-  --languages "ko_KR"
+  --languages "$LANGS"

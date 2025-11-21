@@ -62,11 +62,30 @@ pip install -r requirements.txt
 bash main.sh
 ```
 
-## 3. Edit main.sh
+## 3. Select Your Option for User
 
-Please find your target Languages in below.
+Our code default option is as below.
+    - LLM: Lamma3.2 (3B)
+    - Language: Korean, Japanese
+    - Target file: To be written...
+
+### 3-1 Choose Model
+1. Open-Src LLM
+We use Ollama as LLM framework <br>
+Please find your preferred LLM name in [this link](https://ollama.com/library).
+
+2. Closed-Src LLM
+You can use OpenAI, Claude, Gemini model in this code.
+
+To be Written...
+
+### 3-2. Choose Languages
+Please find your target Language code in below.
+We support 54 languages.
+
 ```python
 LANG_MAP = {
+    # language code: language description
     "vi_VN": "Vietnamese (Vietnam)",
     "ur": "Urdu",
     "tr_TR": "Turkish (Turkey)",
@@ -124,15 +143,19 @@ LANG_MAP = {
 }
 ```
 
-```bash
-# Choose LLM
-MODEL=${1:-"llama3.2:3b"}
+### 3-3 Chosse Target File
 
-# Arguments we recommend to change
-#  --pot_url "" \ (You can download target pot by URL)
-#  --target_pot_file "" \ (If you download it manually, you
-#  --languages "ko_KR, ja, ru" (Please set the languages code you want)
+To be written...
+
+### 3-4 Apply them
+
+```bash
+tox -e i18n -- "llama3.2:3b" "de,ru"
+# or you can use
+# bash main.sh "llama3.2:3b" "de,ru"
 ```
+
+You can edit more options in detail in [main.sh](./main.sh)
 
 ## 5. How to Improve Performance?
 
