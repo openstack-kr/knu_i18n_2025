@@ -6,6 +6,8 @@ experiments.csv
 po/
 !po/.keep
 validate/json
+glossary/
+!glossary/.keep
 
 venv/
 .env/
