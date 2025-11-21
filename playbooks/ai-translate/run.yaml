@@ -1,10 +1,11 @@
 # playbooks/knu-translate/run.yaml
-- hosts: all
+- hosts: localhost
+  connection: local
   gather_facts: false
 
   vars:
     model: "{{ model | default('llama3.2:3b') }}"
-    project_dir: "{{ zuul.project.src_dir }}"
+    project_dir: "{{ zuul.project.src_dir | default(lookup('env', 'PWD')) }}"
 
   tasks:
 
@@ -41,6 +42,10 @@
           - "{{ model }}"
           - "--workers"
           - "4"
+          - "--start"
+          - "0"
+          - "--end"
+          - "200"
           - "--pot_dir"
           - "./pot"
           - "--po_dir"
