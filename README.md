@@ -76,8 +76,16 @@ Please find your preferred LLM name in [this link](https://ollama.com/library).
 
 2. Closed-Src LLM
 You can use OpenAI, Claude, Gemini model in this code.
+You shold give '--llm_mode' as an additional argument to change llm backend.  
+    - default="ollama"
+    - choices=["ollama", "gpt", "claude", "gemini"],
 
-To be Written...
+```bash
+# Example
+tox -e i18n -- "gpt-4o" "ko_KR" "gpt"
+# or you can use
+bash main.sh "gpt-4o" "ko_KR" "gpt"
+```bash
 
 ### 3-2. Choose Languages
 Please find your target Language code in below.
@@ -150,9 +158,10 @@ To be written...
 ### 3-4 Apply them
 
 ```bash
+# Example
 tox -e i18n -- "llama3.2:3b" "de,ru"
 # or you can use
-# bash main.sh "llama3.2:3b" "de,ru"
+bash main.sh "llama3.2:3b" "de,ru"
 ```
 
 You can edit more options in detail in [main.sh](./main.sh)

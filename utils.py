@@ -23,6 +23,13 @@ def parse_args():
         required=True,
         help="Model name to use (e.g., qwen2.5:1.5b)")
     parser.add_argument(
+        "--llm-mode",
+        type=str,
+        default="ollama",
+        choices=["ollama", "gpt", "claude", "gemini"],
+        help="Choose which LLM backend to use."
+    )
+    parser.add_argument(
         "--pot_dir",
         default="./pot",
         help="Path to the POT file directory")

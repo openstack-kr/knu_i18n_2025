@@ -33,6 +33,66 @@ from utils import (
 )
 from closed_llm import *
 
+# Global LLM configuration
+LLM_MODE = "ollama"
+CALL_LLM_FN = None
+
+
+def configure_llm_caller(llm_mode: str, model_name: str):
+    print("config!!!!!!!!!!!!!!")
+    """
+    Configure which LLM backend to use for translation.
+
+    This function is called once in main() and sets the global
+    CALL_LLM_FN so that translate_batch() can simply call it
+    without re-selecting the backend for every batch.
+    """
+    global LLM_MODE, CALL_LLM_FN
+    LLM_MODE = llm_mode
+
+    if llm_mode == "gpt":
+        def _call(messages):
+            return call_openai_chat(
+                messages,
+                model=model_name,
+            )
+    elif llm_mode == "claude":
+        def _call(messages):
+            claude_messages = []
+            claude_system = None
+            for msg in messages:
+                if msg["role"] == "system":
+                    claude_system = msg["content"]
+                else:
+                    claude_messages.append(msg)
+            return call_claude_chat(
+                claude_messages,
+                model=model_name,
+                system=claude_system,
+            )
+    elif llm_mode == "gemini":
+        def _call(messages):
+            return call_gemini_chat(
+                messages,
+                model=model_name,
+            )
+    else:
+        # Default: local Ollama model
+        def _call(messages):
+            response = ollama.chat(
+                model=model_name,
+                messages=messages,
+                stream=False,
+                options={
+                    "temperature": 0,
+                    "top_p": 1,
+                    "repetition_penalty": 1.2,
+                },
+            )
+            return response["message"]["content"].strip()
+
+    CALL_LLM_FN = _call
+
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
     "ur": "Urdu",
@@ -200,46 +260,13 @@ def translate_batch(payload, language_code, language_name):
     messages.append({"role": "user", "content": user_content})
 
     try:
-        # === (Default): Open Sourced LLM ===
-        response = ollama.chat(
-            model=MODEL_NAME,
-            messages=messages,
-            stream=False,
-            options={
-                "temperature": 0,
-                "top_p": 1,
-                "repetition_penalty": 1.2,
-            },
-        )
-        translation_text = response["message"]["content"].strip()
+        if CALL_LLM_FN is None:
+            raise RuntimeError(
+                "CALL_LLM_FN is not configured. "
+                "Did you forget to call configure_llm_caller() in main()?"
+            )
 
-        # === (Option 1): OpenAI GPT ===
-        # translation_text = call_openai_chat(
-        #     messages,
-        #     model="gpt-4o",
-        # )
-
-        # === (Option 2): Claude ===
-        # claude_messages = []
-        # claude_system = None
-
-        # for msg in messages:
-        #     if msg['role'] == 'system':
-        #         claude_system = msg['content']
-        #     else:
-        #         claude_messages.append(msg)
-
-        # translation_text = call_claude_chat(
-        #     claude_messages,
-        #     model="claude-3-5-haiku-latest",
-        #     system=claude_system
-        # )
-
-        # === (Option 3): Gemini ===
-        # translation_text = call_gemini_chat(
-        #     messages,
-        #     model="gemini-1.5-flash",
-        # )
+        translation_text = CALL_LLM_FN(messages)
 
         # JSON 파싱 시도
         try:
@@ -417,6 +444,8 @@ if __name__ == "__main__":
     """
     args = parse_args()
     MODEL_NAME = args.model
+    LLM_MODE = args.llm_mode
+    configure_llm_caller(LLM_MODE, MODEL_NAME)
     POT_DIR = args.pot_dir
     PO_DIR = args.po_dir
     GLOSSARY_DIR = args.glossary_dir
