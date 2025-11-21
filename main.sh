@@ -20,7 +20,7 @@ python translate.py \
   --model $MODEL \
   --llm-mode "$LLM_MODE" \
   --workers 4 \
-  --start 0 --end 10 \
+  --start 0 --end 40 \
   --pot_dir ./pot \
   --po_dir ./po \
   --pot_file "./pot/nova_ex.pot" \
