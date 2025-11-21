@@ -23,6 +23,13 @@ def parse_args():
         required=True,
         help="Model name to use (e.g., qwen2.5:1.5b)")
     parser.add_argument(
+        "--llm-mode",
+        type=str,
+        default="ollama",
+        choices=["ollama", "gpt", "claude", "gemini"],
+        help="Choose which LLM backend to use."
+    )
+    parser.add_argument(
         "--pot_dir",
         default="./pot",
         help="Path to the POT file directory")
@@ -284,8 +291,19 @@ def load_fixed_examples(
         example_url,
         example_file):
     """
-    fixed_examples.json 파일에서 '특정 언어'의
-    고정된 모범 예시 리스트를 로드합니다.
+    고정된 번역 예시(JSON)를 로드하거나, 실패 시 기본 예시(.po)를 가져온다.
+    Loads fixed translation examples (JSON) or falls back to default
+    examples (.po) upon failure.
+
+    Args:
+        lang_code (str): 처리할 언어 코드
+        example_dir (str): 예시 파일 최상위 디렉터리
+        fixed_example_json (str): 고정 예시 JSON 파일명
+        example_url (str): Fallback용 .po 파일 다운로드 URL
+        example_file (str): Fallback용 .po 파일명
+
+    Returns:
+        list: (msgid, msgstr) 튜플의 리스트
     """
     example_path = os.path.join(example_dir, lang_code, fixed_example_json)
 

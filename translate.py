@@ -32,6 +32,74 @@ from utils import (
     save_experiment_log
 )
 
+from utils import (
+    parse_args,
+    init_environment,
+    load_glossary,
+    load_fixed_examples,
+    save_experiment_log
+)
+from closed_llm import *
+
+# Global LLM configuration
+LLM_MODE = "ollama"
+CALL_LLM_FN = None
+
+def configure_llm_caller(llm_mode: str, model_name: str):
+    print("config!!!!!!!!!!!!!!")
+    """
+    Configure which LLM backend to use for translation.
+
+    This function is called once in main() and sets the global
+    CALL_LLM_FN so that translate_batch() can simply call it
+    without re-selecting the backend for every batch.
+    """
+    global LLM_MODE, CALL_LLM_FN
+    LLM_MODE = llm_mode
+
+    if llm_mode == "gpt":
+        def _call(messages):
+            return call_openai_chat(
+                messages,
+                model=model_name,
+            )
+    elif llm_mode == "claude":
+        def _call(messages):
+            claude_messages = []
+            claude_system = None
+            for msg in messages:
+                if msg["role"] == "system":
+                    claude_system = msg["content"]
+                else:
+                    claude_messages.append(msg)
+            return call_claude_chat(
+                claude_messages,
+                model=model_name,
+                system=claude_system,
+            )
+    elif llm_mode == "gemini":
+        def _call(messages):
+            return call_gemini_chat(
+                messages,
+                model=model_name,
+            )
+    else:
+        # Default: local Ollama model
+        def _call(messages):
+            response = ollama.chat(
+                model=model_name,
+                messages=messages,
+                stream=False,
+                options={
+                    "temperature": 0,
+                    "top_p": 1,
+                    "repetition_penalty": 1.2,
+                },
+            )
+            return response["message"]["content"].strip()
+
+    CALL_LLM_FN = _call
+
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
     "ur": "Urdu",
@@ -114,6 +182,7 @@ def translate_batch(payload, language_code, language_name):
             entries (list): 번역 대상 메시지 객체 리스트
             batch_index (int): 현재 batch 순서
             total_batches (int): 전체 batch 수
+        language_code (str): 번역하는 언어 코드
         language_name (str): 번역하는 언어 이름
 
     Returns:
@@ -198,18 +267,13 @@ def translate_batch(payload, language_code, language_name):
     messages.append({"role": "user", "content": user_content})
 
     try:
-        response = ollama.chat(
-            model=MODEL_NAME,
-            messages=messages,
-            stream=False,
-            options={
-                "temperature": 0,
-                "top_p": 1,
-                "repetition_penalty": 1.2,
-            },
-        )
+        if CALL_LLM_FN is None:
+            raise RuntimeError(
+                "CALL_LLM_FN is not configured. "
+                "Did you forget to call configure_llm_caller() in main()?"
+            )
 
-        translation_text = response["message"]["content"].strip()
+        translation_text = CALL_LLM_FN(messages)
 
         # JSON 파싱 시도
         try:
@@ -323,8 +387,7 @@ def translate_pot_file(
         language_team=pot.language_team,
         charset="UTF-8",
     )
-    po.header_comment = "Initial translation by AI (batch mode).\n" + \
-        pot.header_comment
+
 
     entries_to_translate = [entry for entry in pot if entry.id]
     total_entries = len(entries_to_translate)
@@ -364,7 +427,8 @@ def translate_pot_file(
     for batch_result in results:
         if batch_result:
             for msgid, translation, locations in batch_result:
-                po.add(id=msgid, string=translation, locations=locations)
+                po.add(id=msgid, string=translation, locations=locations,
+                       user_comments=["Initial translation by AI."])
 
     try:
         with open(po_path, "wb") as f:
@@ -388,6 +452,7 @@ if __name__ == "__main__":
     """
     args = parse_args()
     MODEL_NAME = args.model
+    LLM_MODE = args.llm_mode
     POT_DIR = args.pot_dir
     POT_FILE = args.pot_file
     PO_DIR = args.po_dir

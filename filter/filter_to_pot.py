@@ -23,8 +23,7 @@ def make_key(entry: polib.POEntry):
     """msgctxt + msgid + msgid_plural 로 엔트리 식별."""
     return (entry.msgctxt, entry.msgid, entry.msgid_plural)
 
-def main(src_po_path, translated_po_path,
-         out_po_path="remaining.po", out_pot_path="remaining.pot"):
+def main(src_po_path, translated_po_path, out_pot_path="remaining.pot"):
 
     src_po = polib.pofile(src_po_path)
     trans_po = polib.pofile(translated_po_path)
@@ -67,24 +66,21 @@ def main(src_po_path, translated_po_path,
 
     print(f"[*] 남은(미번역) 엔트리 수: {kept_count}")
 
-    # 3) 남은 엔트리를 PO, POT 두 버전으로 저장
-    result.save(out_po_path)
+    # 3) 남은 엔트리를 POT 한 버전으로만 저장
     result.save(out_pot_path)
 
     print(f"[+] 저장 완료:")
-    print(f"    PO : {out_po_path}")
     print(f"    POT: {out_pot_path}")
 
 if __name__ == "__main__":
     # 사용법:
-    #   python filter_to_pot.py 원문.po 번역.po [out.po] [out.pot]
+    #   python filter_to_pot.py 원문.po 번역.po [out_pot]
     if len(sys.argv) < 3:
-        print("Usage: python filter_to_pot.py <source_po> <translated_po> [out_po] [out_pot]")
+        print("Usage: python filter_to_pot.py <source_po> <translated_po> [out_pot]")
         sys.exit(1)
 
     src_po = sys.argv[1]
     trans_po = sys.argv[2]
-    out_po = sys.argv[3] if len(sys.argv) >= 4 else "remaining.po"
-    out_pot = sys.argv[4] if len(sys.argv) >= 5 else "remaining.pot"
+    out_pot = sys.argv[3] if len(sys.argv) >= 4 else "remaining.pot"
 
-    main(src_po, trans_po, out_po, out_pot)
+    main(src_po, trans_po, out_pot)

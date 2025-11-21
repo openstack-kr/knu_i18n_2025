@@ -18,7 +18,7 @@ echo "[*] 출력 POT: $OUT_POT"
 echo
 
 # 파이썬 스크립트 실행
-python filter_to_pot.py "$SRC_PO" "$TRANS_PO" "$OUT_PO" "$OUT_POT"
+python3 filter_to_pot.py "$SRC_PO" "$TRANS_PO" "$OUT_POT"
 
 echo
 echo "[+] 완료!"

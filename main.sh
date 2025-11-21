@@ -2,6 +2,8 @@
 set -e
 
 MODEL=${1:-"llama3.2:3b"}
+LANGS=${2:-"ko_KR,ja"}
+LLM_MODE=${3:-"ollama"}
 
 # 1) make sure the model is available in local ollama
 if command -v ollama >/dev/null 2>&1; then
@@ -12,8 +14,11 @@ else
   echo "[main.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
+echo "[main.sh] LLM_MODE = $LLM_MODE"
+
 python translate.py \
   --model $MODEL \
+  --llm-mode "$LLM_MODE" \
   --workers 4 \
   --start 0 --end 200 \
   --pot_dir ./pot \
@@ -28,4 +33,4 @@ python translate.py \
   --example_file "nova-nova-locale.po" \
   --fixed_example_json "fixed_examples.json" \
   --batch-size "5" \
-  --languages "ru"
+  --languages "$LANGS"
