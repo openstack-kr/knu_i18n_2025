@@ -12,9 +12,9 @@ Execution Flow:
     1. utils.argparse로 CLI 인자값을 수신
     2. utils.init_environment()에서 POT 폴더 생성 및 파일 다운로드
     3. load_glossary()로 언어별 glossary 파일 다운로드 및 로드
-    4. load_examples()로 언어별 예시 파일 다운로드 및 로드
-    4. translate_pot_file()-> translate_entry()에서 병렬 번역 및 tqdm 표시
-    5. save_experiment_log()로 결과 기록 및 Git 메타데이터 저장
+    4. load_fixed_examples()로 언어별 예시 로드
+    5. translate_pot_file()-> translate_batch()에서 병렬 배치 번역 및 tqdm 표시
+    6. save_experiment_log()로 결과 기록 및 Git 메타데이터 저장
 """
 
 import ollama
@@ -31,6 +31,66 @@ from utils import (
     load_fixed_examples,
     save_experiment_log
 )
+from closed_llm import *
+
+# Global LLM configuration
+LLM_MODE = "ollama"
+CALL_LLM_FN = None
+
+def configure_llm_caller(llm_mode: str, model_name: str):
+    print("config!!!!!!!!!!!!!!")
+    """
+    Configure which LLM backend to use for translation.
+
+    This function is called once in main() and sets the global
+    CALL_LLM_FN so that translate_batch() can simply call it
+    without re-selecting the backend for every batch.
+    """
+    global LLM_MODE, CALL_LLM_FN
+    LLM_MODE = llm_mode
+
+    if llm_mode == "gpt":
+        def _call(messages):
+            return call_openai_chat(
+                messages,
+                model=model_name,
+            )
+    elif llm_mode == "claude":
+        def _call(messages):
+            claude_messages = []
+            claude_system = None
+            for msg in messages:
+                if msg["role"] == "system":
+                    claude_system = msg["content"]
+                else:
+                    claude_messages.append(msg)
+            return call_claude_chat(
+                claude_messages,
+                model=model_name,
+                system=claude_system,
+            )
+    elif llm_mode == "gemini":
+        def _call(messages):
+            return call_gemini_chat(
+                messages,
+                model=model_name,
+            )
+    else:
+        # Default: local Ollama model
+        def _call(messages):
+            response = ollama.chat(
+                model=model_name,
+                messages=messages,
+                stream=False,
+                options={
+                    "temperature": 0,
+                    "top_p": 1,
+                    "repetition_penalty": 1.2,
+                },
+            )
+            return response["message"]["content"].strip()
+
+    CALL_LLM_FN = _call
 
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
@@ -114,6 +174,7 @@ def translate_batch(payload, language_code, language_name):
             entries (list): 번역 대상 메시지 객체 리스트
             batch_index (int): 현재 batch 순서
             total_batches (int): 전체 batch 수
+        language_code (str): 번역하는 언어 코드
         language_name (str): 번역하는 언어 이름
 
     Returns:
@@ -190,7 +251,7 @@ def translate_batch(payload, language_code, language_name):
     user_content = (
         f"Translate the following {len(texts_to_translate)} items.\n"
         f"Your response MUST be a single, valid JSON array `[...]` "
-        "containing exactly {len(texts_to_translate)} translated strings "
+        f"containing exactly {len(texts_to_translate)} translated strings "
         "in the same order."
         "Do NOT add any other text, explanations, or markdown formatting.\n\n"
         f"{json.dumps(texts_to_translate, ensure_ascii=False)}")
@@ -198,18 +259,13 @@ def translate_batch(payload, language_code, language_name):
     messages.append({"role": "user", "content": user_content})
 
     try:
-        response = ollama.chat(
-            model=MODEL_NAME,
-            messages=messages,
-            stream=False,
-            options={
-                "temperature": 0,
-                "top_p": 1,
-                "repetition_penalty": 1.2,
-            },
-        )
+        if CALL_LLM_FN is None:
+            raise RuntimeError(
+                "CALL_LLM_FN is not configured. "
+                "Did you forget to call configure_llm_caller() in main()?"
+            )
 
-        translation_text = response["message"]["content"].strip()
+        translation_text = CALL_LLM_FN(messages)
 
         # JSON 파싱 시도
         try:
@@ -323,8 +379,7 @@ def translate_pot_file(
         language_team=pot.language_team,
         charset="UTF-8",
     )
-    po.header_comment = "Initial translation by AI (batch mode).\n" + \
-        pot.header_comment
+
 
     entries_to_translate = [entry for entry in pot if entry.id]
     total_entries = len(entries_to_translate)
@@ -364,7 +419,8 @@ def translate_pot_file(
     for batch_result in results:
         if batch_result:
             for msgid, translation, locations in batch_result:
-                po.add(id=msgid, string=translation, locations=locations)
+                po.add(id=msgid, string=translation, locations=locations,
+                       user_comments=["Initial translation by AI."])
 
     try:
         with open(po_path, "wb") as f:
@@ -388,7 +444,10 @@ if __name__ == "__main__":
     """
     args = parse_args()
     MODEL_NAME = args.model
+    LLM_MODE = args.llm_mode
+    configure_llm_caller(LLM_MODE, MODEL_NAME)
     POT_DIR = args.pot_dir
+    POT_FILE = args.pot_file
     PO_DIR = args.po_dir
     GLOSSARY_DIR = args.glossary_dir
     EXAMPLE_DIR = args.example_dir
@@ -411,15 +470,25 @@ if __name__ == "__main__":
     print("=================================================\n")
 
     # 폴더 생성 + POT 다운로드
-    pot_file_path = init_environment(
+    os.makedirs(POT_DIR, exist_ok=True)
+    os.makedirs(PO_DIR, exist_ok=True)
+    os.makedirs(GLOSSARY_DIR, exist_ok=True)
+    os.makedirs(EXAMPLE_DIR, exist_ok=True)
+
+    if POT_FILE:
+        pot_file_path=POT_FILE
+        print(f"Using local POT file: {pot_file_path}")
+        if not os.path.exists(pot_file_path):
+            raise FileNotFoundError(f"POT file not found:{pot_file_path}")
+    else:
+        pot_file_path = init_environment(
         pot_dir=POT_DIR,
         po_dir=PO_DIR,
         glossary_dir=GLOSSARY_DIR,
         example_dir=EXAMPLE_DIR,
         pot_url=POT_URL,
         target_pot_file=TARGET_POT_FILE,
-    )
-
+        )
     # 모델별 폴더 구성 + 파일 경로
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
 

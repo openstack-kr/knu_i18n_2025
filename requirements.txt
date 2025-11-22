@@ -11,3 +11,6 @@ sphinx
 polib
 torch
 sentence_transformers
+openai
+anthropic
+google.generativeai
