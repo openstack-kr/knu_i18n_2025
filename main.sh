@@ -19,7 +19,7 @@ echo "[main.sh] LLM_MODE = $LLM_MODE"
 python translate.py \
   --model $MODEL \
   --llm-mode "$LLM_MODE" \
-  --workers 4 \
+  --workers 1 \
   --start 0 --end 40 \
   --pot_dir ./pot \
   --po_dir ./po \
