@@ -44,11 +44,11 @@ tox -e i18n -- "llama3.2:3b" "ko_KR"
 bash main.sh "llama3.2:3b" "ko_KR"
 ```
 
-That’s it — your translated `.po` file is generated.
+And that's it! Your translated .po file is ready.
 
 # 🌐 2. Supported Languages
 
-We supports [**54 languages**](docs/language_support.md).
+We support [**54 languages**](docs/language_support.md).
 
 # ⚙️ 3. Choose Your Options
 
@@ -89,11 +89,11 @@ bash main.sh "llama3.2:3b" "de,ru,ja"
 
 ## **3-3. Choose Target File**
 
-This section will be added.
+This section will be updated soon.
 
 ## **3-4. Performance Options**
 
-You can control translation speed & scale:
+You can adjust translation speed and scale:
 
 ```bash
 --workers     # parallel threads (default: 1)
@@ -120,16 +120,16 @@ The system automatically:
 Draft translations are then pushed to Gerrit → reviewed → synced to Weblate.
 For full architecture details in [**PAPER.md**](docs/PAPER.md).
 
-# 🚀 5. Improving Translation Quality
+# 🚀 5. Assist in Improving Translation Quality
 
 You can tune two major components:
 
 - **Few-shot examples** (`/examples/`)
 - **Language-specific prompts** (`/prompts/`)
 
-Details are documented in [**CONTRIBUTING.md**](https://github.com/openstack-kr/knu_i18n_2025/blob/main/CONTRIBUTING.md).
+See [**CONTRIBUTING.md**](https://github.com/openstack-kr/knu_i18n_2025/blob/main/CONTRIBUTING.md) to learn how you can contribute.
 
-# 💡 6. Code Quality
+# 💡 6. Code Formatting
 
 Run PEP8 style checks:
 
@@ -145,7 +145,7 @@ autopep8 --in-place -r .
 
 # 👥 Team
 
-- [Lee Juyeong](https://github.com/ale8ander)
+- [Lee Juyeong](https://github.com/ale8ander) - Project Lead
 - [Oh Jiwoo](https://github.com/5hjiwoo)
 - [Jo Taeho](https://github.com/o-heat)
 - [Chun Sihyeon](https://github.com/sihyeon22)
