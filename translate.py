@@ -385,7 +385,7 @@ def translate_pot_file(
 
 
     entries_to_translate = [entry for entry in pot if entry.id]
-    
+
     # Apply start/end index limits if provided
     global START_TRANSLATE, END_TRANSLATE
     if START_TRANSLATE is not None or END_TRANSLATE is not None:
@@ -463,7 +463,7 @@ if __name__ == "__main__":
     GLOSSARY_DIR = args.glossary_dir
     EXAMPLE_DIR = args.example_dir
     START_TRANSLATE = args.start
-    END_TRANSLATE = args.end
+    END_TRANSLATE = None if args.end == -1 else args.end
     POT_URL = args.pot_url
     TARGET_POT_FILE = args.target_pot_file
     GLOSSARY_URL = args.glossary_url
