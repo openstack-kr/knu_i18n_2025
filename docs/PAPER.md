@@ -87,4 +87,4 @@ Users can select the target language, LLM, and `.pot` files to be translated via
 |without a, b|	0.8442|	0.9203|	72.81%|	1432.77s|
 |with a, b|	0.9020|	0.9625|	82.71%|	1647.99s|
 
-> Note: Korean translation quality improved by +0.1619, average improvement across four languages: +0.1268.
+Korean translation quality improved by +0.1619, average improvement across four languages: +0.1268.
