@@ -58,7 +58,7 @@ You can customize **model**, **language**, **target file**, and **performance se
 
 ### **Open-source models (default)**
 
-Uses **Ollama**. Browse available models [**HERE**](https://ollama.com/library).
+Uses **Ollama**. Browse available models [HERE](https://ollama.com/library).
 
 ```bash
 bash main.sh "llama3.2:3b" "de"
