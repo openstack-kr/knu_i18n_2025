@@ -140,7 +140,7 @@ tox -e pep8
 Auto-fix style issues:
 
 ```bash
-autopep8 --in-place -r .
+autopep8 --in-place --aggressive --aggressive -r .
 ```
 
 # 👥 Team
