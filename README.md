@@ -65,9 +65,9 @@ bash main.sh
 ## 3. Select Your Option for User
 
 Our code default option is as below.
-    - LLM: Lamma3.2 (3B)
-    - Language: Korean, Japanese
-    - Target file: To be written...
+    - LLM: Lamma3.2 (3B)<br>
+    - Language: Korean, Japanese<br>
+    - Target file: To be written...<br>
 
 ### 3-1 Choose Model
 1. Open-Src LLM
@@ -90,7 +90,7 @@ bash main.sh "gpt-4o" "ko_KR" "gpt"
 To speed up translation, you can increase the --workers value(default: 1) in main.sh, which controls how many batches are processed in parallel.
 
 ### 3-2. Choose Languages
-Please find your target Language code in below.
+Please find your target Language code in below.<br>
 We support 54 languages.
 
 ```python
@@ -175,7 +175,7 @@ You can tune these arguments for performance / partial translation:<br>
 You can edit more options in detail in [main.sh](./main.sh)
 ## 5. How to Improve Performance?
 
-You can adjust (b) Few Shot Example and Language (c) Specific Prompt.
+You can adjust (b) Few Shot Example and Language (c) Specific Prompt.<br>
 Please refer [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## 6. Code Quality Check
@@ -190,8 +190,8 @@ You can correct fix all style issues in the repository by running the command be
 ```bash
 autopep8 --in-place --aggressive --aggressive -r .
 ```
-This will recursively format all Python files in the current directory according to the PEP8 style guide.
-However, few errors can not be fixed with this command and you have to fix them manually.
+This will recursively format all Python files in the current directory according to the PEP8 style guide.<br>
+However, few errors can not be fixed with this command and you have to fix them manually.<br>
 
 
 ## 7. Paper-Experiments Reproducibility
@@ -220,7 +220,7 @@ Similarity thresholds are defined as follows:
 	- ≥ 0.8: semantically similar
 	- ≥ 0.9: semantically almost identical
 
-Using these criteria, we objectively compared and analyzed the quality of AI translations.
+Using these criteria, we objectively compared and analyzed the quality of AI translations.<br>
 
 ### Result
 
