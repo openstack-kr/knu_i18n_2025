@@ -75,10 +75,10 @@ We use Ollama as LLM framework <br>
 Please find your preferred LLM name in [this link](https://ollama.com/library).
 
 2. Closed-Src LLM
-You can use OpenAI, Claude, Gemini model in this code.
-You should give '--llm_mode' as an additional argument to change llm backend.  
-    - default="ollama"
-    - choices=["ollama", "gpt", "claude", "gemini"],
+You can use OpenAI, Claude, Gemini model in this code.<br>
+You should give '--llm_mode' as an additional argument to change llm backend.<br>
+    - default="ollama"<br>
+    - choices=["ollama", "gpt", "claude", "gemini"]<br>
 
 ```bash
 # Example
