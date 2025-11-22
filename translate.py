@@ -251,7 +251,7 @@ def translate_batch(payload, language_code, language_name):
     user_content = (
         f"Translate the following {len(texts_to_translate)} items.\n"
         f"Your response MUST be a single, valid JSON array `[...]` "
-        "containing exactly {len(texts_to_translate)} translated strings "
+        f"containing exactly {len(texts_to_translate)} translated strings "
         "in the same order."
         "Do NOT add any other text, explanations, or markdown formatting.\n\n"
         f"{json.dumps(texts_to_translate, ensure_ascii=False)}")
