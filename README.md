@@ -167,9 +167,11 @@ bash main.sh "llama3.2:3b" "de,ru"
 ```
 
 You can tune these arguments for performance / partial translation:<br>
-   --workers   : number of parallel threads (default: 1)<br>
-   --start/end : entry index range to translate (default: 0 ~ all)<br>
-   --batch-size: entries per LLM call (default: 5)<br>
+```bash
+   --workers   : number of parallel threads (default: 1)
+   --start/end : entry index range to translate (default: 0 ~ all)
+   --batch-size: entries per LLM call (default: 5)
+```
 You can edit more options in detail in [main.sh](./main.sh)
 ## 5. How to Improve Performance?
 
