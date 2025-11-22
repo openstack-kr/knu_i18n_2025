@@ -129,7 +129,7 @@ You can tune two major components:
 
 Details are documented in [**CONTRIBUTING.md**](https://github.com/openstack-kr/knu_i18n_2025/blob/main/CONTRIBUTING.md).
 
-# 🧼 6. Code Quality
+# 💡 6. Code Quality
 
 Run PEP8 style checks:
 
