@@ -37,8 +37,11 @@ from closed_llm import *
 LLM_MODE = "ollama"
 CALL_LLM_FN = None
 
+# START/END indices for translation (None means no limit)
+START_TRANSLATE = None
+END_TRANSLATE = None
+
 def configure_llm_caller(llm_mode: str, model_name: str):
-    print("config!!!!!!!!!!!!!!")
     """
     Configure which LLM backend to use for translation.
 
@@ -382,6 +385,13 @@ def translate_pot_file(
 
 
     entries_to_translate = [entry for entry in pot if entry.id]
+    
+    # Apply start/end index limits if provided
+    global START_TRANSLATE, END_TRANSLATE
+    if START_TRANSLATE is not None or END_TRANSLATE is not None:
+        start_idx = START_TRANSLATE if START_TRANSLATE is not None else 0
+        end_idx = END_TRANSLATE if END_TRANSLATE is not None else len(entries_to_translate)
+        entries_to_translate = entries_to_translate[start_idx:end_idx]
     total_entries = len(entries_to_translate)
 
     # entry를 batch로 분할

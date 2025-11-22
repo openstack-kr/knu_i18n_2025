@@ -87,7 +87,7 @@ tox -e i18n -- "gpt-4o" "ko_KR" "gpt"
 bash main.sh "gpt-4o" "ko_KR" "gpt"
 ```
 
-To speed up translation, you can increase the --workers value in main.sh, which controls how many batches are processed in parallel.
+To speed up translation, you can increase the --workers value(default: 1) in main.sh, which controls how many batches are processed in parallel.
 
 ### 3-2. Choose Languages
 Please find your target Language code in below.
@@ -166,8 +166,11 @@ tox -e i18n -- "llama3.2:3b" "de,ru"
 bash main.sh "llama3.2:3b" "de,ru"
 ```
 
+You can tune these arguments for performance / partial translation:
+   --workers   : number of parallel threads (default: 1)
+   --start/end : entry index range to translate (default: 0 ~ all)
+   --batch-size: entries per LLM call (default: 5)
 You can edit more options in detail in [main.sh](./main.sh)
-
 ## 5. How to Improve Performance?
 
 You can adjust (b) Few Shot Example and Language (c) Specific Prompt.
