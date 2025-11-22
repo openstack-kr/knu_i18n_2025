@@ -114,8 +114,8 @@ def init_environment(
     target_pot_file,
 ):
     """
-    번역 환경을 초기화하고 필요한 파일(POT, Glossary)을 다운로드한다.
-    Initializes directories and downloads required files (POT and Glossary).
+    번역 환경을 초기화하고 필요한 파일(POT)을 다운로드한다.
+    Initializes directories and downloads required files (POT).
 
     Args:
         pot_dir (str): POT 파일 저장 디렉터리
