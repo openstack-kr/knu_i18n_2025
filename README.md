@@ -87,6 +87,8 @@ tox -e i18n -- "gpt-4o" "ko_KR" "gpt"
 bash main.sh "gpt-4o" "ko_KR" "gpt"
 ```
 
+To speed up translation, you can increase the --workers value in main.sh, which controls how many batches are processed in parallel.
+
 ### 3-2. Choose Languages
 Please find your target Language code in below.
 We support 54 languages.

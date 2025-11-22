@@ -445,15 +445,15 @@ if __name__ == "__main__":
     args = parse_args()
     MODEL_NAME = args.model
     LLM_MODE = args.llm_mode
+    MAX_WORKERS = args.workers
     configure_llm_caller(LLM_MODE, MODEL_NAME)
     POT_DIR = args.pot_dir
-    POT_FILE = args.pot_file
     PO_DIR = args.po_dir
+    POT_FILE = args.pot_file
     GLOSSARY_DIR = args.glossary_dir
     EXAMPLE_DIR = args.example_dir
     START_TRANSLATE = args.start
     END_TRANSLATE = args.end
-    MAX_WORKERS = args.workers
     POT_URL = args.pot_url
     TARGET_POT_FILE = args.target_pot_file
     GLOSSARY_URL = args.glossary_url
