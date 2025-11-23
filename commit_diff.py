@@ -1,17 +1,8 @@
 import os
 import subprocess
-import yaml
 import shutil
 from babel.messages import pofile, Catalog
-
-CONFIG_FILE = "config.yaml"
-
-def load_config():
-    if not os.path.exists(CONFIG_FILE):
-        print(f"[ERROR] Config file '{CONFIG_FILE}' not found.")
-        exit(1)
-    with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+from config_loader import load_config
 
 def run_git(args, cwd=None):
     subprocess.check_call(["git"] + args, cwd=cwd)
@@ -69,16 +60,17 @@ def extract_diff(new_pot, old_pot, output_diff):
 def main():
     cfg = load_config()
 
+    project = cfg["project"]
+    
     repo_url = cfg['git']['repo_url']
     work_dir = cfg['git']['work_dir']
-    repo_name = cfg['git']['repo_name']
-    repo_dir = os.path.join(work_dir, repo_name)
+    repo_dir = os.path.join(work_dir, project)
 
     pot_dir = cfg['output']['pot_dir']
     diff_name = cfg['output']['diff_filename']
     source_dir = cfg['output'].get('source_dir', ".")
 
-    project_name = repo_name
+    project_name = project
 
     target_commit = cfg['compare']['target_commit']
     base_commit = cfg['compare']['base_commit']

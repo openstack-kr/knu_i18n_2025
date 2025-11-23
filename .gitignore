@@ -1,6 +1,7 @@
 .tox/
 
 data/
+!data/.keep
 
 experiments.csv
 *.log
