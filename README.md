@@ -32,6 +32,9 @@ tox -e i18n -vv
 ### Option B) Run locally
 
 ```bash
+python -m pip install --upgrade pip
+curl -fsSL https://ollama.com/install.sh | sh
+
 pip install -r requirements.txt
 bash main.sh
 ```
