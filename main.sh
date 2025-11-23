@@ -10,4 +10,4 @@ else
   echo "[main.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
-python translate.py --config config.yaml
+python translate.py --config config_local.yaml

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-CONFIG_FILE=${1:-"ci_config.yaml"}
+CONFIG_FILE=${1:-"config_ci.yaml"}
 
 echo "[ci.sh] Using config: $CONFIG_FILE"
 echo

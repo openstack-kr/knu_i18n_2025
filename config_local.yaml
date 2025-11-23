@@ -1,23 +1,14 @@
-# -----------------------------
-#  commit.diff.py
-# -----------------------------
 project: "nova"
-git:
-  repo_url: "https://github.com/openstack/{project}.git"
-  work_dir: "./workspace"
 
-compare:
-  # 번역을 원하는 커밋 해시 값
-  target_commit: "d6f5a30caa1a4a139dc67272a150d24e44892a91"
-  base_commit: "HEAD~1"
-
-output:
+files:
   pot_dir: "./pot"
   po_dir: "./po"
-  target_pot: "diff_{target_commit}.pot"
-  # source_dir: pybabel이 스캔할 안쪽 폴더 (project 내부 기준)
-  # (전체를 스캔하고 싶으면 "." 을 입력)
-  source_dir: "{project}"
+
+  origin_po: "./data/{project}/{lang}/LC_MESSAGES/{project}.po"
+  target_pot: "./pot/{project}.pot"
+  
+  ai_po: "./po/{model}/{lang}/{project}.po"
+  merged_po: "./merged/{model}/{lang}/LC_MESSAGES/{project}.po"  
 
 # -----------------------------
 # translate.py
@@ -38,16 +29,6 @@ llm:
   start: 0
   end: -1
   batch_size: 5
-
-# -----------------------------
-# merge_po.py
-# -----------------------------
-merge:
-  # nova의 경우 weblate에 없기 때문에 수동으로 받아놓고, 자동으로 받았다고 치기
-  # 그러므로 origin_po를 어떻게 받을지에 대한 논의 필요
-  origin_po: "./data/{project}/{lang}/LC_MESSAGES/{project}.po"
-  llm_po: "./po/{model}/{lang}/diff_{target_commit}.po"
-  merged_po: "./merged/{model}/{lang}/LC_MESSAGES/{project}.po"
 
 # -----------------------------
 # Glossary

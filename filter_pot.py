@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # 사용법:
     #   python filter_to_pot.py 원문.po 번역.po [out_pot]
     if len(sys.argv) < 3:
-        print("Usage: python filter_to_pot.py <source_po> <translated_po> [out_pot]")
+        print("Usage: python filter_pot.py <source_po> <translated_po> [out_pot]")
         sys.exit(1)
     
     src_po = sys.argv[1]
