@@ -1,7 +1,6 @@
 .tox/
 
-data/target
-data/result
+data/
 
 experiments.csv
 *.log
