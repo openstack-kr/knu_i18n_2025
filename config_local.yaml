@@ -4,11 +4,11 @@ files:
   pot_dir: "./pot"
   po_dir: "./po"
 
-  origin_po: "./data/{project}/{lang}/LC_MESSAGES/{project}.po"
-  target_pot: "./pot/{project}.pot"
-  
-  ai_po: "./po/{model}/{lang}/{project}.po"
-  merged_po: "./merged/{model}/{lang}/LC_MESSAGES/{project}.po"  
+  origin_po: "./data/target/{project}/en_AU/LC_MESSAGES/{project}.po" # 기준이되는 po
+  origin_trans_po: "./data/target/{project}/{languages}/LC_MESSAGES/{project}.po" # 번역이 일부 된 po
+  ai_target_pot: "./pot/{project}.pot" # 넘겨주는 것
+  ai_po: "./po/{model}/{languages}/{project}.po" # AI 번역된 po
+  merged_po: "./data/result/{model}/{languages}/LC_MESSAGES/{project}.po"  
 
 # -----------------------------
 # translate.py

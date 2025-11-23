@@ -29,8 +29,6 @@ output:
 # -----------------------------
 # translate.py
 # -----------------------------
-model: "llama3.2:3b"
-
 languages:
   - "ko_KR"
 
@@ -40,6 +38,7 @@ languages:
 #   --start/end : entry index range to translate (default: 0 ~ all)
 #   --batch-size: entries per LLM call (default: 5)
 llm:
+  model: "llama3.2:3b"
   mode: "ollama"
   workers: 1
   start: 0
