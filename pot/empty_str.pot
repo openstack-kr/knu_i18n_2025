@@ -1,24 +1,25 @@
 # Translations template for nova.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the nova project.
-# 
+#
 # Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: nova VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
 "POT-Creation-Date: 2025-11-18 18:43+0000\n"
+"PO-Revision-Date: 2016-04-12 06:05+0000\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"Language-Team: English (Australia)\n"
+"Language: en_AU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-04-12 06:10+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language: kok\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 4.3.3\n"
-"Language-Team: Konkani\n"
 
 #: nova/block_device.py:111
 msgid "Some required fields are missing"
@@ -239,8 +240,8 @@ msgstr ""
 
 #: nova/exception.py:266
 msgid ""
-"Block Device Mapping is Invalid: Boot sequence for the instance and image/"
-"block device mapping combination is not valid."
+"Block Device Mapping is Invalid: Boot sequence for the instance and "
+"image/block device mapping combination is not valid."
 msgstr ""
 
 #: nova/exception.py:273
@@ -317,8 +318,8 @@ msgstr ""
 
 #: nova/exception.py:347
 msgid ""
-"Multiattach volumes are only supported starting with compute API version 2."
-"60."
+"Multiattach volumes are only supported starting with compute API version "
+"2.60."
 msgstr ""
 
 #: nova/exception.py:352
@@ -442,8 +443,8 @@ msgstr ""
 #: nova/exception.py:450
 #, python-format
 msgid ""
-"Version of %(name)s %(min_ver)s %(max_ver)s intersects with another versions."
-""
+"Version of %(name)s %(min_ver)s %(max_ver)s intersects with another "
+"versions."
 msgstr ""
 
 #: nova/exception.py:461
@@ -489,8 +490,8 @@ msgstr ""
 #: nova/exception.py:500
 #, python-format
 msgid ""
-"The property 'numa_nodes' cannot be '%(nodes)s'. It must be a number greater "
-"than 0"
+"The property 'numa_nodes' cannot be '%(nodes)s'. It must be a number greater"
+" than 0"
 msgstr ""
 
 #: nova/exception.py:505
@@ -651,8 +652,8 @@ msgstr ""
 msgid ""
 "Current Nova version does not support computes older than "
 "%(oldest_supported_version)s but the minimum compute service level in your "
-"%(scope)s is %(min_service_level)d and the oldest supported service level is "
-"%(oldest_supported_service)d."
+"%(scope)s is %(min_service_level)d and the oldest supported service level is"
+" %(oldest_supported_service)d."
 msgstr ""
 
 #: nova/exception.py:645
@@ -873,8 +874,8 @@ msgstr ""
 #: nova/exception.py:828
 #, python-format
 msgid ""
-"Block Device Mapping %(volume_id)s is a multi-attach volume and is not valid "
-"for this operation."
+"Block Device Mapping %(volume_id)s is a multi-attach volume and is not valid"
+" for this operation."
 msgstr ""
 
 #: nova/exception.py:833
@@ -1008,9 +1009,9 @@ msgstr ""
 #: nova/exception.py:941
 #, python-format
 msgid ""
-"Parameters %(missing_params)s not present in vif_details for vif %(vif_id)s. "
-"Check your Neutron configuration to validate that the macvtap parameters are "
-"correct."
+"Parameters %(missing_params)s not present in vif_details for vif %(vif_id)s."
+" Check your Neutron configuration to validate that the macvtap parameters "
+"are correct."
 msgstr ""
 
 #: nova/exception.py:948
@@ -1086,8 +1087,8 @@ msgstr ""
 #: nova/exception.py:1003
 #, python-format
 msgid ""
-"Fixed IP address %(address)s is already in use on instance %(instance_uuid)s."
-""
+"Fixed IP address %(address)s is already in use on instance "
+"%(instance_uuid)s."
 msgstr ""
 
 #: nova/exception.py:1008
@@ -1293,8 +1294,8 @@ msgstr ""
 #: nova/exception.py:1180
 #, python-format
 msgid ""
-"Migration %(migration_id)s state of instance %(instance_uuid)s is %(state)s. "
-"Cannot %(method)s while the migration is in this state."
+"Migration %(migration_id)s state of instance %(instance_uuid)s is %(state)s."
+" Cannot %(method)s while the migration is in this state."
 msgstr ""
 
 #: nova/exception.py:1186
@@ -1363,8 +1364,8 @@ msgstr ""
 #: nova/exception.py:1239
 #, python-format
 msgid ""
-"Metric %(name)s could not be found on the compute host node %(host)s."
-"%(node)s."
+"Metric %(name)s could not be found on the compute host node "
+"%(host)s.%(node)s."
 msgstr ""
 
 #: nova/exception.py:1244
@@ -1717,8 +1718,8 @@ msgstr ""
 #: nova/exception.py:1541
 #, python-format
 msgid ""
-"Conflict updating instance %(instance_uuid)s. Expected: %(expected)s. Actual:"
-" %(actual)s"
+"Conflict updating instance %(instance_uuid)s. Expected: %(expected)s. "
+"Actual: %(actual)s"
 msgstr ""
 
 #: nova/exception.py:1546
@@ -1851,8 +1852,8 @@ msgstr ""
 
 #: nova/exception.py:1667
 msgid ""
-"Invalid PCI Whitelist: The PCI whitelist can specify devname or address, but "
-"not both"
+"Invalid PCI Whitelist: The PCI whitelist can specify devname or address, but"
+" not both"
 msgstr ""
 
 #: nova/exception.py:1673
@@ -1977,8 +1978,8 @@ msgstr ""
 #: nova/exception.py:1782
 #, python-format
 msgid ""
-"The requested amount of video memory %(req_vram)d is higher than the maximum "
-"allowed by flavor %(max_vram)d."
+"The requested amount of video memory %(req_vram)d is higher than the maximum"
+" allowed by flavor %(max_vram)d."
 msgstr ""
 
 #: nova/exception.py:1787
@@ -2040,23 +2041,22 @@ msgstr ""
 #, python-format
 msgid ""
 "Specifying an availability zone or a host when unshelving server "
-"\"%(instance_uuid)s\" with status \"%(state)s\" is not supported. The server "
-"status must be SHELVED_OFFLOADED."
+"\"%(instance_uuid)s\" with status \"%(state)s\" is not supported. The server"
+" status must be SHELVED_OFFLOADED."
 msgstr ""
 
 #: nova/exception.py:1837
 #, python-format
-msgid ""
-"Host \"%(host)s\" is not in the availability zone \"%(availability_zone)s\"."
+msgid "Host \"%(host)s\" is not in the availability zone \"%(availability_zone)s\"."
 msgstr ""
 
 #: nova/exception.py:1843
 #, python-format
 msgid ""
-"Image vCPU topology limits (sockets=%(image_sockets)d, cores="
-"%(image_cores)d, threads=%(image_threads)d) exceeds the limits of the flavor "
-"(sockets=%(flavor_sockets)d, cores=%(flavor_cores)d, threads="
-"%(flavor_threads)d)"
+"Image vCPU topology limits (sockets=%(image_sockets)d, "
+"cores=%(image_cores)d, threads=%(image_threads)d) exceeds the limits of the "
+"flavor (sockets=%(flavor_sockets)d, cores=%(flavor_cores)d, "
+"threads=%(flavor_threads)d)"
 msgstr ""
 
 #: nova/exception.py:1850
@@ -2258,8 +2258,8 @@ msgstr ""
 #: nova/exception.py:2021
 #, python-format
 msgid ""
-"locked_memory value in image (%(image)s) and flavor (%(flavor)s) conflict. A "
-"consistent value is expected if both specified."
+"locked_memory value in image (%(image)s) and flavor (%(flavor)s) conflict. A"
+" consistent value is expected if both specified."
 msgstr ""
 
 #: nova/exception.py:2027
@@ -2420,8 +2420,8 @@ msgstr ""
 
 #: nova/exception.py:2163
 msgid ""
-"Creating servers with ports having resource requests, like a port with a QoS "
-"minimum bandwidth policy, is not supported until microversion 2.72."
+"Creating servers with ports having resource requests, like a port with a QoS"
+" minimum bandwidth policy, is not supported until microversion 2.72."
 msgstr ""
 
 #: nova/exception.py:2169
@@ -2683,8 +2683,8 @@ msgstr ""
 #: nova/exception.py:2397
 #, python-format
 msgid ""
-"Image signature certificate validation failed for certificate: %(cert_uuid)s."
-" %(reason)s"
+"Image signature certificate validation failed for certificate: "
+"%(cert_uuid)s. %(reason)s"
 msgstr ""
 
 #: nova/exception.py:2402
@@ -2760,15 +2760,15 @@ msgstr ""
 #: nova/exception.py:2474
 #, python-format
 msgid ""
-"Healing allocation for instance %(instance_uuid)s with vGPU resource request "
-"is not supported."
+"Healing allocation for instance %(instance_uuid)s with vGPU resource request"
+" is not supported."
 msgstr ""
 
 #: nova/exception.py:2481
 #, python-format
 msgid ""
-"Healing allocation for instance %(instance_uuid)s with Cyborg device profile "
-"request is not supported."
+"Healing allocation for instance %(instance_uuid)s with Cyborg device profile"
+" request is not supported."
 msgstr ""
 
 #: nova/exception.py:2487
@@ -2794,10 +2794,10 @@ msgid ""
 "Failed to update neutron ports with allocation keys and the automatic "
 "rollback of the previously successful port updates also failed: %(error)s. "
 "Make sure that the binding:profile.allocation key of the affected ports "
-"%(port_uuids)s are manually cleaned in neutron according to document https://"
-"docs.openstack.org/nova/latest/cli/nova-manage.html#placement. If you re-run "
-"the script without the manual fix then the missing allocation for these "
-"ports will not be healed in placement."
+"%(port_uuids)s are manually cleaned in neutron according to document "
+"https://docs.openstack.org/nova/latest/cli/nova-manage.html#placement. If "
+"you re-run the script without the manual fix then the missing allocation for"
+" these ports will not be healed in placement."
 msgstr ""
 
 #: nova/exception.py:2515
@@ -2838,8 +2838,8 @@ msgstr ""
 #, python-format
 msgid ""
 "Resource provider %(provider)s used to allocate resources for the pci "
-"request %(requester)s does not have a properly formatted name. Expected name "
-"format is <hostname>:<agentname>:<interfacename>, but got %(provider_name)s"
+"request %(requester)s does not have a properly formatted name. Expected name"
+" format is <hostname>:<agentname>:<interfacename>, but got %(provider_name)s"
 msgstr ""
 
 #: nova/exception.py:2551
@@ -2869,9 +2869,9 @@ msgstr ""
 #: nova/exception.py:2577
 msgid ""
 "Dedicated CPU set can be specified from either 'hw:cpu_dedicated_mask' or "
-"'hw:cpu_realtime_mask' when using 'mixed' CPU policy. 'hw:"
-"cpu_dedicated_mask' and 'hw:cpu_realtime_mask' can not be specified at the "
-"same time, or be specified with none of them."
+"'hw:cpu_realtime_mask' when using 'mixed' CPU policy. "
+"'hw:cpu_dedicated_mask' and 'hw:cpu_realtime_mask' can not be specified at "
+"the same time, or be specified with none of them."
 msgstr ""
 
 #: nova/exception.py:2585
@@ -2882,8 +2882,8 @@ msgstr ""
 
 #: nova/exception.py:2590
 msgid ""
-"Mixed instance must have at least 1 pinned vCPU and 1 unpinned vCPU. See 'hw:"
-"cpu_dedicated_mask'."
+"Mixed instance must have at least 1 pinned vCPU and 1 unpinned vCPU. See "
+"'hw:cpu_dedicated_mask'."
 msgstr ""
 
 #: nova/exception.py:2600
@@ -2899,8 +2899,8 @@ msgstr ""
 #: nova/exception.py:2611
 #, python-format
 msgid ""
-"Configuring both %(parent_dev)s and %(children_devs)s in [pci]device_spec is "
-"not supported. Either the parent PF or its children VFs can be configured."
+"Configuring both %(parent_dev)s and %(children_devs)s in [pci]device_spec is"
+" not supported. Either the parent PF or its children VFs can be configured."
 msgstr ""
 
 #: nova/exception.py:2619
@@ -2955,8 +2955,8 @@ msgstr ""
 #: nova/rpc.py:394
 #, python-format
 msgid ""
-"%(event_type)s is not a versioned notification and not whitelisted. See ./"
-"doc/source/reference/notifications.rst"
+"%(event_type)s is not a versioned notification and not whitelisted. See "
+"./doc/source/reference/notifications.rst"
 msgstr ""
 
 #: nova/service.py:328
@@ -3165,7 +3165,8 @@ msgstr ""
 
 #: nova/api/openstack/wsgi.py:810
 #, python-brace-format
-msgid "Unexpected API Error. {support}\n"
+msgid ""
+"Unexpected API Error. {support}\n"
 "{exc}"
 msgstr ""
 
@@ -3359,8 +3360,8 @@ msgstr ""
 
 #: nova/api/openstack/compute/hypervisors.py:169
 msgid ""
-"Paging over hypervisors with the hypervisor_hostname_pattern query parameter "
-"is not supported."
+"Paging over hypervisors with the hypervisor_hostname_pattern query parameter"
+" is not supported."
 msgstr ""
 
 #: nova/api/openstack/compute/hypervisors.py:308
@@ -3466,8 +3467,8 @@ msgstr ""
 
 #: nova/api/openstack/compute/server_groups.py:242
 msgid ""
-"Creating an anti-affinity group with rule max_server_per_host > 1 is not yet "
-"supported."
+"Creating an anti-affinity group with rule max_server_per_host > 1 is not yet"
+" supported."
 msgstr ""
 
 #: nova/api/openstack/compute/server_metadata.py:43
@@ -3502,8 +3503,8 @@ msgstr ""
 #: nova/api/openstack/compute/server_tags.py:117
 #, python-format
 msgid ""
-"Tag '%(tag)s' is invalid. It must be a non empty string without characters '/"
-"' and ','. Validation error message: %(err)s"
+"Tag '%(tag)s' is invalid. It must be a non empty string without characters "
+"'/' and ','. Validation error message: %(err)s"
 msgstr ""
 
 #: nova/api/openstack/compute/server_tags.py:129
@@ -3872,8 +3873,8 @@ msgstr ""
 
 #: nova/cmd/manage.py:730
 msgid ""
-"--transport-url not provided in the command line, using the value [DEFAULT]/"
-"transport_url from the configuration file"
+"--transport-url not provided in the command line, using the value "
+"[DEFAULT]/transport_url from the configuration file"
 msgstr ""
 
 #: nova/cmd/manage.py:740
@@ -3940,8 +3941,9 @@ msgstr ""
 
 #: nova/cmd/manage.py:1132
 msgid ""
-"Considered successful (exit code 0) only when an unmapped host is discovered."
-" Any other outcome will be considered a failure (non-zero exit code)."
+"Considered successful (exit code 0) only when an unmapped host is "
+"discovered. Any other outcome will be considered a failure (non-zero exit "
+"code)."
 msgstr ""
 
 #: nova/cmd/manage.py:1137
@@ -3959,8 +3961,8 @@ msgstr ""
 
 #: nova/cmd/manage.py:1173
 msgid ""
-"Add a new cell to nova API database. DB and MQ urls can be provided directly "
-"or can be taken from config. The result is cell uuid."
+"Add a new cell to nova API database. DB and MQ urls can be provided directly"
+" or can be taken from config. The result is cell uuid."
 msgstr ""
 
 #: nova/cmd/manage.py:1176
@@ -4218,9 +4220,9 @@ msgstr ""
 #: nova/cmd/manage.py:2177
 msgid ""
 "Iterates over non-cell0 cells looking for instances which do not have "
-"allocations in the Placement service, or have incomplete consumer project_id/"
-"user_id values in existing allocations or missing allocations for ports "
-"having resource request, and which are not undergoing a task state "
+"allocations in the Placement service, or have incomplete consumer "
+"project_id/user_id values in existing allocations or missing allocations for"
+" ports having resource request, and which are not undergoing a task state "
 "transition. For each instance found, allocations are created (or updated) "
 "against the compute node resource provider for that instance based on the "
 "flavor associated with the instance. This command requires that the "
@@ -4330,8 +4332,8 @@ msgstr ""
 #: nova/cmd/manage.py:2707
 #, python-format
 msgid ""
-"Allocations were set against consumer UUID %(consumer_uuid)s but no existing "
-"instances or active migrations are related. "
+"Allocations were set against consumer UUID %(consumer_uuid)s but no existing"
+" instances or active migrations are related. "
 msgstr ""
 
 #: nova/cmd/manage.py:2716
@@ -4342,8 +4344,8 @@ msgstr ""
 #: nova/cmd/manage.py:2721
 #, python-format
 msgid ""
-"Deleted allocations for consumer UUID %(consumer_uuid)s on Resource Provider "
-"%(rp)s: %(allocations)s"
+"Deleted allocations for consumer UUID %(consumer_uuid)s on Resource Provider"
+" %(rp)s: %(allocations)s"
 msgstr ""
 
 #: nova/cmd/manage.py:2728
@@ -4356,8 +4358,8 @@ msgstr ""
 #: nova/cmd/manage.py:2784
 msgid ""
 "Audits orphaned allocations that are no longer corresponding to existing "
-"instance resources. This command requires that the [api_database]/connection "
-"and [placement] configuration options are set."
+"instance resources. This command requires that the [api_database]/connection"
+" and [placement] configuration options are set."
 msgstr ""
 
 #: nova/cmd/manage.py:2825
@@ -4476,8 +4478,8 @@ msgstr ""
 
 #: nova/cmd/manage.py:3676
 msgid ""
-"WARNING: It is strongly recommended to create registered limits for resource "
-"classes missing limits in Keystone before proceeding."
+"WARNING: It is strongly recommended to create registered limits for resource"
+" classes missing limits in Keystone before proceeding."
 msgstr ""
 
 #: nova/cmd/manage.py:3683
@@ -4494,14 +4496,15 @@ msgstr ""
 
 #: nova/cmd/manage.py:3737 nova/cmd/manage.py:3777
 msgid ""
-"Failed to connect to the database so aborting this migration attempt. Please "
-"check your config file to make sure that [api_database]/connection and "
+"Failed to connect to the database so aborting this migration attempt. Please"
+" check your config file to make sure that [api_database]/connection and "
 "[database]/connection are set and run this command again."
 msgstr ""
 
 #: nova/cmd/manage.py:3845
 #, python-format
-msgid "An error has occurred:\n"
+msgid ""
+"An error has occurred:\n"
 "%s"
 msgstr ""
 
@@ -4524,8 +4527,8 @@ msgstr ""
 
 #: nova/cmd/status.py:120
 msgid ""
-"There needs to be at least two cell mappings, one for cell0 and one for your "
-"first cell. Run command 'nova-manage cell_v2 simple_cell_setup' and then "
+"There needs to be at least two cell mappings, one for cell0 and one for your"
+" first cell. Run command 'nova-manage cell_v2 simple_cell_setup' and then "
 "retry."
 msgstr ""
 
@@ -4537,8 +4540,8 @@ msgstr ""
 
 #: nova/cmd/status.py:148
 msgid ""
-"No host mappings found but there are compute nodes. Run command 'nova-manage "
-"cell_v2 simple_cell_setup' and then retry."
+"No host mappings found but there are compute nodes. Run command 'nova-manage"
+" cell_v2 simple_cell_setup' and then retry."
 msgstr ""
 
 #: nova/cmd/status.py:153
@@ -4575,8 +4578,8 @@ msgstr ""
 #: nova/cmd/status.py:243
 #, python-format
 msgid ""
-"Cinder API %s or greater is required. Deploy at least Cinder 12.0.0 (Queens)."
-""
+"Cinder API %s or greater is required. Deploy at least Cinder 12.0.0 "
+"(Queens)."
 msgstr ""
 
 #: nova/cmd/status.py:250
@@ -4599,8 +4602,7 @@ msgid ""
 "\n"
 "Service user token configuration is required for all Nova services.\n"
 "For more details see the following:\n"
-"https://docs.openstack.org/nova/latest/admin/configuration/service-user-"
-"token.html"
+"https://docs.openstack.org/nova/latest/admin/configuration/service-user-token.html"
 msgstr ""
 
 #: nova/cmd/status.py:295
@@ -4633,7 +4635,8 @@ msgstr ""
 
 #: nova/cmd/status.py:347
 #, python-format
-msgid "Error:\n"
+msgid ""
+"Error:\n"
 "%s"
 msgstr ""
 
@@ -4701,8 +4704,8 @@ msgstr ""
 
 #: nova/compute/api.py:2190
 msgid ""
-"Unable to launch multiple instances with a single configured port ID. Please "
-"launch your instance one by one with different ports."
+"Unable to launch multiple instances with a single configured port ID. Please"
+" launch your instance one by one with different ports."
 msgstr ""
 
 #: nova/compute/api.py:2200
@@ -4812,8 +4815,8 @@ msgstr ""
 #, python-format
 msgid ""
 "The host cannot be added to the aggregate as the availability zone of the "
-"host would change from '%s' to '%s' but the host already has %d instance(s). "
-"Changing the AZ of an existing instance is not supported by this action. "
+"host would change from '%s' to '%s' but the host already has %d instance(s)."
+" Changing the AZ of an existing instance is not supported by this action. "
 "Move the instances away from this host then try again. If you need to move "
 "the instances between AZs then you can use shelve_offload and unshelve to "
 "achieve this."
@@ -4870,8 +4873,8 @@ msgstr ""
 
 #: nova/compute/manager.py:991
 msgid ""
-"This host has unpinned instances but has no CPUs set aside for this purpose; "
-"configure '[compute] cpu_shared_set' instead of, or in addition to, "
+"This host has unpinned instances but has no CPUs set aside for this purpose;"
+" configure '[compute] cpu_shared_set' instead of, or in addition to, "
 "'[compute] cpu_dedicated_set'"
 msgstr ""
 
@@ -4905,8 +4908,8 @@ msgstr ""
 #: nova/compute/manager.py:1667
 msgid ""
 "[compute]max_disk_devices_to_attach has been set to 0, which will prevent "
-"instances from being able to boot. Set -1 for unlimited or set >= 1 to limit "
-"the maximum number of disk devices."
+"instances from being able to boot. Set -1 for unlimited or set >= 1 to limit"
+" the maximum number of disk devices."
 msgstr ""
 
 #: nova/compute/manager.py:2730
@@ -5026,8 +5029,8 @@ msgstr ""
 #, python-format
 msgid ""
 "Invalid [pci]device_spec configuration. PCI Placement reporting does not "
-"support 'devname' based device specification but we got %(dev_spec)s. Please "
-"use PCI address in the configuration instead."
+"support 'devname' based device specification but we got %(dev_spec)s. Please"
+" use PCI address in the configuration instead."
 msgstr ""
 
 #: nova/compute/pci_placement_translator.py:700
@@ -5079,8 +5082,8 @@ msgstr ""
 #: nova/compute/provider_config.py:352
 #, python-format
 msgid ""
-"The provider config file %(path)s did not pass validation for schema version "
-"%(schema_version)s: %(reason)s"
+"The provider config file %(path)s did not pass validation for schema version"
+" %(schema_version)s: %(reason)s"
 msgstr ""
 
 #: nova/compute/provider_config.py:409
@@ -5229,8 +5232,8 @@ msgstr ""
 #: nova/conductor/tasks/live_migrate.py:346
 #, python-format
 msgid ""
-"Unable to migrate %(instance_uuid)s to %(dest)s: Lack of memory(host:"
-"%(avail)s <= instance:%(mem_inst)s)"
+"Unable to migrate %(instance_uuid)s to %(dest)s: Lack of "
+"memory(host:%(avail)s <= instance:%(mem_inst)s)"
 msgstr ""
 
 #: nova/conductor/tasks/live_migrate.py:382
@@ -5348,8 +5351,8 @@ msgstr ""
 #: nova/console/securityproxy/rfb.py:172
 #, python-brace-format
 msgid ""
-"Client requested a security type other than {value} ({name}): {client_value} "
-"({client_name})"
+"Client requested a security type other than {value} ({name}): {client_value}"
+" ({client_name})"
 msgstr ""
 
 #: nova/console/securityproxy/rfb.py:186 nova/console/securityproxy/rfb.py:203
@@ -5651,8 +5654,8 @@ msgstr ""
 #: nova/pci/devspec.py:81
 #, python-format
 msgid ""
-"property %(property)s (%(attr)s) is greater than the maximum allowable value "
-"(%(max)X)."
+"property %(property)s (%(attr)s) is greater than the maximum allowable value"
+" (%(max)X)."
 msgstr ""
 
 #: nova/pci/devspec.py:332
@@ -5747,15 +5750,15 @@ msgstr ""
 #: nova/scheduler/utils.py:853
 #, python-format
 msgid ""
-"Expected to find allocations for source node resource provider %s. Retry the "
-"operation without forcing a destination host."
+"Expected to find allocations for source node resource provider %s. Retry the"
+" operation without forcing a destination host."
 msgstr ""
 
 #: nova/scheduler/utils.py:867
 #, python-format
 msgid ""
-"Unable to move instance %(instance_uuid)s to host %(host)s. The instance has "
-"complex allocations on the source host so move cannot be forced."
+"Unable to move instance %(instance_uuid)s to host %(host)s. The instance has"
+" complex allocations on the source host so move cannot be forced."
 msgstr ""
 
 #: nova/scheduler/utils.py:903
@@ -5825,9 +5828,9 @@ msgstr ""
 #: nova/scheduler/client/report.py:1872
 #, python-format
 msgid ""
-"Cannot remove resources %(resources)s from allocation %(allocations)s. There "
-"are not enough allocated resources left on %(rp_uuid)s resource provider to "
-"remove %(amount)d amount of %(resource_class)s resources."
+"Cannot remove resources %(resources)s from allocation %(allocations)s. There"
+" are not enough allocated resources left on %(rp_uuid)s resource provider to"
+" remove %(amount)d amount of %(resource_class)s resources."
 msgstr ""
 
 #: nova/scheduler/client/report.py:1891
@@ -5887,7 +5890,7 @@ msgstr ""
 
 #: nova/virt/event.py:37
 msgid "Started"
-msgstr "सुरू जाले"
+msgstr ""
 
 #: nova/virt/event.py:38
 msgid "Stopped"
@@ -5895,7 +5898,7 @@ msgstr ""
 
 #: nova/virt/event.py:39
 msgid "Paused"
-msgstr "थारयला"
+msgstr ""
 
 #: nova/virt/event.py:40
 msgid "Resumed"
@@ -5903,7 +5906,7 @@ msgstr ""
 
 #: nova/virt/event.py:41
 msgid "Suspended"
-msgstr "रद्द केले"
+msgstr ""
 
 #: nova/virt/event.py:42
 msgid "Postcopy started"
@@ -5915,7 +5918,7 @@ msgstr ""
 
 #: nova/virt/event.py:115
 msgid "Unknown"
-msgstr "अनोळखी"
+msgstr ""
 
 #: nova/virt/hardware.py:66
 #, python-format
@@ -5973,8 +5976,8 @@ msgstr ""
 #: nova/virt/hardware.py:1301
 #, python-format
 msgid ""
-"Flavor %(flavor_name)s has hw:mem_encryption_model extra spec explicitly set "
-"to %(flavor_val)s, conflicting with image %(image_name)s which has "
+"Flavor %(flavor_name)s has hw:mem_encryption_model extra spec explicitly set"
+" to %(flavor_val)s, conflicting with image %(image_name)s which has "
 "hw_mem_encryption_model property explicitly set to %(image_val)s"
 msgstr ""
 
@@ -5992,8 +5995,8 @@ msgstr ""
 
 #: nova/virt/hardware.py:1827
 msgid ""
-"Mixed instance dedicated vCPU(s) mask is not a subset of vCPUs in the flavor."
-" See \"hw:cpu_dedicated_mask\""
+"Mixed instance dedicated vCPU(s) mask is not a subset of vCPUs in the "
+"flavor. See \"hw:cpu_dedicated_mask\""
 msgstr ""
 
 #: nova/virt/hardware.py:1873
@@ -6023,8 +6026,8 @@ msgstr ""
 #: nova/virt/hardware.py:2914
 #, python-format
 msgid ""
-"Flavor %(flavor_name)s has hw:ephemeral_encryption extra spec explicitly set "
-"to %(flavor_val)s, conflicting with image %(image_name)s which has "
+"Flavor %(flavor_name)s has hw:ephemeral_encryption extra spec explicitly set"
+" to %(flavor_val)s, conflicting with image %(image_name)s which has "
 "hw_eph_encryption property explicitly set to %(image_val)s"
 msgstr ""
 
@@ -6325,17 +6328,17 @@ msgstr ""
 
 #: nova/virt/libvirt/driver.py:861
 msgid ""
-"Setting both 'live_migration_tunnelled' and 'live_migration_with_native_tls' "
-"at the same time is invalid. If you have the relevant libvirt and QEMU "
+"Setting both 'live_migration_tunnelled' and 'live_migration_with_native_tls'"
+" at the same time is invalid. If you have the relevant libvirt and QEMU "
 "versions, and TLS configured in your environment, pick "
 "'live_migration_with_native_tls'."
 msgstr ""
 
 #: nova/virt/libvirt/driver.py:874
 msgid ""
-"'[DEFAULT]/force_raw_images = False' is not allowed with '[libvirt]/"
-"images_type = rbd'. Please check the two configs and if you really do want "
-"to use rbd as images_type, set force_raw_images to True."
+"'[DEFAULT]/force_raw_images = False' is not allowed with "
+"'[libvirt]/images_type = rbd'. Please check the two configs and if you "
+"really do want to use rbd as images_type, set force_raw_images to True."
 msgstr ""
 
 #: nova/virt/libvirt/driver.py:928
@@ -6392,8 +6395,8 @@ msgstr ""
 #: nova/virt/libvirt/driver.py:1185
 #, python-format
 msgid ""
-"The group configured in '[libvirt] swtpm_group' does not exist on this host; "
-"expected '%s'."
+"The group configured in '[libvirt] swtpm_group' does not exist on this host;"
+" expected '%s'."
 msgstr ""
 
 #: nova/virt/libvirt/driver.py:1197
@@ -6447,8 +6450,8 @@ msgstr ""
 #: nova/virt/libvirt/driver.py:3411
 #, python-format
 msgid ""
-"Error from libvirt while set password for username \"%(user)s\": [Error Code "
-"%(error_code)s] %(ex)s"
+"Error from libvirt while set password for username \"%(user)s\": [Error Code"
+" %(error_code)s] %(ex)s"
 msgstr ""
 
 #: nova/virt/libvirt/driver.py:3441
@@ -6580,8 +6583,8 @@ msgstr ""
 #: nova/virt/libvirt/driver.py:10554
 #, python-format
 msgid ""
-"Unable to migrate %(instance_uuid)s: Source mdev types %(src_types)s are not "
-"supported by this compute : %(dest_types)s instance_uuid"
+"Unable to migrate %(instance_uuid)s: Source mdev types %(src_types)s are not"
+" supported by this compute : %(dest_types)s instance_uuid"
 msgstr ""
 
 #: nova/virt/libvirt/driver.py:10573
@@ -6619,13 +6622,14 @@ msgstr ""
 #: nova/virt/libvirt/driver.py:10879
 #, python-format
 msgid ""
-"Unable to migrate %(instance_uuid)s: Disk of instance is too large(available "
-"on destination host:%(available)s < need:%(necessary)s)"
+"Unable to migrate %(instance_uuid)s: Disk of instance is too large(available"
+" on destination host:%(available)s < need:%(necessary)s)"
 msgstr ""
 
 #: nova/virt/libvirt/driver.py:10941
 #, python-format
-msgid "CPU doesn't have compatibility.\n"
+msgid ""
+"CPU doesn't have compatibility.\n"
 "\n"
 "%(ret)s\n"
 "\n"
@@ -6634,8 +6638,8 @@ msgstr ""
 
 #: nova/virt/libvirt/driver.py:11052
 msgid ""
-"Your destination node does not support retrieving listen addresses. In order "
-"for live migration to work properly you must disable serial console."
+"Your destination node does not support retrieving listen addresses. In order"
+" for live migration to work properly you must disable serial console."
 msgstr ""
 
 #: nova/virt/libvirt/driver.py:12461
@@ -6701,8 +6705,8 @@ msgstr ""
 #: nova/virt/libvirt/host.py:1769
 #, python-format
 msgid ""
-"Running Nova with file_backed_memory and virt_type %(type)s is not supported."
-" file_backed_memory is only supported with qemu and kvm types."
+"Running Nova with file_backed_memory and virt_type %(type)s is not "
+"supported. file_backed_memory is only supported with qemu and kvm types."
 msgstr ""
 
 #: nova/virt/libvirt/host.py:1786
@@ -6893,8 +6897,8 @@ msgstr ""
 
 #: nova/virt/vmwareapi/driver.py:109
 msgid ""
-"Must specify host_ip, host_username and host_password to use vmwareapi."
-"VMwareVCDriver"
+"Must specify host_ip, host_username and host_password to use "
+"vmwareapi.VMwareVCDriver"
 msgstr ""
 
 #: nova/virt/vmwareapi/driver.py:118
@@ -7062,8 +7066,8 @@ msgstr ""
 
 #: nova/virt/zvm/driver.py:82
 msgid ""
-"Must specify cloud_connector_url in zvm config group to use compute_driver="
-"zvm.driver.ZVMDriver"
+"Must specify cloud_connector_url in zvm config group to use "
+"compute_driver=zvm.driver.ZVMDriver"
 msgstr ""
 
 #: nova/virt/zvm/driver.py:90
@@ -7075,8 +7079,8 @@ msgstr ""
 #: nova/virt/zvm/driver.py:96
 #, python-format
 msgid ""
-"Can't spawn instance with template '%s', The zVM hypervisor does not support "
-"instance names longer than 8 characters. Please change your config of "
+"Can't spawn instance with template '%s', The zVM hypervisor does not support"
+" instance names longer than 8 characters. Please change your config of "
 "instance_name_template."
 msgstr ""
 

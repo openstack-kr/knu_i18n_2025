@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import polib
+import os
 from copy import deepcopy
 
 def is_translated(entry: polib.POEntry) -> bool:
@@ -25,8 +26,39 @@ def make_key(entry: polib.POEntry):
 
 def main(src_po_path, translated_po_path, out_pot_path="remaining.pot"):
 
+    dir_path = os.path.dirname(translated_po_path)
+    if dir_path and (not os.path.isdir(dir_path) or not os.path.isfile(translated_po_path)):
+        os.makedirs(dir_path, exist_ok=True)
+        print(f"[+] Created directory: {dir_path}")
+
+        # 비어 있는 번역 po 파일 생성
+        with open(translated_po_path, "w", encoding="utf-8") as f:
+            pass
+        print(f"[+] Created empty po file: {translated_po_path}")
+
+        # src_po_path 기준으로 POT 위치 계산
+        parts = src_po_path.split("/")
+        doc, country, detail, filename = parts[-4:]
+        pot_path = f"../data/target/{doc}/{filename.replace('.po', '.pot')}"
+
+        # 기존 POT가 있으면 msgstr 비우기
+        if os.path.isfile(pot_path):
+            po = polib.pofile(pot_path)
+            for e in po:
+                e.msgstr = ""
+                e.msgstr_plural = {}
+            po.save(pot_path)
+            print(f"[=] Cleared POT msgstr: {pot_path}")
+        else:
+            print(f"[!] POT not found: {pot_path}")
+
+        # 새 언어 초기화만 하고 여기서 끝냄
+        return
+
+    
     src_po = polib.pofile(src_po_path)
     trans_po = polib.pofile(translated_po_path)
+
 
     # 1) 번역된 엔트리들(msgstr 채워진 것들)의 key 집합 만들기
     translated_keys = set()
@@ -78,7 +110,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: python filter_to_pot.py <source_po> <translated_po> [out_pot]")
         sys.exit(1)
-
+    
     src_po = sys.argv[1]
     trans_po = sys.argv[2]
     out_pot = sys.argv[3] if len(sys.argv) >= 4 else "remaining.pot"
