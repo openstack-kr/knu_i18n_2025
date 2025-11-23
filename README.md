@@ -62,11 +62,40 @@ pip install -r requirements.txt
 bash main.sh
 ```
 
-## 3. Edit main.sh
+## 3. Select Your Option for User
 
-Please find your target Languages in below.
+Our code default option is as below.
+    - LLM: Lamma3.2 (3B)<br>
+    - Language: Korean, Japanese<br>
+    - Target file: To be written...<br>
+
+### 3-1 Choose Model
+1. Open-Src LLM
+We use Ollama as LLM framework <br>
+Please find your preferred LLM name in [this link](https://ollama.com/library).
+
+2. Closed-Src LLM
+You can use OpenAI, Claude, Gemini model in this code.<br>
+You should give '--llm_mode' as an additional argument to change llm backend.<br>
+    - default="ollama"<br>
+    - choices=["ollama", "gpt", "claude", "gemini"]<br>
+
+```bash
+# Example
+tox -e i18n -- "gpt-4o" "ko_KR" "gpt"
+# or you can use
+bash main.sh "gpt-4o" "ko_KR" "gpt"
+```
+
+To speed up translation, you can increase the --workers value(default: 1) in main.sh, which controls how many batches are processed in parallel.
+
+### 3-2. Choose Languages
+Please find your target Language code in below.<br>
+We support 54 languages.
+
 ```python
 LANG_MAP = {
+    # language code: language description
     "vi_VN": "Vietnamese (Vietnam)",
     "ur": "Urdu",
     "tr_TR": "Turkish (Turkey)",
@@ -124,19 +153,29 @@ LANG_MAP = {
 }
 ```
 
-```bash
-# Choose LLM
-MODEL=${1:-"llama3.2:3b"}
+### 3-3 Chosse Target File
 
-# Arguments we recommend to change
-#  --pot_url "" \ (You can download target pot by URL)
-#  --target_pot_file "" \ (If you download it manually, you
-#  --languages "ko_KR, ja, ru" (Please set the languages code you want)
+To be written...
+
+### 3-4 Apply them
+
+```bash
+# Example
+tox -e i18n -- "llama3.2:3b" "de,ru"
+# or you can use
+bash main.sh "llama3.2:3b" "de,ru"
 ```
 
+You can tune these arguments for performance / partial translation:<br>
+```bash
+   --workers   : number of parallel threads (default: 1)
+   --start/end : entry index range to translate (default: 0 ~ all)
+   --batch-size: entries per LLM call (default: 5)
+```
+You can edit more options in detail in [main.sh](./main.sh)
 ## 5. How to Improve Performance?
 
-You can adjust (b) Few Shot Example and Language (c) Specific Prompt.
+You can adjust (b) Few Shot Example and Language (c) Specific Prompt.<br>
 Please refer [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## 6. Code Quality Check
@@ -151,8 +190,8 @@ You can correct fix all style issues in the repository by running the command be
 ```bash
 autopep8 --in-place --aggressive --aggressive -r .
 ```
-This will recursively format all Python files in the current directory according to the PEP8 style guide.
-However, few errors can not be fixed with this command and you have to fix them manually.
+This will recursively format all Python files in the current directory according to the PEP8 style guide.<br>
+However, few errors can not be fixed with this command and you have to fix them manually.<br>
 
 
 ## 7. Paper-Experiments Reproducibility
@@ -170,15 +209,24 @@ In this study, we test how (a) and (b) powerful. <br>
 - LLM Framework: ollama (Python package, v0.6.0)
 - LLM: Llama 3.2 (3B)
 - target file: https://opendev.org/openstack/i18n/src/branch/master/doc/source/locale
+	- We used the POT source files and four language-specific PO translation files from the openstack/openstack-i18n repository.<br>
+	Each PO file consists of msgid–msgstr pairs. The baseline human translation (msgstr) was compared against the AI-generated draft translation to evaluate quality.<br>
 
 ### Evaluation Metric
 
-We measured the similarity between the AI-generated preliminary translation (.po) and the human-translated .po for each target file.<br>
-Cosine similarity was computed using the mean-pooling method of the SentenceTransformer library.<br>
+We extracted sentence embeddings using the Mean Pooling method from the Sentence Transformers library, and computed cosine similarity (range: 0–1) based on vector dot products to quantitatively assess translation quality.
+
+Similarity thresholds are defined as follows:
+	- ≥ 0.8: semantically similar
+	- ≥ 0.9: semantically almost identical
+
+Using these criteria, we objectively compared and analyzed the quality of AI translations.<br>
 
 ### Result
 
-The value of Avg, Median is cosine similarity. Range: [-1. 1]
+(a) Batch Method, (b) Few-Shot Example
+
+* The >=0.8 column represents the percentage of msgid entries whose similarity score is 0.8 or higher, indicating how many sentences the model translated with strong semantic accuracy.
 
 | Korean | Avg | Median |≥0.8|time|
 | --- | --- | --- | --- | --- |

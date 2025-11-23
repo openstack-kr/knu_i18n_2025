@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# Positional args:
+#   $1 = MODEL  (default: "llama3.2:3b")
+#   $2 = LANGS  (default: "ko_KR")
+#   $3 = LLM_MODE (default: "ollama")
 MODEL=${1:-"llama3.2:3b"}
 LANGS=${2:-"ko_KR"}
 LLM_MODE=${3:-"ollama"}
@@ -16,11 +20,15 @@ fi
 
 echo "[main.sh] LLM_MODE = $LLM_MODE"
 
+# You can tune these arguments for performance / partial translation:
+#   --workers   : number of parallel threads (default: 1)
+#   --start/end : entry index range to translate (default: 0 ~ all)
+#   --batch-size: entries per LLM call (default: 5)
 python translate.py \
   --model $MODEL \
   --llm-mode "$LLM_MODE" \
   --workers 1 \
-  --start 0 --end 40 \
+  --start 0 --end -1 \
   --pot_dir ./pot \
   --po_dir ./po \
   --pot_file "./pot/nova_ex.pot" \
