@@ -1,6 +1,7 @@
 import os
 import subprocess
 import shutil
+import argparse
 from babel.messages import pofile, Catalog
 from config_loader import load_config
 
@@ -58,22 +59,26 @@ def extract_diff(new_pot, old_pot, output_diff):
     return count
 
 def main():
-    cfg = load_config()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="config_ci.yaml")
+    args = parser.parse_args()
+
+    cfg = load_config(args.config)
 
     project = cfg["project"]
     
-    repo_url = cfg['git']['repo_url']
+    repo_url = cfg['git']['repo_url'].format(project=project)
     work_dir = cfg['git']['work_dir']
     repo_dir = os.path.join(work_dir, project)
-
-    pot_dir = cfg['output']['pot_dir']
-    diff_name = cfg['output']['diff_filename']
-    source_dir = cfg['output'].get('source_dir', ".")
-
-    project_name = project
-
+    
     target_commit = cfg['compare']['target_commit']
     base_commit = cfg['compare']['base_commit']
+
+    pot_dir = cfg['files']['pot_dir']
+    diff_name = cfg['files']['target_pot'].format(target_commit=target_commit)
+    source_dir = cfg['output'].get('source_dir', ".").format(project=project)
+
+    project_name = project
 
     os.makedirs(work_dir, exist_ok=True)
     os.makedirs(pot_dir, exist_ok=True)
@@ -91,8 +96,8 @@ def main():
 
     current_head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo_dir).decode().strip()
 
-    new_pot = os.path.abspath(os.path.join(pot_dir, "new.pot"))
-    old_pot = os.path.abspath(os.path.join(pot_dir, "old.pot"))
+    new_pot = os.path.abspath(os.path.join(pot_dir, f"new_{target_commit}.pot"))
+    old_pot = os.path.abspath(os.path.join(pot_dir, f"old_{target_commit}.pot"))
     diff_pot = os.path.abspath(os.path.join(pot_dir, diff_name))
 
     try:

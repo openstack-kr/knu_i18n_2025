@@ -12,8 +12,7 @@ validate/json
 glossary/
 !glossary/.keep
 
-commit_diff/workspace/
-commit_diff/pot/
+workspace/
 
 venv/
 .env/
