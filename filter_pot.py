@@ -124,29 +124,26 @@ if __name__ == "__main__":
 
     files_cfg = cfg["files"]
 
-    origin_po = files_cfg["origin_po"].format(
+    origin_po = files_cfg["standard_po"].format(
         project=project,
-        languages=lang,
-        language=lang,
         lang=lang,
     )
-    trans_po = files_cfg["origin_trans_po"].format(
+    trans_po = files_cfg["origin_po"].format(
         project=project,
-        languages=lang,
-        language=lang,
-        lang=lang,
-    )
-    out_pot = files_cfg["ai_target_pot"].format(
-        project=project,
-        languages=lang,
-        language=lang,
         lang=lang,
     )
     pot_dir = files_cfg["pot_dir"].format(
         project=project,
-        languages=lang,
-        language=lang,
         lang=lang,
+    )
+    os.makedirs(pot_dir, exist_ok=True)
+
+    out_pot = os.path.join(
+        pot_dir,
+        files_cfg["target_pot"].format(
+            project=project,
+            lang=lang,
+        )
     )
 
     os.makedirs(pot_dir, exist_ok=True)

@@ -60,7 +60,7 @@ def extract_diff(new_pot, old_pot, output_diff):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="config_ci.yaml")
+    parser.add_argument("--config", default="config.yaml")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -75,7 +75,7 @@ def main():
     base_commit = cfg['compare']['base_commit']
 
     pot_dir = cfg['files']['pot_dir']
-    diff_name = cfg['files']['target_pot'].format(target_commit=target_commit)
+    diff_name = cfg['files']['target_pot'].format(project=project)
     source_dir = cfg['output'].get('source_dir', ".").format(project=project)
 
     project_name = project

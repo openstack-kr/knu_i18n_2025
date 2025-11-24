@@ -479,16 +479,13 @@ if __name__ == "__main__":
     files_cfg = cfg.get("files")
     POT_DIR = files_cfg.get("pot_dir")
     PO_DIR = files_cfg.get("po_dir")
-
-    compare_cfg = cfg.get("compare")
-    target_commit = compare_cfg.get("target_commit")
+    
     project = cfg.get("project")
 
     target_pot_template = files_cfg.get("target_pot")
     if target_pot_template:
         # 예: target_pot: \"diff_{target_commit}.pot\" → ./pot/diff_<hash>.pot
         pot_filename = target_pot_template.format(
-            target_commit=target_commit,
             project=project,
         )
         POT_FILE = os.path.join(POT_DIR, pot_filename)

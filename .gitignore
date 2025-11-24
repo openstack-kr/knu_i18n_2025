@@ -1,8 +1,5 @@
 .tox/
 
-data/target/
-!data/target/.keep
-
 data/result/
 !data/result/.keep
 
