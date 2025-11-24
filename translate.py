@@ -456,18 +456,45 @@ if __name__ == "__main__":
     # 1) --config 하나만 받기 (기본값: config_ci.yaml)
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config_ci.yaml")
+    
+    # CLI Override
+    parser.add_argument("--model", type=str, help="LLM model name")
+    parser.add_argument("--mode", type=str, help="LLM mode: ollama / openai / gemini ...")
+    parser.add_argument("--workers", type=int, help="parallel threads")
+    parser.add_argument("--start", type=int, help="Start index for translation")
+    parser.add_argument("--end", type=int, help="End index for translation (-1이면 전체)")
+    parser.add_argument("--batch", type=int, help="Batch size for translation")
+    parser.add_argument("--lang", type=str, help="target language code (e.g., ko_KR)")
+
     args = parser.parse_args()
 
     cfg = load_config(args.config)
 
     # -----------------------------
-    # LLM Config
+    # LLM config
     # -----------------------------
-    llm_cfg = cfg.get("llm")
+
+    llm_cfg = cfg.get("llm", {})
+
+    # CLI Override
+    if args.model is not None:
+        llm_cfg["model"] = args.model
+    if args.mode is not None:
+        llm_cfg["mode"] = args.mode
+    if args.workers:
+        llm_cfg["workers"] = args.workers
+    if args.start is not None:
+        llm_cfg["start"] = args.start
+    if args.end is not None:
+        llm_cfg["end"] = args.end
+    if args.batch is not None:
+        llm_cfg["batch_size"] = args.batch
+
     MODEL_NAME = llm_cfg.get("model")
     LLM_MODE = llm_cfg.get("mode")
     MAX_WORKERS = llm_cfg.get("workers")
     configure_llm_caller(LLM_MODE, MODEL_NAME)
+
     START_TRANSLATE = llm_cfg.get("start")
     end_val = llm_cfg.get("end")
     END_TRANSLATE = None if end_val == -1 else end_val
@@ -517,6 +544,11 @@ if __name__ == "__main__":
     # languages Config
     # -----------------------------
     languages_cfg = cfg.get("languages")
+
+    # CLI Override
+    if args.lang:
+        languages_cfg = [args.lang]
+
     if isinstance(languages_cfg, str):
         LANGUAGES_TO_TRANSLATE = [s.strip() for s in languages_cfg.split(',') if s.strip()]
     else:
