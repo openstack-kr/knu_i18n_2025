@@ -105,17 +105,13 @@ When you use closed-source model, please edit the backend using `llm.mode`: [`ol
 
 ```bash
 # You can tune these arguments for performance / partial translation:
-#   --mode  : Choose your LLM mode[`ollama` (default), `gpt`, `claude`, `gemini`]
-#   --workers   : number of parallel threads (default: 1)
-#   --start/end : entry index range to translate (default: 0 ~ all)
-#   --batch-size: entries per LLM call (default: 5)
 llm:
   model: "llama3.2:3b"
-  mode: "ollama"
-  workers: 1
-  start: 0
+  mode: "ollama"   #   --mode  : Choose your LLM mode[`ollama` (default), `gpt`, `claude`, `gemini`]
+  workers: 1       #   --workers   : number of parallel threads (default: 1)
+  start: 0         #   --start/end : entry index range to translate (default: 0 ~ all)
   end: -1
-  batch_size: 5
+  batch_size: 5    #   --batch-size: entries per LLM call (default: 5)
 ```
 
 # 3. How the System Works (Simple Overview)
