@@ -49,7 +49,7 @@ bash local.sh
 
 And that's it! Your translated .po file(in ./po/) is ready.
 
-## **Step 4 — Human Review
+## **Step 4 — Human Review**
 
 To be written
 
