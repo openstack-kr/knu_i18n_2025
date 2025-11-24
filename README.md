@@ -36,7 +36,7 @@ python -m pip install --upgrade pip
 curl -fsSL https://ollama.com/install.sh | sh
 
 pip install -r requirements.txt
-bash main.sh
+bash loca.sh
 ```
 
 ## **Step 3 — Run translation**
