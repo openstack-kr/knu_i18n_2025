@@ -65,8 +65,7 @@ You can customize **target file**, **model**, **language**, and **performance se
 you can manually download the latest translated POT or PO files directly from the Weblate interface.
 
 Steps
-1. Go to the Weblate translation dashboard for the project
-  - [Example](https://openstack.weblate.cloud/projects/horizon/)
+1. Go to the Weblate translation dashboard for the project [Example](https://openstack.weblate.cloud/projects/horizon/)
 2. Select the project (e.g., Nova, horizon, etx.)
 3. Navigate to 
 ```bash
