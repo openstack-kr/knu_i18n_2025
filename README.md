@@ -90,9 +90,21 @@ Use comma-separated codes:
 bash main.sh "llama3.2:3b" "de,ru,ja"
 ```
 
-## **3-3. Choose Target File**
+## **3-3. Prepare Target File**
 
-This section will be updated soon.
+you can manually download the latest translated POT or PO files directly from the Weblate interface.
+
+Steps
+1. Go to the Weblate translation dashboard for the project
+    (Example: https://openstack.weblate.cloud/projects/horizon/)
+2. Select the project (e.g., Nova, horizon, etx.)
+3. Navigate to 
+```bash
+project-> languages-> <Your Language>
+```
+4. Click Download translation
+5. The target file for the selected languages will be downloaded
+6. The target file must be placed under the data/target firectory
 
 ## **3-4. Performance Options**
 
