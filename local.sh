@@ -15,11 +15,11 @@ else
   echo "[local.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
-echo "=== [1/3] Running filter_pot.py ==="
+echo "=== [1/2] xtracting untranslated strings into a .pot file ==="
 python filter_pot.py --config "$CONFIG_FILE"
 echo
 
-echo "=== [2/3] Running translate.py ==="
+echo "=== [2/2] Translate .pot file ==="
 python translate.py --config "$CONFIG_FILE"
 echo
 
@@ -27,4 +27,4 @@ echo
 # python merge_po.py --config "$CONFIG_FILE"
 # echo
 
-echo "[local.sh] Pipeline completed successfully!"
+echo "[local.sh] Completed successfully!"
