@@ -16,15 +16,15 @@ else
   echo "[local.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
-echo "=== [1/3] Running diff.py ==="
+echo "=== [1/3] Find added or edited msgid in target file and extract to .pot file ==="
 python commit_diff.py --config "$CONFIG_FILE"
 echo
 
-echo "=== [2/3] Running translate.py ==="
+echo "=== [2/3] Translate file ==="
 python translate.py --config "$CONFIG_FILE"
 echo
 
-echo "=== [3/3] Running merge.py ==="
+echo "=== [3/3] Merge AI translated file to original file ==="
 python merge_po.py --config "$CONFIG_FILE"
 echo
 
