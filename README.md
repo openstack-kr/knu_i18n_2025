@@ -5,9 +5,9 @@ This tool helps contributors translate `.pot` / `.po` files into 54 languages us
 
 If you're new to OpenStack i18n, see the official [OpenStack i18n guide](https://docs.openstack.org/i18n/latest/index.html).
 
-# 1. Quick Start (4 steps)
+# Quick Start (5 steps)
 
-The fastest way to run your first translation.
+The fastest way to run your first translation.<br>
 
 ## **Step 1 — Clone the repository**
 
@@ -49,7 +49,11 @@ bash local.sh
 
 And that's it! Your translated .po file(in ./po/) is ready.
 
-## **Step 4 — Merge your translation to origin po**
+## **Step 4 — Human Review
+
+To be written
+
+## **Step 5  — Merge your translation to origin po**
 
 ```bash
 python merge_po.py --config config.yaml
@@ -57,10 +61,10 @@ python merge_po.py --config config.yaml
 
 After reviewing AI translation, you can merge translation to origin .po.
 
-# 2. Choose Your Options
+# Choose Your Options
 
 You can customize **target file**, **model**, **language**, and **performance settings** in [config.yaml](./config.yaml)
-## **2-1. Choose Target File**
+## **1. Choose Target File**
 
 you can manually download the latest translated POT or PO files directly from the Weblate interface.
 
@@ -82,7 +86,7 @@ files:
   origin_po: "./data/target/{project}/{lang}/LC_MESSAGES/{project}.po
 ```
 
-## **2-2. Choose Your Language**
+## **2. Choose Your Language**
 
 Please insert your language code in [this link](docs/language_support.md).
 We support **54 languages**
@@ -94,7 +98,7 @@ languages:
   - "ja"
 ```
 
-## **2-3. Choose Your Model**
+## **3. Choose Your Model**
 ### **Open-source models (default)**
 
 Uses **Ollama**. Browse available models [HERE](https://ollama.com/library).
@@ -114,7 +118,7 @@ llm:
   batch_size: 5    #   --batch-size: entries per LLM call (default: 5)
 ```
 
-# 3. How the System Works (Simple Overview)
+# How the System Works (Simple Overview)
 
 The system automatically:
 
@@ -127,7 +131,7 @@ The system automatically:
 Draft translations are then pushed to Gerrit → reviewed → synced to Weblate.
 For full architecture details in [**PAPER.md**](docs/PAPER.md).
 
-# 4. Assist in Improving Translation Quality
+# Assist in Improving Translation Quality
 
 You can tune two major components:
 
@@ -136,7 +140,7 @@ You can tune two major components:
 
 See [**CONTRIBUTING.md**](https://github.com/openstack-kr/knu_i18n_2025/blob/main/CONTRIBUTING.md) to learn how you can contribute.
 
-# 5. Code Formatting
+# Code Formatting
 
 Run PEP8 style checks:
 
