@@ -62,6 +62,20 @@ After reviewing AI translation, you can merge translation to origin .po.
 You can customize **target file**, **model**, **language**, and **performance settings** in [config.yaml](./config.yaml)
 ## **2-1. Choose Target File**
 
+you can manually download the latest translated POT or PO files directly from the Weblate interface.
+
+Steps
+1. Go to the Weblate translation dashboard for the project
+  - [Example](https://openstack.weblate.cloud/projects/horizon/)
+2. Select the project (e.g., Nova, horizon, etx.)
+3. Navigate to 
+```bash
+project-> languages-> <Your Language>
+```
+4. Click Download translation
+5. The target file for the selected languages will be downloaded
+6. The target file must be placed under the data/target firectory
+
 ```bash
 files:
   ...
@@ -69,7 +83,7 @@ files:
   origin_po: "./data/target/{project}/{lang}/LC_MESSAGES/{project}.po
 ```
 
-## **3-2. Choose Your Language**
+## **2-2. Choose Your Language**
 
 Please insert your language code in [this link](docs/language_support.md).
 We support **54 languages**
