@@ -5,7 +5,7 @@ This tool helps contributors translate `.pot` / `.po` files into 54 languages us
 
 If you're new to OpenStack i18n, see the official [OpenStack i18n guide](https://docs.openstack.org/i18n/latest/index.html).
 
-# 🚀 1. Quick Start (3 steps)
+# 1. Quick Start (4 steps)
 
 The fastest way to run your first translation.
 
@@ -42,75 +42,70 @@ bash main.sh
 ## **Step 3 — Run translation**
 
 ```bash
-tox -e i18n -- "llama3.2:3b" "ko_KR"
+tox -e i18n --vv
 # or
-bash main.sh "llama3.2:3b" "ko_KR"
+bash local.sh
 ```
 
-And that's it! Your translated .po file is ready.
+And that's it! Your translated .po file(in ./po/) is ready.
 
-# 🌐 2. Supported Languages
+## **Step 4 — Merge your translation to origin po**
 
-We support [**54 languages**](docs/language_support.md).
+```bash
+python merge_po.py --config config.yaml
+```
 
-# ⚙️ 3. Choose Your Options
+After reviewing AI translation, you can merge translation to origin .po.
 
-You can customize **model**, **language**, **target file**, and **performance settings**.
+# 2. Choose Your Options
 
-## **3-1. Choose LLM Model**
+You can customize **target file**, **model**, **language**, and **performance settings** in [config.yaml](./config.yaml)
+## **2-1. Choose Target File**
 
+```bash
+files:
+  ...
+  # Please add path your origin_po(download from weblate)
+  origin_po: "./data/target/{project}/{lang}/LC_MESSAGES/{project}.po
+```
+
+## **3-2. Choose Your Language**
+
+Please insert your language code in [this link](docs/language_support.md).
+We support **54 languages**
+
+```bash
+languages:
+# Add your language.
+  - "ko_KR"
+  - "ja"
+```
+
+## **2-3. Choose Your Model**
 ### **Open-source models (default)**
 
 Uses **Ollama**. Browse available models [HERE](https://ollama.com/library).
 
-```bash
-bash main.sh "llama3.2:3b" "de"
-```
-
 ### **Closed-source models (GPT / Claude / Gemini)**
 
-Add the backend using `--llm_mode`:
+When you use closed-source model, please edit the backend using `llm.mode`: [`ollama` (default), `gpt`, `claude`, `gemini`]
 
 ```bash
-bash main.sh "gpt-4o" "ko_KR" "gpt"
+# You can tune these arguments for performance / partial translation:
+#   --mode  : Choose your LLM mode[`ollama` (default), `gpt`, `claude`, `gemini`]
+#   --workers   : number of parallel threads (default: 1)
+#   --start/end : entry index range to translate (default: 0 ~ all)
+#   --batch-size: entries per LLM call (default: 5)
+llm:
+  model: "llama3.2:3b"
+  mode: "ollama"
+  workers: 1
+  start: 0
+  end: -1
+  batch_size: 5
 ```
 
-Supported modes:
-
-- `ollama` (default)
-- `gpt`
-- `claude`
-- `gemini`
-
-## **3-2. Choose Languages**
-
-Use comma-separated codes:
-
-```bash
-bash main.sh "llama3.2:3b" "de,ru,ja"
-```
-
-## **3-3. Choose Target File**
-
-This section will be updated soon.
-
-## **3-4. Performance Options**
-
-You can adjust translation speed and scale:
-
-```bash
---workers     # parallel threads (default: 1)
---batch-size  # entries per LLM call (default: 5)
---start/end   # translate only part of the file
-```
-
-Example:
-
-```bash
-bash main.sh "llama3.2:3b" "es" --workers 4 --batch-size 10
-```
-
-# 🧠 4. How the System Works (Simple Overview)
+# 3. How the System Works (Simple Overview)
 
 The system automatically:
 
@@ -123,7 +118,7 @@ The system automatically:
 Draft translations are then pushed to Gerrit → reviewed → synced to Weblate.
 For full architecture details in [**PAPER.md**](docs/PAPER.md).
 
-# 🚀 5. Assist in Improving Translation Quality
+# 4. Assist in Improving Translation Quality
 
 You can tune two major components:
 
@@ -132,7 +127,7 @@ You can tune two major components:
 
 See [**CONTRIBUTING.md**](https://github.com/openstack-kr/knu_i18n_2025/blob/main/CONTRIBUTING.md) to learn how you can contribute.
 
-# 💡 6. Code Formatting
+# 5. Code Formatting
 
 Run PEP8 style checks:
 
@@ -146,7 +141,7 @@ Auto-fix style issues:
 autopep8 --in-place --aggressive --aggressive -r .
 ```
 
-# 👥 Team
+# Team
 
 - [Lee Juyeong](https://github.com/ale8ander) - Project Lead
 - [Oh Jiwoo](https://github.com/5hjiwoo)
