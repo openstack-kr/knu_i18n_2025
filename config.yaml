@@ -4,14 +4,8 @@ files:
   pot_dir: "./pot"
   po_dir: "./po"
 
-  # for filter_pot.py
-  standard_po: "./data/target/{project}/en_AU/LC_MESSAGES/{project}.po"
-
-  # common
-  origin_po: "./data/target/{project}/{lang}/LC_MESSAGES/{project}.po" # 기번역된 파일
-  target_pot: "{project}.pot" # 최종 경로 ./pot/{project}.pot임. filter or commit_diff로 추출된 pot
-  ai_po: "./po/{model}/{lang}/{project}.po" # AI 번역된 po
-  merged_po: "./data/result/{model}/{lang}/LC_MESSAGES/{project}.po" # merge된 결과물  
+  target_file: "./data/target/{project}/{lang}/LC_MESSAGES/{project}.po" # 기번역된 파일
+  
 
 # -----------------------------
 #  commit.diff.py
@@ -35,7 +29,6 @@ output:
 # -----------------------------
 languages:
   - "ko_KR"
-  - "ja"
 
 # You can tune these arguments for performance / partial translation:
 #   --mode  : Choose your LLM mode[`ollama` (default), `gpt`, `claude`, `gemini`]
