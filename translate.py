@@ -471,7 +471,7 @@ if __name__ == "__main__":
     cfg = load_config(args.config)
 
     # -----------------------------
-    # LLM config
+    # LLM Config
     # -----------------------------
 
     llm_cfg = cfg.get("llm", {})
