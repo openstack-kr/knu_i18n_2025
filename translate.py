@@ -22,16 +22,17 @@ import os
 import time
 import concurrent.futures
 import json
+import argparse
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
 from utils import (
-    parse_args,
     init_environment,
     load_glossary,
     load_fixed_examples,
     save_experiment_log
 )
 from closed_llm import *
+from config_loader import load_config
 
 # Global LLM configuration
 LLM_MODE = "ollama"
@@ -452,31 +453,77 @@ if __name__ == "__main__":
         3. 모델별/언어별 폴더 생성 및 번역 수행
         4. 언어별 번역 결과 저장 및 Git 로그 기록
     """
-    args = parse_args()
-    MODEL_NAME = args.model
-    LLM_MODE = args.llm_mode
-    MAX_WORKERS = args.workers
+    # 1) --config 하나만 받기 (기본값: config_ci.yaml)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="config_ci.yaml")
+    args = parser.parse_args()
+
+    cfg = load_config(args.config)
+
+    # -----------------------------
+    # LLM Config
+    # -----------------------------
+    llm_cfg = cfg.get("llm")
+    MODEL_NAME = llm_cfg.get("model")
+    LLM_MODE = llm_cfg.get("mode")
+    MAX_WORKERS = llm_cfg.get("workers")
     configure_llm_caller(LLM_MODE, MODEL_NAME)
-    POT_DIR = args.pot_dir
-    PO_DIR = args.po_dir
-    POT_FILE = args.pot_file
-    GLOSSARY_DIR = args.glossary_dir
-    EXAMPLE_DIR = args.example_dir
-    START_TRANSLATE = args.start
-    END_TRANSLATE = None if args.end == -1 else args.end
-    POT_URL = args.pot_url
-    TARGET_POT_FILE = args.target_pot_file
-    GLOSSARY_URL = args.glossary_url
-    GLOSSARY_PO_FILE = args.glossary_po_file
-    GLOSSARY_JSON_FILE = args.glossary_json_file
-    EXAMPLE_URL = args.example_url
-    EXAMPLE_FILE = args.example_file
-    LANGUAGES_TO_TRANSLATE = args.languages.split(',')
-    FIXED_EXAMPLE_JSON = args.fixed_example_json
-    BATCH_SIZE = getattr(args, 'batch_size', 5)
+    START_TRANSLATE = llm_cfg.get("start")
+    end_val = llm_cfg.get("end")
+    END_TRANSLATE = None if end_val == -1 else end_val
+    BATCH_SIZE = llm_cfg.get("batch_size")
+
+    # -----------------------------
+    # files Config
+    # -----------------------------
+    files_cfg = cfg.get("files")
+    POT_DIR = files_cfg.get("pot_dir")
+    PO_DIR = files_cfg.get("po_dir")
+    
+    project = cfg.get("project")
+
+    target_pot_template = files_cfg.get("target_pot")
+    if target_pot_template:
+        # 예: target_pot: \"diff_{target_commit}.pot\" → ./pot/diff_<hash>.pot
+        pot_filename = target_pot_template.format(
+            project=project,
+        )
+        POT_FILE = os.path.join(POT_DIR, pot_filename)
+    else:
+        POT_FILE = None
+
+    # 이 파이프라인에서는 원격 POT_URL/TARGET_POT_FILE은 사용하지 않으므로 None
+    # POT_URL = None
+    # TARGET_POT_FILE = None
+
+    # -----------------------------
+    # Glossary / Examples Config
+    # -----------------------------
+    glossary_cfg = cfg.get("glossary")
+    GLOSSARY_DIR = glossary_cfg.get("dir")
+    GLOSSARY_URL = glossary_cfg.get("url")
+    GLOSSARY_PO_FILE = glossary_cfg.get("po_file")
+    GLOSSARY_JSON_FILE = glossary_cfg.get("json_file")
+
+    examples_cfg = cfg.get("examples")
+    EXAMPLE_DIR = examples_cfg.get("example_dir")
+    EXAMPLE_URL = examples_cfg.get("example_url")
+    EXAMPLE_FILE = examples_cfg.get("example_file")
+    FIXED_EXAMPLE_JSON = examples_cfg.get(
+        "fixed_example_json"
+    )
+
+    # -----------------------------
+    # languages Config
+    # -----------------------------
+    languages_cfg = cfg.get("languages")
+    if isinstance(languages_cfg, str):
+        LANGUAGES_TO_TRANSLATE = [s.strip() for s in languages_cfg.split(',') if s.strip()]
+    else:
+        LANGUAGES_TO_TRANSLATE = languages_cfg
 
     print("=================================================")
-    print(f"번역 시작, AI 모델: {MODEL_NAME}, Batch Size: {BATCH_SIZE}")
+    print(f"Translation Start, LLM: {MODEL_NAME}, Batch Size: {BATCH_SIZE}")
     print("=================================================\n")
 
     # 폴더 생성 + POT 다운로드
@@ -490,15 +537,15 @@ if __name__ == "__main__":
         print(f"Using local POT file: {pot_file_path}")
         if not os.path.exists(pot_file_path):
             raise FileNotFoundError(f"POT file not found:{pot_file_path}")
-    else:
-        pot_file_path = init_environment(
-        pot_dir=POT_DIR,
-        po_dir=PO_DIR,
-        glossary_dir=GLOSSARY_DIR,
-        example_dir=EXAMPLE_DIR,
-        pot_url=POT_URL,
-        target_pot_file=TARGET_POT_FILE,
-        )
+    # else:
+    #     pot_file_path = init_environment(
+    #     pot_dir=POT_DIR,
+    #     po_dir=PO_DIR,
+    #     glossary_dir=GLOSSARY_DIR,
+    #     example_dir=EXAMPLE_DIR,
+    #     pot_url=POT_URL,
+    #     target_pot_file=TARGET_POT_FILE,
+    #     )
     # 모델별 폴더 구성 + 파일 경로
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
 

@@ -1,6 +1,7 @@
 .tox/
 
-data/
+data/result/
+!data/result/.keep
 
 experiments.csv
 *.log
@@ -10,6 +11,11 @@ po/
 validate/json
 glossary/
 !glossary/.keep
+
+pot/
+!pot/.keep
+
+workspace/
 
 venv/
 .env/
