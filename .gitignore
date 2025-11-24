@@ -1,7 +1,10 @@
 .tox/
 
-data/
-!data/.keep
+data/target/
+!data/target/.keep
+
+data/result/
+!data/result/.keep
 
 experiments.csv
 *.log
@@ -11,6 +14,9 @@ po/
 validate/json
 glossary/
 !glossary/.keep
+
+pot/
+!pot/.keep
 
 workspace/
 

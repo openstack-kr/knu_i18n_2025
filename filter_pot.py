@@ -2,7 +2,9 @@
 import sys
 import polib
 import os
+import argparse
 from copy import deepcopy
+from config_loader import load_config
 
 def is_translated(entry: polib.POEntry) -> bool:
     """msgstr(또는 복수형 msgstr_plural) 중 하나라도 채워져 있으면 '번역됨'으로 판단."""
@@ -39,7 +41,7 @@ def main(src_po_path, translated_po_path, out_pot_path="remaining.pot"):
         # src_po_path 기준으로 POT 위치 계산
         parts = src_po_path.split("/")
         doc, country, detail, filename = parts[-4:]
-        pot_path = f"../data/target/{doc}/{filename.replace('.po', '.pot')}"
+        pot_path = f"./data/target/{doc}/{filename.replace('.po', '.pot')}"
 
         # 기존 POT가 있으면 msgstr 비우기
         if os.path.isfile(pot_path):
@@ -105,14 +107,47 @@ def main(src_po_path, translated_po_path, out_pot_path="remaining.pot"):
     print(f"    POT: {out_pot_path}")
 
 if __name__ == "__main__":
-    # 사용법:
-    #   python filter_pot.py 원문.po 번역.po [out_pot]
-    if len(sys.argv) < 3:
-        print("Usage: python filter_pot.py <source_po> <translated_po> [out_pot]")
-        sys.exit(1)
-    
-    src_po = sys.argv[1]
-    trans_po = sys.argv[2]
-    out_pot = sys.argv[3] if len(sys.argv) >= 4 else "remaining.pot"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="config_local.yaml")
+    args = parser.parse_args()
 
-    main(src_po, trans_po, out_pot)
+    cfg = load_config(args.config)
+
+    project = cfg["project"]
+    languages = cfg.get("languages")
+
+    if isinstance(languages, list):
+        # 지금은 한 개만 쓴다고 가정하고 첫 번째 사용
+        lang = languages[0]
+    else:
+        lang = languages
+
+    files_cfg = cfg["files"]
+
+    origin_po = files_cfg["origin_po"].format(
+        project=project,
+        languages=lang,
+        language=lang,
+        lang=lang,
+    )
+    trans_po = files_cfg["origin_trans_po"].format(
+        project=project,
+        languages=lang,
+        language=lang,
+        lang=lang,
+    )
+    out_pot = files_cfg["ai_target_pot"].format(
+        project=project,
+        languages=lang,
+        language=lang,
+        lang=lang,
+    )
+    pot_dir = files_cfg["pot_dir"].format(
+        project=project,
+        languages=lang,
+        language=lang,
+        lang=lang,
+    )
+
+    os.makedirs(pot_dir, exist_ok=True)
+    main(origin_po, trans_po, out_pot)
