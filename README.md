@@ -71,7 +71,7 @@ bash local.sh
 
 ## **Step 4 — Human Review**
 
-After AI translation, **human review is essentail** to ensure accuracy and context appropriateness.
+After AI translation, **human review is essential** to ensure accuracy and context appropriateness.
 AI translations are drafts that require verification before proudction use.
 
 Open the generated `.po` file in `./po/{model}/{lang}/` directory and review the translations manually for technical accuracy, natural language flow, and consistency with existing translations.
