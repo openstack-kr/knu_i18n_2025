@@ -14,7 +14,7 @@ If you're new to OpenStack i18n, see the official [OpenStack i18n guide](https:/
 
 The fastest way to run your first translation.
 
-By default, this system translates the **nova** project files into **Korean (ko_KR)** and **Japanese (ja)** using the **llama3.2:3b** model via Ollama.
+By default, this system translates the [**nova** project files[(./data/target/ko_KR/example_nova.po) into **Korean (ko_KR)** and **Japanese (ja)** using the **llama3.2:3b** model via Ollama.
 You can customize the target project, model, and language in `config.yaml` (see [Choose Your Options](#choose-your-options) below).<br>
 
 ## **Step 1 — Clone the repository**
