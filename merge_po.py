@@ -1,26 +1,33 @@
 #!/usr/bin/env python3
 import polib
-import sys
 import os
 from config_loader import load_config
-    
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--config",
+    default="config.yaml",
+    help="Path to config YAML (default: config.yaml)",
+)
+
+args = parser.parse_args()
 cfg = load_config("config.yaml")
 files_cfg = cfg.get("files", {})
 model = cfg["llm"]["model"]
-project = cfg["project"]     
+project = cfg["git"]["project"] 
 
 for lang in cfg["languages"]:
-    target_file = files_cfg["target_file"]
-    target_file_path = os.path.join("./data/target", target_file)
-    target_file_name, _ = os.path.splitext(target_file)
     
-    llm_path = f"./po/{model}/{lang}/{target_file_name}.po"
-    out_path = f"./data/result/{target_file_name}.po"
-
+    target_file = files_cfg["target_file"]
+    target_file_path = os.path.join(f"./data/target/{lang}", target_file)
+    target_file_name, _ = os.path.splitext(target_file)
     # PO 파일 로드
     target_file = polib.pofile(target_file_path)
+    llm_path = f"./po/{model}/{lang}/{target_file_name}.po"
     llm = polib.pofile(llm_path)
-
+    out_path = f"./data/result/{lang}/{target_file_name}.po"
+    
     # standard_po 헤더(metadata) 백업
     original_metadata = target_file.metadata.copy()
 

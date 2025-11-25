@@ -16,6 +16,8 @@ else
   echo "[local.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
+echo "[ci.sh] Using target_commit: $TARGET_COMMIT"
+
 echo "=== [1/3] Find added or edited msgid in target file and extract to .pot file ==="
 python commit_diff.py --config "$CONFIG_FILE"
 echo
@@ -26,6 +28,5 @@ echo
 
 echo "=== [3/3] Merge AI translated file to original file ==="
 python merge_po.py --config "$CONFIG_FILE"
-echo
 
-echo "[ci.sh] Pipeline completed successfully!"
+echo "[ci.sh] Pipeline completed successfully!" 

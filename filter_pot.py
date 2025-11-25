@@ -32,7 +32,7 @@ def build_fallback_pot_path(translated_po_path):
     doc, lang, detail, filename = parts[-4:]
     pot_filename = filename.replace(".po", ".pot")
 
-    return f"./data/target/{doc}/{pot_filename}"
+    return f"./data/target/{lang}/{pot_filename}"
 
 
 def main(translated_po_path, out_pot_path="remaining.pot"):
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     target_file_name, _ = os.path.splitext(target_file)
     
     # 자동으로 ./data/target 아래에서 찾도록 경로 구성
-    trans_po = os.path.join("./data/target", target_file)
+    trans_po = os.path.join(f"./data/target/{lang}", target_file)
     pot_dir = "./pot"
     os.makedirs(pot_dir, exist_ok=True)
     
