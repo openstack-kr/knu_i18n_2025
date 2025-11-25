@@ -5,9 +5,17 @@ This tool helps contributors translate `.pot` / `.po` files into 54 languages us
 
 If you're new to OpenStack i18n, see the official [OpenStack i18n guide](https://docs.openstack.org/i18n/latest/index.html).
 
+## Requirements
+
+- **Python 3.10 is needed**
+- Designed for **local** and **CI environments**
+
 # Quick Start (5 steps)
 
-The fastest way to run your first translation.<br>
+The fastest way to run your first translation.
+
+By default, this system translates the **nova** project files into **Korean (ko_KR)** and **Japanese (ja)** using the **llama3.2:3b** model via Ollama.
+You can customize the target project, model, and language in `config.yaml` (see [Choose Your Options](#choose-your-options) below).<br>
 
 ## **Step 1 — Clone the repository**
 
@@ -23,7 +31,12 @@ cd knu_i18n_2025
 ```bash
 python -m pip install --upgrade pip
 pip install tox
+
+# Install Ollama
+# For Linux:
 curl -fsSL https://ollama.com/install.sh | sh
+# For other operating systems (Windows, macOS):
+# Please visit https://ollama.com/download and follow the installation instructions
 
 # prepare environment
 tox -e i18n -vv
@@ -33,7 +46,12 @@ tox -e i18n -vv
 
 ```bash
 python -m pip install --upgrade pip
+
+# Install Ollama
+# For Linux:
 curl -fsSL https://ollama.com/install.sh | sh
+# For other operating systems (Windows, macOS):
+# Please visit https://ollama.com/download and follow the installation instructions
 
 pip install -r requirements.txt
 bash loca.sh
@@ -41,95 +59,157 @@ bash loca.sh
 
 ## **Step 3 — Run translation**
 
+This will translate the file specified in `config.yaml` using the configured model and language.
+
 ```bash
 tox -e i18n --vv
 # or
 bash local.sh
 ```
 
-And that's it! Your translated .po file(in ./po/) is ready.
+**What's happening:**
+- The system reads your target `.pot` or `.po` file from `./data/target/` directory
+- Uses the specified model (default: `llama3.2:3b` via Ollama)
+- Translates into your chosen language (default: ko_KR, ja)
+- Outputs a translated `.po` files to `./po/{model}/{lang}/` directory
 
 ## **Step 4 — Human Review**
 
-To be written
+After AI translation, **human review is essentail** to ensure accuracy and context appropriateness.
+AI translations are drafts that require verification before proudction use.
+
+Open the generated `.po` file in `./po/{model}/{lang}/` directory and review the translations manually for technical accuracy, natural language flow, and consistency with existing translations.
 
 ## **Step 5  — Merge your translation to origin po**
+
+After reviewing AI translation, merge your reviewed translations back to the original `.po` file:
 
 ```bash
 python merge_po.py --config config.yaml
 ```
 
-After reviewing AI translation, you can merge translation to origin .po.
+This will merge your reviewed translations and save the final result to `./data/result` directory.
 
 # Choose Your Options
 
 You can customize **target file**, **model**, **language**, and **performance settings** in [config.yaml](./config.yaml)
-## **1. Choose Target File**
 
-you can manually download the latest translated POT or PO files directly from the Weblate interface.
+## Choose Target File
 
-Steps
-1. Go to the Weblate translation dashboard for the project [Example](https://openstack.weblate.cloud/projects/horizon/)
-2. Select the project (e.g., Nova, horizon, etx.)
-3. Navigate to 
-```bash
-project-> languages-> <Your Language>
-```
-4. Click Download translation
-5. The target file for the selected languages will be downloaded
-6. The target file must be placed under the data/target firectory
+### How it works:
 
-```bash
+1. Place your target `.pot` or `.po` file in the `./data/target/` directory
+2. Specify the filename in `config.yaml`:
+```yaml
 files:
-  ...
-  # Please add path your origin_po(download from weblate)
-  origin_po: "./data/target/{project}/{lang}/LC_MESSAGES/{project}.po
+    # Set target file path. Please put file under ./data/target/
+    target_file: "nova.po"
 ```
 
-## **2. Choose Your Language**
+### File processing flow:
 
-Please insert your language code in [this link](docs/language_support.md).
+- **Input**: `./data/target/{your_file}.po` or `./data/target/{your_file}.pot`
+- **Intermediate outputs**:
+    - Extracted POT: `./pot/{your_file}.pot`
+    - AI translations: `./po/{model}/{lang}/{your_file}.po`
+- **Final output**: `./data/result/{your_file}.po` (merged translation)
+
+### Downloading files from Weblate:
+
+You can manually download the latest translated POT or PO files directly from the Weblate interface.
+
+**Steps:**
+1. Go to the Weblate translation dashboard for the project [Example](https://openstack.weblate.cloud/projects/horizon/)
+2. Select the project (e.g., Nova, Horizon, etc.)
+3. Navigate to: `project → languages → <Your Language>`
+4. Click "Download translation"
+5. Save the downloaded file to the `./data/target/` directory
+6. Update the `target_file` name in `config.yaml`
+
+## Choose Your Language
+
+Please insert your language code from [this link](docs/language_support.md).
 We support **54 languages**
 
-```bash
+```yaml
 languages:
 # Add your language.
   - "ko_KR"
   - "ja"
 ```
 
-## **3. Choose Your Model**
-### **Open-source models (default)**
+## Choose Your Model
+
+### Open-source models (default)
 
 Uses **Ollama**. Browse available models [HERE](https://ollama.com/library).
 
-### **Closed-source models (GPT / Claude / Gemini)**
+### Closed-source models (GPT / Claude / Gemini)
 
-When you use closed-source model, please edit the backend using `llm.mode`: [`ollama` (default), `gpt`, `claude`, `gemini`]
+When using closed-source model, edit the backend using `llm.mode`: [`ollama` (default), `gpt`, `claude`, `gemini`]
 
-```bash
+```yaml
 # You can tune these arguments for performance / partial translation:
 llm:
   model: "llama3.2:3b"
-  mode: "ollama"   #   --mode  : Choose your LLM mode[`ollama` (default), `gpt`, `claude`, `gemini`]
-  workers: 1       #   --workers   : number of parallel threads (default: 1)
-  start: 0         #   --start/end : entry index range to translate (default: 0 ~ all)
+  mode: "ollama"   # Choose your LLM mode: `ollama` (default), `gpt`, `claude`, `gemini`
+  workers: 1       # number of parallel threads (default: 1)
+  start: 0         # entry index range to translate (default: 0 ~ all)
   end: -1
-  batch_size: 5    #   --batch-size: entries per LLM call (default: 5)
+  batch_size: 5    # entries per LLM call (default: 5)
 ```
+
+# CI Integration
+
+For automated translation in OpenStack's Zuul CI environment, use the provided CI script:
+
+```bash
+bash ci.sh
+```
+
+The script automatically uses `config.yaml` by default, or you can specify a different config file:
+
+```bash
+bash ci.sh my-config.yaml
+```
+
+**What ci.sh does:**
+
+The script runs a 3-step pipeline:
+
+1. **Find changed content**: Runs `commit_diff.py` to detect added or edited  msgid entries in your target file and extracts them to a `.pot` file
+2. **Translate**: Executes `translate.py` to translate the extracted entries using your configured model
+3. **Merge**: Uses `merge_po.py` to merge AI-translated content back into the original `.po` file
+
+Results are saved to `./data/result/{project}.po`
+
+**Usage in CI pipeline:**
+
+```yaml
+# Example Zuul job configuration
+- job:
+    name: translate-pot-files
+    run: playbooks/translate.yaml
+
+# In your playbook:
+- name: Run AI Translation
+    shell: bash ci.sh
+```
+
+The CI workflow is optimized to translate only changed content, making it efficient for continuous integration pipelines.
 
 # How the System Works (Simple Overview)
 
 The system automatically:
 
-1. Loads the `.pot` file
-2. Splits text into batches
-3. Applies the **general prompt** or a **language-specific prompt (if available)**
-4. Adds **few-shot examples** when reference translations exist
-5. Generates draft `.po` translations
+- Loads the `.pot` file
+- Splits text into batches
+- Applies the **general prompt** or a **language-specific prompt (if available)**
+- Adds **few-shot examples** when reference translations exist
+- Generates draft `.po` translations
 
 Draft translations are then pushed to Gerrit → reviewed → synced to Weblate.
-For full architecture details in [**PAPER.md**](docs/PAPER.md).
+For full architecture details, see [**PAPER.md**](docs/PAPER.md).
 
 # Assist in Improving Translation Quality
 
