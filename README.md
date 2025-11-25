@@ -98,7 +98,7 @@ You can customize **target file**, **model**, **language**, and **performance se
 2. Specify the filename in `config.yaml`:
 ```yaml
 files:
-  # File name to translate (must be placed under ./data/target/{lang})
+  # Set target_file to translate (must be placed under ./data/target/{lang})
   target_file: "example_nova.po"
 ```
 
