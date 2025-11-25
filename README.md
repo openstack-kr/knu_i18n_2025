@@ -37,9 +37,6 @@ pip install tox
 curl -fsSL https://ollama.com/install.sh | sh
 # For other operating systems (Windows, macOS):
 # Please visit https://ollama.com/download and follow the installation instructions
-
-# prepare environment
-tox -e i18n -vv
 ```
 
 ### Option B) Run locally
@@ -54,7 +51,6 @@ curl -fsSL https://ollama.com/install.sh | sh
 # Please visit https://ollama.com/download and follow the installation instructions
 
 pip install -r requirements.txt
-bash loca.sh
 ```
 
 ## **Step 3 — Run translation**
@@ -68,7 +64,7 @@ bash local.sh
 ```
 
 **What's happening:**
-- The system reads your target `.pot` or `.po` file from `./data/target/` directory
+- The system reads your target `.pot` or `.po` file from `./data/target/{lang}` directory
 - Uses the specified model (default: `llama3.2:3b` via Ollama)
 - Translates into your chosen language (default: ko_KR, ja)
 - Outputs a translated `.po` files to `./po/{model}/{lang}/` directory
@@ -88,7 +84,7 @@ After reviewing AI translation, merge your reviewed translations back to the ori
 python merge_po.py --config config.yaml
 ```
 
-This will merge your reviewed translations and save the final result to `./data/result` directory.
+This will merge your reviewed translations and save the final result to `./data/result/{lang}` directory.
 
 # Choose Your Options
 
@@ -98,21 +94,21 @@ You can customize **target file**, **model**, **language**, and **performance se
 
 ### How it works:
 
-1. Place your target `.pot` or `.po` file in the `./data/target/` directory
+1. Place your target `.pot` or `.po` file in the `./data/target/{lang}` directory
 2. Specify the filename in `config.yaml`:
 ```yaml
 files:
-    # Set target file path. Please put file under ./data/target/
-    target_file: "nova.po"
+  # File name to translate (must be placed under ./data/target/{lang})
+  target_file: "example_nova.po"
 ```
 
 ### File processing flow:
 
-- **Input**: `./data/target/{your_file}.po` or `./data/target/{your_file}.pot`
+- **Input**: `./data/target/{lang}/{target_file}.po` or `./data/target/{lang}/{target_file}.pot`
 - **Intermediate outputs**:
     - Extracted POT: `./pot/{your_file}.pot`
     - AI translations: `./po/{model}/{lang}/{your_file}.po`
-- **Final output**: `./data/result/{your_file}.po` (merged translation)
+- **Final output**: `./data/result/{lang}/{your_file}.po` (merged translation)
 
 ### Downloading files from Weblate:
 
@@ -123,7 +119,7 @@ You can manually download the latest translated POT or PO files directly from th
 2. Select the project (e.g., Nova, Horizon, etc.)
 3. Navigate to: `project → languages → <Your Language>`
 4. Click "Download translation"
-5. Save the downloaded file to the `./data/target/` directory
+5. Save the downloaded file to the `./data/target/{lang}/` directory
 6. Update the `target_file` name in `config.yaml`
 
 ## Choose Your Language
@@ -133,7 +129,8 @@ We support **54 languages**
 
 ```yaml
 languages:
-# Add your language.
+  # When running local.sh, please choose exactly ONE language.
+  # When running ci.sh, you can specify MULTIPLE languages.
   - "ko_KR"
   - "ja"
 ```
@@ -160,6 +157,8 @@ llm:
 ```
 
 # CI Integration
+
+⚠️ CI integration currently works only for the nova project. Support for other projects will be added soon.
 
 For automated translation in OpenStack's Zuul CI environment, use the provided CI script:
 
