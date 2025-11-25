@@ -15,7 +15,7 @@ else
   echo "[local.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
-echo "=== [1/2] xtracting untranslated strings into a .pot file ==="
+echo "=== [1/2] Extracting untranslated strings into a .pot file ==="
 python filter_pot.py --config "$CONFIG_FILE"
 echo
 

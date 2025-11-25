@@ -476,21 +476,16 @@ if __name__ == "__main__":
     # -----------------------------
     # files Config
     # -----------------------------
-    files_cfg = cfg.get("files")
-    POT_DIR = files_cfg.get("pot_dir")
-    PO_DIR = files_cfg.get("po_dir")
-    
     project = cfg.get("project")
-
-    target_pot_template = files_cfg.get("target_pot")
-    if target_pot_template:
-        # 예: target_pot: \"diff_{target_commit}.pot\" → ./pot/diff_<hash>.pot
-        pot_filename = target_pot_template.format(
-            project=project,
-        )
-        POT_FILE = os.path.join(POT_DIR, pot_filename)
-    else:
-        POT_FILE = None
+    files_cfg = cfg.get("files")
+    POT_DIR = "./pot"
+    PO_DIR = "./po"
+    
+    # config에서 파일명만 받음
+    target_file = files_cfg["target_file"]
+    # target_file (po, pot) 확장자 분리
+    target_file_name, _ = os.path.splitext(target_file)
+    POT_FILE = os.path.join(POT_DIR, f"{target_file_name}.pot")
 
     # 이 파이프라인에서는 원격 POT_URL/TARGET_POT_FILE은 사용하지 않으므로 None
     # POT_URL = None
@@ -500,18 +495,16 @@ if __name__ == "__main__":
     # Glossary / Examples Config
     # -----------------------------
     glossary_cfg = cfg.get("glossary")
-    GLOSSARY_DIR = glossary_cfg.get("dir")
+    GLOSSARY_DIR = "./glossary"
     GLOSSARY_URL = glossary_cfg.get("url")
-    GLOSSARY_PO_FILE = glossary_cfg.get("po_file")
-    GLOSSARY_JSON_FILE = glossary_cfg.get("json_file")
+    GLOSSARY_PO_FILE = "glossary.po"
+    GLOSSARY_JSON_FILE = "glossary.json"
 
     examples_cfg = cfg.get("examples")
-    EXAMPLE_DIR = examples_cfg.get("example_dir")
+    EXAMPLE_DIR = "./po-example"
     EXAMPLE_URL = examples_cfg.get("example_url")
     EXAMPLE_FILE = examples_cfg.get("example_file")
-    FIXED_EXAMPLE_JSON = examples_cfg.get(
-        "fixed_example_json"
-    )
+    FIXED_EXAMPLE_JSON = "fixed_examples.json"
 
     # -----------------------------
     # languages Config

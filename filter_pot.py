@@ -18,9 +18,9 @@ def is_untranslated(entry: polib.POEntry) -> bool:
 
     # 복수형일 때
     if entry.msgid_plural:
-        return any(s.strip() for s in entry.msgstr_plural.values())
+        return not any(s.strip() for s in entry.msgstr_plural.values())
     # 단수형일 때
-    return bool(entry.msgstr.strip())
+    return not bool(entry.msgstr.strip())
 
 def build_fallback_pot_path(translated_po_path):
     
@@ -118,8 +118,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     cfg = load_config(args.config)
-
-    project = cfg["project"]
+    
     languages = cfg.get("languages")
 
     if isinstance(languages, list):
@@ -129,18 +128,18 @@ if __name__ == "__main__":
         lang = languages
 
     files_cfg = cfg["files"]
-
-    trans_po = files_cfg["target_file"].format(
-        project=project,
-        lang=lang,
-    )
-    pot_dir = files_cfg["pot_dir"].format(
-        project=project,
-        lang=lang,
-    )
+    
+    # config에서 파일명만 받음
+    target_file = files_cfg["target_file"]
+    # target_file (po, pot) 확장자 분리
+    target_file_name, _ = os.path.splitext(target_file)
+    
+    # 자동으로 ./data/target 아래에서 찾도록 경로 구성
+    trans_po = os.path.join("./data/target", target_file)
+    pot_dir = "./pot"
     os.makedirs(pot_dir, exist_ok=True)
-
-    out_pot = os.path.join(pot_dir, f"{project}.pot")
+    
+    out_pot = os.path.join(pot_dir, f"{target_file_name}.pot")
 
     os.makedirs(pot_dir, exist_ok=True)
     main(trans_po, out_pot)

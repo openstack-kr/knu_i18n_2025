@@ -72,11 +72,11 @@ def main():
     repo_dir = os.path.join(work_dir, project)
     
     target_commit = cfg['compare']['target_commit']
-    base_commit = cfg['compare']['base_commit']
+    base_commit = "HEAD~1"
 
     pot_dir = cfg['files']['pot_dir']
     diff_name = cfg['files']['target_pot'].format(project=project)
-    source_dir = cfg['output'].get('source_dir', ".").format(project=project)
+    source_dir = project
 
     project_name = project
 
