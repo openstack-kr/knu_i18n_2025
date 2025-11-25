@@ -2,7 +2,7 @@
 #  Required settings
 # -----------------------------
 files:
-  # File name to translate (must be placed under ./data/target/{lang})
+  # Set target_file to translate (must be placed under ./data/target/{lang})
   target_file: "example_nova.po"
 
 # -----------------------------
