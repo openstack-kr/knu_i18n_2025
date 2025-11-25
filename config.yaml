@@ -3,14 +3,14 @@ project: "nova"
 
 files:
   # Set target file path. Please put file under ./data/target/
-  target_file: "doc-admin.pot"
+  target_file: ".pot"
 
 languages:
   - "ko_KR"
 
 # You can tune these arguments for performance / partial translation:
 #   --model : Choose your model
-#   --mode  : Choose your LLM mode[`ollama` (default), `gpt`, `claude`, `gemini`]
+#   --mode  : Choose your LLM mode[`ollama` (default, for open src LLM), `gpt`, `claude`, `gemini`]
 #   --workers   : number of parallel threads (default: 1)
 #   --start/end : entry index range to translate (default: 0 ~ all)
 #   --batch-size: entries per LLM call (default: 5)
