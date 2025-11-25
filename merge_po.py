@@ -1,34 +1,35 @@
 #!/usr/bin/env python3
 import polib
-import sys
 import os
 from config_loader import load_config
-    
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--config",
+    default="config.yaml",
+    help="Path to config YAML (default: config.yaml)",
+)
+
+args = parser.parse_args()
 cfg = load_config("config.yaml")
 files_cfg = cfg.get("files", {})
+model = cfg["llm"]["model"]
+project = cfg["git"]["project"] 
 
 for lang in cfg["languages"]:
-    origin_path = files_cfg["standard_po"].format(
-        project=cfg["project"],
-        lang=lang
-    )
-    llm_path = files_cfg["ai_po"].format(
-        model=cfg["llm"]["model"],
-        lang=lang,
-        project=cfg["project"],
-    )
-    out_path = files_cfg["merged_po"].format(
-        model=cfg["llm"]["model"],
-        lang=lang,
-        project=cfg["project"]
-    )
-
+    
+    target_file = files_cfg["target_file"]
+    target_file_path = os.path.join(f"./data/target/{lang}", target_file)
+    target_file_name, _ = os.path.splitext(target_file)
     # PO 파일 로드
-    origin = polib.pofile(origin_path)
+    target_file = polib.pofile(target_file_path)
+    llm_path = f"./po/{model}/{lang}/{target_file_name}.po"
     llm = polib.pofile(llm_path)
-
+    out_path = f"./data/result/{lang}/{target_file_name}.po"
+    
     # standard_po 헤더(metadata) 백업
-    original_metadata = origin.metadata.copy()
+    original_metadata = target_file.metadata.copy()
 
     # LLM_PO에서 msgid -> POEntry 매핑
     llm_dict = {entry.msgid: entry for entry in llm}
@@ -36,7 +37,7 @@ for lang in cfg["languages"]:
     updated_count = 0
     print(f"[Lang: {lang}] [*] 번역 삽입 전/후 비교:")
 
-    for entry in origin:
+    for entry in target_file:
         if entry.msgid in llm_dict:
             llm_entry = llm_dict[entry.msgid]
 
@@ -63,11 +64,11 @@ for lang in cfg["languages"]:
                 updated_count += 1
 
     # 저장 전에 헤더 복원
-    origin.metadata = original_metadata
+    target_file.metadata = original_metadata
 
     # 결과 저장
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
-    origin.save(out_path)
+    target_file.save(out_path)
 
     print(f"[Lang: {lang}]\n[+] 총 {updated_count}개 항목이 업데이트되었습니다.")
     print(f"[Lang: {lang}][+] 결과 파일: {out_path}")

@@ -6,7 +6,7 @@ import argparse
 from copy import deepcopy
 from config_loader import load_config
 
-def is_translated(entry: polib.POEntry) -> bool:
+def is_untranslated(entry: polib.POEntry) -> bool:
     """msgstr(또는 복수형 msgstr_plural) 중 하나라도 채워져 있으면 '번역됨'으로 판단."""
     # 헤더 건드리지 않음
     if entry.msgid == "":
@@ -18,102 +18,107 @@ def is_translated(entry: polib.POEntry) -> bool:
 
     # 복수형일 때
     if entry.msgid_plural:
-        return any(s.strip() for s in entry.msgstr_plural.values())
+        return not any(s.strip() for s in entry.msgstr_plural.values())
     # 단수형일 때
-    return bool(entry.msgstr.strip())
+    return not bool(entry.msgstr.strip())
 
-def make_key(entry: polib.POEntry):
-    """msgctxt + msgid + msgid_plural 로 엔트리 식별."""
-    return (entry.msgctxt, entry.msgid, entry.msgid_plural)
+def build_fallback_pot_path(translated_po_path):
+    
+    parts = translated_po_path.split("/")
+    if len(parts) < 4:
+        base, _ = os.path.splitext(translated_po_path)
+        return base + ".pot"
 
-def main(src_po_path, translated_po_path, out_pot_path="remaining.pot"):
+    doc, lang, detail, filename = parts[-4:]
+    pot_filename = filename.replace(".po", ".pot")
 
+    return f"./data/target/{lang}/{pot_filename}"
+
+
+def main(translated_po_path, out_pot_path="remaining.pot"):
+    trans_exists = os.path.isfile(translated_po_path)
+
+    # --------------------------------------------------------------
+    # 0) 번역 파일 디렉토리 준비
+    # --------------------------------------------------------------
     dir_path = os.path.dirname(translated_po_path)
-    if dir_path and (not os.path.isdir(dir_path) or not os.path.isfile(translated_po_path)):
+    if dir_path and not os.path.isdir(dir_path):
         os.makedirs(dir_path, exist_ok=True)
         print(f"[+] Created directory: {dir_path}")
 
-        # 비어 있는 번역 po 파일 생성
-        with open(translated_po_path, "w", encoding="utf-8") as f:
-            pass
-        print(f"[+] Created empty po file: {translated_po_path}")
+    # --------------------------------------------------------------
+    # 1) translated_po가 없으면 fallback POT 시도
+    # --------------------------------------------------------------
+    if not trans_exists:
+        print(f"[!] Translated PO not found: {translated_po_path}")
+        fallback_pot = build_fallback_pot_path(translated_po_path)
+        print(f"[=] Trying fallback POT: {fallback_pot}")
 
-        # src_po_path 기준으로 POT 위치 계산
-        parts = src_po_path.split("/")
-        doc, country, detail, filename = parts[-4:]
-        pot_path = f"./data/target/{doc}/{filename.replace('.po', '.pot')}"
+        if not os.path.isfile(fallback_pot):
+            print("[ERROR] Neither translated_po nor fallback POT exists.")
+            open(out_pot_path, "w").close()
+            print(f"[+] Created empty POT: {out_pot_path}")
+            return
 
-        # 기존 POT가 있으면 msgstr 비우기
-        if os.path.isfile(pot_path):
-            po = polib.pofile(pot_path)
-            for e in po:
-                e.msgstr = ""
-                e.msgstr_plural = {}
-            po.save(pot_path)
-            print(f"[=] Cleared POT msgstr: {pot_path}")
-        else:
-            print(f"[!] POT not found: {pot_path}")
+        # fallback POT 로드
+        try:
+            base_po = polib.pofile(fallback_pot)
+        except:
+            print("[ERROR] Fallback POT is invalid. Creating empty POT.")
+            open(out_pot_path, "w").close()
+            return
 
-        # 새 언어 초기화만 하고 여기서 끝냄
+        # 미번역 엔트리만 추출
+        result = polib.POFile()
+        result.metadata = base_po.metadata
+
+        count = 0
+        for e in base_po:
+            if is_untranslated(e):
+                new_e = deepcopy(e)
+                new_e.msgstr = ""
+                new_e.msgstr_plural = {}
+                result.append(new_e)
+                count += 1
+
+        result.save(out_pot_path)
+        print(f"[+] Generated POT from fallback source: {out_pot_path}")
+        print(f"[*] Untranslated entries: {count}")
         return
 
-    
-    src_po = polib.pofile(src_po_path)
-    trans_po = polib.pofile(translated_po_path)
+    # --------------------------------------------------------------
+    # 2) 정상 동작: translated_po에서 미번역만 추출
+    # --------------------------------------------------------------
+    try:
+        trans_po = polib.pofile(translated_po_path)
+    except:
+        print("[ERROR] Cannot read translated_po. Creating empty POT.")
+        open(out_pot_path, "w").close()
+        return
 
-
-    # 1) 번역된 엔트리들(msgstr 채워진 것들)의 key 집합 만들기
-    translated_keys = set()
-    for e in trans_po:
-        if is_translated(e):
-            translated_keys.add(make_key(e))
-
-    print(f"[*] 번역된 엔트리 수: {len(translated_keys)}")
-
-    # 2) 원문 po 에서, 번역된 key 들은 제거한 새 PO 만들기
     result = polib.POFile()
-    result.metadata = dict(src_po.metadata)
-    result.header = src_po.header
+    result.metadata = trans_po.metadata
 
-    kept_count = 0
+    count = 0
+    for e in trans_po:
+        if is_untranslated(e):
+            new_e = deepcopy(e)
+            new_e.msgstr = ""
+            new_e.msgstr_plural = {}
+            result.append(new_e)
+            count += 1
 
-    for e in src_po:
-        # 헤더 엔트리는 항상 유지
-        if e.msgid == "":
-            result.append(deepcopy(e))
-            continue
-
-        key = make_key(e)
-        # 이미 번역된 항목이면 스킵
-        if key in translated_keys:
-            continue
-
-        new_e = deepcopy(e)
-        # 혹시라도 msgstr 가 들어있다면 템플릿 용으로 비워줌
-        new_e.msgstr = ""
-        new_e.msgstr_plural = {}
-        # fuzzy 등 플래그도 정리
-        new_e.flags = [f for f in new_e.flags if f != "fuzzy"]
-
-        result.append(new_e)
-        kept_count += 1
-
-    print(f"[*] 남은(미번역) 엔트리 수: {kept_count}")
-
-    # 3) 남은 엔트리를 POT 한 버전으로만 저장
     result.save(out_pot_path)
-
-    print(f"[+] 저장 완료:")
-    print(f"    POT: {out_pot_path}")
+    print(f"[+] POT saved: {out_pot_path}")
+    print(f"[*] Untranslated entries: {count}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="config_local.yaml")
+    parser.add_argument("--config", default="config.yaml")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
-
-    project = cfg["project"]
+    
     languages = cfg.get("languages")
 
     if isinstance(languages, list):
@@ -123,28 +128,18 @@ if __name__ == "__main__":
         lang = languages
 
     files_cfg = cfg["files"]
-
-    origin_po = files_cfg["standard_po"].format(
-        project=project,
-        lang=lang,
-    )
-    trans_po = files_cfg["origin_po"].format(
-        project=project,
-        lang=lang,
-    )
-    pot_dir = files_cfg["pot_dir"].format(
-        project=project,
-        lang=lang,
-    )
+    
+    # config에서 파일명만 받음
+    target_file = files_cfg["target_file"]
+    # target_file (po, pot) 확장자 분리
+    target_file_name, _ = os.path.splitext(target_file)
+    
+    # 자동으로 ./data/target 아래에서 찾도록 경로 구성
+    trans_po = os.path.join(f"./data/target/{lang}", target_file)
+    pot_dir = "./pot"
     os.makedirs(pot_dir, exist_ok=True)
-
-    out_pot = os.path.join(
-        pot_dir,
-        files_cfg["target_pot"].format(
-            project=project,
-            lang=lang,
-        )
-    )
+    
+    out_pot = os.path.join(pot_dir, f"{target_file_name}.pot")
 
     os.makedirs(pot_dir, exist_ok=True)
-    main(origin_po, trans_po, out_pot)
+    main(trans_po, out_pot)

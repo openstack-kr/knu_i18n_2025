@@ -26,6 +26,5 @@ echo
 
 echo "=== [3/3] Merge AI translated file to original file ==="
 python merge_po.py --config "$CONFIG_FILE"
-echo
 
-echo "[ci.sh] Pipeline completed successfully!"
+echo "[ci.sh] completed successfully!" 

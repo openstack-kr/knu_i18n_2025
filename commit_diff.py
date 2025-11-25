@@ -65,23 +65,26 @@ def main():
 
     cfg = load_config(args.config)
 
-    project = cfg["project"]
+    project = cfg['git']["project"]
     
     repo_url = cfg['git']['repo_url'].format(project=project)
     work_dir = cfg['git']['work_dir']
     repo_dir = os.path.join(work_dir, project)
     
-    target_commit = cfg['compare']['target_commit']
-    base_commit = cfg['compare']['base_commit']
+    target_commit = cfg['git']['target_commit']
+    base_commit = "HEAD~1"
 
-    pot_dir = cfg['files']['pot_dir']
-    diff_name = cfg['files']['target_pot'].format(project=project)
-    source_dir = cfg['output'].get('source_dir', ".").format(project=project)
+    pot_dir = "./pot"
+    source_dir = project
 
     project_name = project
-
-    os.makedirs(work_dir, exist_ok=True)
-    os.makedirs(pot_dir, exist_ok=True)
+    
+    ######################## target_file 기준으로 pot 저장 위함
+    # config에서 파일명만 받음
+    target_file = cfg['files']["target_file"]
+    # target_file (po, pot) 확장자 분리
+    target_file_name, _ = os.path.splitext(target_file)
+    ######################## 
 
     # 1. Git 저장소 준비
     if os.path.isdir(os.path.join(repo_dir, ".git")):
@@ -98,7 +101,7 @@ def main():
 
     new_pot = os.path.abspath(os.path.join(pot_dir, f"new_{target_commit}.pot"))
     old_pot = os.path.abspath(os.path.join(pot_dir, f"old_{target_commit}.pot"))
-    diff_pot = os.path.abspath(os.path.join(pot_dir, diff_name))
+    diff_pot = os.path.abspath(os.path.join(pot_dir, f"{target_file_name}.pot"))
 
     try:
         # 2. New POT 생성 (Target Commit)

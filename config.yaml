@@ -1,44 +1,33 @@
-project: "nova"
-
+# -----------------------------
+#  Required settings
+# -----------------------------
 files:
-  pot_dir: "./pot"
-  po_dir: "./po"
-
-  # for filter_pot.py
-  standard_po: "./data/target/{project}/en_AU/LC_MESSAGES/{project}.po"
-
-  # common
-  origin_po: "./data/target/{project}/{lang}/LC_MESSAGES/{project}.po" # 기번역된 파일
-  target_pot: "{project}.pot" # 최종 경로 ./pot/{project}.pot임. filter or commit_diff로 추출된 pot
-  ai_po: "./po/{model}/{lang}/{project}.po" # AI 번역된 po
-  merged_po: "./data/result/{model}/{lang}/LC_MESSAGES/{project}.po" # merge된 결과물  
+  # File name to translate (must be placed under ./data/target/{lang})
+  target_file: "example_nova.po"
 
 # -----------------------------
-#  commit.diff.py
+#  Only for CI
 # -----------------------------
 git:
+  # 1. Set project you want to translate
+  project: "nova"
+  # 2. Set targe_commit you want to translate
+  target_commit: "d6f5a30caa1a4a139dc67272a150d24e44892a91"
   repo_url: "https://github.com/openstack/{project}.git"
+  # path where cloning repository
   work_dir: "./workspace"
 
-compare:
-  # 번역을 원하는 커밋 해시 값
-  target_commit: "d6f5a30caa1a4a139dc67272a150d24e44892a91"
-  base_commit: "HEAD~1"
-
-output:
-  # source_dir: pybabel이 스캔할 안쪽 폴더 (project 내부 기준)
-  # (전체를 스캔하고 싶으면 "." 을 입력)
-  source_dir: "{project}"
-
 # -----------------------------
-# translate.py
+#  Common
 # -----------------------------
 languages:
+  # When running local.sh, please choose exactly ONE language.
+  # When running ci.sh, you can specify MULTIPLE languages.
   - "ko_KR"
-  - "ja"
 
 # You can tune these arguments for performance / partial translation:
-#   --mode  : Choose your LLM mode[`ollama` (default), `gpt`, `claude`, `gemini`]
+#   --model : Choose your model
+#   --mode  : Choose your LLM mode[`ollama` (default, for open src LLM), `gpt`, `claude`, `gemini`]
 #   --workers   : number of parallel threads (default: 1)
 #   --start/end : entry index range to translate (default: 0 ~ all)
 #   --batch-size: entries per LLM call (default: 5)
@@ -50,22 +39,11 @@ llm:
   end: -1
   batch_size: 5
 
-# -----------------------------
-# Glossary
-# -----------------------------
+# Glossary: normally you don't need to edit this
 glossary:
-  dir: "./glossary"
   url: "https://opendev.org/openstack/i18n/raw/commit/129b9de7be12740615d532591792b31566d0972f/glossary/locale/{lang}/LC_MESSAGES/glossary.po"
-  po_file: "glossary.po"
-  json_file: "glossary.json"
 
-# -----------------------------
-# Example
-# -----------------------------
+# Example: normally you don't need to edit this
 examples:
-  example_dir: "./po-example"
   example_url: "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po"
   example_file: "nova-nova-locale.po"
-  fixed_example_json: "fixed_examples.json"
-
-

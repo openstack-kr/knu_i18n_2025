@@ -384,7 +384,6 @@ def translate_pot_file(
         charset="UTF-8",
     )
 
-
     entries_to_translate = [entry for entry in pot if entry.id]
 
     # Apply start/end index limits if provided
@@ -456,9 +455,37 @@ if __name__ == "__main__":
     # 1) --config 하나만 받기 (기본값: config_ci.yaml)
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config_ci.yaml")
+    parser.add_argument("--target_file", default=None)
     args = parser.parse_args()
 
     cfg = load_config(args.config)
+    
+    # -----------------------------
+    # files Config
+    # -----------------------------
+    project = cfg.get("project")
+    files_cfg = cfg.get("files")
+    POT_DIR = f"./pot/"
+    PO_DIR = "./po"
+    
+    # config에서 파일명만 받음
+    target_file = files_cfg["target_file"]
+    # target_file (po, pot) 확장자 분리
+    target_file_name, _ = os.path.splitext(target_file)
+    POT_FILE = os.path.join(POT_DIR, f"{target_file_name}.pot")
+
+    # 이 파이프라인에서는 원격 POT_URL/TARGET_POT_FILE은 사용하지 않으므로 None
+    # POT_URL = None
+    # TARGET_POT_FILE = None
+    
+    # -----------------------------
+    # languages Config
+    # -----------------------------
+    languages_cfg = cfg.get("languages")
+    if isinstance(languages_cfg, str):
+        LANGUAGES_TO_TRANSLATE = [s.strip() for s in languages_cfg.split(',') if s.strip()]
+    else:
+        LANGUAGES_TO_TRANSLATE = languages_cfg
 
     # -----------------------------
     # LLM Config
@@ -474,53 +501,19 @@ if __name__ == "__main__":
     BATCH_SIZE = llm_cfg.get("batch_size")
 
     # -----------------------------
-    # files Config
-    # -----------------------------
-    files_cfg = cfg.get("files")
-    POT_DIR = files_cfg.get("pot_dir")
-    PO_DIR = files_cfg.get("po_dir")
-    
-    project = cfg.get("project")
-
-    target_pot_template = files_cfg.get("target_pot")
-    if target_pot_template:
-        # 예: target_pot: \"diff_{target_commit}.pot\" → ./pot/diff_<hash>.pot
-        pot_filename = target_pot_template.format(
-            project=project,
-        )
-        POT_FILE = os.path.join(POT_DIR, pot_filename)
-    else:
-        POT_FILE = None
-
-    # 이 파이프라인에서는 원격 POT_URL/TARGET_POT_FILE은 사용하지 않으므로 None
-    # POT_URL = None
-    # TARGET_POT_FILE = None
-
-    # -----------------------------
     # Glossary / Examples Config
     # -----------------------------
     glossary_cfg = cfg.get("glossary")
-    GLOSSARY_DIR = glossary_cfg.get("dir")
+    GLOSSARY_DIR = "./glossary"
     GLOSSARY_URL = glossary_cfg.get("url")
-    GLOSSARY_PO_FILE = glossary_cfg.get("po_file")
-    GLOSSARY_JSON_FILE = glossary_cfg.get("json_file")
+    GLOSSARY_PO_FILE = "glossary.po"
+    GLOSSARY_JSON_FILE = "glossary.json"
 
     examples_cfg = cfg.get("examples")
-    EXAMPLE_DIR = examples_cfg.get("example_dir")
+    EXAMPLE_DIR = "./po-example"
     EXAMPLE_URL = examples_cfg.get("example_url")
     EXAMPLE_FILE = examples_cfg.get("example_file")
-    FIXED_EXAMPLE_JSON = examples_cfg.get(
-        "fixed_example_json"
-    )
-
-    # -----------------------------
-    # languages Config
-    # -----------------------------
-    languages_cfg = cfg.get("languages")
-    if isinstance(languages_cfg, str):
-        LANGUAGES_TO_TRANSLATE = [s.strip() for s in languages_cfg.split(',') if s.strip()]
-    else:
-        LANGUAGES_TO_TRANSLATE = languages_cfg
+    FIXED_EXAMPLE_JSON = "fixed_examples.json"
 
     print("=================================================")
     print(f"Translation Start, LLM: {MODEL_NAME}, Batch Size: {BATCH_SIZE}")
