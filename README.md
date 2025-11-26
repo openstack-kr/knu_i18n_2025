@@ -66,13 +66,13 @@ bash local.sh
 **What's happening:**
 - The system reads your target `.pot` or `.po` file from `./data/target/{lang}` directory
 - Uses the specified model (default: `llama3.2:3b` via Ollama)
-- Translates into your chosen language (default: ko_KR, ja)
-- Outputs a translated `.po` files to `./po/{model}/{lang}/` directory
+- Translates into your chosen languages (default: ko_KR, ja)
+- Outputs translated `.po` files to `./po/{model}/{lang}/` directory
 
 ## **Step 4 — Human Review**
 
 After AI translation, **human review is essential** to ensure accuracy and context appropriateness.
-AI translations are drafts that require verification before proudction use.
+AI translations are drafts that require human verification before production use.
 
 Open the generated `.po` file in `./po/{model}/{lang}/` directory and review the translations manually for technical accuracy, natural language flow, and consistency with existing translations.
 
@@ -106,9 +106,9 @@ files:
 
 - **Input**: `./data/target/{lang}/{target_file}.po` or `./data/target/{lang}/{target_file}.pot`
 - **Intermediate outputs**:
-    - Extracted POT: `./pot/{your_file}.pot`
-    - AI translations: `./po/{model}/{lang}/{your_file}.po`
-- **Final output**: `./data/result/{lang}/{your_file}.po` (merged translation)
+    - Extracted POT: `./pot/{target_file}.pot`
+    - AI translations: `./po/{model}/{lang}/{target_file}.po`
+- **Final output**: `./data/result/{lang}/{target_file}.po` (merged translation)
 
 ### Downloading files from Weblate:
 
@@ -129,8 +129,8 @@ We support **54 languages**
 
 ```yaml
 languages:
-  # When running local.sh, please choose exactly ONE language.
-  # When running ci.sh, you can specify MULTIPLE languages.
+  # When running local.sh, please choose exactly **ONE** language.
+  # When running ci.sh, you can specify **MULTIPLE** languages.
   - "ko_KR"
   - "ja"
 ```
@@ -176,11 +176,11 @@ bash ci.sh my-config.yaml
 
 The script runs a 3-step pipeline:
 
-1. **Find changed content**: Runs `commit_diff.py` to detect added or edited  msgid entries in your target file and extracts them to a `.pot` file
+1. **Find changed content**: Runs `commit_diff.py` to detect added or edited msgid entries in your target file and extracts them to a `.pot` file
 2. **Translate**: Executes `translate.py` to translate the extracted entries using your configured model
 3. **Merge**: Uses `merge_po.py` to merge AI-translated content back into the original `.po` file
 
-Results are saved to `./data/result/{project}.po`
+Results are saved to `./data/result/{lang}/{target_file}.po`
 
 **Usage in CI pipeline:**
 
