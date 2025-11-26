@@ -129,8 +129,8 @@ We support **54 languages**
 
 ```yaml
 languages:
-  # When running local.sh, please choose exactly **ONE** language.
-  # When running ci.sh, you can specify **MULTIPLE** languages.
+  # When running local.sh, please choose exactly ONE language.
+  # When running ci.sh, you can specify MULTIPLE languages.
   - "ko_KR"
   - "ja"
 ```
