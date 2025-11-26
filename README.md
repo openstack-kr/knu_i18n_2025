@@ -58,7 +58,7 @@ pip install -r requirements.txt
 This will translate the file specified in `config.yaml` using the configured model and language.
 
 ```bash
-tox -e i18n --vv
+tox -e i18n -vv
 # or
 bash local.sh
 ```
@@ -81,7 +81,7 @@ Open the generated `.po` file in `./po/{model}/{lang}/` directory and review the
 After reviewing AI translation, merge your reviewed translations back to the original `.po` file:
 
 ```bash
-tox - e i18n-merge --vv
+tox - e i18n-merge -vv
 # or
 python merge_po.py --config config.yaml
 ```
