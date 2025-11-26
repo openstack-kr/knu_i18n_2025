@@ -29,6 +29,7 @@ cd knu_i18n_2025
 ### Option A) Use tox (recommended)
 
 ```bash
+# if you trouble in upgrading pip, we recommend to use venv
 python -m pip install --upgrade pip
 pip install tox
 
@@ -81,7 +82,7 @@ Open the generated `.po` file in `./po/{model}/{lang}/` directory and review the
 After reviewing AI translation, merge your reviewed translations back to the original `.po` file:
 
 ```bash
-tox - e i18n-merge -vv
+tox -e i18n-merge -vv
 # or
 python merge_po.py --config config.yaml
 ```
