@@ -170,6 +170,8 @@ For automated translation in OpenStack's Zuul CI environment, use the provided C
 bash ci.sh
 ```
 
+> For detailed instructions on **configuring `config.yaml`** (git settings) and understanding **current limitations** (e.g., manual setup for non-Nova projects), please refer to the **[CI Configuration & Limitations](./docs/CI.md)**.
+
 The script automatically uses `config.yaml` by default, or you can specify a different config file:
 
 ```bash
