@@ -167,6 +167,7 @@ llm:
 For automated translation in OpenStack's Zuul CI environment, use the provided CI script:
 
 ```bash
+# Ensure you have completed Step 2 — Install dependencies before running this
 bash ci.sh
 ```
 
