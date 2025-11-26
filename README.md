@@ -43,6 +43,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 ### Option B) Run locally
 
 ```bash
+# if you trouble in upgrading pip, we recommend to use venv
 python -m pip install --upgrade pip
 
 # Install Ollama
