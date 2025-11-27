@@ -162,8 +162,6 @@ llm:
 
 # CI Integration
 
-⚠️ CI integration currently works only for the nova project. Support for other projects will be added soon.
-
 For automated translation in OpenStack's Zuul CI environment, use the provided CI script:
 
 ```bash
@@ -171,7 +169,7 @@ For automated translation in OpenStack's Zuul CI environment, use the provided C
 bash ci.sh
 ```
 
-> For detailed instructions on **configuring `config.yaml`** (git settings) and understanding **current limitations**, please refer to the **[CI.md](./docs/CI.md)**.
+⚠️  For detailed instructions on **configuring `config.yaml`** (git settings) and understanding **current limitations**, please refer to the **[CI.md](./docs/CI.md)**.
 
 The script automatically uses `config.yaml` by default, or you can specify a different config file:
 
