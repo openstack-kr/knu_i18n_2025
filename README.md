@@ -1,5 +1,5 @@
 # AI-based Translation System for OpenStack
-<img width="1812" height="875" alt="image" src="https://github.com/user-attachments/assets/75b0fd09-a11f-406e-a056-7291be89c8d0" />
+<img width="1881" height="804" alt="단락 텍스트" src="https://github.com/user-attachments/assets/d0ff9e64-8a24-42e5-af1d-f4e2d2879d96" />
 A lightweight, user-friendly AI translation system for OpenStack i18n.
 This tool helps contributors translate `.pot` / `.po` files into 54 languages using CPU-friendly LLMs such as **Ollama**, as well as GPT, Claude, and Gemini.
 
