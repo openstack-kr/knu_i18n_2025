@@ -46,6 +46,6 @@ python src/translate.py --config "$CONFIG_FILE"
 echo
 
 echo "=== [3/3] Merge AI translated file to original file ==="
-python src/merge_po.py --config "$CONFIG_FILE"
+python src/merge_po.py --config "$CONFIG_FILE" --repo-dir "$REPO_DIR"
 
 echo "[ci.sh] completed successfully!"

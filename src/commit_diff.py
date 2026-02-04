@@ -121,9 +121,8 @@ def main():
     pot_dir = "./pot"
     source_dir = get_modulename(repo_dir, project)
 
-    # target_file 기준으로 pot 저장 위함
-    target_file = cfg['files']["target_file"]
-    target_file_name, _ = os.path.splitext(target_file)
+    # diff_pot 파일명은 modulename 기준 (translate, merge_po와 연결 키)
+    target_file_name = source_dir
 
     # HEAD, HEAD~1 각각의 short hash를 tmp pot 파일명에 사용
     current_head = subprocess.check_output(

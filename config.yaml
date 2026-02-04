@@ -3,13 +3,13 @@
 # -----------------------------
 files:
   # Set target_file to translate (must be placed under ./data/target/{lang})
-  target_file: "example_nova.po"
+  target_file: "example.po"
 
 # -----------------------------
 #  Only for CI
 # -----------------------------
 # 1. Set project you want to translate
-project: "nova"
+project: "neutron-lib"
 git:
   # 2. Set branch you want to translate
   branch: "master"
