@@ -15,6 +15,25 @@ else
   echo "[local.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
+# config에서 target 파일 경로 복원하여 존재 여부 확인
+LANG=$(python -c "
+import yaml, sys
+cfg = yaml.safe_load(open('$CONFIG_FILE'))
+langs = cfg['languages']
+print(langs[0] if isinstance(langs, list) else langs)
+")
+TARGET_FILE=$(python -c "
+import yaml
+cfg = yaml.safe_load(open('$CONFIG_FILE'))
+print(cfg['files']['target_file'])
+")
+TRANS_PO="./data/target/${LANG}/${TARGET_FILE}"
+
+if [ ! -f "$TRANS_PO" ]; then
+  echo "[local.sh] ERROR: Target PO not found: $TRANS_PO"
+  exit 1
+fi
+
 echo "=== [1/2] Extracting untranslated strings into a .pot file ==="
 python src/filter_pot.py --config "$CONFIG_FILE"
 echo

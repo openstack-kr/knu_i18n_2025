@@ -281,3 +281,14 @@ def save_experiment_log(
         print(f"실험 로그 추가 완료: {results_csv_path}")
     except Exception as e:
         print(f"Warning: 실험 로그 저장 실패: {e}")
+
+
+def is_untranslated(entry) -> bool:
+    """msgstr(또는 복수형 msgstr_plural) 중 하나라도 채워져 있으면 '번역됨'으로 판단."""
+    if entry.msgid == "":
+        return False
+    if entry.obsolete:
+        return False
+    if entry.msgid_plural:
+        return not any(s.strip() for s in entry.msgstr_plural.values())
+    return not bool(entry.msgstr.strip())
