@@ -1,9 +1,58 @@
 import os
 import subprocess
-import shutil
 import argparse
+import configparser
+import re
 from babel.messages import pofile, Catalog
 from config_loader import load_config
+
+def get_modulename(repo_dir, project):
+    """
+    project명과 project 폴더명이 불일치 하는 경우가 있다.
+    setup.cfg / pyproject.toml에서 pybabel 스캔할 폴더명을 조회한다.
+
+    우선순위 (upstream get-modulename.py와 동일, pyproject.toml 추가):
+      1. setup.cfg  [openstack_translations] python_modules
+      2. setup.cfg  [files] packages
+      3. pyproject.toml [tool.setuptools] packages
+      4. fallback: project name 그대로
+    """
+    # --- setup.cfg ---
+    setup_cfg = os.path.join(repo_dir, "setup.cfg")
+    if os.path.isfile(setup_cfg):
+        parser = configparser.ConfigParser()
+        parser.read(setup_cfg)
+
+        if parser.has_option("openstack_translations", "python_modules"):
+            modules = [m.strip() for m in
+                       parser.get("openstack_translations", "python_modules").split("\n")
+                       if m.strip()]
+            if modules:
+                return modules[0]
+
+        if parser.has_option("files", "packages"):
+            modules = [m.strip() for m in
+                       parser.get("files", "packages").split("\n")
+                       if m.strip()]
+            if modules:
+                return modules[0]
+
+    # --- pyproject.toml ---
+    # [tool.setuptools] packages = ["pkg_a", "pkg_b", ...]
+    pyproject = os.path.join(repo_dir, "pyproject.toml")
+    if os.path.isfile(pyproject):
+        with open(pyproject, "r", encoding="utf-8") as f:
+            text = f.read()
+        match = re.search(
+            r'\[tool\.setuptools\].*?packages\s*=\s*\[(.*?)\]',
+            text, re.DOTALL
+        )
+        if match:
+            packages = re.findall(r'"([^"]+)"', match.group(1))
+            if packages:
+                return packages[0]
+
+    return project
 
 def run_git(args, cwd=None):
     subprocess.check_call(["git"] + args, cwd=cwd)
@@ -61,65 +110,52 @@ def extract_diff(new_pot, old_pot, output_diff):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config.yaml")
+    parser.add_argument("--repo-dir", required=True, help="path to already cloned repo (managed by ci.sh)")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
 
-    project = cfg['git']["project"]
-    
-    repo_url = cfg['git']['repo_url'].format(project=project)
-    work_dir = cfg['git']['work_dir']
-    repo_dir = os.path.join(work_dir, project)
-    
-    target_commit = cfg['git']['target_commit']
-    base_commit = "HEAD~1"
+    project = cfg["project"]
+    repo_dir = args.repo_dir
 
     pot_dir = "./pot"
-    source_dir = project
+    source_dir = get_modulename(repo_dir, project)
 
-    project_name = project
-    
-    ######################## target_file 기준으로 pot 저장 위함
-    # config에서 파일명만 받음
+    # target_file 기준으로 pot 저장 위함
     target_file = cfg['files']["target_file"]
-    # target_file (po, pot) 확장자 분리
     target_file_name, _ = os.path.splitext(target_file)
-    ######################## 
 
-    # 1. Git 저장소 준비
-    if os.path.isdir(os.path.join(repo_dir, ".git")):
-        print(f"Updating existing repo at {repo_dir}...")
-        run_git(["reset", "--hard", "HEAD"], cwd=repo_dir)
-        run_git(["checkout", "master"], cwd=repo_dir)
-        run_git(["pull"], cwd=repo_dir)
-    else:
-        print(f"Cloning repo to {repo_dir}...")
-        if os.path.exists(repo_dir): shutil.rmtree(repo_dir)
-        run_git(["clone", repo_url, repo_dir])
+    # HEAD, HEAD~1 각각의 short hash를 tmp pot 파일명에 사용
+    current_head = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo_dir
+    ).decode().strip()
+    base_head = subprocess.check_output(
+        ["git", "rev-parse", "HEAD~1"], cwd=repo_dir
+    ).decode().strip()
+    new_short = current_head[:8]
+    old_short = base_head[:8]
 
-    current_head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo_dir).decode().strip()
-
-    new_pot = os.path.abspath(os.path.join(pot_dir, f"new_{target_commit}.pot"))
-    old_pot = os.path.abspath(os.path.join(pot_dir, f"old_{target_commit}.pot"))
+    new_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD_{new_short}.pot"))
+    old_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD~1_{old_short}.pot"))
     diff_pot = os.path.abspath(os.path.join(pot_dir, f"{target_file_name}.pot"))
 
     try:
-        # 2. New POT 생성 (Target Commit)
-        print(f"Checkout Target: {target_commit}")
-        run_git(["checkout", target_commit], cwd=repo_dir)
-        run_pybabel(new_pot, repo_dir, project_name, source_dir)
+        # 1. New POT 생성 (HEAD)
+        print(f"Checkout Target: HEAD ({new_short})")
+        run_git(["checkout", "HEAD"], cwd=repo_dir)
+        run_pybabel(new_pot, repo_dir, project, source_dir)
 
-        # 3. Old POT 생성 (Base Commit)
-        print(f"Checkout Base: {base_commit}")
-        run_git(["checkout", base_commit], cwd=repo_dir)
-        run_pybabel(old_pot, repo_dir, project_name, source_dir)
+        # 2. Old POT 생성 (HEAD~1)
+        print(f"Checkout Base: HEAD~1 ({old_short})")
+        run_git(["checkout", "HEAD~1"], cwd=repo_dir)
+        run_pybabel(old_pot, repo_dir, project, source_dir)
 
     finally:
-        # 4. 복구
+        # 복구
         print(f"Restoring HEAD to {current_head}")
         run_git(["checkout", current_head], cwd=repo_dir)
 
-    # 5. 결과 추출
+    # 3. 결과 추출
     count = extract_diff(new_pot, old_pot, diff_pot)
 
     if count > 0:

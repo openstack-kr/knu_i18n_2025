@@ -8,14 +8,11 @@ files:
 # -----------------------------
 #  Only for CI
 # -----------------------------
+# 1. Set project you want to translate
+project: "nova"
 git:
-  # 1. Set project you want to translate
-  project: "nova"
-  # 2. Set targe_commit you want to translate
-  target_commit: "d6f5a30caa1a4a139dc67272a150d24e44892a91"
-  repo_url: "https://github.com/openstack/{project}.git"
-  # path where cloning repository
-  work_dir: "./workspace"
+  # 2. Set branch you want to translate
+  branch: "master"
 
 # -----------------------------
 #  Common

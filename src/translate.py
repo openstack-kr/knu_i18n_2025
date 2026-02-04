@@ -410,7 +410,6 @@ if __name__ == "__main__":
     # -----------------------------
     # files Config
     # -----------------------------
-    project = cfg.get("project")
     files_cfg = cfg.get("files")
     POT_DIR = f"./pot/"
     PO_DIR = "./po"
