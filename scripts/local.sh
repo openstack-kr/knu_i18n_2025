@@ -16,15 +16,11 @@ else
 fi
 
 echo "=== [1/2] Extracting untranslated strings into a .pot file ==="
-python filter_pot.py --config "$CONFIG_FILE"
+python src/filter_pot.py --config "$CONFIG_FILE"
 echo
 
 echo "=== [2/2] Translate .pot file ==="
-python translate.py --config "$CONFIG_FILE"
+python src/translate.py --config "$CONFIG_FILE"
 echo
-
-# echo "=== [3/3] Running merge.py ==="
-# python merge_po.py --config "$CONFIG_FILE"
-# echo
 
 echo "[local.sh] Completed successfully!"

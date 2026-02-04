@@ -36,7 +36,7 @@
       command:
         argv:
           - python3
-          - translate.py
+          - src/translate.py
           - "--model"
           - "{{ model }}"
           - "--workers"
