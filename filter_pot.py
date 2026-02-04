@@ -140,6 +140,5 @@ if __name__ == "__main__":
     os.makedirs(pot_dir, exist_ok=True)
     
     out_pot = os.path.join(pot_dir, f"{target_file_name}.pot")
-
-    os.makedirs(pot_dir, exist_ok=True)
+    
     main(trans_po, out_pot)

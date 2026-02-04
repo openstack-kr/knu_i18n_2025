@@ -2,154 +2,56 @@ import os
 import json
 import subprocess
 from datetime import datetime
-import argparse
 import requests
 from babel.messages import pofile
 import csv
 
+# def init_environment(
+#     pot_dir,
+#     po_dir,
+#     glossary_dir,
+#     example_dir,
+#     *,
+#     pot_url,
+#     target_pot_file,
+# ):
+#     """
+#     번역 환경을 초기화하고 필요한 파일(POT)을 다운로드한다.
+#     Initializes directories and downloads required files (POT).
 
-def parse_args():
-    """
-    명령줄 인자를 파싱하는 함수.
-    Parses command-line arguments for the translation pipeline.
+#     Args:
+#         pot_dir (str): POT 파일 저장 디렉터리
+#         po_dir (str): PO 파일 저장 디렉터리
+#         glossary_dir (str): 용어집 디렉터리
+#         example_dir (str): 예시 파일 디렉터리
+#         pot_url (str): POT 파일 다운로드 URL
+#         target_pot_file (str): POT 파일명
 
-    Returns:
-        argparse.Namespace: 파싱된 인자 객체 / Parsed arguments object
-    """
-    parser = argparse.ArgumentParser(
-        description="AI-based translation pipeline")
-    parser.add_argument(
-        "--model",
-        required=True,
-        help="Model name to use (e.g., qwen2.5:1.5b)")
-    parser.add_argument(
-        "--llm-mode",
-        type=str,
-        default="ollama",
-        choices=["ollama", "gpt", "claude", "gemini"],
-        help="Choose which LLM backend to use."
-    )
-    parser.add_argument(
-        "--pot_dir",
-        default="./pot",
-        help="Path to the POT file directory")
-    parser.add_argument(
-        "--pot_file",
-        help="Path to an existing POT file")
-    parser.add_argument(
-        "--po_dir",
-        default="./po",
-        help="Path to save the translated PO files")
-    parser.add_argument(
-        "--glossary_dir",
-        default="./glossary",
-        help="Path to the glossary directory")
-    parser.add_argument(
-        "--example_dir",
-        default="./example",
-        help="Path to the example directory")
-    parser.add_argument(
-        "--start",
-        type=int,
-        default=0,
-        help="Start index for translation")
-    parser.add_argument("--end", type=int, default=None,
-                        help="End index for translation")
-    parser.add_argument(
-        "--workers",
-        type=int,
-        default=8,
-        help="Number of parallel worker threads")
-    parser.add_argument(
-        "--pot_url",
-        help="URL for downloading the POT file")
-    parser.add_argument(
-        "--target_pot_file",
-        help="Target POT filename")
-    parser.add_argument(
-        "--glossary_url",
-        required=True,
-        help="URL for downloading the glossary file")
-    parser.add_argument(
-        "--glossary_po_file",
-        default="glossary.po",
-        help="Glossary PO filename")
-    parser.add_argument(
-        "--glossary_json_file",
-        default="glossary.json",
-        help="Glossary JSON filename")
-    parser.add_argument(
-        "--example_url",
-        required=True,
-        help="URL for the example file")
-    parser.add_argument(
-        "--example_file",
-        default="example.po",
-        help="Example filename")
-    parser.add_argument(
-        "--languages",
-        required=True,
-        help="list of language codes")
-    parser.add_argument(
-        '--fixed_example_json',
-        type=str,
-        default='fixed_examples.json',
-        help="fixed JSON file to use for translation examples")
-    parser.add_argument(
-        '--batch-size',
-        type=int,
-        default=5,
-        help='Number of entries to translate in one batch (default: 5)'
-    )
-    return parser.parse_args()
+#     Returns:
+#         str: 다운로드된 공용 POT 파일의 전체 경로
+#     """
+#     os.makedirs(pot_dir, exist_ok=True)
+#     os.makedirs(po_dir, exist_ok=True)
+#     os.makedirs(glossary_dir, exist_ok=True)
+#     os.makedirs(example_dir, exist_ok=True)
 
+#     pot_file_path = os.path.join(pot_dir, target_pot_file)
 
-def init_environment(
-    pot_dir,
-    po_dir,
-    glossary_dir,
-    example_dir,
-    *,
-    pot_url,
-    target_pot_file,
-):
-    """
-    번역 환경을 초기화하고 필요한 파일(POT)을 다운로드한다.
-    Initializes directories and downloads required files (POT).
+#     # Download POT if needed
+#     if not os.path.exists(pot_file_path):
+#         print(f"Downloading pot file from {pot_url}...")
+#         try:
+#             response = requests.get(pot_url, timeout=30)
+#             response.raise_for_status()
+#             with open(pot_file_path, "wb") as f:
+#                 f.write(response.content)
+#             print(f"Successfully downloaded and saved to {pot_file_path}")
+#         except requests.exceptions.RequestException as e:
+#             raise RuntimeError(f"Error downloading POT file: {e}")
+#     else:
+#         print(f"'{target_pot_file}' already exists. Skipping download.")
 
-    Args:
-        pot_dir (str): POT 파일 저장 디렉터리
-        po_dir (str): PO 파일 저장 디렉터리
-        glossary_dir (str): 용어집 디렉터리
-        example_dir (str): 예시 파일 디렉터리
-        pot_url (str): POT 파일 다운로드 URL
-        target_pot_file (str): POT 파일명
-
-    Returns:
-        str: 다운로드된 공용 POT 파일의 전체 경로
-    """
-    os.makedirs(pot_dir, exist_ok=True)
-    os.makedirs(po_dir, exist_ok=True)
-    os.makedirs(glossary_dir, exist_ok=True)
-    os.makedirs(example_dir, exist_ok=True)
-
-    pot_file_path = os.path.join(pot_dir, target_pot_file)
-
-    # Download POT if needed
-    if not os.path.exists(pot_file_path):
-        print(f"Downloading pot file from {pot_url}...")
-        try:
-            response = requests.get(pot_url, timeout=30)
-            response.raise_for_status()
-            with open(pot_file_path, "wb") as f:
-                f.write(response.content)
-            print(f"Successfully downloaded and saved to {pot_file_path}")
-        except requests.exceptions.RequestException as e:
-            raise RuntimeError(f"Error downloading POT file: {e}")
-    else:
-        print(f"'{target_pot_file}' already exists. Skipping download.")
-
-    return pot_file_path
+#     return pot_file_path
 
 
 def load_glossary(lang, url_template, glossary_file, json_file, glossary_dir):

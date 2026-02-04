@@ -1,0 +1,71 @@
+#: nova/exception.py:2634
+msgid "Reimaging volume failed."
+msgstr ""
+
+#: nova/exception.py:2638
+#, python-format
+msgid "Invalid node identity configuration: %(reason)s"
+msgstr ""
+
+#: nova/exception.py:2642
+#, python-format
+msgid "Unable to create duplicate record for %(target)s"
+msgstr ""
+
+#: nova/exception.py:2646
+#, python-format
+msgid ""
+"Starting with microversion 2.95, evacuate API will stop instance on "
+"destination. To evacuate before upgrades are complete please use an older "
+"microversion. Required version for compute %(expected), current version "
+"%(currently)s"
+msgstr ""
+
+#: nova/exception.py:2654
+#, python-format
+msgid "Encryption secret %(secret_uuid)s was not found in the key manager"
+msgstr ""
+
+#: nova/exception.py:2658
+#, python-format
+msgid "Failed to clean up ephemeral encryption secrets: %(error)s"
+msgstr ""
+
+#: nova/rpc.py:394
+#, python-format
+msgid ""
+"%(event_type)s is not a versioned notification and not whitelisted. See "
+"./doc/source/reference/notifications.rst"
+msgstr ""
+
+#: nova/utils.py:965
+#, python-format
+msgid "The %(service_type)s service is unavailable: %(error)s"
+msgstr ""
+
+#: nova/accelerator/cyborg.py:127
+msgid "Invalid response from Cyborg: "
+msgstr ""
+
+#: nova/accelerator/cyborg.py:130
+msgid "Could not communicate with Cyborg."
+msgstr ""
+
+#: nova/accelerator/cyborg.py:158
+msgid "Expected 1 device profile but got nothing."
+msgstr ""
+
+#: nova/accelerator/cyborg.py:161
+#, python-format
+msgid "Expected 1 device profile but got %s."
+msgstr ""
+
+#: nova/accelerator/cyborg.py:196 nova/accelerator/cyborg.py:206
+#: nova/conductor/manager.py:1891
+msgid "create"
+msgstr ""
+
+#: nova/accelerator/cyborg.py:205
+#, python-format
+msgid "device profile name %s"
+msgstr ""

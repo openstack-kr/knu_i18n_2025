@@ -9,7 +9,7 @@ echo
 # 1) make sure the model is available in local ollama
 MODEL=$(grep 'model:' "$CONFIG_FILE" | head -n 1 | sed 's/.*model: "\(.*\)"/\1/')
 if command -v ollama >/dev/null 2>&1; then
-  echo "[local.sh] pulling model: $MODEL ..."
+  echo "[ci.sh] pulling model: $MODEL ..."
   # if the model already exists, this is a quick no-op
   ollama pull $MODEL || echo "[local.sh] warning: could not pull model (ollama daemon running?)"
 else

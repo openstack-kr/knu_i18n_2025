@@ -10,7 +10,7 @@ Key Features:
 
 Execution Flow:
     1. utils.argparse로 CLI 인자값을 수신
-    2. utils.init_environment()에서 POT 폴더 생성 및 파일 다운로드
+    2. POT 폴더 생성 및 파일 다운로드
     3. load_glossary()로 언어별 glossary 파일 다운로드 및 로드
     4. load_fixed_examples()로 언어별 예시 로드
     5. translate_pot_file()-> translate_batch()에서 병렬 배치 번역 및 tqdm 표시
@@ -26,12 +26,16 @@ import argparse
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
 from utils import (
-    init_environment,
+    # init_environment,
     load_glossary,
     load_fixed_examples,
     save_experiment_log
 )
-from closed_llm import *
+from closed_llm import (
+    call_claude_chat,
+    call_gemini_chat,
+    call_openai_chat
+)
 from config_loader import load_config
 
 # Global LLM configuration
@@ -223,8 +227,6 @@ def translate_batch(payload, language_code, language_name):
         SYSTEM_PROMPT_BASE = custom_prompt_text
 
     SYSTEM_PROMPT = SYSTEM_PROMPT_BASE + FORMATTED_GLOSSARY
-
-    entries, batch_idx, total_batches = payload
 
     messages = [
         # System 역할: 전체 규칙과 '전체' 용어집을 한 번에 전달
