@@ -6,54 +6,6 @@ import requests
 from babel.messages import pofile
 import csv
 
-# def init_environment(
-#     pot_dir,
-#     po_dir,
-#     glossary_dir,
-#     example_dir,
-#     *,
-#     pot_url,
-#     target_pot_file,
-# ):
-#     """
-#     번역 환경을 초기화하고 필요한 파일(POT)을 다운로드한다.
-#     Initializes directories and downloads required files (POT).
-
-#     Args:
-#         pot_dir (str): POT 파일 저장 디렉터리
-#         po_dir (str): PO 파일 저장 디렉터리
-#         glossary_dir (str): 용어집 디렉터리
-#         example_dir (str): 예시 파일 디렉터리
-#         pot_url (str): POT 파일 다운로드 URL
-#         target_pot_file (str): POT 파일명
-
-#     Returns:
-#         str: 다운로드된 공용 POT 파일의 전체 경로
-#     """
-#     os.makedirs(pot_dir, exist_ok=True)
-#     os.makedirs(po_dir, exist_ok=True)
-#     os.makedirs(glossary_dir, exist_ok=True)
-#     os.makedirs(example_dir, exist_ok=True)
-
-#     pot_file_path = os.path.join(pot_dir, target_pot_file)
-
-#     # Download POT if needed
-#     if not os.path.exists(pot_file_path):
-#         print(f"Downloading pot file from {pot_url}...")
-#         try:
-#             response = requests.get(pot_url, timeout=30)
-#             response.raise_for_status()
-#             with open(pot_file_path, "wb") as f:
-#                 f.write(response.content)
-#             print(f"Successfully downloaded and saved to {pot_file_path}")
-#         except requests.exceptions.RequestException as e:
-#             raise RuntimeError(f"Error downloading POT file: {e}")
-#     else:
-#         print(f"'{target_pot_file}' already exists. Skipping download.")
-
-#     return pot_file_path
-
-
 def load_glossary(lang, url_template, glossary_file, json_file, glossary_dir):
     """
     특정 언어의 glossary.po 파일을 다운로드/로드하고 JSON 백업을 생성/로드한다.

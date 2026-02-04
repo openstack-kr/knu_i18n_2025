@@ -11,9 +11,9 @@ MODEL=$(grep 'model:' "$CONFIG_FILE" | head -n 1 | sed 's/.*model: "\(.*\)"/\1/'
 if command -v ollama >/dev/null 2>&1; then
   echo "[ci.sh] pulling model: $MODEL ..."
   # if the model already exists, this is a quick no-op
-  ollama pull $MODEL || echo "[local.sh] warning: could not pull model (ollama daemon running?)"
+  ollama pull $MODEL || echo "[ci.sh] warning: could not pull model (ollama daemon running?)"
 else
-  echo "[local.sh] warning: ollama is not installed or not in PATH. skipping model pull."
+  echo "[ci.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
 echo "=== [1/3] Find added or edited msgid in target file and extract to .pot file ==="

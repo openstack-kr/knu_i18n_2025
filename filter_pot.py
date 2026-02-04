@@ -63,7 +63,7 @@ def main(translated_po_path, out_pot_path="remaining.pot"):
         # fallback POT 로드
         try:
             base_po = polib.pofile(fallback_pot)
-        except:
+        except Exception:
             print("[ERROR] Fallback POT is invalid. Creating empty POT.")
             open(out_pot_path, "w").close()
             return

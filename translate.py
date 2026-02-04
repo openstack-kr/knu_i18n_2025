@@ -23,10 +23,11 @@ import time
 import concurrent.futures
 import json
 import argparse
+from dataclasses import dataclass
+from typing import Callable
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
 from utils import (
-    # init_environment,
     load_glossary,
     load_fixed_examples,
     save_experiment_log
@@ -38,31 +39,11 @@ from closed_llm import (
 )
 from config_loader import load_config
 
-# Global LLM configuration
-LLM_MODE = "ollama"
-CALL_LLM_FN = None
-
-# START/END indices for translation (None means no limit)
-START_TRANSLATE = None
-END_TRANSLATE = None
-
-def configure_llm_caller(llm_mode: str, model_name: str):
-    """
-    Configure which LLM backend to use for translation.
-
-    This function is called once in main() and sets the global
-    CALL_LLM_FN so that translate_batch() can simply call it
-    without re-selecting the backend for every batch.
-    """
-    global LLM_MODE, CALL_LLM_FN
-    LLM_MODE = llm_mode
-
+def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
+    """LLM 백엔드를 선택하여 호출 함수를 생성하고 반환한다."""
     if llm_mode == "gpt":
         def _call(messages):
-            return call_openai_chat(
-                messages,
-                model=model_name,
-            )
+            return call_openai_chat(messages, model=model_name)
     elif llm_mode == "claude":
         def _call(messages):
             claude_messages = []
@@ -72,19 +53,11 @@ def configure_llm_caller(llm_mode: str, model_name: str):
                     claude_system = msg["content"]
                 else:
                     claude_messages.append(msg)
-            return call_claude_chat(
-                claude_messages,
-                model=model_name,
-                system=claude_system,
-            )
+            return call_claude_chat(claude_messages, model=model_name, system=claude_system)
     elif llm_mode == "gemini":
         def _call(messages):
-            return call_gemini_chat(
-                messages,
-                model=model_name,
-            )
+            return call_gemini_chat(messages, model=model_name)
     else:
-        # Default: local Ollama model
         def _call(messages):
             response = ollama.chat(
                 model=model_name,
@@ -98,7 +71,7 @@ def configure_llm_caller(llm_mode: str, model_name: str):
             )
             return response["message"]["content"].strip()
 
-    CALL_LLM_FN = _call
+    return _call
 
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
@@ -157,46 +130,9 @@ LANG_MAP = {
     "sq": "Albanian",
 }
 
-# --- 추가: 프롬프트 디렉터리 및 지원 프롬프트 로더 ---
 PROMPT_DIR = os.path.join(os.path.dirname(__file__), "prompts")
-PRINTED_CUSTOM_PROMPT_NOTICE = False
 
-
-def load_support_prompt(language_code: str):
-    base = language_code
-    prompt_path = os.path.join(PROMPT_DIR, f"{base}.txt")
-    if os.path.isfile(prompt_path):
-        with open(prompt_path, "r", encoding="utf-8") as f:
-            return f.read().strip()
-    return None
-
-
-# entry를 5개씩 묶은 batch 단위로 번역 수행
-def translate_batch(payload, language_code, language_name):
-    """
-    여러 entry를 batch로 묶어 LLM을 사용해 번역하는 함수.
-    Translates a batch of PO/POT entries using the selected LLM model.
-
-    Args:
-        payload (tuple): (entries, batch_index, total_batches)
-            entries (list): 번역 대상 메시지 객체 리스트
-            batch_index (int): 현재 batch 순서
-            total_batches (int): 전체 batch 수
-        language_code (str): 번역하는 언어 코드
-        language_name (str): 번역하는 언어 이름
-
-    Returns:
-        list: [(msgid, translation, locations), ...]
-                - 정상일 때: translation에 번역 문자열이 채워진다.
-                - 오류/파싱 실패 시: translation(msgstr)을 빈 문자열("")로 둔 채 반환한다.
-    """
-    entries, batch_idx, total_batches = payload
-
-    GLOSSARY_TEXT_LINES = [f"* '{en}': '{ko}'" for en, ko in GLOSSARY.items()]
-    FORMATTED_GLOSSARY = "\n".join(GLOSSARY_TEXT_LINES)
-    global PRINTED_CUSTOM_PROMPT_NOTICE
-
-    SYSTEM_PROMPT_BASE = """
+DEFAULT_SYSTEM_PROMPT = """
     You are a strict translation engine.
     You are translating from English to {language_name}.
 
@@ -219,26 +155,57 @@ def translate_batch(payload, language_code, language_name):
     **[Glossary]**
     """
 
-    custom_prompt_text = load_support_prompt(language_code)
-    if custom_prompt_text:
-        if not PRINTED_CUSTOM_PROMPT_NOTICE:
-            print(f"Using custom support prompt for {language_code}")
-            PRINTED_CUSTOM_PROMPT_NOTICE = True
-        SYSTEM_PROMPT_BASE = custom_prompt_text
 
-    SYSTEM_PROMPT = SYSTEM_PROMPT_BASE + FORMATTED_GLOSSARY
+@dataclass
+class TranslationContext:
+    glossary: dict
+    few_shot_examples: list
+    call_llm_fn: Callable
+    max_workers: int
+    start: int | None
+    end: int | None
+    system_prompt: str
+
+
+def load_support_prompt(language_code: str) -> str | None:
+    """언어별 커스텀 프롬프트 파일이 있으면 로드, 없으면 None 반환."""
+    prompt_path = os.path.join(PROMPT_DIR, f"{language_code}.txt")
+    if os.path.isfile(prompt_path):
+        with open(prompt_path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    return None
+
+
+def translate_batch(payload, language_name, ctx: TranslationContext):
+    """
+    여러 entry를 batch로 묶어 LLM을 사용해 번역하는 함수.
+    Translates a batch of PO/POT entries using the selected LLM model.
+
+    Args:
+        payload (tuple): (entries, batch_index, total_batches)
+        language_name (str): 번역하는 언어 이름
+        ctx (TranslationContext): 번역에 필요한 컨텍스트 객체
+
+    Returns:
+        list: [(msgid, translation, locations), ...]
+                - 정상일 때: translation에 번역 문자열이 채워진다.
+                - 오류/파싱 실패 시: translation(msgstr)을 빈 문자열("")로 둔 채 반환한다.
+    """
+    entries, batch_idx, total_batches = payload
+
+    glossary_text = "\n".join(f"* '{en}': '{ko}'" for en, ko in ctx.glossary.items())
+    system_prompt = ctx.system_prompt + glossary_text
 
     messages = [
-        # System 역할: 전체 규칙과 '전체' 용어집을 한 번에 전달
         {
             "role": "system",
-            "content": SYSTEM_PROMPT.format(language_name=language_name),
+            "content": system_prompt.format(language_name=language_name),
         },
     ]
 
     # Few-shot 예시 추가 (batch 형식)
-    example_input = [msgid for msgid, _ in FEW_SHOT_EXAMPLES]
-    example_output = [msgstr for _, msgstr in FEW_SHOT_EXAMPLES]
+    example_input = [msgid for msgid, _ in ctx.few_shot_examples]
+    example_output = [msgstr for _, msgstr in ctx.few_shot_examples]
 
     messages.append({
         "role": "user",
@@ -265,19 +232,12 @@ def translate_batch(payload, language_code, language_name):
     messages.append({"role": "user", "content": user_content})
 
     try:
-        if CALL_LLM_FN is None:
-            raise RuntimeError(
-                "CALL_LLM_FN is not configured. "
-                "Did you forget to call configure_llm_caller() in main()?"
-            )
-
-        translation_text = CALL_LLM_FN(messages)
+        translation_text = ctx.call_llm_fn(messages)
 
         # JSON 파싱 시도
         try:
             translations = json.loads(translation_text)
         except json.JSONDecodeError:
-            # JSON 파싱 실패 시 대체 처리
             print(
                 (
                     "!!! Batch [{idx}/{total}] JSON parsing failed, "
@@ -285,7 +245,6 @@ def translate_batch(payload, language_code, language_name):
                 ).format(idx=batch_idx + 1, total=total_batches)
             )
             print("Falling back: extract simple array for this batch.")
-            # 간단한 array 추출 시도
             start = translation_text.find('[')
             end = translation_text.rfind(']') + 1
             if start != -1 and end != 0:
@@ -307,15 +266,10 @@ def translate_batch(payload, language_code, language_name):
                 )
             )
             print("Falling back: leaving msgstr empty for this batch.")
-            results = []
-            for entry in entries:
-                results.append((entry.id, "", entry.locations))
-            return results
+            return [(entry.id, "", entry.locations) for entry in entries]
 
-        results = []
-        for entry, translation in zip(entries, translations):
-            results.append((entry.id, translation.strip(), entry.locations))
-        return results
+        return [(entry.id, translation.strip(), entry.locations)
+                for entry, translation in zip(entries, translations)]
 
     except Exception as e:
         print(
@@ -328,10 +282,7 @@ def translate_batch(payload, language_code, language_name):
                 error=e,
             )
         )
-        results = []
-        for entry in entries:
-            results.append((entry.id, "", entry.locations))
-        return results
+        return [(entry.id, "", entry.locations) for entry in entries]
 
 
 def create_batches(entries, batch_size):
@@ -356,21 +307,18 @@ def translate_pot_file(
         po_path,
         language_code,
         language_name,
-        batch_size=5):
+        batch_size,
+        ctx: TranslationContext):
     """
     POT 파일을 읽어 batch 단위로 병렬 번역 후 PO 파일로 저장하는 함수.
-    Reads a .pot file, translates entries in batches in parallel,
-    and saves as .po file.
 
     Args:
         pot_path (str): 원본 POT 파일 경로
         po_path (str): 번역된 결과를 저장할 PO 파일 경로
         language_code (str): 번역하는 언어 코드
         language_name (str): 번역하는 언어 이름
-        batch_size (int): 한 번에 번역할 entry 개수 (기본값: 5)
-
-    Returns:
-        None
+        batch_size (int): 한 번에 번역할 entry 개수
+        ctx (TranslationContext): 번역에 필요한 컨텍스트 객체
     """
     with open(pot_path, "rb") as f:
         pot = pofile.read_po(f)
@@ -388,40 +336,37 @@ def translate_pot_file(
 
     entries_to_translate = [entry for entry in pot if entry.id]
 
-    # Apply start/end index limits if provided
-    global START_TRANSLATE, END_TRANSLATE
-    if START_TRANSLATE is not None or END_TRANSLATE is not None:
-        start_idx = START_TRANSLATE if START_TRANSLATE is not None else 0
-        end_idx = END_TRANSLATE if END_TRANSLATE is not None else len(entries_to_translate)
+    # start/end 범위 제한 적용
+    if ctx.start is not None or ctx.end is not None:
+        start_idx = ctx.start if ctx.start is not None else 0
+        end_idx = ctx.end if ctx.end is not None else len(entries_to_translate)
         entries_to_translate = entries_to_translate[start_idx:end_idx]
     total_entries = len(entries_to_translate)
 
-    # entry를 batch로 분할
     batches = create_batches(entries_to_translate, batch_size)
     total_batches = len(batches)
 
     print(f"--- {os.path.basename(pot_path)}를 {language_code}로 번역 ---")
     print(
         f"총 {total_entries}개 entry를 {total_batches}개 batch로 나누어 번역합니다. "
-        f"(Batch size: {batch_size}, Workers: {MAX_WORKERS})"
+        f"(Batch size: {batch_size}, Workers: {ctx.max_workers})"
     )
 
-    # (batch, 순서, 전체 batch 수)의 payload 만들기
     payloads = [
         (batch, i, total_batches)
         for i, batch in enumerate(batches)
     ]
 
     with concurrent.futures.ThreadPoolExecutor(
-        max_workers=MAX_WORKERS
+        max_workers=ctx.max_workers
     ) as executor:
         results = list(
             tqdm(
                 executor.map(
                     lambda payload: translate_batch(
                         payload,
-                        language_code,
-                        language_name),
+                        language_name,
+                        ctx),
                     payloads),
                 total=total_batches,
                 desc=f"Translating batches [{language_code}]",
@@ -496,7 +441,7 @@ if __name__ == "__main__":
     MODEL_NAME = llm_cfg.get("model")
     LLM_MODE = llm_cfg.get("mode")
     MAX_WORKERS = llm_cfg.get("workers")
-    configure_llm_caller(LLM_MODE, MODEL_NAME)
+    call_llm_fn = build_llm_caller(LLM_MODE, MODEL_NAME)
     START_TRANSLATE = llm_cfg.get("start")
     end_val = llm_cfg.get("end")
     END_TRANSLATE = None if end_val == -1 else end_val
@@ -528,20 +473,10 @@ if __name__ == "__main__":
     os.makedirs(EXAMPLE_DIR, exist_ok=True)
 
     if POT_FILE:
-        pot_file_path=POT_FILE
+        pot_file_path = POT_FILE
         print(f"Using local POT file: {pot_file_path}")
         if not os.path.exists(pot_file_path):
-            raise FileNotFoundError(f"POT file not found:{pot_file_path}")
-    # else:
-    #     pot_file_path = init_environment(
-    #     pot_dir=POT_DIR,
-    #     po_dir=PO_DIR,
-    #     glossary_dir=GLOSSARY_DIR,
-    #     example_dir=EXAMPLE_DIR,
-    #     pot_url=POT_URL,
-    #     target_pot_file=TARGET_POT_FILE,
-    #     )
-    # 모델별 폴더 구성 + 파일 경로
+            raise FileNotFoundError(f"POT file not found: {pot_file_path}")
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
 
     start = time.time()
@@ -553,8 +488,8 @@ if __name__ == "__main__":
         # 1. 언어 이름 찾기 (LANG_MAP 사용)
         language_name = LANG_MAP.get(lang_code, lang_code)
 
-        # 2. 전역 변수 GLOSSARY, FEW_SHOT_EXAMPLES 업데이트 (다운로드 포함)
-        GLOSSARY = load_glossary(
+        # 2. 언어별 glossary, 예시, 프롬프트 로드
+        glossary = load_glossary(
             lang_code,
             GLOSSARY_URL,
             GLOSSARY_PO_FILE,
@@ -562,7 +497,7 @@ if __name__ == "__main__":
             GLOSSARY_DIR
         )
 
-        FEW_SHOT_EXAMPLES = load_fixed_examples(
+        few_shot_examples = load_fixed_examples(
             lang_code,
             EXAMPLE_DIR,
             FIXED_EXAMPLE_JSON,
@@ -570,25 +505,44 @@ if __name__ == "__main__":
             EXAMPLE_FILE
         )
 
-        # 3. 결과 저장 경로 설정 (모델명/언어코드/파일명)
+        custom_prompt = load_support_prompt(lang_code)
+        if custom_prompt:
+            print(f"Using custom support prompt for {lang_code}")
+            system_prompt = custom_prompt
+        else:
+            system_prompt = DEFAULT_SYSTEM_PROMPT
+
+        # 3. TranslationContext 생성
+        ctx = TranslationContext(
+            glossary=glossary,
+            few_shot_examples=few_shot_examples,
+            call_llm_fn=call_llm_fn,
+            max_workers=MAX_WORKERS,
+            start=START_TRANSLATE,
+            end=END_TRANSLATE,
+            system_prompt=system_prompt,
+        )
+
+        # 4. 결과 저장 경로 설정 (모델명/언어코드/파일명)
         model_lang_folder = os.path.join(PO_DIR, MODEL_NAME, lang_code)
         os.makedirs(model_lang_folder, exist_ok=True)
         po_file_path = os.path.join(model_lang_folder, base_name)
 
-        # 4. 번역 실행 (language_code, language_name, batch_size 전달)
+        # 5. 번역 실행
         translate_pot_file(
             pot_file_path,
             po_file_path,
             lang_code,
             language_name,
-            batch_size=BATCH_SIZE
+            BATCH_SIZE,
+            ctx
         )
 
         lang_end_time = time.time()
         duration = round(lang_end_time - lang_start_time, 2)
         print(f"---[{lang_code}] Language Translation End ({duration}s)---\n")
 
-        # 5. 로그 기록 (language 인자 추가)
+        # 6. 로그 기록
         save_experiment_log(
             model_name=MODEL_NAME,
             pot_file=pot_file_path,

@@ -12,7 +12,7 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
-cfg = load_config(args)
+cfg = load_config(args.config)
 files_cfg = cfg.get("files", {})
 model = cfg["llm"]["model"]
 project = cfg["git"]["project"] 
