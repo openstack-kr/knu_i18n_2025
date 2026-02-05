@@ -3,8 +3,7 @@ import polib
 import os
 import argparse
 from copy import deepcopy
-from config_loader import load_config
-from utils import is_untranslated
+from utils import load_config, is_untranslated
 
 
 def extract_untranslated(source_po):

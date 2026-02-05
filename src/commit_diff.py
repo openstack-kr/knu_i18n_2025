@@ -2,8 +2,7 @@ import os
 import subprocess
 import argparse
 from babel.messages import pofile, Catalog
-from config_loader import load_config
-from utils import get_modulename
+from utils import load_config, get_modulename
 
 def run_git(args, cwd=None):
     subprocess.check_call(["git"] + args, cwd=cwd)

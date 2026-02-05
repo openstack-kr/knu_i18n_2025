@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 import polib
 import os
-from config_loader import load_config
-from utils import is_untranslated, get_modulename
+from utils import load_config, is_untranslated, get_modulename
 import argparse
 
 

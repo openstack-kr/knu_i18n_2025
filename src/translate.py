@@ -28,6 +28,7 @@ from typing import Callable
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
 from utils import (
+    load_config,
     load_glossary,
     load_fixed_examples,
     save_experiment_log,
@@ -38,7 +39,6 @@ from commercial_llm import (
     call_gemini_chat,
     call_openai_chat
 )
-from config_loader import load_config
 
 def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
     """LLM 백엔드를 선택하여 호출 함수를 생성하고 반환한다."""
