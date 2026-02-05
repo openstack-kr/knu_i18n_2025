@@ -240,10 +240,8 @@ def translate_batch(payload, language_name, ctx: TranslationContext):
             translations = json.loads(translation_text)
         except json.JSONDecodeError:
             print(
-                (
-                    "!!! Batch [{idx}/{total}] JSON parsing failed, "
-                    "trying to extract array !!!"
-                ).format(idx=batch_idx + 1, total=total_batches)
+                f"!!! Batch [{batch_idx + 1}/{total_batches}] JSON parsing failed, "
+                "trying to extract array !!!"
             )
             print("Falling back: extract simple array for this batch.")
             start = translation_text.find('[')
@@ -425,10 +423,6 @@ if __name__ == "__main__":
 
     POT_FILE = os.path.join(POT_DIR, f"{target_file_name}.pot")
 
-    # 이 파이프라인에서는 원격 POT_URL/TARGET_POT_FILE은 사용하지 않으므로 None
-    # POT_URL = None
-    # TARGET_POT_FILE = None
-    
     # -----------------------------
     # languages Config
     # -----------------------------
@@ -447,19 +441,12 @@ if __name__ == "__main__":
     MAX_WORKERS = llm_cfg.get("workers")
     call_llm_fn = build_llm_caller(LLM_MODE, MODEL_NAME)
     START_TRANSLATE = llm_cfg.get("start")
-    end_val = llm_cfg.get("end")
-    END_TRANSLATE = None if end_val == -1 else end_val
+    END_TRANSLATE = None if llm_cfg.get("end") == -1 else llm_cfg.get("end")
     BATCH_SIZE = llm_cfg.get("batch_size")
 
     # -----------------------------
     # Glossary / Examples Config
     # -----------------------------
-    glossary_cfg = cfg.get("glossary")
-    GLOSSARY_DIR = "./glossary"
-    GLOSSARY_URL = glossary_cfg.get("url")
-    GLOSSARY_PO_FILE = "glossary.po"
-    GLOSSARY_JSON_FILE = "glossary.json"
-
     examples_cfg = cfg.get("examples")
     EXAMPLE_DIR = "./po-example"
     EXAMPLE_URL = examples_cfg.get("example_url")
@@ -473,7 +460,6 @@ if __name__ == "__main__":
     # 폴더 생성 + POT 다운로드
     os.makedirs(POT_DIR, exist_ok=True)
     os.makedirs(PO_DIR, exist_ok=True)
-    os.makedirs(GLOSSARY_DIR, exist_ok=True)
     os.makedirs(EXAMPLE_DIR, exist_ok=True)
 
     if POT_FILE:
@@ -493,13 +479,7 @@ if __name__ == "__main__":
         language_name = LANG_MAP.get(lang_code, lang_code)
 
         # 2. 언어별 glossary, 예시, 프롬프트 로드
-        glossary = load_glossary(
-            lang_code,
-            GLOSSARY_URL,
-            GLOSSARY_PO_FILE,
-            GLOSSARY_JSON_FILE,
-            GLOSSARY_DIR
-        )
+        glossary = load_glossary(lang_code)
 
         few_shot_examples = load_fixed_examples(
             lang_code,

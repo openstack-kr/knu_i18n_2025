@@ -9,6 +9,25 @@ from babel.messages import pofile
 import csv
 import yaml
 
+GLOSSARY_URL = (
+    "https://opendev.org/openstack/i18n"
+    "/raw/branch/master/glossary/locale/{lang}/LC_MESSAGES/glossary.po"
+)
+
+def _download_file(url, dest_path, label):
+    """URL에서 파일을 다운로드하여 dest_path로 저장한다. 실패 시 False 반환."""
+    print(f"Downloading {label} from {url}...")
+    try:
+        response = requests.get(url, timeout=30)
+        response.raise_for_status()
+        with open(dest_path, "wb") as f:
+            f.write(response.content)
+        print(f"Successfully downloaded and saved to {dest_path}\n")
+        return True
+    except requests.exceptions.RequestException as e:
+        print(f"Warning: Could not download {label}: {e}\n")
+        return False
+
 
 def load_config(path="config.yaml"):
     with open(path, 'r', encoding='utf-8') as f:
@@ -63,46 +82,29 @@ def get_modulename(repo_dir, project):
 
     return project
 
-def load_glossary(lang, url_template, glossary_file, json_file, glossary_dir):
+def load_glossary(lang, glossary_dir="./glossary"):
     """
     특정 언어의 glossary.po 파일을 다운로드/로드하고 JSON 백업을 생성/로드한다.
-    Loads/downloads a language-specific glossary .po file
-    and loads/writes a JSON backup.
 
     Args:
         lang (str): 처리할 언어 코드
-        url_template (str): 다운로드 URL 템플릿
-        glossary_file (str): glossary .po 파일명
-        json_file (str): glossary .json 파일명
         glossary_dir (str): 용어집 최상위 디렉터리
 
     Returns:
         dict: Glossary key-value 매핑 (id → string)
     """
-
-    if not url_template:
-        return
-
     lang_dir = os.path.join(glossary_dir, lang)
     os.makedirs(lang_dir, exist_ok=True)
 
-    glossary_po_path = os.path.join(lang_dir, glossary_file)
-    glossary_json_path = os.path.join(lang_dir, json_file)
-    glossary_url = url_template.format(lang=lang)
+    glossary_po_path = os.path.join(lang_dir, "glossary.po")
+    glossary_json_path = os.path.join(lang_dir, "glossary.json")
+    glossary_url = GLOSSARY_URL.format(lang=lang)
 
     G = {}
 
     # Download Glossary PO if needed
     if not os.path.exists(glossary_po_path):
-        print(f"Downloading glossary for [{lang}] from {glossary_url}...")
-        try:
-            response = requests.get(glossary_url, timeout=30)
-            response.raise_for_status()
-            with open(glossary_po_path, "wb") as f:
-                f.write(response.content)
-            print(f"Successfully downloaded and saved to {glossary_po_path}\n")
-        except requests.exceptions.RequestException as e:
-            print(f"Warning: Could not download glossary for [{lang}]: {e}\n")
+        if not _download_file(glossary_url, glossary_po_path, f"glossary for [{lang}]"):
             return G
 
     if os.path.exists(glossary_json_path):
@@ -163,15 +165,7 @@ def load_examples(lang, url_template, example_file, example_dir):
 
     # Download Example PO if needed
     if not os.path.exists(example_path):
-        print(f"Downloading examples for [{lang}] from {example_url}...")
-        try:
-            response = requests.get(example_url, timeout=30)
-            response.raise_for_status()
-            with open(example_path, "wb") as f:
-                f.write(response.content)
-            print(f"Successfully downloaded and saved to {example_path}\n")
-        except requests.exceptions.RequestException as e:
-            print(f"Warning: Could not download examples for [{lang}]: {e}\n")
+        if not _download_file(example_url, example_path, f"examples for [{lang}]"):
             return examples
 
     if os.path.exists(example_path):

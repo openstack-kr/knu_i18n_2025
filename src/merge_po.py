@@ -82,14 +82,10 @@ def main():
 
                     entry.msgstr = llm_entry.msgstr
 
-                    if hasattr(llm_entry, 'comment') and llm_entry.comment:
-                        entry.comment = llm_entry.comment
-                    if hasattr(llm_entry, 'tcomment') and llm_entry.tcomment:
-                        entry.tcomment = llm_entry.tcomment
-                    if hasattr(llm_entry, 'flags') and llm_entry.flags:
-                        entry.flags = llm_entry.flags
-                    if hasattr(llm_entry, 'references') and llm_entry.references:
-                        entry.references = llm_entry.references
+                    for attr in ('comment', 'tcomment', 'flags', 'references'):
+                        val = getattr(llm_entry, attr, None)
+                        if val:
+                            setattr(entry, attr, val)
 
                     updated_count += 1
 

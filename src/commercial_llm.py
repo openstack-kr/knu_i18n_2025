@@ -27,7 +27,7 @@ def call_openai_chat(messages, model: str = "gpt-4o"):
     if not api_key:
         raise RuntimeError("Missing OPENAI_API_KEY. Please set it in your environment.")
 
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = OpenAI(api_key=api_key)
     resp = client.chat.completions.create(
         model=model,
         messages=messages,
@@ -64,7 +64,7 @@ def call_claude_chat(messages, model: str = "claude-3-5-haiku-latest", system: s
     if not api_key:
         raise RuntimeError("Missing ANTHROPIC_API_KEY. Please set it in your environment.")
 
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    client = anthropic.Anthropic(api_key=api_key)
     api_params = {
         "model": model,
         "max_tokens": 4096,
@@ -98,7 +98,7 @@ def call_gemini_chat(messages, model="gemini-1.5-flash"):
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         raise RuntimeError("Missing GEMINI_API_KEY. Please set it in your environment.")
-    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+    genai.configure(api_key=api_key)
 
     combined_prompt = ""
     for msg in messages:
