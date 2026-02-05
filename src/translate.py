@@ -30,7 +30,8 @@ from babel.messages import pofile, Catalog
 from utils import (
     load_glossary,
     load_fixed_examples,
-    save_experiment_log
+    save_experiment_log,
+    get_modulename
 )
 from commercial_llm import (
     call_claude_chat,
@@ -399,25 +400,29 @@ if __name__ == "__main__":
         3. 모델별/언어별 폴더 생성 및 번역 수행
         4. 언어별 번역 결과 저장 및 Git 로그 기록
     """
-    # 1) --config 하나만 받기 (기본값: config_ci.yaml)
+    # 1) --config 하나만 받기
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="config_ci.yaml")
-    parser.add_argument("--target_file", default=None)
+    parser.add_argument("--config", default="config.yaml")
+    parser.add_argument("--repo-dir", default=None,
+                        help="(CI mode) path to cloned repo. modulename을 여기서 조회")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
-    
+
     # -----------------------------
     # files Config
     # -----------------------------
-    files_cfg = cfg.get("files")
     POT_DIR = f"./pot/"
     PO_DIR = "./po"
-    
-    # config에서 파일명만 받음
-    target_file = files_cfg["target_file"]
-    # target_file (po, pot) 확장자 분리
-    target_file_name, _ = os.path.splitext(target_file)
+
+    if args.repo_dir:
+        # CI 모드: modulename이 파일명 키
+        target_file_name = get_modulename(args.repo_dir, cfg["project"])
+    else:
+        # local 모드: config의 target_file이 파일명 키
+        target_file = cfg["target_file"]
+        target_file_name, _ = os.path.splitext(target_file)
+
     POT_FILE = os.path.join(POT_DIR, f"{target_file_name}.pot")
 
     # 이 파이프라인에서는 원격 POT_URL/TARGET_POT_FILE은 사용하지 않으므로 None

@@ -7,7 +7,7 @@ echo
 
 # --- config에서 project, branch 읽기 ---
 PROJECT=$(python -c "import yaml; print(yaml.safe_load(open('$CONFIG_FILE'))['project'])")
-BRANCH=$(python -c "import yaml; print(yaml.safe_load(open('$CONFIG_FILE'))['git']['branch'])")
+BRANCH=$(python -c "import yaml; print(yaml.safe_load(open('$CONFIG_FILE'))['branch'])")
 REPO_DIR="./workspace/${PROJECT}"
 REPO_URL="https://opendev.org/openstack/${PROJECT}.git"
 
@@ -42,7 +42,7 @@ python src/commit_diff.py --config "$CONFIG_FILE" --repo-dir "$REPO_DIR"
 echo
 
 echo "=== [2/3] Translate file ==="
-python src/translate.py --config "$CONFIG_FILE"
+python src/translate.py --config "$CONFIG_FILE" --repo-dir "$REPO_DIR"
 echo
 
 echo "=== [3/3] Merge AI translated file to original file ==="

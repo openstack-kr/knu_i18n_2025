@@ -41,10 +41,7 @@ if __name__ == "__main__":
     else:
         lang = languages
 
-    files_cfg = cfg["files"]
-    
-    # config에서 파일명만 받음
-    target_file = files_cfg["target_file"]
+    target_file = cfg["target_file"]
     # target_file (po, pot) 확장자 분리
     target_file_name, _ = os.path.splitext(target_file)
     

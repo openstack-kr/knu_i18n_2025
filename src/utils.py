@@ -1,10 +1,61 @@
 import os
 import json
 import subprocess
+import configparser
+import re
 from datetime import datetime
 import requests
 from babel.messages import pofile
 import csv
+
+
+def get_modulename(repo_dir, project):
+    """
+    project명과 project 폴더명이 불일치 하는 경우가 있다.
+    setup.cfg / pyproject.toml에서 pybabel 스캔할 폴더명을 조회한다.
+
+    우선순위 (upstream get-modulename.py와 동일, pyproject.toml 추가):
+      1. setup.cfg  [openstack_translations] python_modules
+      2. setup.cfg  [files] packages
+      3. pyproject.toml [tool.setuptools] packages
+      4. fallback: project name 그대로
+    """
+    # --- setup.cfg ---
+    setup_cfg = os.path.join(repo_dir, "setup.cfg")
+    if os.path.isfile(setup_cfg):
+        parser = configparser.ConfigParser()
+        parser.read(setup_cfg)
+
+        if parser.has_option("openstack_translations", "python_modules"):
+            modules = [m.strip() for m in
+                       parser.get("openstack_translations", "python_modules").split("\n")
+                       if m.strip()]
+            if modules:
+                return modules[0]
+
+        if parser.has_option("files", "packages"):
+            modules = [m.strip() for m in
+                       parser.get("files", "packages").split("\n")
+                       if m.strip()]
+            if modules:
+                return modules[0]
+
+    # --- pyproject.toml ---
+    # [tool.setuptools] packages = ["pkg_a", "pkg_b", ...]
+    pyproject = os.path.join(repo_dir, "pyproject.toml")
+    if os.path.isfile(pyproject):
+        with open(pyproject, "r", encoding="utf-8") as f:
+            text = f.read()
+        match = re.search(
+            r'\[tool\.setuptools\].*?packages\s*=\s*\[(.*?)\]',
+            text, re.DOTALL
+        )
+        if match:
+            packages = re.findall(r'"([^"]+)"', match.group(1))
+            if packages:
+                return packages[0]
+
+    return project
 
 def load_glossary(lang, url_template, glossary_file, json_file, glossary_dir):
     """

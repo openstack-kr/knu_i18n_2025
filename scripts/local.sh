@@ -25,7 +25,7 @@ print(langs[0] if isinstance(langs, list) else langs)
 TARGET_FILE=$(python -c "
 import yaml
 cfg = yaml.safe_load(open('$CONFIG_FILE'))
-print(cfg['files']['target_file'])
+print(cfg['target_file'])
 ")
 TRANS_PO="./data/target/${LANG}/${TARGET_FILE}"
 
