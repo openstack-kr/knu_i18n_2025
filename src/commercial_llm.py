@@ -1,4 +1,4 @@
-# === Closed-source LLM helpers (optional) ===
+# === Commercial LLM helpers (optional) ===
 import os
 from openai import OpenAI
 import anthropic

@@ -2,6 +2,7 @@
 import polib
 import os
 from config_loader import load_config
+from utils import is_untranslated
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -12,7 +13,7 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
-cfg = load_config("config.yaml")
+cfg = load_config(args.config)
 files_cfg = cfg.get("files", {})
 model = cfg["llm"]["model"]
 project = cfg["git"]["project"] 
@@ -42,7 +43,7 @@ for lang in cfg["languages"]:
             llm_entry = llm_dict[entry.msgid]
 
             # standard_po에 이미 번역이 있으면 덮어쓰지 않음
-            if not entry.msgstr.strip() and llm_entry.msgstr.strip():
+            if is_untranslated(entry) and llm_entry.msgstr.strip():
                 print(f"[Lang: {lang}]\n--- msgid: {entry.msgid}")
                 print(f"[Lang: {lang}]- before: {entry.msgstr}")
                 print(f"[Lang: {lang}]+ after : {llm_entry.msgstr}")

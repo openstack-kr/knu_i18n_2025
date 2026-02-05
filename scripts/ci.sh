@@ -9,22 +9,22 @@ echo
 # 1) make sure the model is available in local ollama
 MODEL=$(grep 'model:' "$CONFIG_FILE" | head -n 1 | sed 's/.*model: "\(.*\)"/\1/')
 if command -v ollama >/dev/null 2>&1; then
-  echo "[local.sh] pulling model: $MODEL ..."
+  echo "[ci.sh] pulling model: $MODEL ..."
   # if the model already exists, this is a quick no-op
-  ollama pull $MODEL || echo "[local.sh] warning: could not pull model (ollama daemon running?)"
+  ollama pull $MODEL || echo "[ci.sh] warning: could not pull model (ollama daemon running?)"
 else
-  echo "[local.sh] warning: ollama is not installed or not in PATH. skipping model pull."
+  echo "[ci.sh] warning: ollama is not installed or not in PATH. skipping model pull."
 fi
 
 echo "=== [1/3] Find added or edited msgid in target file and extract to .pot file ==="
-python commit_diff.py --config "$CONFIG_FILE"
+python src/commit_diff.py --config "$CONFIG_FILE"
 echo
 
 echo "=== [2/3] Translate file ==="
-python translate.py --config "$CONFIG_FILE"
+python src/translate.py --config "$CONFIG_FILE"
 echo
 
 echo "=== [3/3] Merge AI translated file to original file ==="
-python merge_po.py --config "$CONFIG_FILE"
+python src/merge_po.py --config "$CONFIG_FILE"
 
 echo "[ci.sh] completed successfully!" 

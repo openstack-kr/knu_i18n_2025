@@ -62,7 +62,7 @@ This will translate the file specified in `config.yaml` using the configured mod
 ```bash
 tox -e i18n -vv
 # or
-bash local.sh
+bash scripts/local.sh
 ```
 
 **What's happening:**
@@ -85,7 +85,7 @@ After reviewing AI translation, merge your reviewed translations back to the ori
 ```bash
 tox -e i18n-merge -vv
 # or
-python merge_po.py --config config.yaml
+python src/merge_po.py --config config.yaml
 ```
 
 This will merge your reviewed translations and save the final result to `./data/result/{lang}` directory.
@@ -166,7 +166,7 @@ For automated translation in OpenStack's Zuul CI environment, use the provided C
 
 ```bash
 # Ensure you have completed Step 2 — Install dependencies before running this
-bash ci.sh
+bash scripts/ci.sh
 ```
 
 ⚠️  For detailed instructions on **configuring `config.yaml`** (git settings) and understanding **current limitations**, please refer to the **[CI.md](./docs/CI.md)**.
@@ -174,7 +174,7 @@ bash ci.sh
 The script automatically uses `config.yaml` by default, or you can specify a different config file:
 
 ```bash
-bash ci.sh my-config.yaml
+bash scripts/ci.sh config.yaml
 ```
 
 **What ci.sh does:**
@@ -197,7 +197,7 @@ Results are saved to `./data/result/{lang}/{target_file}.po`
 
 # In your playbook:
 - name: Run AI Translation
-    shell: bash ci.sh
+    shell: bash scripts/ci.sh
 ```
 
 The CI workflow is optimized to translate only changed content, making it efficient for continuous integration pipelines.
@@ -219,7 +219,7 @@ For full architecture details, see [**PAPER.md**](docs/PAPER.md).
 
 You can tune two major components:
 
-- **Few-shot examples** (`/examples/`)
+- **Few-shot examples** (`/po-example/`)
 - **Language-specific prompts** (`/prompts/`)
 
 See [**CONTRIBUTING.md**](https://github.com/openstack-kr/knu_i18n_2025/blob/main/CONTRIBUTING.md) to learn how you can contribute.
