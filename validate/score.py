@@ -9,7 +9,8 @@ Compare two PO files semantically using SimCSE.
 
 Usage examples:
   python score.py --a base.po --b new.po --out result.json
-  python score.py --a base.po --b-latest-in po/ko_KR --out result.json --b-pattern guide.po
+  python score.py --a base.po --b-latest-in po/ko_KR \\
+      --out result.json --b-pattern guide.po
 """
 
 from __future__ import annotations
@@ -32,7 +33,10 @@ from babel.messages.pofile import read_po as babel_read_po
 # --------------------------
 # Utilities
 # --------------------------
-def normalize_text(s: str, do_norm: bool = False, do_lower: bool = False) -> str:
+def normalize_text(
+        s: str,
+        do_norm: bool = False,
+        do_lower: bool = False) -> str:
     if s is None:
         s = ""
     if do_norm:
@@ -60,7 +64,9 @@ def load_po_entries(path: Path, only_translated=False, skip_fuzzy=False,
                 continue
             if e.msgid_plural:
                 if e.msgstr_plural:
-                    for idx, s in sorted(e.msgstr_plural.items(), key=lambda kv: int(kv[0])):
+                    for idx, s in sorted(
+                        e.msgstr_plural.items(), key=lambda kv: int(
+                            kv[0])):
                         s = normalize_text(s, do_norm, do_lower)
                         if only_translated and s == "":
                             continue
@@ -92,7 +98,8 @@ def load_po_entries(path: Path, only_translated=False, skip_fuzzy=False,
                 continue
             ctx = msg.context or ""
             if isinstance(msg.id, tuple):  # plural
-                strings = msg.string if isinstance(msg.string, tuple) else (msg.string,)
+                strings = msg.string if isinstance(
+                    msg.string, tuple) else (msg.string,)
                 for idx, s in enumerate(strings):
                     s = normalize_text(s, do_norm, do_lower)
                     if only_translated and s == "":
@@ -112,7 +119,8 @@ def batched(iterable, n: int):
 
 
 def find_latest_po(directory: Path, pattern: str | None = None) -> Path:
-    """Pick the most recently modified .po under directory. Optional substring filter."""
+    """Pick the most recently modified .po under directory.
+    Optional substring filter."""
     if not directory.exists():
         print(f"[ERROR] directory not found: {directory}", file=sys.stderr)
         sys.exit(1)
@@ -122,7 +130,9 @@ def find_latest_po(directory: Path, pattern: str | None = None) -> Path:
             continue
         cands.append(p)
     if not cands:
-        print(f"[ERROR] no .po found in {directory} (pattern={pattern})", file=sys.stderr)
+        print(
+            f"[ERROR] no .po found in {directory} (pattern={pattern})",
+            file=sys.stderr)
         sys.exit(1)
     cands.sort(key=lambda x: x.stat().st_mtime, reverse=True)
     latest = cands[0]
@@ -137,9 +147,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--a", required=True, help="Baseline/reference PO file")
     ap.add_argument("--b", help="Target PO file to compare")
-    ap.add_argument("--b-latest-in", help="Directory to auto-pick the latest PO")
-    ap.add_argument("--b-pattern", help="Substring to filter when picking latest PO")
-    ap.add_argument("--out", required=True, help="Path (ignored name; JSON saved under validate/json/<po>_timestamp.json)")
+    ap.add_argument(
+        "--b-latest-in",
+        help="Directory to auto-pick the latest PO")
+    ap.add_argument(
+        "--b-pattern",
+        help="Substring to filter when picking latest PO")
+    ap.add_argument(
+        "--out",
+        required=True,
+        help="Path (ignored name; JSON saved under "
+             "validate/json/<po>_timestamp.json)")
     ap.add_argument("--model", default="princeton-nlp/sup-simcse-roberta-base")
     ap.add_argument("--batch-size", type=int, default=64)
     ap.add_argument("--threshold", type=float, default=0.80)
@@ -148,8 +166,11 @@ def main():
     ap.add_argument("--normalize-text", action="store_true")
     ap.add_argument("--lowercase", action="store_true")
     ap.add_argument("--topk", type=int, default=20)
-    ap.add_argument("--experiments_csv",
-                    default=str(Path(__file__).resolve().parent.parent / "experiments.csv"))
+    ap.add_argument(
+        "--experiments_csv",
+        default=str(
+            Path(__file__).resolve().parent.parent /
+            "experiments.csv"))
     args = ap.parse_args()
 
     pa = Path(args.a)
@@ -162,7 +183,9 @@ def main():
     elif args.b:
         pb = Path(args.b)
     else:
-        print("[ERROR] Must specify either --b or --b-latest-in", file=sys.stderr)
+        print(
+            "[ERROR] Must specify either --b or --b-latest-in",
+            file=sys.stderr)
         sys.exit(1)
 
     if not pb.exists():
@@ -188,7 +211,10 @@ def main():
     sims: list[float] = []
 
     def encode_texts(texts):
-        return model.encode(texts, convert_to_tensor=True, normalize_embeddings=True)
+        return model.encode(
+            texts,
+            convert_to_tensor=True,
+            normalize_embeddings=True)
 
     for batch in batched(pairs, args.batch_size):
         a_texts = [p[1] for p in batch]
@@ -202,7 +228,8 @@ def main():
     if sims:
         avg = float(sum(sims) / len(sims))
         med = float(statistics.median(sims))
-        p90 = float(statistics.quantiles(sims, n=10)[-1]) if len(sims) >= 10 else None
+        p90 = float(statistics.quantiles(sims, n=10)
+                    [-1]) if len(sims) >= 10 else None
         ratio = 100.0 * sum(1 for s in sims if s >= args.threshold) / len(sims)
     else:
         avg = med = ratio = 0.0
@@ -235,10 +262,17 @@ def main():
             "pct_over_threshold": round(ratio, 2),
         },
     }
-    pout.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    pout.write_text(
+        json.dumps(
+            report,
+            ensure_ascii=False,
+            indent=2),
+        encoding="utf-8")
     print(f"Saved: {pout}")
     if sims:
-        print(f"Pairs={len(sims)} | Avg={avg:.4f} | Med={med:.4f} | ≥{args.threshold} = {ratio:.2f}%")
+        print(
+            f"Pairs={len(sims)} | Avg={avg:.4f} | Med={med:.4f} | "
+            f"≥{args.threshold} = {ratio:.2f}%")
     else:
         print("No comparable pairs found.")
 
@@ -263,11 +297,14 @@ def main():
             last["sim_over_0.8(≥0.8)"] = f"{ratio:.2f}"
             rows[-1] = last
         else:
-            print(f"[WARN] {csv_path} is empty. Nothing to update.", file=sys.stderr)
+            print(
+                f"[WARN] {csv_path} is empty. Nothing to update.",
+                file=sys.stderr)
 
         # Write back with quoting to protect paths containing ':' etc.
         with csv_path.open("w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=fields, quoting=csv.QUOTE_ALL)
+            writer = csv.DictWriter(
+                f, fieldnames=fields, quoting=csv.QUOTE_ALL)
             writer.writeheader()
             writer.writerows(rows)
         print(f"[quality] Updated only the last row in: {csv_path}")

@@ -4,6 +4,7 @@ from openai import OpenAI
 import anthropic
 import google.generativeai as genai
 
+
 def call_openai_chat(messages, model: str = "gpt-4o"):
     """
     Call the OpenAI Chat Completions API.
@@ -14,7 +15,8 @@ def call_openai_chat(messages, model: str = "gpt-4o"):
 
     Args:
         messages (list[dict]): A list of chat messages, each containing
-            "role" and "content" fields (e.g., {"role": "user", "content": "..."}).
+            "role" and "content" fields
+            (e.g., {"role": "user", "content": "..."}).
         model (str): The OpenAI model name to use. Defaults to "gpt-4o".
 
     Returns:
@@ -25,7 +27,8 @@ def call_openai_chat(messages, model: str = "gpt-4o"):
     """
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        raise RuntimeError("Missing OPENAI_API_KEY. Please set it in your environment.")
+        raise RuntimeError(
+            "Missing OPENAI_API_KEY. Please set it in your environment.")
 
     client = OpenAI(api_key=api_key)
     resp = client.chat.completions.create(
@@ -36,7 +39,10 @@ def call_openai_chat(messages, model: str = "gpt-4o"):
     return resp.choices[0].message.content.strip()
 
 
-def call_claude_chat(messages, model: str = "claude-3-5-haiku-latest", system: str = None):
+def call_claude_chat(
+        messages,
+        model: str = "claude-3-5-haiku-latest",
+        system: str = None):
     """
     Call the Anthropic Claude Messages API.
 
@@ -49,7 +55,8 @@ def call_claude_chat(messages, model: str = "claude-3-5-haiku-latest", system: s
         This helper currently extracts and returns only the first block.
 
     Args:
-        messages (list[dict]): A list of chat messages with "role" and "content".
+        messages (list[dict]): A list of chat messages with "role" and
+            "content".
         model (str): Name of the Claude model to call. Defaults to
             "claude-3-5-sonnet-latest".
         system (str): System prompt to guide the model's behavior.
@@ -62,7 +69,8 @@ def call_claude_chat(messages, model: str = "claude-3-5-haiku-latest", system: s
     """
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
-        raise RuntimeError("Missing ANTHROPIC_API_KEY. Please set it in your environment.")
+        raise RuntimeError(
+            "Missing ANTHROPIC_API_KEY. Please set it in your environment.")
 
     client = anthropic.Anthropic(api_key=api_key)
     api_params = {
@@ -76,18 +84,22 @@ def call_claude_chat(messages, model: str = "claude-3-5-haiku-latest", system: s
     # Claude는 content가 list로 옴
     return resp.content[0].text.strip()
 
+
 def call_gemini_chat(messages, model="gemini-1.5-flash"):
     """
     Call the Google Gemini API using a chat-style message sequence.
 
-    Gemini's API does not use the same role-based structure as OpenAI/Anthropic,
-    so this function flattens all messages into a single combined text prompt.
+    Gemini's API does not use the same role-based structure as
+    OpenAI/Anthropic, so this function flattens all messages into a
+    single combined text prompt.
     The `GEMINI_API_KEY` environment variable must be set.
 
     Args:
-        messages (list[dict]): A list of chat messages. Each entry should contain
-            "role" (e.g., "user" or "system") and "content" (the text).
-        model (str): Gemini model name to use. Defaults to "gemini-1.5-flash".
+        messages (list[dict]): A list of chat messages. Each entry
+            should contain "role" (e.g., "user" or "system") and
+            "content" (the text).
+        model (str): Gemini model name to use.
+            Defaults to "gemini-1.5-flash".
 
     Returns:
         str: The generated response text from Gemini.
@@ -97,7 +109,8 @@ def call_gemini_chat(messages, model="gemini-1.5-flash"):
     """
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        raise RuntimeError("Missing GEMINI_API_KEY. Please set it in your environment.")
+        raise RuntimeError(
+            "Missing GEMINI_API_KEY. Please set it in your environment.")
     genai.configure(api_key=api_key)
 
     combined_prompt = ""

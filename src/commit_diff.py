@@ -4,14 +4,17 @@ import argparse
 from babel.messages import pofile, Catalog
 from utils import load_config, get_modulename
 
+
 def run_git(args, cwd=None):
     subprocess.check_call(["git"] + args, cwd=cwd)
+
 
 def run_pybabel(output_file, run_dir, project_name, scan_target):
     cmd = [
         "pybabel", "--quiet", "extract",
         "--add-comments", "Translators:",
-        f"--msgid-bugs-address=https://bugs.launchpad.net/openstack-i18n/",
+        ("--msgid-bugs-address="
+         "https://bugs.launchpad.net/openstack-i18n/"),
         f"--project={project_name}",
         "--version=",
         "-k", "_C:1c,2",
@@ -19,14 +22,19 @@ def run_pybabel(output_file, run_dir, project_name, scan_target):
         "-o", output_file,
         scan_target
     ]
-    print(f"Running pybabel on '{scan_target}' -> {os.path.basename(output_file)}...")
+    print(
+        f"Running pybabel on '{scan_target}' -> "
+        f"{os.path.basename(output_file)}...")
     subprocess.check_call(cmd, cwd=run_dir)
 
+
 def extract_diff(new_pot, old_pot, output_diff):
-    print(f"Comparing New vs Old POT...")
+    print("Comparing New vs Old POT...")
     try:
-        with open(new_pot, 'rb') as f: new_cat = pofile.read_po(f)
-        with open(old_pot, 'rb') as f: old_cat = pofile.read_po(f)
+        with open(new_pot, 'rb') as f:
+            new_cat = pofile.read_po(f)
+        with open(old_pot, 'rb') as f:
+            old_cat = pofile.read_po(f)
     except FileNotFoundError as e:
         print(f"[ERROR] {e}")
         return 0
@@ -54,13 +62,18 @@ def extract_diff(new_pot, old_pot, output_diff):
 
             count += 1
 
-    with open(output_diff, 'wb') as f: pofile.write_po(f, diff_cat)
+    with open(output_diff, 'wb') as f:
+        pofile.write_po(f, diff_cat)
     return count
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config.yaml")
-    parser.add_argument("--repo-dir", required=True, help="path to already cloned repo (managed by ci.sh)")
+    parser.add_argument(
+        "--repo-dir",
+        required=True,
+        help="path to already cloned repo (managed by ci.sh)")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -86,7 +99,10 @@ def main():
 
     new_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD_{new_short}.pot"))
     old_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD~1_{old_short}.pot"))
-    diff_pot = os.path.abspath(os.path.join(pot_dir, f"{target_file_name}.pot"))
+    diff_pot = os.path.abspath(
+        os.path.join(
+            pot_dir,
+            f"{target_file_name}.pot"))
 
     try:
         # 1. New POT 생성 (HEAD)
@@ -111,6 +127,7 @@ def main():
         print(f"\nGenerated {diff_pot} with {count} new messages.")
     else:
         print("\nNo translation changes found between these commits.")
+
 
 if __name__ == "__main__":
     main()

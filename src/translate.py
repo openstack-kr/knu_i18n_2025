@@ -40,6 +40,7 @@ from commercial_llm import (
     call_openai_chat
 )
 
+
 def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
     """LLM 백엔드를 선택하여 호출 함수를 생성하고 반환한다."""
     if llm_mode == "gpt":
@@ -54,7 +55,10 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
                     claude_system = msg["content"]
                 else:
                     claude_messages.append(msg)
-            return call_claude_chat(claude_messages, model=model_name, system=claude_system)
+            return call_claude_chat(
+                claude_messages,
+                model=model_name,
+                system=claude_system)
     elif llm_mode == "gemini":
         def _call(messages):
             return call_gemini_chat(messages, model=model_name)
@@ -73,6 +77,7 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
             return response["message"]["content"].strip()
 
     return _call
+
 
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
@@ -194,7 +199,9 @@ def translate_batch(payload, language_name, ctx: TranslationContext):
     """
     entries, batch_idx, total_batches = payload
 
-    glossary_text = "\n".join(f"* '{en}': '{ko}'" for en, ko in ctx.glossary.items())
+    glossary_text = "\n".join(
+        f"* '{en}': '{ko}'" for en,
+        ko in ctx.glossary.items())
     system_prompt = ctx.system_prompt + glossary_text
 
     messages = [
@@ -240,9 +247,8 @@ def translate_batch(payload, language_name, ctx: TranslationContext):
             translations = json.loads(translation_text)
         except json.JSONDecodeError:
             print(
-                f"!!! Batch [{batch_idx + 1}/{total_batches}] JSON parsing failed, "
-                "trying to extract array !!!"
-            )
+                f"!!! Batch [{batch_idx + 1}/{total_batches}] "
+                "JSON parsing failed, trying to extract array !!!")
             print("Falling back: extract simple array for this batch.")
             start = translation_text.find('[')
             end = translation_text.rfind(']') + 1
@@ -401,8 +407,10 @@ if __name__ == "__main__":
     # 1) --config 하나만 받기
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config.yaml")
-    parser.add_argument("--repo-dir", default=None,
-                        help="(CI mode) path to cloned repo. modulename을 여기서 조회")
+    parser.add_argument(
+        "--repo-dir",
+        default=None,
+        help="(CI mode) path to cloned repo. modulename을 여기서 조회")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -410,7 +418,7 @@ if __name__ == "__main__":
     # -----------------------------
     # files Config
     # -----------------------------
-    POT_DIR = f"./pot/"
+    POT_DIR = "./pot/"
     PO_DIR = "./po"
 
     if args.repo_dir:
@@ -428,7 +436,8 @@ if __name__ == "__main__":
     # -----------------------------
     languages_cfg = cfg.get("languages")
     if isinstance(languages_cfg, str):
-        LANGUAGES_TO_TRANSLATE = [s.strip() for s in languages_cfg.split(',') if s.strip()]
+        LANGUAGES_TO_TRANSLATE = [
+            s.strip() for s in languages_cfg.split(',') if s.strip()]
     else:
         LANGUAGES_TO_TRANSLATE = languages_cfg
 

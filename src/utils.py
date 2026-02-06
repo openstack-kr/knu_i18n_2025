@@ -14,6 +14,7 @@ GLOSSARY_URL = (
     "/raw/branch/master/glossary/locale/{lang}/LC_MESSAGES/glossary.po"
 )
 
+
 def _download_file(url, dest_path, label):
     """URL에서 파일을 다운로드하여 dest_path로 저장한다. 실패 시 False 반환."""
     print(f"Downloading {label} from {url}...")
@@ -52,9 +53,10 @@ def get_modulename(repo_dir, project):
         parser.read(setup_cfg)
 
         if parser.has_option("openstack_translations", "python_modules"):
-            modules = [m.strip() for m in
-                       parser.get("openstack_translations", "python_modules").split("\n")
-                       if m.strip()]
+            modules = [
+                m.strip() for m in parser.get(
+                    "openstack_translations",
+                    "python_modules").split("\n") if m.strip()]
             if modules:
                 return modules[0]
 
@@ -82,6 +84,7 @@ def get_modulename(repo_dir, project):
 
     return project
 
+
 def load_glossary(lang, glossary_dir="./glossary"):
     """
     특정 언어의 glossary.po 파일을 다운로드/로드하고 JSON 백업을 생성/로드한다.
@@ -104,7 +107,10 @@ def load_glossary(lang, glossary_dir="./glossary"):
 
     # Download Glossary PO if needed
     if not os.path.exists(glossary_po_path):
-        if not _download_file(glossary_url, glossary_po_path, f"glossary for [{lang}]"):
+        if not _download_file(
+                glossary_url,
+                glossary_po_path,
+                f"glossary for [{lang}]"):
             return G
 
     if os.path.exists(glossary_json_path):
@@ -165,7 +171,10 @@ def load_examples(lang, url_template, example_file, example_dir):
 
     # Download Example PO if needed
     if not os.path.exists(example_path):
-        if not _download_file(example_url, example_path, f"examples for [{lang}]"):
+        if not _download_file(
+                example_url,
+                example_path,
+                f"examples for [{lang}]"):
             return examples
 
     if os.path.exists(example_path):

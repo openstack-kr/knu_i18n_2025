@@ -8,7 +8,13 @@ import argparse
 def find_original_po(repo_dir, modulename, lang):
     """ci 모드: cloned repo 안에서 원본 .po 경로를 조회.
     없으면 None 반환 → 호출측에서 .pot fallback 처리"""
-    candidate = os.path.join(repo_dir, modulename, "locale", lang, "LC_MESSAGES", f"{modulename}.po")
+    candidate = os.path.join(
+        repo_dir,
+        modulename,
+        "locale",
+        lang,
+        "LC_MESSAGES",
+        f"{modulename}.po")
     if os.path.isfile(candidate):
         return candidate
     return None
@@ -37,23 +43,31 @@ def main():
             # --- CI 모드: modulename이 파일명 키 ---
             modulename = get_modulename(args.repo_dir, cfg["project"])
             target_file_name = modulename
-            original_po_path = find_original_po(args.repo_dir, modulename, lang)
+            original_po_path = find_original_po(
+                args.repo_dir, modulename, lang)
 
             if original_po_path:
                 target_file_path = original_po_path
-                print(f"[merge_po] Using original .po from repo: {target_file_path}")
+                print(
+                    "[merge_po] Using original .po from repo: "
+                    f"{target_file_path}")
             else:
                 # 원본 .po 없음 (해당 언어 번역 미시작) → .pot을 기본 템플릿으로 사용
                 target_file_path = os.path.join("./pot", f"{modulename}.pot")
                 if not os.path.isfile(target_file_path):
-                    print(f"[merge_po] ERROR: neither original .po nor .pot found for {lang}. skipping.")
+                    print(
+                        "[merge_po] ERROR: neither original .po nor .pot "
+                        f"found for {lang}. skipping.")
                     continue
-                print(f"[merge_po] No original .po for {lang}; using .pot as template: {target_file_path}")
+                print(
+                    f"[merge_po] No original .po for {lang}; "
+                    f"using .pot as template: {target_file_path}")
         else:
             # --- local 모드: config의 target_file이 파일명 키 ---
             target_file = cfg["target_file"]
             target_file_name, _ = os.path.splitext(target_file)
-            target_file_path = os.path.join(f"./data/target/{lang}", target_file)
+            target_file_path = os.path.join(
+                f"./data/target/{lang}", target_file)
 
         # PO 파일 로드
         original_po = polib.pofile(target_file_path)
