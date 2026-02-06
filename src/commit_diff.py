@@ -1,18 +1,20 @@
 import os
 import subprocess
-import shutil
 import argparse
 from babel.messages import pofile, Catalog
-from config_loader import load_config
+from utils import load_config, get_modulename
+
 
 def run_git(args, cwd=None):
     subprocess.check_call(["git"] + args, cwd=cwd)
+
 
 def run_pybabel(output_file, run_dir, project_name, scan_target):
     cmd = [
         "pybabel", "--quiet", "extract",
         "--add-comments", "Translators:",
-        f"--msgid-bugs-address=https://bugs.launchpad.net/openstack-i18n/",
+        ("--msgid-bugs-address="
+         "https://bugs.launchpad.net/openstack-i18n/"),
         f"--project={project_name}",
         "--version=",
         "-k", "_C:1c,2",
@@ -20,14 +22,19 @@ def run_pybabel(output_file, run_dir, project_name, scan_target):
         "-o", output_file,
         scan_target
     ]
-    print(f"Running pybabel on '{scan_target}' -> {os.path.basename(output_file)}...")
+    print(
+        f"Running pybabel on '{scan_target}' -> "
+        f"{os.path.basename(output_file)}...")
     subprocess.check_call(cmd, cwd=run_dir)
 
+
 def extract_diff(new_pot, old_pot, output_diff):
-    print(f"Comparing New vs Old POT...")
+    print("Comparing New vs Old POT...")
     try:
-        with open(new_pot, 'rb') as f: new_cat = pofile.read_po(f)
-        with open(old_pot, 'rb') as f: old_cat = pofile.read_po(f)
+        with open(new_pot, 'rb') as f:
+            new_cat = pofile.read_po(f)
+        with open(old_pot, 'rb') as f:
+            old_cat = pofile.read_po(f)
     except FileNotFoundError as e:
         print(f"[ERROR] {e}")
         return 0
@@ -55,77 +62,72 @@ def extract_diff(new_pot, old_pot, output_diff):
 
             count += 1
 
-    with open(output_diff, 'wb') as f: pofile.write_po(f, diff_cat)
+    with open(output_diff, 'wb') as f:
+        pofile.write_po(f, diff_cat)
     return count
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config.yaml")
+    parser.add_argument(
+        "--repo-dir",
+        required=True,
+        help="path to already cloned repo (managed by ci.sh)")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
 
-    project = cfg['git']["project"]
-    
-    repo_url = cfg['git']['repo_url'].format(project=project)
-    work_dir = cfg['git']['work_dir']
-    repo_dir = os.path.join(work_dir, project)
-    
-    target_commit = cfg['git']['target_commit']
-    base_commit = "HEAD~1"
+    project = cfg["project"]
+    repo_dir = args.repo_dir
 
     pot_dir = "./pot"
-    source_dir = project
+    source_dir = get_modulename(repo_dir, project)
 
-    project_name = project
-    
-    ######################## target_file 기준으로 pot 저장 위함
-    # config에서 파일명만 받음
-    target_file = cfg['files']["target_file"]
-    # target_file (po, pot) 확장자 분리
-    target_file_name, _ = os.path.splitext(target_file)
-    ######################## 
+    # diff_pot 파일명은 modulename 기준 (translate, merge_po와 연결 키)
+    target_file_name = source_dir
 
-    # 1. Git 저장소 준비
-    if os.path.isdir(os.path.join(repo_dir, ".git")):
-        print(f"Updating existing repo at {repo_dir}...")
-        run_git(["reset", "--hard", "HEAD"], cwd=repo_dir)
-        run_git(["checkout", "master"], cwd=repo_dir)
-        run_git(["pull"], cwd=repo_dir)
-    else:
-        print(f"Cloning repo to {repo_dir}...")
-        if os.path.exists(repo_dir): shutil.rmtree(repo_dir)
-        run_git(["clone", repo_url, repo_dir])
+    # HEAD, HEAD~1 각각의 short hash를 tmp pot 파일명에 사용
+    current_head = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo_dir
+    ).decode().strip()
+    base_head = subprocess.check_output(
+        ["git", "rev-parse", "HEAD~1"], cwd=repo_dir
+    ).decode().strip()
+    new_short = current_head[:8]
+    old_short = base_head[:8]
 
-    current_head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo_dir).decode().strip()
-
-    new_pot = os.path.abspath(os.path.join(pot_dir, f"new_{target_commit}.pot"))
-    old_pot = os.path.abspath(os.path.join(pot_dir, f"old_{target_commit}.pot"))
-    diff_pot = os.path.abspath(os.path.join(pot_dir, f"{target_file_name}.pot"))
+    new_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD_{new_short}.pot"))
+    old_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD~1_{old_short}.pot"))
+    diff_pot = os.path.abspath(
+        os.path.join(
+            pot_dir,
+            f"{target_file_name}.pot"))
 
     try:
-        # 2. New POT 생성 (Target Commit)
-        print(f"Checkout Target: {target_commit}")
-        run_git(["checkout", target_commit], cwd=repo_dir)
-        run_pybabel(new_pot, repo_dir, project_name, source_dir)
+        # 1. New POT 생성 (HEAD)
+        print(f"Checkout Target: HEAD ({new_short})")
+        run_git(["checkout", "HEAD"], cwd=repo_dir)
+        run_pybabel(new_pot, repo_dir, project, source_dir)
 
-        # 3. Old POT 생성 (Base Commit)
-        print(f"Checkout Base: {base_commit}")
-        run_git(["checkout", base_commit], cwd=repo_dir)
-        run_pybabel(old_pot, repo_dir, project_name, source_dir)
+        # 2. Old POT 생성 (HEAD~1)
+        print(f"Checkout Base: HEAD~1 ({old_short})")
+        run_git(["checkout", "HEAD~1"], cwd=repo_dir)
+        run_pybabel(old_pot, repo_dir, project, source_dir)
 
     finally:
-        # 4. 복구
+        # 복구
         print(f"Restoring HEAD to {current_head}")
         run_git(["checkout", current_head], cwd=repo_dir)
 
-    # 5. 결과 추출
+    # 3. 결과 추출
     count = extract_diff(new_pot, old_pot, diff_pot)
 
     if count > 0:
         print(f"\nGenerated {diff_pot} with {count} new messages.")
     else:
         print("\nNo translation changes found between these commits.")
+
 
 if __name__ == "__main__":
     main()

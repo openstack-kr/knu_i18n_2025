@@ -28,16 +28,18 @@ from typing import Callable
 from tqdm import tqdm
 from babel.messages import pofile, Catalog
 from utils import (
+    load_config,
     load_glossary,
     load_fixed_examples,
-    save_experiment_log
+    save_experiment_log,
+    get_modulename
 )
 from commercial_llm import (
     call_claude_chat,
     call_gemini_chat,
     call_openai_chat
 )
-from config_loader import load_config
+
 
 def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
     """LLM 백엔드를 선택하여 호출 함수를 생성하고 반환한다."""
@@ -53,7 +55,10 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
                     claude_system = msg["content"]
                 else:
                     claude_messages.append(msg)
-            return call_claude_chat(claude_messages, model=model_name, system=claude_system)
+            return call_claude_chat(
+                claude_messages,
+                model=model_name,
+                system=claude_system)
     elif llm_mode == "gemini":
         def _call(messages):
             return call_gemini_chat(messages, model=model_name)
@@ -72,6 +77,7 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
             return response["message"]["content"].strip()
 
     return _call
+
 
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
@@ -193,7 +199,9 @@ def translate_batch(payload, language_name, ctx: TranslationContext):
     """
     entries, batch_idx, total_batches = payload
 
-    glossary_text = "\n".join(f"* '{en}': '{ko}'" for en, ko in ctx.glossary.items())
+    glossary_text = "\n".join(
+        f"* '{en}': '{ko}'" for en,
+        ko in ctx.glossary.items())
     system_prompt = ctx.system_prompt + glossary_text
 
     messages = [
@@ -239,11 +247,8 @@ def translate_batch(payload, language_name, ctx: TranslationContext):
             translations = json.loads(translation_text)
         except json.JSONDecodeError:
             print(
-                (
-                    "!!! Batch [{idx}/{total}] JSON parsing failed, "
-                    "trying to extract array !!!"
-                ).format(idx=batch_idx + 1, total=total_batches)
-            )
+                f"!!! Batch [{batch_idx + 1}/{total_batches}] "
+                "JSON parsing failed, trying to extract array !!!")
             print("Falling back: extract simple array for this batch.")
             start = translation_text.find('[')
             end = translation_text.rfind(']') + 1
@@ -399,38 +404,40 @@ if __name__ == "__main__":
         3. 모델별/언어별 폴더 생성 및 번역 수행
         4. 언어별 번역 결과 저장 및 Git 로그 기록
     """
-    # 1) --config 하나만 받기 (기본값: config_ci.yaml)
+    # 1) --config 하나만 받기
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="config_ci.yaml")
-    parser.add_argument("--target_file", default=None)
+    parser.add_argument("--config", default="config.yaml")
+    parser.add_argument(
+        "--repo-dir",
+        default=None,
+        help="(CI mode) path to cloned repo. modulename을 여기서 조회")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
-    
+
     # -----------------------------
     # files Config
     # -----------------------------
-    project = cfg.get("project")
-    files_cfg = cfg.get("files")
-    POT_DIR = f"./pot/"
+    POT_DIR = "./pot/"
     PO_DIR = "./po"
-    
-    # config에서 파일명만 받음
-    target_file = files_cfg["target_file"]
-    # target_file (po, pot) 확장자 분리
-    target_file_name, _ = os.path.splitext(target_file)
+
+    if args.repo_dir:
+        # CI 모드: modulename이 파일명 키
+        target_file_name = get_modulename(args.repo_dir, cfg["project"])
+    else:
+        # local 모드: config의 target_file이 파일명 키
+        target_file = cfg["target_file"]
+        target_file_name, _ = os.path.splitext(target_file)
+
     POT_FILE = os.path.join(POT_DIR, f"{target_file_name}.pot")
 
-    # 이 파이프라인에서는 원격 POT_URL/TARGET_POT_FILE은 사용하지 않으므로 None
-    # POT_URL = None
-    # TARGET_POT_FILE = None
-    
     # -----------------------------
     # languages Config
     # -----------------------------
     languages_cfg = cfg.get("languages")
     if isinstance(languages_cfg, str):
-        LANGUAGES_TO_TRANSLATE = [s.strip() for s in languages_cfg.split(',') if s.strip()]
+        LANGUAGES_TO_TRANSLATE = [
+            s.strip() for s in languages_cfg.split(',') if s.strip()]
     else:
         LANGUAGES_TO_TRANSLATE = languages_cfg
 
@@ -443,19 +450,12 @@ if __name__ == "__main__":
     MAX_WORKERS = llm_cfg.get("workers")
     call_llm_fn = build_llm_caller(LLM_MODE, MODEL_NAME)
     START_TRANSLATE = llm_cfg.get("start")
-    end_val = llm_cfg.get("end")
-    END_TRANSLATE = None if end_val == -1 else end_val
+    END_TRANSLATE = None if llm_cfg.get("end") == -1 else llm_cfg.get("end")
     BATCH_SIZE = llm_cfg.get("batch_size")
 
     # -----------------------------
     # Glossary / Examples Config
     # -----------------------------
-    glossary_cfg = cfg.get("glossary")
-    GLOSSARY_DIR = "./glossary"
-    GLOSSARY_URL = glossary_cfg.get("url")
-    GLOSSARY_PO_FILE = "glossary.po"
-    GLOSSARY_JSON_FILE = "glossary.json"
-
     examples_cfg = cfg.get("examples")
     EXAMPLE_DIR = "./po-example"
     EXAMPLE_URL = examples_cfg.get("example_url")
@@ -469,7 +469,6 @@ if __name__ == "__main__":
     # 폴더 생성 + POT 다운로드
     os.makedirs(POT_DIR, exist_ok=True)
     os.makedirs(PO_DIR, exist_ok=True)
-    os.makedirs(GLOSSARY_DIR, exist_ok=True)
     os.makedirs(EXAMPLE_DIR, exist_ok=True)
 
     if POT_FILE:
@@ -489,13 +488,7 @@ if __name__ == "__main__":
         language_name = LANG_MAP.get(lang_code, lang_code)
 
         # 2. 언어별 glossary, 예시, 프롬프트 로드
-        glossary = load_glossary(
-            lang_code,
-            GLOSSARY_URL,
-            GLOSSARY_PO_FILE,
-            GLOSSARY_JSON_FILE,
-            GLOSSARY_DIR
-        )
+        glossary = load_glossary(lang_code)
 
         few_shot_examples = load_fixed_examples(
             lang_code,

@@ -1,21 +1,16 @@
 # -----------------------------
-#  Required settings
-# -----------------------------
-files:
-  # Set target_file to translate (must be placed under ./data/target/{lang})
-  target_file: "example_nova.po"
-
-# -----------------------------
 #  Only for CI
 # -----------------------------
-git:
-  # 1. Set project you want to translate
-  project: "nova"
-  # 2. Set targe_commit you want to translate
-  target_commit: "d6f5a30caa1a4a139dc67272a150d24e44892a91"
-  repo_url: "https://github.com/openstack/{project}.git"
-  # path where cloning repository
-  work_dir: "./workspace"
+# 1. Set project you want to translate
+project: "neutron-lib"
+# 2. Set branch you want to translate
+branch: "master"
+
+# -----------------------------
+#  Only for Local
+# -----------------------------
+# Set target_file to translate (must be placed under ./data/target/{lang})
+target_file: "test.po"
 
 # -----------------------------
 #  Common
@@ -38,10 +33,6 @@ llm:
   start: 0
   end: -1
   batch_size: 5
-
-# Glossary: normally you don't need to edit this
-glossary:
-  url: "https://opendev.org/openstack/i18n/raw/commit/129b9de7be12740615d532591792b31566d0972f/glossary/locale/{lang}/LC_MESSAGES/glossary.po"
 
 # Example: normally you don't need to edit this
 examples:
