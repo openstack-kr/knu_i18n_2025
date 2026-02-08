@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+    - prepare-ai-translation
+  tasks:
+    - name: Run AI translation pipeline
+      command: bash scripts/ci.sh config.yaml
+      args:
+        chdir: "{{ ansible_user_dir }}/src/opendev.org/openstack/i18n"

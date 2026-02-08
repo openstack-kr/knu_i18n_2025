@@ -1,0 +1,32 @@
+---
+- name: Ensure AI translation directory exists
+  file:
+    path: "{{ ansible_user_dir }}/src/opendev.org/openstack/i18n"
+    state: directory
+
+- name: Copy AI translation scripts to the node
+  copy:
+    dest: "{{ ansible_user_dir }}/src/opendev.org/openstack/i18n/"
+    src: "{{ item }}"
+  with_items:
+    - src/
+    - scripts/
+    - config.yaml
+    - requirements.txt
+
+- name: Ensure required python packages installed
+  pip:
+    requirements: "{{ ansible_user_dir }}/src/opendev.org/openstack/i18n/requirements.txt"
+    executable: pip3
+
+- name: Update config.yaml for CI mode
+  lineinfile:
+    path: "{{ ansible_user_dir }}/src/opendev.org/openstack/i18n/config.yaml"
+    regexp: "^project:"
+    line: 'project: "{{ zuul.project.short_name }}"'
+
+- name: Update branch in config.yaml
+  lineinfile:
+    path: "{{ ansible_user_dir }}/src/opendev.org/openstack/i18n/config.yaml"
+    regexp: "^branch:"
+    line: 'branch: "{{ zuul.branch }}"'

@@ -1,4 +1,4 @@
 - project:
     check:
       jobs:
-        - ai-translation-job
+        - ai-translate
