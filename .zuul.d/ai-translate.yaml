@@ -1,9 +1,0 @@
-- job:
-    name: ai-translate
-    description: "Run AI translation pipeline using LLM"
-    run: playbooks/ai-translate.yaml
-    timeout: 18000
-    vars:
-      model: "llama3.2:3b"
-    roles:
-      - zuul: opendev.org/openstack/i18n   

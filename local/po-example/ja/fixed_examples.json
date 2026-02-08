@@ -1,0 +1,10 @@
+[
+  {
+    "msgid": "Binding failed for port %(port_id)s, please check neutron logs for more information.",
+    "msgstr": "ポート %(port_id)s でバインドが失敗しました。詳細情報については neutron のロ グを確認してください。"
+  },
+  {
+    "msgid": "Blank components",
+    "msgstr": "空白コンポーネント"
+  }
+]
