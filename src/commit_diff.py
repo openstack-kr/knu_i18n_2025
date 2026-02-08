@@ -97,8 +97,8 @@ def main():
     new_short = current_head[:8]
     old_short = base_head[:8]
 
-    new_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD_{new_short}.pot"))
-    old_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD~1_{old_short}.pot"))
+    new_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD_{target_file_name}.pot"))
+    old_pot = os.path.abspath(os.path.join(pot_dir, f"HEAD~1_{target_file_name}.pot"))
     diff_pot = os.path.abspath(
         os.path.join(
             pot_dir,

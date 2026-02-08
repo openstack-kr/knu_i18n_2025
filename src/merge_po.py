@@ -53,7 +53,7 @@ def main():
                     f"{target_file_path}")
             else:
                 # 원본 .po 없음 (해당 언어 번역 미시작) → .pot을 기본 템플릿으로 사용
-                target_file_path = os.path.join("./pot", f"{modulename}.pot")
+                target_file_path = os.path.join("./pot", f"HEAD_{modulename}.pot")
                 if not os.path.isfile(target_file_path):
                     print(
                         "[merge_po] ERROR: neither original .po nor .pot "
