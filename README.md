@@ -7,7 +7,7 @@ If you're new to OpenStack i18n, see the official [OpenStack i18n guide](https:/
 
 ## Requirements
 
-- **Python 3.10 is needed**
+- **Python 3.10 is needed!**
 - Designed for **local** and **CI environments**
 
 # Quick Start (5 steps)
