@@ -31,8 +31,7 @@ from utils import (
     load_config,
     load_glossary,
     load_fixed_examples,
-    save_experiment_log,
-    get_modulename
+    save_experiment_log
 )
 from commercial_llm import (
     call_claude_chat,
@@ -407,10 +406,6 @@ if __name__ == "__main__":
     # 1) --config 하나만 받기
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config.yaml")
-    parser.add_argument(
-        "--repo-dir",
-        default=None,
-        help="(CI mode) path to cloned repo. modulename을 여기서 조회")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -421,13 +416,9 @@ if __name__ == "__main__":
     POT_DIR = "./pot/"
     PO_DIR = "./po"
 
-    if args.repo_dir:
-        # CI 모드: modulename이 파일명 키
-        target_file_name = get_modulename(args.repo_dir, cfg["project"])
-    else:
-        # local 모드: config의 target_file이 파일명 키
-        target_file = cfg["target_file"]
-        target_file_name, _ = os.path.splitext(target_file)
+    # local 모드: config의 target_file이 파일명 키
+    target_file = cfg["target_file"]
+    target_file_name, _ = os.path.splitext(target_file)
 
     POT_FILE = os.path.join(POT_DIR, f"{target_file_name}.pot")
 

@@ -1,19 +1,13 @@
 .tox/
 
 data/result/
-!data/result/.keep
 
 experiments.csv
 *.log
 
 po/
-!po/.keep
-validate/json
-glossary/
-!glossary/.keep
-
 pot/
-!pot/.keep
+glossary/
 
 workspace/
 
@@ -41,7 +35,7 @@ dist/
 .mypy_cache/
 .ruff_cache/
 
-# Large/binaries (예방)
+# Large/binaries
 *.so
 *.bin
 *.pt

@@ -1,17 +1,15 @@
 # -----------------------------
-#  Must Set
+#  Required
 # -----------------------------
 # Set target_file to translate (must be placed under ./data/target/{lang})
 target_file: "test.po"
 
-# -----------------------------
-#  Common
-# -----------------------------
-languages:
-  # When running local.sh, please choose exactly ONE language.
-  # When running ci.sh, you can specify MULTIPLE languages.
-  - "ko_KR"
+# Please choose exactly ONE language for local translation.
+languages: "ko_KR"
 
+# -----------------------------
+#  Option
+# -----------------------------
 # You can tune these arguments for performance / partial translation:
 #   --model : Choose your model
 #   --mode  : Choose your LLM mode[`ollama` (default, for open src LLM), `gpt`, `claude`, `gemini`]

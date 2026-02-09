@@ -54,6 +54,9 @@ else
 fi
 
 # --- 3) Pipeline ---
+# Add src/ to PYTHONPATH so modules can import each other
+export PYTHONPATH="${PYTHONPATH:+${PYTHONPATH}:}$(pwd)/src"
+
 echo "=== [1/3] Find added or edited msgid in target file and extract to .pot file ==="
 python src/commit_diff.py --project "$PROJECT" --repo-dir "$REPO_DIR"
 echo

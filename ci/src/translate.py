@@ -33,47 +33,31 @@ from utils import (
     save_experiment_log,
     get_modulename
 )
-from commercial_llm import (
-    call_claude_chat,
-    call_gemini_chat,
-    call_openai_chat
-)
 
 
 def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
-    """LLM 백엔드를 선택하여 호출 함수를 생성하고 반환한다."""
-    if llm_mode == "gpt":
-        def _call(messages):
-            return call_openai_chat(messages, model=model_name)
-    elif llm_mode == "claude":
-        def _call(messages):
-            claude_messages = []
-            claude_system = None
-            for msg in messages:
-                if msg["role"] == "system":
-                    claude_system = msg["content"]
-                else:
-                    claude_messages.append(msg)
-            return call_claude_chat(
-                claude_messages,
-                model=model_name,
-                system=claude_system)
-    elif llm_mode == "gemini":
-        def _call(messages):
-            return call_gemini_chat(messages, model=model_name)
-    else:
-        def _call(messages):
-            response = ollama.chat(
-                model=model_name,
-                messages=messages,
-                stream=False,
-                options={
-                    "temperature": 0,
-                    "top_p": 1,
-                    "repetition_penalty": 1.2,
-                },
-            )
-            return response["message"]["content"].strip()
+    """
+    LLM 백엔드를 선택하여 호출 함수를 생성하고 반환한다.
+    CI 환경에서는 ollama만 지원함.
+    """
+    if llm_mode != "ollama":
+        raise ValueError(
+            f"CI environment only supports 'ollama' mode. "
+            f"Got: {llm_mode}"
+        )
+
+    def _call(messages):
+        response = ollama.chat(
+            model=model_name,
+            messages=messages,
+            stream=False,
+            options={
+                "temperature": 0,
+                "top_p": 1,
+                "repetition_penalty": 1.2,
+            },
+        )
+        return response["message"]["content"].strip()
 
     return _call
 
@@ -464,7 +448,7 @@ if __name__ == "__main__":
 
     if POT_FILE:
         pot_file_path = POT_FILE
-        print(f"Using local POT file: {pot_file_path}")
+        print(f"Using POT file: {pot_file_path}")
         if not os.path.exists(pot_file_path):
             raise FileNotFoundError(f"POT file not found: {pot_file_path}")
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
