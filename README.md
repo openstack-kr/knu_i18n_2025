@@ -209,19 +209,7 @@ bash scripts/ci.sh neutron-lib master ko_KR
 # Multiple languages
 bash scripts/ci.sh nova master ko_KR ja zh_CN
 
-# Default language (ko_KR) if not specified
-bash scripts/ci.sh horizon stable/2024.1
 ```
-
-## What CI Workflow Does
-
-The script runs a 3-step pipeline:
-
-1. **Find changed content**: Runs `commit_diff.py` to detect added or edited msgid entries in your target file and extracts them to a `.pot` file
-2. **Translate**: Executes `translate.py` to translate the extracted entries using your configured model
-3. **Merge**: Uses `merge_po.py` to merge AI-translated content back into the original `.po` file
-
-Results are saved to `./data/result/{lang}/{target_file}.po`
 
 ## CI Configuration
 
