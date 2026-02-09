@@ -1,0 +1,7 @@
+- job:
+    name: ai-translate
+    description: "Run AI translation pipeline via main.sh"
+    run: playbooks/ai-translate/run.yaml
+    timeout: 18000
+    vars:
+      model: "llama3.2:3b"   

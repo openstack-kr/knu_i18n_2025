@@ -141,7 +141,7 @@ You can manually download the latest translated POT or PO files directly from th
 
 ### Choose Your Language
 
-Please insert your language code from [this link](local/docs/language_support.md).
+Please insert your language code from [this link](docs/language_support.md).
 We support **54 languages**
 
 ```yaml
@@ -235,7 +235,7 @@ The system automatically:
 - Generates draft `.po` translations
 
 Draft translations are then pushed to Gerrit → reviewed → synced to Weblate.
-For full architecture details, see [**PAPER.md**](local/docs/PAPER.md).
+For full architecture details, see [**PAPER.md**](docs/PAPER.md).
 
 # Assist in Improving Translation Quality
 
