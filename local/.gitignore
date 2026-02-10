@@ -1,0 +1,48 @@
+.tox/
+
+data/result/
+!data/result/.keep
+
+experiments.csv
+*.log
+
+po/
+!po/.keep
+validate/json
+glossary/
+!glossary/.keep
+
+pot/
+!pot/.keep
+
+workspace/
+
+venv/
+.env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Build & caches
+build/
+dist/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Large/binaries (예방)
+*.so
+*.bin
+*.pt
+*.onnx

@@ -1,32 +1,46 @@
 # AI-based Translation System for OpenStack
-<img width="1881" height="804" alt="단락 텍스트" src="https://github.com/user-attachments/assets/d0ff9e64-8a24-42e5-af1d-f4e2d2879d96" />
+
+<img width="1881" height="804" alt="단락 텍스트" src="https://github.com/user-attachments/assets/d0ff9e64-8a24-42e5-af1d-f4e2d2879d96" />
+
 A lightweight, user-friendly AI translation system for OpenStack i18n.
 This tool helps contributors translate `.pot` / `.po` files into 54 languages using CPU-friendly LLMs such as **Ollama**, as well as GPT, Claude, and Gemini.
 
 If you're new to OpenStack i18n, see the official [OpenStack i18n guide](https://docs.openstack.org/i18n/latest/index.html).
 
+## Project Structure
+
+This repository provides two independent translation workflows:
+
+- **[local/](local/)** - For local development and manual translation testing
+- **[ci/](ci/)** - For automated CI/CD pipeline integration
+
 ## Requirements
 
 - **Python 3.10 is needed**
-- Designed for **local** and **CI environments**
+- **Ollama** (for local LLM) or API keys for GPT/Claude/Gemini
+- **Git** (for CI workflow)
 
-# Quick Start (5 steps)
+---
 
-The fastest way to run your first translation.
+# Local Translation Workflow
 
-By default, this system translates the [**nova** project files](./data/target/ko_KR/example_nova.po) into **Korean (ko_KR)** and **Japanese (ja)** using the **llama3.2:3b** model via Ollama.
-You can customize the target project, model, and language in `config.yaml` (see [Choose Your Options](#choose-your-options) below).<br>
+The fastest way to run your first translation on your local machine.
 
-## **Step 1 — Clone the repository**
+By default, this system translates the [**nova** project files](./local/data/target/ko_KR/example_nova.po) into **Korean (ko_KR)** and **Japanese (ja)** using the **llama3.2:3b** model via Ollama.
+You can customize the target project, model, and language in `config.yaml` (see [Choose Your Options](#choose-your-options) below).
+
+## Quick Start (5 steps)
+
+### **Step 1 — Clone the repository**
 
 ```bash
 git clone https://github.com/openstack-kr/knu_i18n_2025.git
-cd knu_i18n_2025
+cd knu_i18n_2025/local
 ```
 
-## **Step 2 — Install dependencies**
+### **Step 2 — Install dependencies**
 
-### Option A) Use tox (recommended)
+#### Option A) Use tox (recommended)
 
 ```bash
 # if you trouble in upgrading pip, we recommend to use venv
@@ -40,7 +54,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 # Please visit https://ollama.com/download and follow the installation instructions
 ```
 
-### Option B) Run locally
+#### Option B) Run locally
 
 ```bash
 # if you trouble in upgrading pip, we recommend to use venv
@@ -55,7 +69,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 pip install -r requirements.txt
 ```
 
-## **Step 3 — Run translation**
+### **Step 3 — Run translation**
 
 This will translate the file specified in `config.yaml` using the configured model and language.
 
@@ -68,17 +82,17 @@ bash scripts/local.sh
 **What's happening:**
 - The system reads your target `.pot` or `.po` file from `./data/target/{lang}` directory
 - Uses the specified model (default: `llama3.2:3b` via Ollama)
-- Translates into your chosen languages (default: ko_KR, ja)
+- Translates into your chosen language (default: ko_KR)
 - Outputs translated `.po` files to `./po/{model}/{lang}/` directory
 
-## **Step 4 — Human Review**
+### **Step 4 — Human Review**
 
 After AI translation, **human review is essential** to ensure accuracy and context appropriateness.
 AI translations are drafts that require human verification before production use.
 
 Open the generated `.po` file in `./po/{model}/{lang}/` directory and review the translations manually for technical accuracy, natural language flow, and consistency with existing translations.
 
-## **Step 5  — Merge your translation to origin po**
+### **Step 5  — Merge your translation to origin po**
 
 After reviewing AI translation, merge your reviewed translations back to the original `.po` file:
 
@@ -90,23 +104,22 @@ python src/merge_po.py --config config.yaml
 
 This will merge your reviewed translations and save the final result to `./data/result/{lang}` directory.
 
-# Choose Your Options
+## Choose Your Options
 
-You can customize **target file**, **model**, **language**, and **performance settings** in [config.yaml](./config.yaml)
+You can customize **target file**, **model**, **language**, and **performance settings** in [local/config.yaml](./local/config.yaml)
 
-## Choose Target File
+### Choose Target File
 
-### How it works:
+#### How it works:
 
 1. Place your target `.pot` or `.po` file in the `./data/target/{lang}` directory
 2. Specify the filename in `config.yaml`:
 ```yaml
-files:
-  # Set target_file to translate (must be placed under ./data/target/{lang})
-  target_file: "example_nova.po"
+# Set target_file to translate (must be placed under ./data/target/{lang})
+target_file: "test.po"
 ```
 
-### File processing flow:
+#### File processing flow:
 
 - **Input**: `./data/target/{lang}/{target_file}.po` or `./data/target/{lang}/{target_file}.pot`
 - **Intermediate outputs**:
@@ -114,7 +127,7 @@ files:
     - AI translations: `./po/{model}/{lang}/{target_file}.po`
 - **Final output**: `./data/result/{lang}/{target_file}.po` (merged translation)
 
-### Downloading files from Weblate:
+#### Downloading files from Weblate:
 
 You can manually download the latest translated POT or PO files directly from the Weblate interface.
 
@@ -126,26 +139,24 @@ You can manually download the latest translated POT or PO files directly from th
 5. Save the downloaded file to the `./data/target/{lang}/` directory
 6. Update the `target_file` name in `config.yaml`
 
-## Choose Your Language
+### Choose Your Language
 
 Please insert your language code from [this link](docs/language_support.md).
 We support **54 languages**
 
 ```yaml
 languages:
-  # When running local.sh, please choose exactly ONE language.
-  # When running ci.sh, you can specify MULTIPLE languages.
+  # Please choose exactly ONE language for local translation.
   - "ko_KR"
-  - "ja"
 ```
 
-## Choose Your Model
+### Choose Your Model
 
-### Open-source models (default)
+#### Open-source models (default)
 
 Uses **Ollama**. Browse available models [HERE](https://ollama.com/library).
 
-### Closed-source models (GPT / Claude / Gemini)
+#### Closed-source models (GPT / Claude / Gemini)
 
 When using closed-source model, edit the backend using `llm.mode`: [`ollama` (default), `gpt`, `claude`, `gemini`]
 
@@ -160,47 +171,58 @@ llm:
   batch_size: 5    # entries per LLM call (default: 5)
 ```
 
-# CI Integration
+---
 
-For automated translation in OpenStack's Zuul CI environment, use the provided CI script:
+# CI Translation Workflow
 
-```bash
-# Ensure you have completed Step 2 — Install dependencies before running this
-bash scripts/ci.sh
-```
+For automated translation in OpenStack's Zuul CI environment.
 
-⚠️  For detailed instructions on **configuring `config.yaml`** (git settings) and understanding **current limitations**, please refer to the **[CI.md](./docs/CI.md)**.
+## Quick Start
 
-The script automatically uses `config.yaml` by default, or you can specify a different config file:
+### Navigate to CI directory
 
 ```bash
-bash scripts/ci.sh config.yaml
+cd ci/
 ```
 
-**What ci.sh does:**
+### Install dependencies
 
-The script runs a 3-step pipeline:
+```bash
+pip install -r requirements.txt
 
-1. **Find changed content**: Runs `commit_diff.py` to detect added or edited msgid entries in your target file and extracts them to a `.pot` file
-2. **Translate**: Executes `translate.py` to translate the extracted entries using your configured model
-3. **Merge**: Uses `merge_po.py` to merge AI-translated content back into the original `.po` file
-
-Results are saved to `./data/result/{lang}/{target_file}.po`
-
-**Usage in CI pipeline:**
-
-```yaml
-# Example Zuul job configuration
-- job:
-    name: translate-pot-files
-    run: playbooks/translate.yaml
-
-# In your playbook:
-- name: Run AI Translation
-    shell: bash scripts/ci.sh
+# Install Ollama
+curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-The CI workflow is optimized to translate only changed content, making it efficient for continuous integration pipelines.
+### Run CI translation
+
+```bash
+bash scripts/ci.sh <project> <branch> [languages...]
+```
+
+**Examples:**
+
+```bash
+# Single language
+bash scripts/ci.sh neutron-lib master ko_KR
+
+# Multiple languages
+bash scripts/ci.sh nova master ko_KR ja zh_CN
+
+```
+
+## CI Configuration
+
+All settings are **hardcoded** for CI consistency:
+
+- **Model**: `llama3.2:3b`
+- **Mode**: `ollama`
+- **Batch size**: 5
+- **Workers**: 1
+
+To customize, edit the Python scripts in `ci/src/` directly.
+
+---
 
 # How the System Works (Simple Overview)
 
@@ -222,13 +244,14 @@ You can tune two major components:
 - **Few-shot examples** (`/po-example/`)
 - **Language-specific prompts** (`/prompts/`)
 
-See [**CONTRIBUTING.md**](https://github.com/openstack-kr/knu_i18n_2025/blob/main/CONTRIBUTING.md) to learn how you can contribute.
+See [**CONTRIBUTING.md**](local/CONTRIBUTING.md) to learn how you can contribute.
 
 # Code Formatting
 
 Run PEP8 style checks:
 
 ```bash
+cd local/  # or cd ci/
 tox -e pep8
 ```
 
