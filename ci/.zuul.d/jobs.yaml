@@ -1,0 +1,10 @@
+---
+# .zuul.d/jobs.yaml
+
+- job:
+    name: ai-translate
+    description: "Run AI translation pipeline"
+    run: playbooks/ai-translation.yaml 
+    timeout: 18000
+    vars:
+      ai_model: "llama3.2:3b"

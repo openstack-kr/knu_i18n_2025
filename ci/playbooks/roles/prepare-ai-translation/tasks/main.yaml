@@ -1,0 +1,187 @@
+---
+# roles/prepare-ai-translation/tasks/main.yaml
+
+- name: Install necessary packages (Ubuntu/Linux)
+  package:
+    name:
+      - gettext
+      - python3-pip
+    state: present
+  become: yes
+  when: ansible_os_family == 'Debian' or zuul is defined
+
+- name: Clone project repo (local execution)
+  git:
+    repo: "https://opendev.org/openstack/{{ project_name }}.git"
+    dest: "{{ project_dir }}"
+    version: master
+    depth: 2
+  when: zuul is not defined
+
+- name: Check if Ollama is installed
+  shell: which ollama
+  register: ollama_bin
+  changed_when: false
+  failed_when: false
+
+- name: Install Ollama using official installer
+  shell: |
+    curl -fsSL https://ollama.com/install.sh | sh
+  args:
+    executable: /bin/bash
+  become: yes
+  when: ollama_bin.rc != 0
+  register: ollama_install
+  until: ollama_install.rc == 0
+  retries: 3
+  delay: 15
+
+- name: Ensure scripts directory exists
+  file:
+    path: "{{ scripts_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Ensure translation directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "{{ pot_dir }}"
+    - "{{ po_dir }}"
+    - "{{ glossary_dir }}"
+    - "{{ example_dir }}"
+    - "{{ output_dir }}"
+
+- name: Pull AI model via Ollama
+  command: "ollama pull {{ ai_model }}"
+  register: pull_result
+  until: pull_result.rc == 0
+  retries: 5
+  delay: 10
+
+- name: Check if requirements.txt exists
+  stat:
+    path: "{{ project_dir }}/requirements.txt"
+  register: requirements_stat
+
+- name: Install python requirements
+  pip:
+    requirements: "{{ project_dir }}/requirements.txt"
+    executable: pip3
+  become: "{{ zuul is defined }}"
+  when: requirements_stat.stat.exists
+
+- name: Install AI translation python dependencies
+  pip:
+    name:
+      - polib
+      - ollama
+      - tqdm
+      - Babel
+      - requests
+    executable: pip3
+  become: "{{ zuul is defined }}"
+
+- name: Copy AI translation scripts to the node
+  copy:
+    src: "{{ item }}"
+    dest: "{{ scripts_dir }}/{{ item }}"
+    mode: '0755'
+  with_items:
+    - utils.py
+    - extract_pot.py
+    - commit_diff.py
+    - translate.py
+    - merge_po.py
+
+- name: Extract msgid from diff
+  command:
+    argv:
+      - python3
+      - "{{ scripts_dir }}/commit_diff.py"
+      - "--project"
+      - "{{ project_name }}"
+      - "--repo-dir"
+      - "{{ project_dir }}"
+      - "--pot_dir"
+      - "{{ pot_dir }}"
+      - "--pot_file"
+      - "{{ pot_file }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+
+- name: Run AI translation
+  command:
+    argv:
+      - python3
+      - "{{ scripts_dir }}/translate.py"
+      - "--project"
+      - "{{ project_name | default('neutron-lib') }}"
+      - "--repo-dir"
+      - "{{ project_dir }}"
+      - "--model"
+      - "{{ ai_model }}"
+      - "--workers"
+      - "{{ worker_count }}"
+      - "--start"
+      - "{{ start_index }}"
+      - "--end"
+      - "{{ end_index }}"
+      - "--pot_dir"
+      - "{{ pot_dir }}"
+      - "--po_dir"
+      - "{{ po_dir }}"
+      - "--pot_file"
+      - "{{ pot_file }}"
+      - "--glossary_dir"
+      - "{{ glossary_dir }}"
+      - "--example_dir"
+      - "{{ example_dir }}"
+      - "--glossary_url"
+      - "{{ glossary_url }}"
+      - "--glossary_po_file"
+      - "{{ glossary_po }}"
+      - "--glossary_json_file"
+      - "{{ glossary_json }}"
+      - "--example_url"
+      - "{{ example_url }}"
+      - "--example_file"
+      - "{{ example_file }}"
+      - "--fixed_example_json"
+      - "{{ fixed_json }}"
+      - "--batch-size"
+      - "{{ batch_size }}"
+      - "--languages"
+      - "{{ target_lang | join(',') }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+
+- name: Merge AI translated PO files
+  command:
+    argv:
+      - python3
+      - "{{ scripts_dir }}/merge_po.py"
+      - "--project"
+      - "{{ project_name }}"
+      - "--repo-dir"
+      - "{{ project_dir }}"
+      - "--model"
+      - "{{ ai_model }}"
+      - "--languages"
+      - "{{ target_lang | join(',') }}"
+      - "--pot_dir"
+      - "{{ pot_dir }}"
+      - "--po_dir"
+      - "{{ po_dir }}"
+      - "--output_dir"
+      - "{{ output_dir }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
