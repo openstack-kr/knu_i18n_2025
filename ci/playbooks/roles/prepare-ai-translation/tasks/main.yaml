@@ -36,12 +36,6 @@
   retries: 3
   delay: 15
 
-- name: Ensure scripts directory exists
-  file:
-    path: "{{ scripts_dir }}"
-    state: directory
-    mode: '0755'
-
 - name: Ensure translation directories exist
   file:
     path: "{{ item }}"
@@ -83,18 +77,6 @@
       - requests
     executable: pip3
   become: "{{ zuul is defined }}"
-
-- name: Copy AI translation scripts to the node
-  copy:
-    src: "{{ item }}"
-    dest: "{{ scripts_dir }}/{{ item }}"
-    mode: '0755'
-  with_items:
-    - utils.py
-    - extract_pot.py
-    - commit_diff.py
-    - translate.py
-    - merge_po.py
 
 - name: Extract msgid from diff
   command:

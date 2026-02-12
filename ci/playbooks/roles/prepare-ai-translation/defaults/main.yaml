@@ -6,7 +6,7 @@ base_dir: "{{ playbook_dir }}/.."
 
 project_name: "neutron-lib"
 project_dir: "{{ base_dir }}/workspace/{{ project_name }}"
-scripts_dir: "{{ base_dir }}/scripts"
+scripts_dir: "{{ role_path }}/files"
 
 # AI settings
 ai_model: "llama3.2:3b"
