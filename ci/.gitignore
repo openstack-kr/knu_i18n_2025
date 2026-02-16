@@ -3,11 +3,13 @@
 data/result/
 
 experiments.csv
+config.yaml
 *.log
 
 po/
 pot/
 glossary/
+po-example/
 
 workspace/
 
