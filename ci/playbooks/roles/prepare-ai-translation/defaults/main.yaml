@@ -1,0 +1,42 @@
+---
+# Ansible-specific paths (not included in generated config)
+base_dir: "{{ playbook_dir }}/.."
+scripts_dir: "{{ role_path }}/files"
+config_file: "{{ base_dir }}/config.yaml"
+venv_dir: "{{ base_dir }}/venv"
+
+# All settings below are serialized into config.yaml
+# and passed to Python scripts via --config.
+# Override any value by setting it in the playbook or extra-vars.
+ai_config:
+  project:
+    name: "neutron-lib"
+    dir: "{{ base_dir }}/workspace/neutron-lib"
+
+  ai:
+    model: "llama3.2:3b"
+    workers: 4
+    batch_size: 5
+    start_index: 0
+    end_index: 200
+
+  languages:
+    - ru
+
+  paths:
+    pot_dir: "{{ base_dir }}/pot"
+    po_dir: "{{ base_dir }}/po"
+    glossary_dir: "{{ base_dir }}/glossary"
+    example_dir: "{{ base_dir }}/po-example"
+    output_dir: "{{ base_dir }}/data/result"
+
+  files:
+    pot_file: "neutron_lib.pot"
+    glossary_po: "glossary.po"
+    glossary_json: "glossary.json"
+    example_file: "nova-nova-locale.po"
+    fixed_json: "fixed_examples.json"
+
+  urls:
+    glossary: "https://opendev.org/openstack/i18n/raw/commit/129b9de7be12740615d532591792b31566d0972f/glossary/locale/{lang}/LC_MESSAGES/glossary.po"
+    example: "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po"
