@@ -6,4 +6,4 @@
   roles:
     - role: prepare-ai-translation
       vars:
-        project_name: "{{ zuul.project.short_name | default('neutron-lib') }}"
+        project_name: "{{ zuul.project.short_name }}"
