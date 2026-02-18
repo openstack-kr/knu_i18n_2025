@@ -4,4 +4,6 @@
   hosts: localhost
   connection: local
   roles:
-    - prepare-ai-translation
+    - role: prepare-ai-translation
+      vars:
+        project_name: "{{ zuul.project.short_name | default('neutron-lib') }}"

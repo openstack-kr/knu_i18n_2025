@@ -1,0 +1,26 @@
+ai:
+  batch_size: 5
+  end_index: 200
+  model: llama3.2:3b
+  start_index: 0
+  workers: 4
+files:
+  example_file: nova-nova-locale.po
+  fixed_json: fixed_examples.json
+  glossary_json: glossary.json
+  glossary_po: glossary.po
+  pot_file: neutron_lib.pot
+languages:
+- ru
+paths:
+  example_dir: /Users/ellahwang/Documents/university/2026-1/capstone-1-winter/knu_i18n_test/ci/playbooks/../po-example
+  glossary_dir: /Users/ellahwang/Documents/university/2026-1/capstone-1-winter/knu_i18n_test/ci/playbooks/../glossary
+  output_dir: /Users/ellahwang/Documents/university/2026-1/capstone-1-winter/knu_i18n_test/ci/playbooks/../data/result
+  po_dir: /Users/ellahwang/Documents/university/2026-1/capstone-1-winter/knu_i18n_test/ci/playbooks/../po
+  pot_dir: /Users/ellahwang/Documents/university/2026-1/capstone-1-winter/knu_i18n_test/ci/playbooks/../pot
+project:
+  dir: /Users/ellahwang/Documents/university/2026-1/capstone-1-winter/knu_i18n_test/ci/playbooks/../workspace/neutron-lib
+  name: neutron-lib
+urls:
+  example: https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po
+  glossary: https://opendev.org/openstack/i18n/raw/commit/129b9de7be12740615d532591792b31566d0972f/glossary/locale/{lang}/LC_MESSAGES/glossary.po
