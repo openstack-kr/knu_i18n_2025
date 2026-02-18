@@ -1,0 +1,85 @@
+---
+# Ansible-specific paths (not included in generated config)
+base_dir: "{{ playbook_dir | dirname }}"
+scripts_dir: "{{ role_path }}/files"
+config_file: "{{ base_dir }}/config.yaml"
+venv_dir: "{{ base_dir }}/venv"
+
+# All settings below are serialized into config.yaml
+# and passed to Python scripts via --config.
+# Override any value by setting it in the playbook or extra-vars.
+ai_config:
+  project:
+    name: "{{ project_name }}"
+    dir: "{{ base_dir }}/workspace/{{ project_name }}"
+
+  ai:
+    model: "llama3.2:3b"
+    workers: 4
+    batch_size: 5
+    start_index: 0
+    end_index: 200
+
+  languages:
+    - ar
+    - as
+    - bg_BG
+    - bn_IN
+    - brx
+    - ca
+    - cs
+    - de
+    - en_AU
+    - en_GB
+    - es
+    - es_MX
+    - fi_FI
+    - fr
+    - gu
+    - he
+    - hi
+    - hu
+    - id
+    - it
+    - ja
+    - ka_GE
+    - kn
+    - ko_KR
+    - kok
+    - ks
+    - mai
+    - mni
+    - mr
+    - ne
+    - nl_NL
+    - pa_IN
+    - pl_PL
+    - pt
+    - pt_BR
+    - ru
+    - sl_SI
+    - sr
+    - ta
+    - tr_TR
+    - ur
+    - vi_VN
+    - zh_CN
+    - zh_TW
+
+  paths:
+    pot_dir: "{{ base_dir }}/pot"
+    po_dir: "{{ base_dir }}/po"
+    glossary_dir: "{{ base_dir }}/glossary"
+    example_dir: "{{ base_dir }}/po-example"
+    output_dir: "{{ base_dir }}/data/result"
+
+  files:
+    pot_file: "{{ project_name | replace('-', '_') }}.pot"
+    glossary_po: "glossary.po"
+    glossary_json: "glossary.json"
+    example_file: "nova-nova-locale.po"
+    fixed_json: "fixed_examples.json"
+
+  urls:
+    glossary: "https://opendev.org/openstack/i18n/raw/branch/master/glossary/locale/{lang}/LC_MESSAGES/glossary.po"
+    example: "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po"

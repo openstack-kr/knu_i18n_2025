@@ -1,0 +1,9 @@
+---
+
+- name: Run AI Translation Pipeline
+  hosts: localhost
+  connection: local
+  roles:
+    - role: prepare-ai-translation
+      vars:
+        project_name: "{{ zuul.project.short_name }}"
