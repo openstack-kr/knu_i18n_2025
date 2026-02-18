@@ -7,17 +7,7 @@
       - python3-venv
     state: present
   become: yes
-  when: ansible_os_family == 'Debian' or zuul is defined
-
-# Local development only: clone the project repo for testing outside CI.
-# In CI (Zuul), the repo is already checked out before this playbook runs.
-- name: Clone project repository
-  git:
-    repo: "https://opendev.org/openstack/{{ ai_config.project.name }}.git"
-    dest: "{{ ai_config.project.dir }}"
-    version: master
-    depth: 2
-  when: zuul is not defined
+  when: ansible_os_family == 'Debian'
 
 - name: Check if Ollama is installed
   shell: which ollama
@@ -93,3 +83,49 @@
   copy:
     content: "{{ ai_config | to_nice_yaml(indent=2) }}"
     dest: "{{ config_file }}"
+
+- name: Extract new msgid entries from commit diff
+  command:
+    argv:
+      - "{{ venv_dir }}/bin/python3"
+      - "{{ scripts_dir }}/commit_diff.py"
+      - "--config"
+      - "{{ config_file }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+
+- name: Count new entries in diff POT
+  shell: >
+    grep -c '^msgid "[^"]'
+    {{ ai_config.paths.pot_dir }}/{{ ai_config.files.pot_file }}
+    || true
+  register: new_entry_count
+  changed_when: false
+
+- name: Run AI translation on extracted entries
+  command:
+    argv:
+      - "{{ venv_dir }}/bin/python3"
+      - "{{ scripts_dir }}/translate.py"
+      - "--config"
+      - "{{ config_file }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+  when: new_entry_count.stdout | int > 0
+
+- name: Merge translated PO files with originals
+  command:
+    argv:
+      - "{{ venv_dir }}/bin/python3"
+      - "{{ scripts_dir }}/merge_po.py"
+      - "--config"
+      - "{{ config_file }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+  when: new_entry_count.stdout | int > 0
