@@ -1,13 +1,14 @@
 .tox/
 
 data/result/
-
+config.yaml
 experiments.csv
 *.log
 
 po/
 pot/
 glossary/
+po-example/
 
 workspace/
 
