@@ -8,7 +8,7 @@ from datetime import datetime
 
 import requests
 import yaml
-from babel.messages import pofile
+from babel.messages import pofile, Catalog
 import csv
 
 
@@ -361,6 +361,60 @@ class TranslationUtils:
         except Exception as e:
             self.logger.warning(
                 f"Warning: Failed to save experiment log: {e}")
+
+    def compare_pot_files(self, new_pot, old_pot, output_diff):
+        """Compare two POT files and extract only new/added msgid entries.
+
+        Args:
+            new_pot: Path to newer POT file (e.g., HEAD)
+            old_pot: Path to older POT file (e.g., HEAD~1)
+            output_diff: Path to output diff POT file
+
+        Returns:
+            Number of new entries found
+        """
+        self.logger.info("[pybabel] Comparing new vs old POT files...")
+
+        try:
+            with open(new_pot, 'rb') as f:
+                new_cat = pofile.read_po(f)
+            with open(old_pot, 'rb') as f:
+                old_cat = pofile.read_po(f)
+        except FileNotFoundError as e:
+            self.logger.error(f"[ERROR] Could not find POT file to compare: {e}")
+            return 0
+
+        old_ids = {entry.id for entry in old_cat if entry.id}
+
+        diff_cat = Catalog(
+            project=new_cat.project,
+            version=new_cat.version,
+            msgid_bugs_address=new_cat.msgid_bugs_address,
+            copyright_holder=new_cat.copyright_holder,
+            charset='UTF-8'
+        )
+
+        count = 0
+        for entry in new_cat:
+            if entry.id and entry.id not in old_ids:
+                diff_cat.add(
+                    entry.id,
+                    entry.string,
+                    locations=entry.locations,
+                    flags=entry.flags,
+                    user_comments=entry.user_comments,
+                    auto_comments=entry.auto_comments
+                )
+                count += 1
+
+        try:
+            with open(output_diff, 'wb') as f:
+                pofile.write_po(f, diff_cat)
+        except Exception as e:
+            self.logger.error(f"[ERROR] Failed to write diff POT file {output_diff}: {e}")
+            return 0
+
+        return count
 
     @staticmethod
     def is_untranslated(entry):
