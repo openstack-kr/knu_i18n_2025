@@ -17,8 +17,6 @@ ai_config:
     model: "llama3.2:3b"
     workers: 4
     batch_size: 5
-    start_index: null
-    end_index: null
 
   languages:
     - ar

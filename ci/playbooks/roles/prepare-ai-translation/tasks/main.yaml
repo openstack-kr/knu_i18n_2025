@@ -10,7 +10,7 @@
   when: ansible_os_family == 'Debian'
 
 - name: Check if Ollama is installed
-  shell: which ollama
+  command: which ollama
   register: ollama_check
   changed_when: false
   failed_when: false
@@ -26,6 +26,19 @@
   until: ollama_install.rc == 0
   retries: 3
   delay: 15
+
+- name: Ensure Ollama service is started
+  systemd:
+    name: ollama
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Wait for Ollama service to be ready
+  wait_for:
+    port: 11434
+    delay: 2
+    timeout: 60
 
 - name: Ensure scripts directory exists
   file:
@@ -47,10 +60,9 @@
 
 - name: Pull AI model
   command: "ollama pull {{ ai_config.ai.model }}"
-  register: pull_result
-  until: pull_result.rc == 0
-  retries: 5
-  delay: 10
+  changed_when: false
+  async: 3600
+  poll: 30
 
 - name: Create Python virtual environment
   command: "python3 -m venv {{ venv_dir }}"
@@ -83,3 +95,66 @@
   copy:
     content: "{{ ai_config | to_nice_yaml(indent=2) }}"
     dest: "{{ config_file }}"
+
+- name: Get HEAD commit hash
+  command: git rev-parse HEAD
+  args:
+    chdir: "{{ ai_config.project.dir }}"
+  register: head_commit
+  changed_when: false
+
+- name: Get HEAD~1 commit hash
+  command: git rev-parse HEAD~1
+  args:
+    chdir: "{{ ai_config.project.dir }}"
+  register: base_commit
+  changed_when: false
+
+- name: Extract POT from HEAD and HEAD~1
+  block:
+    - name: Checkout HEAD
+      command: git checkout -f {{ head_commit.stdout }}
+      args:
+        chdir: "{{ ai_config.project.dir }}"
+      changed_when: false
+
+    - name: Extract POT from HEAD
+      command:
+        argv:
+          - "{{ venv_dir }}/bin/python3"
+          - "{{ scripts_dir }}/extract_pot.py"
+          - "--config"
+          - "{{ config_file }}"
+          - "--output"
+          - "{{ ai_config.paths.pot_dir }}/current_{{ ai_config.files.pot_file }}"
+      args:
+        chdir: "{{ base_dir }}"
+      environment:
+        PYTHONPATH: "{{ scripts_dir }}"
+
+    - name: Checkout HEAD~1
+      command: git checkout -f {{ base_commit.stdout }}
+      args:
+        chdir: "{{ ai_config.project.dir }}"
+      changed_when: false
+
+    - name: Extract POT from HEAD~1
+      command:
+        argv:
+          - "{{ venv_dir }}/bin/python3"
+          - "{{ scripts_dir }}/extract_pot.py"
+          - "--config"
+          - "{{ config_file }}"
+          - "--output"
+          - "{{ ai_config.paths.pot_dir }}/previous_{{ ai_config.files.pot_file }}"
+      args:
+        chdir: "{{ base_dir }}"
+      environment:
+        PYTHONPATH: "{{ scripts_dir }}"
+
+  always:
+    - name: Restore HEAD
+      command: git checkout -f {{ head_commit.stdout }}
+      args:
+        chdir: "{{ ai_config.project.dir }}"
+      changed_when: false
