@@ -158,3 +158,30 @@
       args:
         chdir: "{{ ai_config.project.dir }}"
       changed_when: false
+
+- name: Compare POT files and extract new msgid entries
+  command:
+    argv:
+      - "{{ venv_dir }}/bin/python3"
+      - "{{ scripts_dir }}/commit_diff.py"
+      - "--config"
+      - "{{ config_file }}"
+      - "--new-pot"
+      - "{{ ai_config.paths.pot_dir }}/current_{{ ai_config.files.pot_file }}"
+      - "--old-pot"
+      - "{{ ai_config.paths.pot_dir }}/previous_{{ ai_config.files.pot_file }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+
+- name: Count new entries in diff POT
+  command:
+    argv:
+      - grep
+      - -c
+      - '^msgid "[^"]'
+      - "{{ ai_config.paths.pot_dir }}/{{ ai_config.files.pot_file }}"
+  register: new_entry_count
+  changed_when: false
+  failed_when: new_entry_count.rc not in [0, 1]
