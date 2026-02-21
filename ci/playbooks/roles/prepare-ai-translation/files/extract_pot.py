@@ -1,23 +1,21 @@
 #!/usr/bin/env python3
-"""
-POT extraction utilities using pybabel Python API.
-Extracts translatable strings from Python source code.
+"""Extract translatable strings from Python source code into a POT file.
+
+Uses the pybabel Python API to scan the project source directory and
+write a catalog of translatable strings to the specified output file.
 """
 import os
+import argparse
+
 from babel.messages.extract import extract_from_dir, DEFAULT_KEYWORDS
 from babel.messages import pofile, Catalog
 
+from utils import logger, load_config, get_modulename
+
 
 class PotExtractor:
-    """POT file extraction using pybabel Python API."""
-
-    def __init__(self, utils):
-        self.utils = utils
-        self.logger = self.utils.logger
-
     def extract(self, output_file, run_dir, project_name, scan_target):
-        """
-        Extract translatable strings from source code and write a POT file.
+        """Extract translatable strings from source code and write a POT file.
 
         Args:
             output_file: Path to output .pot file
@@ -37,8 +35,8 @@ class PotExtractor:
 
         scan_path = os.path.join(run_dir, scan_target)
 
-        self.logger.info(
-            f"[pybabel] Extracting strings from '{scan_target}' -> "
+        logger.info(
+            f"Extracting strings from '{scan_target}' -> "
             f"{os.path.basename(output_file)}..."
         )
 
@@ -57,3 +55,33 @@ class PotExtractor:
 
         with open(output_file, 'wb') as f:
             pofile.write_po(f, catalog)
+
+
+def get_args():
+    parser = argparse.ArgumentParser(
+        description="Extract translatable strings from source code to POT"
+    )
+    parser.add_argument(
+        "--config", default="config.yaml",
+        help="Path to config YAML file (default: config.yaml)")
+    parser.add_argument(
+        "--output", required=True,
+        help="Path to output .pot file")
+    return parser.parse_args()
+
+
+def main():
+    args = get_args()
+    config = load_config(args.config)
+
+    project_name = config['project']['name']
+    project_dir = config['project']['dir']
+
+    source_dir = get_modulename(project_dir, project_name)
+
+    extractor = PotExtractor()
+    extractor.extract(args.output, project_dir, project_name, source_dir)
+
+
+if __name__ == "__main__":
+    main()
