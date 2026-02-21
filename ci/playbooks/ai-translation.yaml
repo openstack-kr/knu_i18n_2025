@@ -1,5 +1,4 @@
 ---
-
 - name: Run AI Translation Pipeline
   hosts: localhost
   connection: local
