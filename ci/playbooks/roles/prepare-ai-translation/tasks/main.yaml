@@ -175,3 +175,16 @@
   environment:
     PYTHONPATH: "{{ scripts_dir }}"
   register: diff_result
+
+- name: Run AI translation on extracted entries
+  command:
+    argv:
+      - "{{ venv_dir }}/bin/python3"
+      - "{{ scripts_dir }}/translate.py"
+      - "--config"
+      - "{{ config_file }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+  when: diff_result.stdout | int > 0
