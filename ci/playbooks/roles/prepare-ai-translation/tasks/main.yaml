@@ -174,14 +174,4 @@
     chdir: "{{ base_dir }}"
   environment:
     PYTHONPATH: "{{ scripts_dir }}"
-
-- name: Count new entries in diff POT
-  command:
-    argv:
-      - grep
-      - -c
-      - '^msgid "[^"]'
-      - "{{ ai_config.paths.pot_dir }}/{{ ai_config.files.pot_file }}"
-  register: new_entry_count
-  changed_when: false
-  failed_when: new_entry_count.rc not in [0, 1]
+  register: diff_result

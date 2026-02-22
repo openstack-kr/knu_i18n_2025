@@ -100,6 +100,8 @@ def main():
     else:
         logger.info("No translation changes found between commits.")
 
+    print(count)
+
 
 if __name__ == "__main__":
     main()
