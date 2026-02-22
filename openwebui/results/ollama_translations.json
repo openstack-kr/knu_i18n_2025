@@ -1,0 +1,17 @@
+{
+  "llama3.2:3b": {
+    "(optional) Put your language name as bug tag.": "",
+    "**Make sure to include your English language name in a bug summary**. It is also suggested to write a bug summary in English. For example:": "",
+    "**tox** is available on PyPI and also available in various Linux distribution. ``pip install tox`` or ``apt-get install python-tox`` (in case of Ubuntu) installs **tox**.": ""
+  },
+  "qwen2.5:7b": {
+    "(optional) Put your language name as bug tag.": "",
+    "**Make sure to include your English language name in a bug summary**. It is also suggested to write a bug summary in English. For example:": "",
+    "**tox** is available on PyPI and also available in various Linux distribution. ``pip install tox`` or ``apt-get install python-tox`` (in case of Ubuntu) installs **tox**.": ""
+  },
+  "gemma2:2b": {
+    "(optional) Put your language name as bug tag.": "",
+    "**Make sure to include your English language name in a bug summary**. It is also suggested to write a bug summary in English. For example:": "",
+    "**tox** is available on PyPI and also available in various Linux distribution. ``pip install tox`` or ``apt-get install python-tox`` (in case of Ubuntu) installs **tox**.": ""
+  }
+}
