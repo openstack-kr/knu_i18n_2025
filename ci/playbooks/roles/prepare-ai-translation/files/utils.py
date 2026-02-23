@@ -1,16 +1,13 @@
 """Shared utilities for the AI translation pipeline.
 
 Provides configuration loading, logging setup, module name resolution,
-glossary/example loading, and experiment logging used across scripts.
+and glossary/example loading used across scripts.
 """
 import os
 import json
-import csv
-import subprocess
 import configparser
 import re
 import logging
-from datetime import datetime
 
 import requests
 import yaml
@@ -77,64 +74,6 @@ def get_modulename(project_dir, project):
                 return packages[0]
 
     return project
-
-
-def save_experiment_log(model_name, pot_file, po_file,
-                        duration_sec, language, accuracy=None,
-                        results_csv_path="./experiments.csv"):
-    """Append experiment results to a CSV log file.
-
-    Records translation run metadata including model, duration,
-    language, and git information.
-
-    Args:
-        model_name: LLM model name used for translation.
-        pot_file: Path to the source POT file.
-        po_file: Path to the generated PO file.
-        duration_sec: Translation duration in seconds.
-        language: Target language code.
-        accuracy: Optional translation accuracy score.
-        results_csv_path: Path to the CSV log file.
-    """
-    def _run_git(*args):
-        try:
-            return subprocess.check_output(
-                ["git", *args], stderr=subprocess.DEVNULL
-            ).decode().strip()
-        except Exception:
-            return None
-
-    git_commit = _run_git("rev-parse", "HEAD")
-    git_branch = _run_git("rev-parse", "--abbrev-ref", "HEAD")
-
-    result_entry = {
-        "timestamp": datetime.now().isoformat(timespec="seconds"),
-        "model": model_name,
-        "pot_file": os.path.abspath(pot_file),
-        "po_file": os.path.abspath(po_file),
-        "duration_sec": duration_sec,
-        "language": language,
-        "accuracy": accuracy,
-        "git_commit": git_commit,
-        "git_branch": git_branch,
-    }
-
-    try:
-        file_exists = os.path.exists(results_csv_path)
-        with open(results_csv_path,
-                  "a",
-                  newline="",
-                  encoding="utf-8") as csvfile:
-            writer = csv.DictWriter(
-                csvfile, fieldnames=list(result_entry.keys()))
-
-            if not file_exists:
-                writer.writeheader()
-            writer.writerow(result_entry)
-
-        logger.info(f"Experiment log saved to: {results_csv_path}")
-    except Exception as e:
-        logger.warning(f"Failed to save experiment log: {e}")
 
 
 class ResourceLoader:

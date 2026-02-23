@@ -24,7 +24,7 @@ from tqdm import tqdm
 from babel import Locale
 from babel.messages import pofile, Catalog
 
-from utils import ResourceLoader, load_config, save_experiment_log, logger
+from utils import ResourceLoader, load_config, logger
 
 
 def get_language_name(lang_code):
@@ -353,16 +353,6 @@ class AITranslator:
         lang_duration = round(time.time() - lang_start_time, 2)
         logger.info(
             f"--- [{lang_code}] Translation end ({lang_duration}s) ---")
-
-        save_experiment_log(
-            model_name=model,
-            pot_file=pot_path,
-            po_file=po_file_path,
-            duration_sec=lang_duration,
-            language=lang_code,
-            results_csv_path=os.path.join(
-                config['paths']['output_dir'], "experiments.csv"),
-        )
 
 
 def get_args():
