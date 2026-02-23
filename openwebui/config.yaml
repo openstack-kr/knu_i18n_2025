@@ -1,0 +1,30 @@
+# -----------------------------
+#  Required
+# -----------------------------
+# Set target_file to translate (must be placed under ./data/target/{lang})
+target_file: "test2.pot"
+
+# Please choose exactly ONE language for local translation.
+languages: "ko_KR"
+
+# -----------------------------
+#  Option
+# -----------------------------
+# You can tune these arguments for performance / partial translation:
+#   --model : Choose your model
+#   --mode  : Choose your LLM mode[`ollama` (default, for open src LLM), `gpt`, `claude`, `gemini`]
+#   --workers   : number of parallel threads (default: 1)
+#   --start/end : entry index range to translate (default: 0 ~ all)
+#   --batch-size: entries per LLM call (default: 5)
+llm:
+  mode: "openwebui"
+  model: "llama3.2:3b"
+  workers: 1
+  start: 0
+  end: -1
+  batch_size: 5
+
+# Example: normally you don't need to edit this
+examples:
+  example_url: "https://opendev.org/openstack/nova/raw/branch/master/nova/locale/{lang}/LC_MESSAGES/nova.po"
+  example_file: "nova-nova-locale.po"

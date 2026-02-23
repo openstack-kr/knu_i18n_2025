@@ -17,6 +17,7 @@ Execution Flow:
     6. save_experiment_log()로 결과 기록 및 Git 메타데이터 저장
 """
 
+import requests
 import ollama
 import os
 import time
@@ -45,6 +46,7 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
     if llm_mode == "gpt":
         def _call(messages):
             return call_openai_chat(messages, model=model_name)
+
     elif llm_mode == "claude":
         def _call(messages):
             claude_messages = []
@@ -57,11 +59,38 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
             return call_claude_chat(
                 claude_messages,
                 model=model_name,
-                system=claude_system)
+                system=claude_system
+            )
+
     elif llm_mode == "gemini":
         def _call(messages):
             return call_gemini_chat(messages, model=model_name)
+
+    elif llm_mode == "openwebui":
+        
+        def _call(messages):
+            url = f"{OPENWEBUI_URL.rstrip('/')}/api/v1/chat/completions"
+            headers = {"Content-Type": "application/json"}
+            if OPENWEBUI_API_KEY:
+                headers["Authorization"] = f"Bearer {OPENWEBUI_API_KEY}"
+
+            payload = {
+                "model": model_name,   
+                "messages": messages,
+                "temperature": 0,
+            }
+
+            resp = requests.post(url, json=payload, headers=headers, timeout=120)
+            resp.raise_for_status()
+            data = resp.json()
+
+            try:
+                return data["choices"][0]["message"]["content"].strip()
+            except (KeyError, IndexError) as e:
+                raise RuntimeError(f"Unexpected OpenWebUI response: {data}") from e
+
     else:
+        # 기본: 로컬 Ollama 직접 호출
         def _call(messages):
             response = ollama.chat(
                 model=model_name,
@@ -77,6 +106,8 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
 
     return _call
 
+OPENWEBUI_URL = os.getenv("OPENWEBUI_URL", "http://localhost:3000")
+OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
 
 LANG_MAP = {
     "vi_VN": "Vietnamese (Vietnam)",
