@@ -74,7 +74,6 @@ ai_config:
   files:
     pot_file: "{{ project_name | replace('-', '_') }}.pot"
     glossary_po: "glossary.po"
-    glossary_json: "glossary.json"
     example_file: "nova-nova-locale.po"
     fixed_json: "fixed_examples.json"
 
