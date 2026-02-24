@@ -188,3 +188,16 @@
   environment:
     PYTHONPATH: "{{ scripts_dir }}"
   when: diff_result.stdout | int > 0
+
+- name: Merge translated PO files with originals
+  command:
+    argv:
+      - "{{ venv_dir }}/bin/python3"
+      - "{{ scripts_dir }}/merge_po.py"
+      - "--config"
+      - "{{ config_file }}"
+  args:
+    chdir: "{{ base_dir }}"
+  environment:
+    PYTHONPATH: "{{ scripts_dir }}"
+  when: diff_result.stdout | int > 0
