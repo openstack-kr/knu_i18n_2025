@@ -166,10 +166,133 @@ def sample_comparisons_html(comparisons: list, num_samples: int = 10) -> str:
     return "\n".join(samples)
 
 
-def generate_html_report(arena_results: dict, output_path: Path, num_samples: int = 10):
-    comparisons = arena_results.get("comparisons", [])
+def score_leaderboard_rows_html(model_scores: dict) -> str:
+    ranked = sorted(model_scores.items(), key=lambda x: x[1]["avg_score"], reverse=True)
+    rows = []
+    for rank, (model, data) in enumerate(ranked, 1):
+        avg = data["avg_score"]
+        css = 'class="winner-row"' if rank == 1 else ""
+        badge = '<span class="winner-badge">&#127942; 1위</span>' if rank == 1 else ""
+        bar = "&#9632;" * int(avg) + "&#9633;" * (5 - int(avg))
+        rows.append(
+            f'<tr {css}><td>{rank}</td><td>{model} {badge}</td>'
+            f'<td style="font-size:1.2em">{avg:.2f} / 5.0</td>'
+            f'<td style="color:#4CAF50">{bar}</td>'
+            f'<td>{len(data["entries"])}개</td></tr>'
+        )
+    return "\n".join(rows)
 
-    # 평가 방식 추출 (첫 항목의 method 필드)
+
+def score_sample_html(model_scores: dict, num_samples: int = 5) -> str:
+    # 모델별 점수 낮은 순으로 흥미로운 샘플 추출
+    samples = []
+    all_models = list(model_scores.keys())
+    # 첫 모델의 entries로 msgid 목록 확보
+    if not all_models:
+        return ""
+    first_entries = model_scores[all_models[0]]["entries"][:num_samples]
+
+    for entry in first_entries:
+        msgid = entry["msgid"].replace("<", "&lt;").replace(">", "&gt;")
+        sample_html = f'<div class="sample"><strong>원문:</strong><div class="msgid">{msgid}</div><br>'
+        for model in all_models:
+            m_entries = {e["msgid"]: e for e in model_scores[model]["entries"]}
+            if entry["msgid"] in m_entries:
+                e = m_entries[entry["msgid"]]
+                trans = e["translation"].replace("<", "&lt;").replace(">", "&gt;")
+                score = e["score"]
+                color = ["#e74c3c","#e67e22","#f1c40f","#2ecc71","#27ae60","#1a8a4a"][score]
+                sample_html += (
+                    f'<div style="padding:6px;margin:3px 0;border-left:3px solid {color}">'
+                    f'<span style="color:{color};font-weight:bold">{model} [{score}/5]</span><br>'
+                    f'<code>{trans}</code></div>'
+                )
+        sample_html += "</div>"
+        samples.append(sample_html)
+    return "\n".join(samples)
+
+
+SCORE_HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenWebUI Arena Translation Quality Report</title>
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 40px; color: #333; }}
+        h1, h2 {{ color: #2c3e50; }}
+        table {{ border-collapse: collapse; width: 100%; margin: 20px 0; }}
+        th, td {{ border: 1px solid #ddd; padding: 12px; text-align: left; }}
+        th {{ background-color: #4CAF50; color: white; }}
+        tr:nth-child(even) {{ background-color: #f2f2f2; }}
+        .winner-row {{ background-color: #d4edda; font-weight: bold; }}
+        .winner-badge {{ background: #4CAF50; color: white; padding: 2px 8px; border-radius: 4px; font-size: .85em; }}
+        .sample {{ background: #f9f9f9; border-left: 4px solid #4CAF50; padding: 15px; margin: 15px 0; border-radius: 4px; }}
+        .msgid {{ font-family: monospace; font-size: .9em; color: #555; }}
+        .arena-badge {{ background: #4CAF50; color: white; padding: 5px 12px; border-radius: 5px; }}
+        .stats-grid {{ display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin: 20px 0; }}
+        .stat-card {{ background: #f0f4f8; border-radius: 8px; padding: 20px; text-align: center; }}
+        .stat-num {{ font-size: 2em; font-weight: bold; color: #4CAF50; }}
+    </style>
+</head>
+<body>
+    <h1>&#127941; OpenWebUI Arena Translation Quality Report</h1>
+    <p><span class="arena-badge">점수제 평가 (0~5점)</span> &nbsp; 생성일시: {date}</p>
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-num">{model_count}</div><div>비교 모델 수</div></div>
+        <div class="stat-card"><div class="stat-num">{total_entries}</div><div>평가 항목 수</div></div>
+        <div class="stat-card"><div class="stat-num">{eval_method}</div><div>판정 모델</div></div>
+    </div>
+    <h2>&#128202; 모델 순위 (평균 점수)</h2>
+    <table>
+        <tr><th>순위</th><th>모델</th><th>평균 점수</th><th>점수 바</th><th>항목 수</th></tr>
+        {leaderboard_rows}
+    </table>
+    <h2>&#128161; 추천 모델</h2>
+    <div class="sample">
+        <strong>&#127942; 최적 모델: {best_model}</strong><br>
+        평균 점수: {best_score:.2f} / 5.0 &nbsp;|&nbsp; 판정 모델: {eval_method}
+    </div>
+    <h2>&#128269; 샘플 비교 ({num_samples}개)</h2>
+    {sample_comparisons}
+    <h2>&#128279; 링크</h2>
+    <ul>
+        <li><a href="http://localhost:3000" target="_blank">OpenWebUI Dashboard</a></li>
+        <li><a href="http://localhost:3000/arena" target="_blank">Arena Interface</a></li>
+    </ul>
+</body>
+</html>
+"""
+
+
+def generate_html_report(arena_results: dict, output_path: Path, num_samples: int = 10):
+    mode = arena_results.get("mode", "pairwise")
+
+    # ── 점수제 모드 ──────────────────────────────────
+    if mode == "score":
+        model_scores = arena_results.get("model_scores", {})
+        eval_method = arena_results.get("eval_method", "llm")
+        best_model = max(model_scores, key=lambda m: model_scores[m]["avg_score"]) if model_scores else "N/A"
+        best_score = model_scores[best_model]["avg_score"] if best_model != "N/A" else 0
+        total_entries = len(next(iter(model_scores.values()))["entries"]) if model_scores else 0
+
+        html = SCORE_HTML_TEMPLATE.format(
+            date=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            model_count=len(model_scores),
+            total_entries=total_entries,
+            eval_method=eval_method,
+            leaderboard_rows=score_leaderboard_rows_html(model_scores),
+            best_model=best_model,
+            best_score=best_score,
+            num_samples=min(num_samples, total_entries),
+            sample_comparisons=score_sample_html(model_scores, num_samples),
+        )
+        output_path.write_text(html, encoding="utf-8")
+        print(f"HTML 리포트 생성 완료: {output_path}")
+        print(f"최적 모델: {best_model} (평균 점수: {best_score:.2f}/5.0)")
+        return
+
+    # ── pairwise 모드 ─────────────────────────────────
+    comparisons = arena_results.get("comparisons", [])
     eval_method = "heuristic"
     if comparisons and "method" in comparisons[0]:
         eval_method = comparisons[0]["method"]

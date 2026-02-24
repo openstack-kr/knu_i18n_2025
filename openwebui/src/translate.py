@@ -66,6 +66,7 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
         def _call(messages):
             return call_gemini_chat(messages, model=model_name)
 
+    # openwebui mode 추가
     elif llm_mode == "openwebui":
         
         def _call(messages):
@@ -106,6 +107,7 @@ def build_llm_caller(llm_mode: str, model_name: str) -> Callable:
 
     return _call
 
+#openwebui 관련 설정 환경 변수 추가
 OPENWEBUI_URL = os.getenv("OPENWEBUI_URL", "http://localhost:3000")
 OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
 
@@ -467,13 +469,18 @@ if __name__ == "__main__":
     # LLM Config
     # -----------------------------
     llm_cfg = cfg.get("llm")
-    MODEL_NAME = llm_cfg.get("model")
     LLM_MODE = llm_cfg.get("mode")
     MAX_WORKERS = llm_cfg.get("workers")
-    call_llm_fn = build_llm_caller(LLM_MODE, MODEL_NAME)
     START_TRANSLATE = llm_cfg.get("start")
     END_TRANSLATE = None if llm_cfg.get("end") == -1 else llm_cfg.get("end")
     BATCH_SIZE = llm_cfg.get("batch_size")
+
+    # models 리스트 또는 단일 model 지원
+    if "models" in llm_cfg:
+        raw = llm_cfg["models"]
+        MODELS = raw if isinstance(raw, list) else [raw]
+    else:
+        MODELS = [llm_cfg.get("model")]
 
     # -----------------------------
     # Glossary / Examples Config
@@ -485,10 +492,10 @@ if __name__ == "__main__":
     FIXED_EXAMPLE_JSON = "fixed_examples.json"
 
     print("=================================================")
-    print(f"Translation Start, LLM: {MODEL_NAME}, Batch Size: {BATCH_SIZE}")
+    print(f"Translation Start, Models: {MODELS}, Batch Size: {BATCH_SIZE}")
     print("=================================================\n")
 
-    # 폴더 생성 + POT 다운로드
+    # 폴더 생성
     os.makedirs(POT_DIR, exist_ok=True)
     os.makedirs(PO_DIR, exist_ok=True)
     os.makedirs(EXAMPLE_DIR, exist_ok=True)
@@ -500,71 +507,79 @@ if __name__ == "__main__":
             raise FileNotFoundError(f"POT file not found: {pot_file_path}")
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
 
-    start = time.time()
-    # --- 언어 루프 ---
-    for lang_code in LANGUAGES_TO_TRANSLATE:
-        lang_start_time = time.time()
-        print(f"--- [{lang_code}] Language Translation Start ---")
+    total_start = time.time()
+    #번역 루프 구조 변경
+    # --- 모델 루프 ---
+    for MODEL_NAME in MODELS:
+        call_llm_fn = build_llm_caller(LLM_MODE, MODEL_NAME)
+        print(f"\n{'='*50}")
+        print(f"Model: {MODEL_NAME}")
+        print(f"{'='*50}")
 
-        # 1. 언어 이름 찾기 (LANG_MAP 사용)
-        language_name = LANG_MAP.get(lang_code, lang_code)
+        # --- 언어 루프 ---
+        for lang_code in LANGUAGES_TO_TRANSLATE:
+            lang_start_time = time.time()
+            print(f"--- [{lang_code}] Language Translation Start ---")
 
-        # 2. 언어별 glossary, 예시, 프롬프트 로드
-        glossary = load_glossary(lang_code)
+            # 1. 언어 이름 찾기 (LANG_MAP 사용)
+            language_name = LANG_MAP.get(lang_code, lang_code)
 
-        few_shot_examples = load_fixed_examples(
-            lang_code,
-            EXAMPLE_DIR,
-            FIXED_EXAMPLE_JSON,
-            EXAMPLE_URL,
-            EXAMPLE_FILE
-        )
+            # 2. 언어별 glossary, 예시, 프롬프트 로드
+            glossary = load_glossary(lang_code)
 
-        custom_prompt = load_support_prompt(lang_code)
-        if custom_prompt:
-            print(f"Using custom support prompt for {lang_code}")
-            system_prompt = custom_prompt
-        else:
-            system_prompt = DEFAULT_SYSTEM_PROMPT
+            few_shot_examples = load_fixed_examples(
+                lang_code,
+                EXAMPLE_DIR,
+                FIXED_EXAMPLE_JSON,
+                EXAMPLE_URL,
+                EXAMPLE_FILE
+            )
 
-        # 3. TranslationContext 생성
-        ctx = TranslationContext(
-            glossary=glossary,
-            few_shot_examples=few_shot_examples,
-            call_llm_fn=call_llm_fn,
-            max_workers=MAX_WORKERS,
-            start=START_TRANSLATE,
-            end=END_TRANSLATE,
-            system_prompt=system_prompt,
-        )
+            custom_prompt = load_support_prompt(lang_code)
+            if custom_prompt:
+                print(f"Using custom support prompt for {lang_code}")
+                system_prompt = custom_prompt
+            else:
+                system_prompt = DEFAULT_SYSTEM_PROMPT
 
-        # 4. 결과 저장 경로 설정 (모델명/언어코드/파일명)
-        model_lang_folder = os.path.join(PO_DIR, MODEL_NAME, lang_code)
-        os.makedirs(model_lang_folder, exist_ok=True)
-        po_file_path = os.path.join(model_lang_folder, base_name)
+            # 3. TranslationContext 생성
+            ctx = TranslationContext(
+                glossary=glossary,
+                few_shot_examples=few_shot_examples,
+                call_llm_fn=call_llm_fn,
+                max_workers=MAX_WORKERS,
+                start=START_TRANSLATE,
+                end=END_TRANSLATE,
+                system_prompt=system_prompt,
+            )
 
-        # 5. 번역 실행
-        translate_pot_file(
-            pot_file_path,
-            po_file_path,
-            lang_code,
-            language_name,
-            BATCH_SIZE,
-            ctx
-        )
+            # 4. 결과 저장 경로 설정 (모델명/언어코드/파일명)
+            model_lang_folder = os.path.join(PO_DIR, MODEL_NAME, lang_code)
+            os.makedirs(model_lang_folder, exist_ok=True)
+            po_file_path = os.path.join(model_lang_folder, base_name)
 
-        lang_end_time = time.time()
-        duration = round(lang_end_time - lang_start_time, 2)
-        print(f"---[{lang_code}] Language Translation End ({duration}s)---\n")
+            # 5. 번역 실행
+            translate_pot_file(
+                pot_file_path,
+                po_file_path,
+                lang_code,
+                language_name,
+                BATCH_SIZE,
+                ctx
+            )
 
-        # 6. 로그 기록
-        save_experiment_log(
-            model_name=MODEL_NAME,
-            pot_file=pot_file_path,
-            po_file=po_file_path,
-            duration_sec=duration,
-            language=lang_code
-        )
-    end = time.time()
-    duration = round(end - start, 2)
-    print(f"Total translation time: {duration}s")
+            lang_end_time = time.time()
+            duration = round(lang_end_time - lang_start_time, 2)
+            print(f"---[{lang_code}] Language Translation End ({duration}s)---\n")
+
+            # 6. 로그 기록
+            save_experiment_log(
+                model_name=MODEL_NAME,
+                pot_file=pot_file_path,
+                po_file=po_file_path,
+                duration_sec=duration,
+                language=lang_code
+            )
+
+    total_duration = round(time.time() - total_start, 2)
+    print(f"\nTotal translation time: {total_duration}s  (models: {MODELS})")
