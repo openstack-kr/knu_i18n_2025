@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OpenWebUI Arena Translation Quality Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .winner { background-color: #90EE90; font-weight: bold; }
+        .sample { background-color: #f9f9f9; padding: 15px; margin: 10px 0; border-left: 4px solid #4CAF50; }
+        .arena-badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏟️ OpenWebUI Arena Translation Quality Report</h1>
+    <p><span class="arena-badge">Powered by OpenWebUI Arena & Hybrid Evaluator</span></p>
+
+    <h2>📊 Arena ELO Leaderboard</h2>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Model</th>
+            <th>ELO Rating</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Ties</th>
+            <th>Win Rate</th>
+        </tr>
+        
+        <tr class="winner">
+            <td>1</td>
+            <td>gemma3:4b</td>
+            <td>1099</td>
+            <td>13</td>
+            <td>1</td>
+            <td>14</td>
+            <td>46.4%</td>
+        </tr>
+        
+        <tr class="">
+            <td>2</td>
+            <td>qwen2.5:7b</td>
+            <td>1021</td>
+            <td>10</td>
+            <td>6</td>
+            <td>12</td>
+            <td>35.7%</td>
+        </tr>
+        
+        <tr class="">
+            <td>3</td>
+            <td>llama3.2:3b</td>
+            <td>880</td>
+            <td>2</td>
+            <td>18</td>
+            <td>8</td>
+            <td>7.1%</td>
+        </tr>
+        
+    </table>
+
+    <h2>💡 Recommendation</h2>
+    <div class="sample">
+        <strong>🏆 Best Model for Production: gemma3:4b</strong><br>
+        ELO Rating: 1099.0457287634613<br>
+        Win Rate: 46.4%<br>
+        Reason: Highest ELO rating from Local ELO Calculation (Fallback)
+    </div>
+
+    <h2>🔍 Sample Comparisons</h2>
+    
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Reimaging volume failed.</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>상용화 시각화량에 에ラー가 발생했습니다.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>재 이미징 볼륨이 실패했습니다.</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>볼륨 재구성이 실패했습니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Invalid node identity configuration: %(reason)s</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>무效 노드 정체성 구성: %( reason)s</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>잘못된 노드 식별 설정: %(reason)s</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>유효하지 않은 노 식별 구성: %(reason)s</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Unable to create duplicate record for %(target)s</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>%(타ARGET)s 복제 레코드를 만들 수 없습니다.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>%(target)s의 중복 기록을 생성할 수 없습니다.</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>%(target)s의 중복 레코드 생성이 불가능합니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Starting with microversion 2.95, evacuate API will stop instance on destination. To evacuate before upgrades are complete please use an older microversion. Required version for compute %(expected), current version %(currently)s</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>서버를 목적지로하는 경우에 인스턴스를 중단할 수 있습니다. 2.95의 미크로 버전부터는 evacuate API가 이중 작업을 중단합니다. 업그레이드 완료前的 미크로 버전을 사용하십시오. comput에 대해 필요한 버전은 %(expected), 현재 버전은 %(currently)s입니다.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>microversion 2.95부터 evacuated API는 목적지에서 인스턴스를 중지시킵니다. 업그레이드가 완료되기 전에 evacuation을 수행하려면 오래된 microversion을 사용하세요. 컴퓨트 %(expected) 필수 버전, 현재 버전 %(currently)s</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>마이크로버전 2.95부터, 이관 API는 대상 인스턴스를 중단합니다. 업그레이드가 완료되기 전에 이관하려면 더 오래된 마이크로버전을 사용하십시오. compute %(expected)의 필요한 버전은 %(currently)이며, 현재 버전입니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Encryption secret %(secret_uuid)s was not found in the key manager</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>비밀코드 secrets % (% secret_uuid)s가 키 매니저에 tìm지 못했다.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>암호화 비밀 %(secret_uuid)s는 키 관리자에서 찾을 수 없습니다.</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>암호화 비밀 %(secret_uuid)s가 키 관리자에서 발견되지 않았습니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Failed to clean up ephemeral encryption secrets: %(error)s</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>ephemeral encryption secret 청소에 실패했습니다: %(error)s</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>일시적인 암호화 비밀번호 정리 실패: %(error)s</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>임시 암호화 비밀번호 정리 실패: %(error)s</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>%(event_type)s is not a versioned notification and not whitelisted. See ./doc/source/reference/notifications.rst</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>%(event_type)s는 버전 관리通知이며 예방리스트에 등록되지 않았습니다. ./doc/source/reference/notifications.rst 참조하십시오.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>%(event_type)s는 버전化的通知并非直译，此处保持英文以符合原文。-라이지 않고 화이트리스트에 포함되어 있지 않습니다.详见 ./doc/source/reference/notifications.rst</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>`(이벤트 유형)은 버전화되지 않은 알림이며, 화이트리스트에 등록되지 않았습니다. ./doc/source/reference/notifications.rst 참조하십시오.`</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>The %(service_type)s service is unavailable: %(error)s</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>%(service_type)s 서비스 unavailable: %(error)s</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>%(서비스_type)s 서비스는 이용할 수 없습니다: %(오류)s</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>서비스 %(service_type)s는 사용할 수 없습니다: %(error)s</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Invalid response from Cyborg: </code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>잘못된 ответ 인 Cyborg</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>사이보그로부터 유효하지 않은 응답:</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>사이보드의 유효하지 않은 응답:</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Could not communicate with Cyborg.</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>사이버보그와 communiquer 할 수 없습니다.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>*/
+
+
+소프트웨어와 통신할 수 없습니다.</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>사이보스와 통신할 수 없었습니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Expected 1 device profile but got nothing.</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>기대된 1 가지 thiết bị 프로필을 받지 못했다.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>예상대로 1개의 기기 프로필이 필요했지만 아무 것도 얻지 못했습니다.</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>기대했던 1개의 장치 프로필이 없었습니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Expected 1 device profile but got %s.</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>期待 1 장치 프로필이지만 %s를 받았습니다.</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>예상된 디바이스 프로필은 1개였으나 %s가 나왔습니다.</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>예상된 장치 프로필은 1개였지만, %s개가 반환되었습니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>create</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>가꾸다</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>만들기</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>만들다</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>device profile name %s</code><br><br>
+        
+            <strong>llama3.2:3b:</strong><br>
+            <code>기기에 대한 프로필 이름 %s</code><br><br>
+            
+            <strong>qwen2.5:7b:</strong><br>
+            <code>장치 프로필 이름 %s</code><br><br>
+            
+            <strong>gemma3:4b:</strong><br>
+            <code>장치 프로필 이름 %s</code><br><br>
+            </div>
+
+    <h2>📈 Evaluation Statistics</h2>
+    <ul>
+        <li>Total comparisons: 42</li>
+        <li>Models evaluated: 3</li>
+        <li>Evaluation method: Local ELO Calculation (Fallback)</li>
+        <li>Evaluation date: 2026-02-25 02:29:49</li>
+    </ul>
+</body>
+</html>

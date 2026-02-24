@@ -1,0 +1,343 @@
+{
+  "comparisons": [
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Reimaging volume failed.",
+      "winner": "B",
+      "trans_a": "상용화 시각화량에 에ラー가 발생했습니다.",
+      "trans_b": "재 이미징 볼륨이 실패했습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Invalid node identity configuration: %(reason)s",
+      "winner": "B",
+      "trans_a": "무效 노드 정체성 구성: %( reason)s",
+      "trans_b": "잘못된 노드 식별 설정: %(reason)s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Unable to create duplicate record for %(target)s",
+      "winner": "B",
+      "trans_a": "%(타ARGET)s 복제 레코드를 만들 수 없습니다.",
+      "trans_b": "%(target)s의 중복 기록을 생성할 수 없습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Starting with microversion 2.95, evacuate API will stop instance on destination. To evacuate before upgrades are complete please use an older microversion. Required version for compute %(expected), current version %(currently)s",
+      "winner": "B",
+      "trans_a": "서버를 목적지로하는 경우에 인스턴스를 중단할 수 있습니다. 2.95의 미크로 버전부터는 evacuate API가 이중 작업을 중단합니다. 업그레이드 완료前的 미크로 버전을 사용하십시오. comput에 대해 필요한 버전은 %(expected), 현재 버전은 %(currently)s입니다.",
+      "trans_b": "microversion 2.95부터 evacuated API는 목적지에서 인스턴스를 중지시킵니다. 업그레이드가 완료되기 전에 evacuation을 수행하려면 오래된 microversion을 사용하세요. 컴퓨트 %(expected) 필수 버전, 현재 버전 %(currently)s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Encryption secret %(secret_uuid)s was not found in the key manager",
+      "winner": "B",
+      "trans_a": "비밀코드 secrets % (% secret_uuid)s가 키 매니저에 tìm지 못했다.",
+      "trans_b": "암호화 비밀 %(secret_uuid)s는 키 관리자에서 찾을 수 없습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Failed to clean up ephemeral encryption secrets: %(error)s",
+      "winner": "tie",
+      "trans_a": "ephemeral encryption secret 청소에 실패했습니다: %(error)s",
+      "trans_b": "일시적인 암호화 비밀번호 정리 실패: %(error)s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "%(event_type)s is not a versioned notification and not whitelisted. See ./doc/source/reference/notifications.rst",
+      "winner": "tie",
+      "trans_a": "%(event_type)s는 버전 관리通知이며 예방리스트에 등록되지 않았습니다. ./doc/source/reference/notifications.rst 참조하십시오.",
+      "trans_b": "%(event_type)s는 버전化的通知并非直译，此处保持英文以符合原文。-라이지 않고 화이트리스트에 포함되어 있지 않습니다.详见 ./doc/source/reference/notifications.rst"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "The %(service_type)s service is unavailable: %(error)s",
+      "winner": "A",
+      "trans_a": "%(service_type)s 서비스 unavailable: %(error)s",
+      "trans_b": "%(서비스_type)s 서비스는 이용할 수 없습니다: %(오류)s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Invalid response from Cyborg: ",
+      "winner": "B",
+      "trans_a": "잘못된 ответ 인 Cyborg",
+      "trans_b": "사이보그로부터 유효하지 않은 응답:"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Could not communicate with Cyborg.",
+      "winner": "A",
+      "trans_a": "사이버보그와 communiquer 할 수 없습니다.",
+      "trans_b": "*/\r\n\r\n\r\n소프트웨어와 통신할 수 없습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Expected 1 device profile but got nothing.",
+      "winner": "B",
+      "trans_a": "기대된 1 가지 thiết bị 프로필을 받지 못했다.",
+      "trans_b": "예상대로 1개의 기기 프로필이 필요했지만 아무 것도 얻지 못했습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "Expected 1 device profile but got %s.",
+      "winner": "B",
+      "trans_a": "期待 1 장치 프로필이지만 %s를 받았습니다.",
+      "trans_b": "예상된 디바이스 프로필은 1개였으나 %s가 나왔습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "create",
+      "winner": "tie",
+      "trans_a": "가꾸다",
+      "trans_b": "만들기"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "qwen2.5:7b",
+      "msgid": "device profile name %s",
+      "winner": "B",
+      "trans_a": "기기에 대한 프로필 이름 %s",
+      "trans_b": "장치 프로필 이름 %s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Reimaging volume failed.",
+      "winner": "B",
+      "trans_a": "상용화 시각화량에 에ラー가 발생했습니다.",
+      "trans_b": "볼륨 재구성이 실패했습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Invalid node identity configuration: %(reason)s",
+      "winner": "B",
+      "trans_a": "무效 노드 정체성 구성: %( reason)s",
+      "trans_b": "유효하지 않은 노 식별 구성: %(reason)s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Unable to create duplicate record for %(target)s",
+      "winner": "B",
+      "trans_a": "%(타ARGET)s 복제 레코드를 만들 수 없습니다.",
+      "trans_b": "%(target)s의 중복 레코드 생성이 불가능합니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Starting with microversion 2.95, evacuate API will stop instance on destination. To evacuate before upgrades are complete please use an older microversion. Required version for compute %(expected), current version %(currently)s",
+      "winner": "B",
+      "trans_a": "서버를 목적지로하는 경우에 인스턴스를 중단할 수 있습니다. 2.95의 미크로 버전부터는 evacuate API가 이중 작업을 중단합니다. 업그레이드 완료前的 미크로 버전을 사용하십시오. comput에 대해 필요한 버전은 %(expected), 현재 버전은 %(currently)s입니다.",
+      "trans_b": "마이크로버전 2.95부터, 이관 API는 대상 인스턴스를 중단합니다. 업그레이드가 완료되기 전에 이관하려면 더 오래된 마이크로버전을 사용하십시오. compute %(expected)의 필요한 버전은 %(currently)이며, 현재 버전입니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Encryption secret %(secret_uuid)s was not found in the key manager",
+      "winner": "B",
+      "trans_a": "비밀코드 secrets % (% secret_uuid)s가 키 매니저에 tìm지 못했다.",
+      "trans_b": "암호화 비밀 %(secret_uuid)s가 키 관리자에서 발견되지 않았습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Failed to clean up ephemeral encryption secrets: %(error)s",
+      "winner": "tie",
+      "trans_a": "ephemeral encryption secret 청소에 실패했습니다: %(error)s",
+      "trans_b": "임시 암호화 비밀번호 정리 실패: %(error)s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "%(event_type)s is not a versioned notification and not whitelisted. See ./doc/source/reference/notifications.rst",
+      "winner": "tie",
+      "trans_a": "%(event_type)s는 버전 관리通知이며 예방리스트에 등록되지 않았습니다. ./doc/source/reference/notifications.rst 참조하십시오.",
+      "trans_b": "`(이벤트 유형)은 버전화되지 않은 알림이며, 화이트리스트에 등록되지 않았습니다. ./doc/source/reference/notifications.rst 참조하십시오.`"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "The %(service_type)s service is unavailable: %(error)s",
+      "winner": "tie",
+      "trans_a": "%(service_type)s 서비스 unavailable: %(error)s",
+      "trans_b": "서비스 %(service_type)s는 사용할 수 없습니다: %(error)s"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Invalid response from Cyborg: ",
+      "winner": "B",
+      "trans_a": "잘못된 ответ 인 Cyborg",
+      "trans_b": "사이보드의 유효하지 않은 응답:"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Could not communicate with Cyborg.",
+      "winner": "tie",
+      "trans_a": "사이버보그와 communiquer 할 수 없습니다.",
+      "trans_b": "사이보스와 통신할 수 없었습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Expected 1 device profile but got nothing.",
+      "winner": "B",
+      "trans_a": "기대된 1 가지 thiết bị 프로필을 받지 못했다.",
+      "trans_b": "기대했던 1개의 장치 프로필이 없었습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "Expected 1 device profile but got %s.",
+      "winner": "B",
+      "trans_a": "期待 1 장치 프로필이지만 %s를 받았습니다.",
+      "trans_b": "예상된 장치 프로필은 1개였지만, %s개가 반환되었습니다."
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "create",
+      "winner": "tie",
+      "trans_a": "가꾸다",
+      "trans_b": "만들다"
+    },
+    {
+      "model_a": "llama3.2:3b",
+      "model_b": "gemma3:4b",
+      "msgid": "device profile name %s",
+      "winner": "B",
+      "trans_a": "기기에 대한 프로필 이름 %s",
+      "trans_b": "장치 프로필 이름 %s"
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Reimaging volume failed.",
+      "winner": "tie",
+      "trans_a": "재 이미징 볼륨이 실패했습니다.",
+      "trans_b": "볼륨 재구성이 실패했습니다."
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Invalid node identity configuration: %(reason)s",
+      "winner": "tie",
+      "trans_a": "잘못된 노드 식별 설정: %(reason)s",
+      "trans_b": "유효하지 않은 노 식별 구성: %(reason)s"
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Unable to create duplicate record for %(target)s",
+      "winner": "tie",
+      "trans_a": "%(target)s의 중복 기록을 생성할 수 없습니다.",
+      "trans_b": "%(target)s의 중복 레코드 생성이 불가능합니다."
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Starting with microversion 2.95, evacuate API will stop instance on destination. To evacuate before upgrades are complete please use an older microversion. Required version for compute %(expected), current version %(currently)s",
+      "winner": "A",
+      "trans_a": "microversion 2.95부터 evacuated API는 목적지에서 인스턴스를 중지시킵니다. 업그레이드가 완료되기 전에 evacuation을 수행하려면 오래된 microversion을 사용하세요. 컴퓨트 %(expected) 필수 버전, 현재 버전 %(currently)s",
+      "trans_b": "마이크로버전 2.95부터, 이관 API는 대상 인스턴스를 중단합니다. 업그레이드가 완료되기 전에 이관하려면 더 오래된 마이크로버전을 사용하십시오. compute %(expected)의 필요한 버전은 %(currently)이며, 현재 버전입니다."
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Encryption secret %(secret_uuid)s was not found in the key manager",
+      "winner": "tie",
+      "trans_a": "암호화 비밀 %(secret_uuid)s는 키 관리자에서 찾을 수 없습니다.",
+      "trans_b": "암호화 비밀 %(secret_uuid)s가 키 관리자에서 발견되지 않았습니다."
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Failed to clean up ephemeral encryption secrets: %(error)s",
+      "winner": "tie",
+      "trans_a": "일시적인 암호화 비밀번호 정리 실패: %(error)s",
+      "trans_b": "임시 암호화 비밀번호 정리 실패: %(error)s"
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "%(event_type)s is not a versioned notification and not whitelisted. See ./doc/source/reference/notifications.rst",
+      "winner": "tie",
+      "trans_a": "%(event_type)s는 버전化的通知并非直译，此处保持英文以符合原文。-라이지 않고 화이트리스트에 포함되어 있지 않습니다.详见 ./doc/source/reference/notifications.rst",
+      "trans_b": "`(이벤트 유형)은 버전화되지 않은 알림이며, 화이트리스트에 등록되지 않았습니다. ./doc/source/reference/notifications.rst 참조하십시오.`"
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "The %(service_type)s service is unavailable: %(error)s",
+      "winner": "B",
+      "trans_a": "%(서비스_type)s 서비스는 이용할 수 없습니다: %(오류)s",
+      "trans_b": "서비스 %(service_type)s는 사용할 수 없습니다: %(error)s"
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Invalid response from Cyborg: ",
+      "winner": "tie",
+      "trans_a": "사이보그로부터 유효하지 않은 응답:",
+      "trans_b": "사이보드의 유효하지 않은 응답:"
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Could not communicate with Cyborg.",
+      "winner": "B",
+      "trans_a": "*/\r\n\r\n\r\n소프트웨어와 통신할 수 없습니다.",
+      "trans_b": "사이보스와 통신할 수 없었습니다."
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Expected 1 device profile but got nothing.",
+      "winner": "B",
+      "trans_a": "예상대로 1개의 기기 프로필이 필요했지만 아무 것도 얻지 못했습니다.",
+      "trans_b": "기대했던 1개의 장치 프로필이 없었습니다."
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "Expected 1 device profile but got %s.",
+      "winner": "B",
+      "trans_a": "예상된 디바이스 프로필은 1개였으나 %s가 나왔습니다.",
+      "trans_b": "예상된 장치 프로필은 1개였지만, %s개가 반환되었습니다."
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "create",
+      "winner": "tie",
+      "trans_a": "만들기",
+      "trans_b": "만들다"
+    },
+    {
+      "model_a": "qwen2.5:7b",
+      "model_b": "gemma3:4b",
+      "msgid": "device profile name %s",
+      "winner": "tie",
+      "trans_a": "장치 프로필 이름 %s",
+      "trans_b": "장치 프로필 이름 %s"
+    }
+  ],
+  "leaderboard": {
+    "entries": []
+  }
+}
