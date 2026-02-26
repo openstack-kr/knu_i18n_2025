@@ -2,7 +2,7 @@
 #  Required
 # -----------------------------
 # Set target_file to translate (must be placed under ./data/target/{lang})
-target_file: "test2.pot"
+target_file: "test.pot"
 
 # Please choose exactly ONE language for local translation.
 languages: "ko_KR"

@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Swift Administrator Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Swift Administrator Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-22 16:27+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../admin_guide.rst:3
+msgid "Administrator's Guide"
+msgstr ""
+
+#: ../../admin_guide.rst:7
+msgid "Defining Storage Policies"
+msgstr ""
+
+#: ../../admin_guide.rst:9
+msgid "Defining your Storage Policies is very easy to do with Swift.  It is important that the administrator understand the concepts behind Storage Policies before actually creating and using them in order to get the most benefit out of the feature and, more importantly, to avoid having to make unnecessary changes once a set of policies have been deployed to a cluster."
+msgstr ""
+
+#: ../../admin_guide.rst:15
+msgid "It is highly recommended that the reader fully read and comprehend :doc:`overview_policies` before proceeding with administration of policies.  Plan carefully and it is suggested that experimentation be done first on a non-production cluster to be certain that the desired configuration meets the needs of the users.  See :ref:`upgrade-policy` before planning the upgrade of your existing deployment."
+msgstr ""
+
+#: ../../admin_guide.rst:22
+msgid "Following is a high level view of the very few steps it takes to configure policies once you have decided what you want to do:"
+msgstr ""
+
+#: ../../admin_guide.rst:25
+msgid "Define your policies in ``/etc/swift/swift.conf``"
+msgstr ""

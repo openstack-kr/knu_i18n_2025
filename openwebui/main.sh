@@ -10,6 +10,12 @@
 set -e
 cd "$(dirname "$0")"   # 스크립트 위치(openwebui/)를 작업 디렉토리로
 
+# ── Step 0: 의존성 설치 ────────────────────────
+echo "▶ Step 0: 의존성 설치"
+pip install -q -r src/requirements.txt
+echo "Step 0 완료"
+echo ""
+
 # --- .env 로드 ---
 if [ -f .env ]; then
     set -a && source .env && set +a
@@ -66,12 +72,6 @@ fi
 
 mkdir -p results
 
-# ── Step 0: 의존성 설치 ────────────────────────
-echo "▶ Step 0: 의존성 설치"
-pip install -q -r src/requirements.txt
-echo "Step 0 완료"
-echo ""
-
 # ── Step 1: 번역 ──────────────────────────────
 if [ "$SKIP_TRANSLATE" = false ]; then
     echo "▶ Step 1: 번역"
@@ -85,10 +85,10 @@ echo ""
 # ── Step 2: PO → JSON 변환 ───────────────────
 echo "▶ Step 2: JSONL 생성"
 python3 src/po_to_json.py \
-  --pot pot/test2.pot \
+  --pot "$POT_FILE" \
   --po-dir po \
   --models "$MODELS" \
-  --lang ko_KR \
+  --lang "$LANG" \
   --output results/arena_translations.json
 
 # ── Step 3: LLM 판정 ──────────────────────────
