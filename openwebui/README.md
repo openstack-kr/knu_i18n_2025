@@ -48,9 +48,7 @@ ollama pull qwen2.5:7b
 
 ### 3. Python Environment
 
-**중요**: Python 3.10-3.12를 사용해야 합니다 (Python 3.13은 Babel 호환성 문제 발생).
-
-macOS에서는 venv 사용을 권장합니다 (Homebrew Python PEP 668 제약):
+**중요**: Python 3.10-3.12를 사용해야 합니다.
 
 ```bash
 python3.10 -m venv venv  # 또는 python3.11, python3.12
@@ -135,20 +133,3 @@ bash main.sh --skip-translate
 | 2 | Poor — 오역 또는 외래어 혼용 |
 | 1 | Very Poor — 대부분 오역 |
 | 0 | Failed — 미번역, 반복 출력, 깨진 텍스트 |
-
-## Troubleshooting
-
-### Python 버전 호환성 문제
-
-**증상**: `ModuleNotFoundError: No module named 'cgi'` (Babel 관련)
-
-**원인**: Python 3.13에서 `cgi` 모듈이 제거되었으나 Babel 2.8.0이 이를 사용함
-
-**해결책**: Python 3.10-3.12 버전으로 venv 생성
-
-```bash
-# Python 3.10, 3.11, 또는 3.12 사용
-python3.10 -m venv venv
-source venv/bin/activate
-pip install -r src/requirements.txt
-```
