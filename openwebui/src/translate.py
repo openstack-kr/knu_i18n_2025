@@ -500,11 +500,10 @@ if __name__ == "__main__":
     os.makedirs(PO_DIR, exist_ok=True)
     os.makedirs(EXAMPLE_DIR, exist_ok=True)
 
-    if POT_FILE:
-        pot_file_path = POT_FILE
-        print(f"Using local POT file: {pot_file_path}")
-        if not os.path.exists(pot_file_path):
-            raise FileNotFoundError(f"POT file not found: {pot_file_path}")
+    pot_file_path = POT_FILE
+    print(f"Using local POT file: {pot_file_path}")
+    if not os.path.exists(pot_file_path):
+        raise FileNotFoundError(f"POT file not found: {pot_file_path}")
     base_name = os.path.basename(pot_file_path).replace(".pot", ".po")
 
     total_start = time.time()

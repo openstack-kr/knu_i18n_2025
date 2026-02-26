@@ -47,7 +47,7 @@ print(lang.split(',')[0].strip() if isinstance(lang, str) else lang[0])
 POT_FILE="pot/${TARGET_FILE}.pot"
 JSONL_OUT="results/arena_dataset.jsonl"
 ARENA_OUT="results/arena_results.json"
-REPORT_OUT="results/report.html"
+REPORT_OUT="results/arena_report_llm.html"
 
 echo "============================================="
 echo " OpenWebUI Arena Pipeline"
@@ -82,30 +82,30 @@ else
 fi
 echo ""
 
-# ── Step 2: PO → JSONL 변환 ───────────────────
+# ── Step 2: PO → JSON 변환 ───────────────────
 echo "▶ Step 2: JSONL 생성"
-python3 src/po_to_arena.py \
-    --pot "$POT_FILE" \
-    --po-dir po \
-    --models "$MODELS" \
-    --lang "$LANG" \
-    --output "$JSONL_OUT"
-echo "Step 2 완료: $JSONL_OUT"
-echo ""
+python3 src/po_to_json.py \
+  --pot pot/test2.pot \
+  --po-dir po \
+  --models "$MODELS" \
+  --lang ko_KR \
+  --output results/arena_translations.json
 
 # ── Step 3: LLM 판정 ──────────────────────────
 echo "▶ Step 3: LLM 판정 (judge: $JUDGE_MODEL)"
-python3 src/arena_evaluator.py \
-    --jsonl "$JSONL_OUT" \
-    --judge-model "$JUDGE_MODEL" \
-    --output "$ARENA_OUT"
-echo "Step 3 완료: $ARENA_OUT"
-echo ""
+python3 src/arena_score.py \
+  --translations results/arena_translations.json \
+  --judge-model "$JUDGE_MODEL" \
+  --elo-data results/elo_matches.json \
+  --submit-feedback \
+  --output results/arena_feedback_llm.json
 
 # ── Step 4: HTML 리포트 ────────────────────────
 echo "▶ Step 4: HTML 리포트 생성"
 python3 src/arena_report_generator.py \
-    --arena-results "$ARENA_OUT" \
+    --elo-matches results/elo_matches.json \
+    --translations results/arena_translations.json \
+    --judge-model "$JUDGE_MODEL" \
     --output "$REPORT_OUT"
 echo "Step 4 완료: $REPORT_OUT"
 echo ""

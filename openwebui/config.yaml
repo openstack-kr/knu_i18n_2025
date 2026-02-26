@@ -22,7 +22,7 @@ llm:
   models:
     - "llama3.2:3b"
     - "qwen2.5:3b"
-    - "gemma3:4b"
+    #- "gemma3:4b"
   judge_model: "qwen2.5:7b"   # Arena 판정에 사용할 모델
   workers: 1
   start: 0

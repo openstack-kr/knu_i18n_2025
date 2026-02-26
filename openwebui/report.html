@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OpenWebUI Arena Translation Quality Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .winner { background-color: #90EE90; font-weight: bold; }
+        .sample { background-color: #f9f9f9; padding: 15px; margin: 10px 0; border-left: 4px solid #4CAF50; }
+        .arena-badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏟️ OpenWebUI Arena Translation Quality Report</h1>
+    <p><span class="arena-badge">Powered by OpenWebUI Arena & Hybrid Evaluator</span></p>
+
+    <h2>📊 Arena ELO Leaderboard</h2>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Model</th>
+            <th>ELO Rating</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Ties</th>
+            <th>Win Rate</th>
+        </tr>
+        
+        <tr class="winner">
+            <td>1</td>
+            <td>llama3.2:3b</td>
+            <td>1017</td>
+            <td>14</td>
+            <td>6</td>
+            <td>8</td>
+            <td>50.0%</td>
+        </tr>
+        
+        <tr class="">
+            <td>2</td>
+            <td>qwen2.5:3b</td>
+            <td>983</td>
+            <td>6</td>
+            <td>14</td>
+            <td>8</td>
+            <td>21.4%</td>
+        </tr>
+        
+    </table>
+
+    <h2>💡 Recommendation</h2>
+    <div class="sample">
+        <strong>🏆 Best Model for Production: llama3.2:3b</strong><br>
+        ELO Rating: 1017.4831276610764<br>
+        Win Rate: 50.0%<br>
+        Reason: Highest ELO rating from Local ELO Calculation (Fallback)
+    </div>
+
+    <h2>🔍 Sample Comparisons</h2>
+    
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Administrator's Guide</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>관리자 가이드</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Defining Storage Policies</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>스토리지 정책 지정</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Defining your Storage Policies is very easy to do with Swift.  It is important that the administrator understand the concepts behind Storage Policies before actually creating and using them in order to get the most benefit out of the feature and, more importantly, to avoid having to make unnecessary changes once a set of policies have been deployed to a cluster.</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>Swift을 사용하여 스토리지 정책을 매우 쉽게 설정하고 사용할 수 있습니다. 스토리지 정책을 생성 및 실제로 사용하기 전에 이해해야 하는 스트로이징 정책의 개념에 대한 이해는 중요합니다. 그리고, 특히 그 후에 이러한 세트가 클러스터에 배포된 이후에 비효율적인 변경을 피하는 것입니다.</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>It is highly recommended that the reader fully read and comprehend :doc:`overview_policies` before proceeding with administration of policies.  Plan carefully and it is suggested that experimentation be done first on a non-production cluster to be certain that the desired configuration meets the needs of the users.  See :ref:`upgrade-policy` before planning the upgrade of your existing deployment.</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>정책 관리를 위해 독자가 완전히 :doc:`policies_overview`를 읽고 충분히 이해하기 전에 반드시 먼저 :ref:`upgrade-policy`와 제어 가능한 테스트 클러스터에서 계획을 세우는 것이 좋습니다. 필요한 사용자 요구 사항이 정확하게 맞는지 확인하십시오.</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Following is a high level view of the very few steps it takes to configure policies once you have decided what you want to do:</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>다음은 정책 설정이 결정된 후 매우 단순한 몇 가지 단계만으로 이루어진 비전입니다.</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Define your policies in ``/etc/swift/swift.conf``</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>"/etc/swift/swift.conf"에서 정책을 정의합니다.</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Create the corresponding object rings</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>대응하는 객체 릴링크를 생성합니다.</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Communicate the names of the Storage Policies to cluster users</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>스토리지 정책의 이름을 클러스터 사용자에게 전달합니다.</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>For a specific example that takes you through these steps, please see :doc:`policies_saio`</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>이 예제를 통해 이러한 단계를 따라갑니다. :doc:`policies_saio</admin-guide/service-worker/policies_saio>`</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Managing the Rings</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>릴링크 관리</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code></code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>You may build the storage rings on any server with the appropriate version of Swift installed.  Once built or changed (rebalanced), you must distribute the rings to all the servers in the cluster.  Storage rings contain information about all the Swift storage partitions and how they are distributed between the different nodes and disks.</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code></code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>서버에 Swift가 적합한 버전이 있는 곳에 스티프를 구축할 수 있습니다.  구축하거나 변경(재조정)后, 클러스터의 모든 서버에-ring을 분산해야 합니다.  스티프 스토리지 ring은 스위트 스토리지 파티션에 대한 정보와 노드 및 디스크에서 파티션을 phân배하는 방법과 같은 모든信息를 포함합니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Swift 1.6.0 is the last version to use a Python pickle format. Subsequent versions use a different serialization format.  **Rings generated by Swift versions 1.6.0 and earlier may be read by any version, but rings generated after 1.6.0 may only be read by Swift versions greater than 1.6.0.**  So when upgrading from version 1.6.0 or earlier to a version greater than 1.6.0, either upgrade Swift on your ring building server **last** after all Swift nodes have been successfully upgraded, or refrain from generating rings until all Swift nodes have been successfully upgraded.</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code></code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>Swift 1.6.0은 마지막 버전으로 Python pickle format을 사용します.  그 다음 버전은 다른 serialize format을 사용합니다.  **Swift 1.6.0 이하의 верSION으로 생성된 링이 모든 버esion에 읽어지는지만, Swift 1.6.0 이후로 생성된 링은ेवल Swift 1.6.0 이상 버ISION에 읽어야 하며.**  따라서 버전 1.6.0 이하에서 higher 버션으로 업그레이드한 후에, either Swift Ring Building Server를 최후에 Upgrade After all Swift Nodes가 성공적으로 Upgrade 후에 or, ring 생성을 중지하고 모든 Swift Node가 성공적으로 Upgrade 후에 Until rings을 전달합니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>If you need to downgrade from a version of Swift greater than 1.6.0 to a version less than or equal to 1.6.0, first downgrade your ring-building server, generate new rings, push them out, then continue with the rest of the downgrade.</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code></code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>Swift version이 1.6.0 이상에서 lower version으로 downgrade하려고 할 때 첫째, ring-building server를 down grade합니다. new ring을 생성하여 push out한 다음 나머지 down grade을 ongoingly 합니다.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>For more information see :doc:`overview_ring`.</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code></code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>more information see :doc:`overview_ring`.</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Removing a device from the ring::</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code></code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>링에 thiết备를 제거하는 경우::</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Removing a server from the ring::</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>서버을 루프에서 제거::</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>ring에서 서버를 제거하는 것 ::</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Adding devices to the ring:</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>서버에 장치 추가:</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>ring에 기기를 추가하는 것 ::</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>See :ref:`ring-preparing`</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>참조: 루프 준비하기</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>See :ref:`ring-preparing`</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>See what devices for a server are in the ring::</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>서버의 장치가 룸에 있는지 확인하기::</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>ring에서 서버가 있는 기기들을 확인하세요 ::</code><br><br>
+            </div>
+        <div class="sample">
+            <strong>Original:</strong><br>
+            <code>Once you are done with all changes to the ring, the changes need to be "committed"::</code><br><br>
+        
+            <strong>qwen2.5:3b:</strong><br>
+            <code>모든 변경 사항이 루프에서 완료되면 변경 사항을 "사용"해야 합니다::</code><br><br>
+            
+            <strong>llama3.2:3b:</strong><br>
+            <code>_ring에 모든 변경 사항을 완료하면, 변경 사항은 "커ミ트"해야 합니다 ::</code><br><br>
+            </div>
+
+    <h2>📈 Evaluation Statistics</h2>
+    <ul>
+        <li>Total comparisons: 28</li>
+        <li>Models evaluated: 2</li>
+        <li>Evaluation method: Local ELO Calculation (Fallback)</li>
+        <li>Evaluation date: 2026-02-26 18:30:59</li>
+    </ul>
+</body>
+</html>
