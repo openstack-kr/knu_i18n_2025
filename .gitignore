@@ -3,8 +3,13 @@
 data/result/
 !data/result/.keep
 
+openwebui/results/
+!openwebui/results/.keep
+
 experiments.csv
 *.log
+knu-student-project-in-2weeks.md
+
 
 po/
 !po/.keep
