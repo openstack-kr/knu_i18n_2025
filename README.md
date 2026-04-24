@@ -3,7 +3,7 @@
 <img width="1881" height="804" alt="단락 텍스트" src="https://github.com/user-attachments/assets/d0ff9e64-8a24-42e5-af1d-f4e2d2879d96" />
 
 A lightweight, user-friendly AI translation system for OpenStack i18n.
-This tool helps contributors translate `.pot` / `.po` files into 54 languages using CPU-friendly LLMs such as **Ollama**, as well as GPT, Claude, and Gemini.
+This repository provides a local translation workflow and a Zuul-oriented CI translation pipeline powered by LLMs such as **Ollama**, GPT, Claude, and Gemini.
 
 If you're new to OpenStack i18n, see the official [OpenStack i18n guide](https://docs.openstack.org/i18n/latest/index.html).
 
@@ -142,12 +142,11 @@ You can manually download the latest translated POT or PO files directly from th
 ### Choose Your Language
 
 Please insert your language code from [this link](docs/language_support.md).
-We support **54 languages**
+The local workflow documents **54 supported language codes**.
 
 ```yaml
-languages:
-  # Please choose exactly ONE language for local translation.
-  - "ko_KR"
+# Please choose exactly ONE language for local translation.
+languages: "ko_KR"
 ```
 
 ### Choose Your Model
@@ -177,50 +176,32 @@ llm:
 
 For automated translation in OpenStack's Zuul CI environment.
 
-## Quick Start
+The CI workflow is implemented as an Ansible playbook and role:
 
-### Navigate to CI directory
+- Playbook: [`ci/playbooks/ai-translation.yaml`](ci/playbooks/ai-translation.yaml)
+- Role: [`ci/playbooks/roles/prepare-ai-translation/`](ci/playbooks/roles/prepare-ai-translation/)
 
-```bash
-cd ci/
-```
+### CI Pipeline Overview
 
-### Install dependencies
+The CI pipeline performs the following steps:
 
-```bash
-pip install -r requirements.txt
+1. Extract POT files from `HEAD` and `HEAD~1`
+2. Compare the two POT files and identify newly added `msgid` entries
+3. Generate AI draft translations for those new entries via Ollama
+4. Merge AI-generated translations into the original PO files while preserving existing human translations
 
-# Install Ollama
-curl -fsSL https://ollama.com/install.sh | sh
-```
-
-### Run CI translation
-
-```bash
-bash scripts/ci.sh <project> <branch> [languages...]
-```
-
-**Examples:**
-
-```bash
-# Single language
-bash scripts/ci.sh neutron-lib master ko_KR
-
-# Multiple languages
-bash scripts/ci.sh nova master ko_KR ja zh_CN
-
-```
+If no new entries are found, the translation and merge steps are skipped.
 
 ## CI Configuration
 
-All settings are **hardcoded** for CI consistency:
+Default CI settings are defined in
+[`ci/playbooks/roles/prepare-ai-translation/defaults/main.yaml`](ci/playbooks/roles/prepare-ai-translation/defaults/main.yaml):
 
 - **Model**: `llama3.2:3b`
-- **Mode**: `ollama`
-- **Batch size**: 5
-- **Workers**: 1
-
-To customize, edit the Python scripts in `ci/src/` directly.
+- **Backend**: `ollama`
+- **Batch size**: `5`
+- **Workers**: `4`
+- **Configured target languages**: `44`
 
 ---
 
@@ -228,13 +209,14 @@ To customize, edit the Python scripts in `ci/src/` directly.
 
 The system automatically:
 
-- Loads the `.pot` file
+- Loads the source `.pot` file
 - Splits text into batches
-- Applies the **general prompt** or a **language-specific prompt (if available)**
-- Adds **few-shot examples** when reference translations exist
+- Applies the general prompt or a language-specific prompt, if available
+- Adds glossary context and few-shot examples when reference translations exist
 - Generates draft `.po` translations
+- Merges AI-generated translations into output PO files while preserving existing translations
 
-Draft translations are then pushed to Gerrit → reviewed → synced to Weblate.
+In CI, the pipeline compares `HEAD` and `HEAD~1` to translate only newly added entries.
 For full architecture details, see [**PAPER.md**](docs/PAPER.md).
 
 # Assist in Improving Translation Quality
