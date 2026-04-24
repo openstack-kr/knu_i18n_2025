@@ -1,6 +1,6 @@
 # AI-based Translation System for OpenStack
 
-<img width="1881" height="804" alt="단락 텍스트" src="https://github.com/user-attachments/assets/d0ff9e64-8a24-42e5-af1d-f4e2d2879d96" />
+<img width="1881" height="804" alt="Pipeline diagram" src="./docs/pipeline_diagram.png" />
 
 A lightweight, user-friendly AI translation system for OpenStack i18n.
 This repository provides a local translation workflow and a Zuul-oriented CI translation pipeline powered by LLMs such as **Ollama**, GPT, Claude, and Gemini.
@@ -22,7 +22,7 @@ This repository provides two independent translation workflows:
 
 ---
 
-# Local Translation Workflow
+# 1. Local Translation Workflow
 
 The fastest way to run your first translation on your local machine.
 
@@ -172,7 +172,7 @@ llm:
 
 ---
 
-# CI Translation Workflow
+# 2. CI Translation Workflow
 
 For automated translation in OpenStack's Zuul CI environment.
 
@@ -205,7 +205,7 @@ Default CI settings are defined in
 
 ---
 
-# How the System Works (Simple Overview)
+# 3. How the System Works (Simple Overview)
 
 The system automatically:
 
@@ -219,7 +219,7 @@ The system automatically:
 In CI, the pipeline compares `HEAD` and `HEAD~1` to translate only newly added entries.
 For full architecture details, see [**PAPER.md**](docs/PAPER.md).
 
-# Assist in Improving Translation Quality
+# 4. Assist in Improving Translation Quality
 
 You can tune two major components:
 
@@ -228,7 +228,7 @@ You can tune two major components:
 
 See [**CONTRIBUTING.md**](local/CONTRIBUTING.md) to learn how you can contribute.
 
-# Code Formatting
+# 5. Code Formatting
 
 Run PEP8 style checks:
 
@@ -243,7 +243,7 @@ Auto-fix style issues:
 autopep8 --in-place --aggressive --aggressive -r .
 ```
 
-# Team
+# 6. Team
 
 - [Lee Juyeong](https://github.com/ale8ander) - Project Lead
 - [Oh Jiwoo](https://github.com/5hjiwoo)
